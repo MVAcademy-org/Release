@@ -1,0 +1,1596 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Machine Vision Engineering Handbook",
+    "section": "",
+    "text": "Welcome\nThe Machine Vision Engineering Handbook is the principal technical knowledge resource of the Machine Vision Academy.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Machine Vision Engineering Handbook</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#who-is-this-handbook-for",
+    "href": "index.html#who-is-this-handbook-for",
+    "title": "Machine Vision Engineering Handbook",
+    "section": "Who is this handbook for?",
+    "text": "Who is this handbook for?\nThe handbook is intended for:\n\nengineers designing or specifying industrial vision systems;\nautomation and controls engineers integrating vision equipment;\ncomputer-vision and machine-learning practitioners working in industry;\nstudents and lecturers studying machine vision;\nquality, validation and regulatory professionals;\ntechnical reviewers evaluating machine-vision projects.\n\nThe material is organised so that readers can use it either as a sequential engineering reference or as a source for individual design, implementation and validation topics.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Machine Vision Engineering Handbook</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#revision-history",
+    "href": "index.html#revision-history",
+    "title": "Machine Vision Engineering Handbook",
+    "section": "Revision history",
+    "text": "Revision history\nThis table records formal content releases of individual sections. A section remains a placeholder until substantive content has been technically reviewed and approved for publication.\n\n\n\n\n\n\n\n\n\n\nRevision\nDate\nScope\nStatus\nNotes\n\n\n\n\nDevelopment skeleton\n2026-08-04\nHandbook structure\nUnder development\nInitial release of handbook structure",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Machine Vision Engineering Handbook</span>"
+    ]
+  },
+  {
+    "objectID": "front-matter/acknowledgements.html",
+    "href": "front-matter/acknowledgements.html",
+    "title": "Acknowledgements",
+    "section": "",
+    "text": "Content status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Acknowledgements"
+    ]
+  },
+  {
+    "objectID": "front-matter/notation.html",
+    "href": "front-matter/notation.html",
+    "title": "Notation",
+    "section": "",
+    "text": "Content status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Notation"
+    ]
+  },
+  {
+    "objectID": "parts/foundations.html",
+    "href": "parts/foundations.html",
+    "title": "Foundations",
+    "section": "",
+    "text": "Part status: Structural placeholder.\nThis part introduction will later summarise its scope, prerequisites and learning objectives.",
+    "crumbs": [
+      "Foundations"
+    ]
+  },
+  {
+    "objectID": "chapters/vision-engineering-scope-definitions-and-history/index.html",
+    "href": "chapters/vision-engineering-scope-definitions-and-history/index.html",
+    "title": "2  Vision engineering: scope, definitions and history",
+    "section": "",
+    "text": "2.1 Machine vision, computer vision and image processing",
+    "crumbs": [
+      "Foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Vision engineering: scope, definitions and history</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/vision-engineering-scope-definitions-and-history/index.html#sec-vision-engineering-scope-definitions-and-history-machine-vision-computer-vision-and-image-processing",
+    "href": "chapters/vision-engineering-scope-definitions-and-history/index.html#sec-vision-engineering-scope-definitions-and-history-machine-vision-computer-vision-and-image-processing",
+    "title": "2  Vision engineering: scope, definitions and history",
+    "section": "",
+    "text": "2.1.1 Working definitions and industrial success criteria\n\n\n\n\n\n\nImportantAuthoring syntax demonstration\n\n\n\nThis subsection is a deliberately fictional authoring example. It demonstrates Quarto syntax and project conventions; it is not approved handbook content and must not be cited as technical guidance.\n\n\n\nParagraphs, emphasis and terminology\nFor this fictional example, machine vision is treated as an engineered system that acquires image data, extracts task-relevant information and produces an operational decision. The distinction between image quality and inspection performance is important: an aesthetically pleasing image is not necessarily the most reliable input for an industrial inspection.\nThe example uses the term inspection score for a dimensionless software output and the symbol \\(p_\\mathrm{accept}\\) for an estimated probability of acceptance. The notation \\(x^2\\) demonstrates a superscript, while \\(I_0\\) demonstrates a subscript.\nThe public Quarto documentation is an example of an external hyperlink.\nA footnote may contain a clarification that would interrupt the main argument.1\n\n\nBullet lists\nA first-level list can describe broad engineering criteria:\n\nthe feature must be visible;\nthe measurement must be repeatable;\nthe decision must fit within the required cycle time.\n\nA nested list can distinguish criteria from supporting checks:\n\nImaging performance\n\nsufficient contrast at the feature boundary;\nacceptable signal-to-noise ratio;\ncontrolled geometric distortion.\n\nDecision performance\n\nacceptable false-accept risk;\nacceptable false-reject risk;\ntraceable pass/fail output.\n\n\nA numbered workflow can express sequence:\n\nDefine the inspection requirement.\nCharacterise the relevant feature.\nSelect illumination and optics.\nAcquire representative images.\nvalidate the complete decision chain.\n\n\n\nEquations and equation references\nAn inline equation can be included within a sentence. For example, the object-space sampling interval is \\(s = W/N\\), where \\(W\\) is the field width and \\(N\\) is the number of pixels across that width.\nA displayed and numbered equation can represent an illustrative contrast measure:\n\\[\nC = \\frac{I_\\mathrm{feature} - I_\\mathrm{background}}{I_\\mathrm{feature} + I_\\mathrm{background}}\n\\tag{2.1}\\]\nThe value calculated using Equation 2.1 is dimensionless. This equation is included only to demonstrate Quarto equation syntax and cross-referencing.\n\n\nFigure and figure reference\nThe simplified fictional inspection chain is shown in Figure 2.1.\n\n\n\n\n\n\nFigure 2.1: Simplified block diagram showing illumination, optics, sensor, processing and decision stages connected from left to right.\n\n\n\n\n\nTable and table reference\n?tbl-example-success-criteria shows a small illustrative table. The values are fictional and must not be interpreted as engineering recommendations.\n\nFictional industrial success criteria used to demonstrate a numbered Quarto table.\n\n\nCriterion\nIllustrative target\nEvidence\n\n\n\n\nFeature contrast\n\\(C &gt; 0.25\\)\nImage study\n\n\nRepeatability\n\\(\\sigma &lt; 0.10\\) mm\nRepeatability trial\n\n\nCycle time\n\\(t &lt; 100\\) ms\nTimed production test\n\n\n\n\n\nCode block and code-listing reference\nA fenced code block can display source code without executing it. Listing 2.1 demonstrates a short Python example.\n\n\n\nListing 2.1: Fictional threshold decision used to demonstrate a numbered code listing.\n\n\ndef classify_measurement(value: float, limit: float) -&gt; bool:\n    \"\"\"Return True when the fictional measurement passes.\"\"\"\n    return value &lt;= limit\n\n\n\n\n\nCallouts\n\n\n\n\n\n\nNoteNote\n\n\n\nA note callout can provide useful supporting information that is not central to the main argument.\n\n\n\n\n\n\n\n\nTipAuthoring tip\n\n\n\nUse semantic identifiers rather than identifiers derived from chapter or section numbers.\n\n\n\n\n\n\n\n\nWarningWarning\n\n\n\nThe numerical values in this demonstration are fictional. They must not be copied into a real inspection specification.\n\n\n\n\nDefinition and example blocks\n\nDefinition 2.1 (Industrial success criterion) For this fictional example, an industrial success criterion is a measurable condition used to determine whether a complete vision system is suitable for its intended operational task.\n\nThe fictional definition in Definition 2.1 can be followed by a worked example.\n\nExample 2.1 (Illustrative acceptance test) A test set contains 200 representative parts. The system must process every part within the specified cycle time and record the decision, confidence value and image identifier.\n\n\n\nCitations and bibliography references\nA parenthetical citation uses square brackets, for example (Szeliski 2022). Multiple works can be cited together (Szeliski 2022; Batchelor 2012).\nA textual citation can be written as Szeliski (2022), while a citation with a locator can be written as (see Batchelor 2012, chap. 1).\n\n\nSection and cross-chapter references\nA reference to another section in this chapter can use Section 2.2.\nA reference to a section in another chapter can use Section 3.1.\nCross-references should be preferred to manually written phrases such as “see Section 2.1”, because Quarto updates the displayed number and hyperlink when the structure changes.\n\n\nDownloadable supporting file\nThe fictional dataset used for this example can be downloaded as example inspection results{download}.\n\n\nQuotation\n\nA useful inspection image is one that supports a reliable decision.\n— Fictional Machine Vision Academy example\n\n\n\n\n2.1.2 The four fields: image processing, computer vision, machine vision, AI\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n2.1.3 Relations, overlaps and typical confusions\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Vision engineering: scope, definitions and history</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/vision-engineering-scope-definitions-and-history/index.html#sec-vision-engineering-scope-definitions-and-history-historical-development",
+    "href": "chapters/vision-engineering-scope-definitions-and-history/index.html#sec-vision-engineering-scope-definitions-and-history-historical-development",
+    "title": "2  Vision engineering: scope, definitions and history",
+    "section": "2.2 Historical development",
+    "text": "2.2 Historical development\n\n2.2.1 Signal processing and the first digital images (1960s–1970s)\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed. Comming soon.\n\n\n\n\n\n2.2.2 Early computer vision and geometric approaches (1970s–1980s)\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n2.2.3 The industrial era: machine vision on the factory floor (1980s–2000s)\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n2.2.4 Statistical learning and the deep-learning turn (2000s–2010s)\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n2.2.5 The regulatory era (2020s onwards)\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Vision engineering: scope, definitions and history</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/vision-engineering-scope-definitions-and-history/index.html#sec-vision-engineering-scope-definitions-and-history-industrial-application-families",
+    "href": "chapters/vision-engineering-scope-definitions-and-history/index.html#sec-vision-engineering-scope-definitions-and-history-industrial-application-families",
+    "title": "2  Vision engineering: scope, definitions and history",
+    "section": "2.3 Industrial application families",
+    "text": "2.3 Industrial application families\n\n2.3.1 Inspection and defect detection\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n2.3.2 Guidance and robot vision\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n2.3.3 Measurement and non-contact gauging\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n2.3.4 Identification: codes, characters and traceability\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n2.3.5 Emerging areas: biometrics, autonomy, medical imaging\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Vision engineering: scope, definitions and history</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/vision-engineering-scope-definitions-and-history/index.html#sec-vision-engineering-scope-definitions-and-history-system-architectures",
+    "href": "chapters/vision-engineering-scope-definitions-and-history/index.html#sec-vision-engineering-scope-definitions-and-history-system-architectures",
+    "title": "2  Vision engineering: scope, definitions and history",
+    "section": "2.4 System architectures",
+    "text": "2.4 System architectures\n\n2.4.1 Embedded and edge vision\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n2.4.2 Smart cameras\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n2.4.3 PC-based and industrial-server systems\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n2.4.4 Cloud and SaaS vision platforms\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n2.4.5 Hybrid and tiered architectures\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n2.4.6 Comparison and selection criteria\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Vision engineering: scope, definitions and history</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/vision-engineering-scope-definitions-and-history/index.html#sec-vision-engineering-scope-definitions-and-history-the-vision-system-as-an-engineered-chain",
+    "href": "chapters/vision-engineering-scope-definitions-and-history/index.html#sec-vision-engineering-scope-definitions-and-history-the-vision-system-as-an-engineered-chain",
+    "title": "2  Vision engineering: scope, definitions and history",
+    "section": "2.5 The vision system as an engineered chain",
+    "text": "2.5 The vision system as an engineered chain\n\n2.5.1 The five stages: illumination, optics, sensor, processing, decision\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n2.5.2 Constraint-first engineering: solving with light before software\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n2.5.3 How the chain interacts: propagating a requirement end to end\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n2.5.4 Professional roles and certification landscape\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Vision engineering: scope, definitions and history</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/vision-engineering-scope-definitions-and-history/index.html#sec-vision-engineering-scope-definitions-and-history-approaching-a-vision-problem-a-design-framework",
+    "href": "chapters/vision-engineering-scope-definitions-and-history/index.html#sec-vision-engineering-scope-definitions-and-history-approaching-a-vision-problem-a-design-framework",
+    "title": "2  Vision engineering: scope, definitions and history",
+    "section": "2.6 Approaching a vision problem: a design framework",
+    "text": "2.6 Approaching a vision problem: a design framework\n\n2.6.1 From inspection requirement to imaging specification\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n2.6.2 Characterising the feature: contrast, scale, geometry, tolerance\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n2.6.3 Detection versus measurement: how the task drives every later choice\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n2.6.4 A worked decision path, cross-referenced to later chapters\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n\n\nBatchelor, Bruce G., ed. 2012. Machine Vision Handbook. Springer. https://doi.org/10.1007/978-1-84996-169-1.\n\n\nSzeliski, Richard. 2022. Computer Vision: Algorithms and Applications. 2nd edn. Springer. https://doi.org/10.1007/978-3-030-34372-9.",
+    "crumbs": [
+      "Foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Vision engineering: scope, definitions and history</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/vision-engineering-scope-definitions-and-history/index.html#footnotes",
+    "href": "chapters/vision-engineering-scope-definitions-and-history/index.html#footnotes",
+    "title": "2  Vision engineering: scope, definitions and history",
+    "section": "",
+    "text": "This is a demonstration footnote. It is not an approved technical definition.↩︎",
+    "crumbs": [
+      "Foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Vision engineering: scope, definitions and history</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/light-colour-and-radiometry/index.html",
+    "href": "chapters/light-colour-and-radiometry/index.html",
+    "title": "3  Light, colour and radiometry",
+    "section": "",
+    "text": "3.1 Physical foundations of light",
+    "crumbs": [
+      "Foundations",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Light, colour and radiometry</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/light-colour-and-radiometry/index.html#sec-light-colour-and-radiometry-physical-foundations-of-light",
+    "href": "chapters/light-colour-and-radiometry/index.html#sec-light-colour-and-radiometry-physical-foundations-of-light",
+    "title": "3  Light, colour and radiometry",
+    "section": "",
+    "text": "3.1.1 Electromagnetic spectrum and the visible band\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n3.1.2 Radiometric quantities: radiant flux, irradiance, radiance\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n3.1.3 Photometric quantities and the photopic response\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n3.1.4 The inverse-square law and cosine law\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Foundations",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Light, colour and radiometry</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/light-colour-and-radiometry/index.html#sec-light-colour-and-radiometry-interaction-of-light-with-matter",
+    "href": "chapters/light-colour-and-radiometry/index.html#sec-light-colour-and-radiometry-interaction-of-light-with-matter",
+    "title": "3  Light, colour and radiometry",
+    "section": "3.2 Interaction of light with matter",
+    "text": "3.2 Interaction of light with matter\n\n3.2.1 Specular and diffuse reflection; the BRDF\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n3.2.2 Transmission, refraction and Snell’s law\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n3.2.3 Absorption and fluorescence\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n3.2.4 Scattering and translucency\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n3.2.5 Implications for surface inspection\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Foundations",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Light, colour and radiometry</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/light-colour-and-radiometry/index.html#sec-light-colour-and-radiometry-colour",
+    "href": "chapters/light-colour-and-radiometry/index.html#sec-light-colour-and-radiometry-colour",
+    "title": "3  Light, colour and radiometry",
+    "section": "3.3 Colour",
+    "text": "3.3 Colour\n\n3.3.1 Trichromacy and the human visual system\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n3.3.2 Colour matching and the CIE XYZ system\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n3.3.3 Working colour spaces: RGB, sRGB, HSV, HSL, Lab\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n3.3.4 Colour temperature and illuminants\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n3.3.5 White balance and colour constancy\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Foundations",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Light, colour and radiometry</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/light-colour-and-radiometry/index.html#sec-light-colour-and-radiometry-polarisation",
+    "href": "chapters/light-colour-and-radiometry/index.html#sec-light-colour-and-radiometry-polarisation",
+    "title": "3  Light, colour and radiometry",
+    "section": "3.4 Polarisation",
+    "text": "3.4 Polarisation\n\n3.4.1 States of polarisation and Stokes parameters\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n3.4.2 Polarisers, retarders and the Fresnel equations\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n3.4.3 Polarisation-resolving sensors\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n3.4.4 Industrial uses: glare suppression, stress imaging, transparent-material inspection\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Foundations",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Light, colour and radiometry</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/optics-and-lens-systems/index.html",
+    "href": "chapters/optics-and-lens-systems/index.html",
+    "title": "4  Optics and lens systems",
+    "section": "",
+    "text": "4.1 Geometric optics",
+    "crumbs": [
+      "Foundations",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Optics and lens systems</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/optics-and-lens-systems/index.html#sec-optics-and-lens-systems-geometric-optics",
+    "href": "chapters/optics-and-lens-systems/index.html#sec-optics-and-lens-systems-geometric-optics",
+    "title": "4  Optics and lens systems",
+    "section": "",
+    "text": "4.1.1 The pinhole model\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n4.1.2 Thin- and thick-lens models\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n4.1.3 Focal length, f-number, aperture\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n4.1.4 Field of view and working distance\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n4.1.5 Depth of field and hyperfocal distance\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Foundations",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Optics and lens systems</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/optics-and-lens-systems/index.html#sec-optics-and-lens-systems-real-lens-behaviour",
+    "href": "chapters/optics-and-lens-systems/index.html#sec-optics-and-lens-systems-real-lens-behaviour",
+    "title": "4  Optics and lens systems",
+    "section": "4.2 Real lens behaviour",
+    "text": "4.2 Real lens behaviour\n\n4.2.1 Spherical and chromatic aberration\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n4.2.2 Geometric distortion: radial and tangential\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n4.2.3 Vignetting and cos⁴ fall-off\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n4.2.4 Modulation transfer function and resolving power\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n4.2.5 Diffraction limit\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Foundations",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Optics and lens systems</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/optics-and-lens-systems/index.html#sec-optics-and-lens-systems-specialty-optics",
+    "href": "chapters/optics-and-lens-systems/index.html#sec-optics-and-lens-systems-specialty-optics",
+    "title": "4  Optics and lens systems",
+    "section": "4.3 Specialty optics",
+    "text": "4.3 Specialty optics\n\n4.3.1 Telecentric lenses for metrology\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n4.3.2 Macro and micro imaging\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n4.3.3 Line-scan and Scheimpflug configurations\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n4.3.4 Liquid and variable-focus lenses\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Foundations",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Optics and lens systems</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/optics-and-lens-systems/index.html#sec-optics-and-lens-systems-optical-filters",
+    "href": "chapters/optics-and-lens-systems/index.html#sec-optics-and-lens-systems-optical-filters",
+    "title": "4  Optics and lens systems",
+    "section": "4.4 Optical filters",
+    "text": "4.4 Optical filters\n\n4.4.1 Bandpass, longpass and shortpass filters\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n4.4.2 Polarising filters in imaging\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n4.4.3 Neutral density, UV cut and IR cut filters\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n4.4.4 Interference filters and dichroic elements\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n4.4.5 Filter placement and stacking\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Foundations",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Optics and lens systems</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/optics-and-lens-systems/index.html#sec-optics-and-lens-systems-selecting-an-optical-configuration",
+    "href": "chapters/optics-and-lens-systems/index.html#sec-optics-and-lens-systems-selecting-an-optical-configuration",
+    "title": "4  Optics and lens systems",
+    "section": "4.5 Selecting an optical configuration",
+    "text": "4.5 Selecting an optical configuration\n\n4.5.1 Matching focal length to sensor size, FOV and working distance\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n4.5.2 Resolution and DOF budgeting from the feature specification\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n4.5.3 When telecentricity, filtering or specialty optics are required\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n4.5.4 Mount standards and mechanical envelope: C, CS, F, M42, S-mount\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n4.5.5 A lens-selection workflow, cross-referenced to Chapters 2 and 5\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Foundations",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Optics and lens systems</span>"
+    ]
+  },
+  {
+    "objectID": "parts/image-formation.html",
+    "href": "parts/image-formation.html",
+    "title": "Image Formation",
+    "section": "",
+    "text": "Part status: Structural placeholder.\nThis part introduction will later summarise its scope, prerequisites and learning objectives.",
+    "crumbs": [
+      "Image Formation"
+    ]
+  },
+  {
+    "objectID": "chapters/illumination-for-vision/index.html",
+    "href": "chapters/illumination-for-vision/index.html",
+    "title": "5  Illumination for vision",
+    "section": "",
+    "text": "5.1 Illumination principles",
+    "crumbs": [
+      "Image Formation",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Illumination for vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/illumination-for-vision/index.html#sec-illumination-for-vision-illumination-principles",
+    "href": "chapters/illumination-for-vision/index.html#sec-illumination-for-vision-illumination-principles",
+    "title": "5  Illumination for vision",
+    "section": "",
+    "text": "5.1.1 Light and geometry as the first solution\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n5.1.2 Contrast, feature enhancement and defect visibility\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n5.1.3 The lighting-first design method\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Formation",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Illumination for vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/illumination-for-vision/index.html#sec-illumination-for-vision-illumination-geometries",
+    "href": "chapters/illumination-for-vision/index.html#sec-illumination-for-vision-illumination-geometries",
+    "title": "5  Illumination for vision",
+    "section": "5.2 Illumination geometries",
+    "text": "5.2 Illumination geometries\n\n5.2.1 Frontal and diffuse illumination\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n5.2.2 Directional and grazing illumination\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n5.2.3 Backlighting for silhouettes and dimensioning\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n5.2.4 Coaxial (on-axis) illumination\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n5.2.5 Dome and cloudy-day illumination\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n5.2.6 Dark-field illumination\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n5.2.7 Structured light\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Formation",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Illumination for vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/illumination-for-vision/index.html#sec-illumination-for-vision-light-sources",
+    "href": "chapters/illumination-for-vision/index.html#sec-illumination-for-vision-light-sources",
+    "title": "5  Illumination for vision",
+    "section": "5.3 Light sources",
+    "text": "5.3 Light sources\n\n5.3.1 LEDs: colour, drive, lifetime, thermal management\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n5.3.2 Fluorescent, halogen and xenon sources\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n5.3.3 Laser sources and safety classes\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n5.3.4 Continuous, strobed and pulsed operation\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Formation",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Illumination for vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/illumination-for-vision/index.html#sec-illumination-for-vision-wavelength-selection",
+    "href": "chapters/illumination-for-vision/index.html#sec-illumination-for-vision-wavelength-selection",
+    "title": "5  Illumination for vision",
+    "section": "5.4 Wavelength selection",
+    "text": "5.4 Wavelength selection\n\n5.4.1 Visible-band choices and colour separation\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n5.4.2 Near-infrared imaging\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n5.4.3 Ultraviolet imaging\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n5.4.4 Short-wave infrared and thermal imaging\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n5.4.5 Multispectral and hyperspectral approaches\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Formation",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Illumination for vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/illumination-for-vision/index.html#sec-illumination-for-vision-environmental-integration",
+    "href": "chapters/illumination-for-vision/index.html#sec-illumination-for-vision-environmental-integration",
+    "title": "5  Illumination for vision",
+    "section": "5.5 Environmental integration",
+    "text": "5.5 Environmental integration\n\n5.5.1 Ambient light rejection\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n5.5.2 Enclosures, shrouds and shielding\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n5.5.3 Vibration, contamination and thermal drift\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Formation",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Illumination for vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/illumination-for-vision/index.html#sec-illumination-for-vision-designing-an-illumination-solution",
+    "href": "chapters/illumination-for-vision/index.html#sec-illumination-for-vision-designing-an-illumination-solution",
+    "title": "5  Illumination for vision",
+    "section": "5.6 Designing an illumination solution",
+    "text": "5.6 Designing an illumination solution\n\n5.6.1 Characterising the feature and the surface\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n5.6.2 Single-plane versus multi-plane and 3D features\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n5.6.3 Edge visibility for measurement versus contrast for detection\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n5.6.4 Matching geometry to task: a decision guide\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n5.6.5 Combining geometry, wavelength and filtering\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n5.6.6 Worked examples: from part to lighting choice\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Formation",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Illumination for vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/image-sensors-and-cameras/index.html",
+    "href": "chapters/image-sensors-and-cameras/index.html",
+    "title": "6  Image sensors and cameras",
+    "section": "",
+    "text": "6.1 Sensor technologies",
+    "crumbs": [
+      "Image Formation",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Image sensors and cameras</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/image-sensors-and-cameras/index.html#sec-image-sensors-and-cameras-sensor-technologies",
+    "href": "chapters/image-sensors-and-cameras/index.html#sec-image-sensors-and-cameras-sensor-technologies",
+    "title": "6  Image sensors and cameras",
+    "section": "",
+    "text": "6.1.1 CCD architecture and readout\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n6.1.2 CMOS architecture: global vs rolling shutter\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n6.1.3 Line-scan and TDI sensors\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n6.1.4 SPAD, event-based and neuromorphic sensors\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n6.1.5 Multispectral and hyperspectral sensor architectures\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Formation",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Image sensors and cameras</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/image-sensors-and-cameras/index.html#sec-image-sensors-and-cameras-sensor-performance-and-noise",
+    "href": "chapters/image-sensors-and-cameras/index.html#sec-image-sensors-and-cameras-sensor-performance-and-noise",
+    "title": "6  Image sensors and cameras",
+    "section": "6.2 Sensor performance and noise",
+    "text": "6.2 Sensor performance and noise\n\n6.2.1 Quantum efficiency and spectral response\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n6.2.2 Read noise, shot noise, dark current, fixed-pattern noise\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n6.2.3 Dynamic range and bit depth\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n6.2.4 Full-well capacity and saturation\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n6.2.5 Signal-to-noise budgeting\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Formation",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Image sensors and cameras</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/image-sensors-and-cameras/index.html#sec-image-sensors-and-cameras-sampling-resolution-and-colour-acquisition",
+    "href": "chapters/image-sensors-and-cameras/index.html#sec-image-sensors-and-cameras-sampling-resolution-and-colour-acquisition",
+    "title": "6  Image sensors and cameras",
+    "section": "6.3 Sampling, resolution and colour acquisition",
+    "text": "6.3 Sampling, resolution and colour acquisition\n\n6.3.1 Pixel pitch, sensor size and effective resolution\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n6.3.2 Bayer patterns and demosaicing\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n6.3.3 3-CCD and multi-sensor colour\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n6.3.4 Monochrome versus colour trade-offs\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Formation",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Image sensors and cameras</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/image-sensors-and-cameras/index.html#sec-image-sensors-and-cameras-camera-interfaces-and-image-transport",
+    "href": "chapters/image-sensors-and-cameras/index.html#sec-image-sensors-and-cameras-camera-interfaces-and-image-transport",
+    "title": "6  Image sensors and cameras",
+    "section": "6.4 Camera interfaces and image transport",
+    "text": "6.4 Camera interfaces and image transport\n\n6.4.1 Interface selection criteria: bandwidth, cable length, CPU load, cost\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n6.4.2 USB3 Vision: bandwidth, cable limits and use cases\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n6.4.3 Camera Link, CoaXPress and frame-grabber-based interfaces\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n6.4.4 Legacy and niche interfaces: FireWire, analogue, MIPI CSI\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n6.4.5 Triggering, exposure control and time stamping\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Formation",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Image sensors and cameras</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/image-sensors-and-cameras/index.html#sec-image-sensors-and-cameras-gige-vision-in-depth",
+    "href": "chapters/image-sensors-and-cameras/index.html#sec-image-sensors-and-cameras-gige-vision-in-depth",
+    "title": "6  Image sensors and cameras",
+    "section": "6.5 GigE Vision in depth",
+    "text": "6.5 GigE Vision in depth\n\n6.5.1 Generational bandwidth: 1, 5, 10 and 25 GbE and practical reach\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n6.5.2 The GigE Vision protocol: discovery, stream and control channels\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n6.5.3 Network configuration: jumbo packets, dedicated NICs, receive buffers\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n6.5.4 Multi-camera topologies, switches and bandwidth budgeting\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n6.5.5 Power over Ethernet and cabling\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n6.5.6 GenICam and cross-vendor interoperability\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Formation",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Image sensors and cameras</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/image-sensors-and-cameras/index.html#sec-image-sensors-and-cameras-selecting-a-camera-and-interface",
+    "href": "chapters/image-sensors-and-cameras/index.html#sec-image-sensors-and-cameras-selecting-a-camera-and-interface",
+    "title": "6  Image sensors and cameras",
+    "section": "6.6 Selecting a camera and interface",
+    "text": "6.6 Selecting a camera and interface\n\n6.6.1 From resolution and speed requirement to sensor choice\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n6.6.2 Matching interface to bandwidth, distance and architecture\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n6.6.3 Area-scan versus line-scan decision\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n6.6.4 A camera-and-interface selection workflow\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Formation",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Image sensors and cameras</span>"
+    ]
+  },
+  {
+    "objectID": "parts/image-processing.html",
+    "href": "parts/image-processing.html",
+    "title": "Image Processing",
+    "section": "",
+    "text": "Part status: Structural placeholder.\nThis part introduction will later summarise its scope, prerequisites and learning objectives.",
+    "crumbs": [
+      "Image Processing"
+    ]
+  },
+  {
+    "objectID": "chapters/digital-images-representation-and-pixel-level-processing/index.html",
+    "href": "chapters/digital-images-representation-and-pixel-level-processing/index.html",
+    "title": "7  Digital images: representation and pixel-level processing",
+    "section": "",
+    "text": "7.1 The digital image as a signal",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Digital images: representation and pixel-level processing</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/digital-images-representation-and-pixel-level-processing/index.html#sec-digital-images-representation-and-pixel-level-processing-the-digital-image-as-a-signal",
+    "href": "chapters/digital-images-representation-and-pixel-level-processing/index.html#sec-digital-images-representation-and-pixel-level-processing-the-digital-image-as-a-signal",
+    "title": "7  Digital images: representation and pixel-level processing",
+    "section": "",
+    "text": "7.1.1 Sampling, quantisation and the resulting data model\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n7.1.2 Coordinate systems, indexing and boundary conventions\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n7.1.3 Colour, greyscale and multi-channel representations\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n7.1.4 File formats and lossless vs lossy compression\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Digital images: representation and pixel-level processing</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/digital-images-representation-and-pixel-level-processing/index.html#sec-digital-images-representation-and-pixel-level-processing-point-operations",
+    "href": "chapters/digital-images-representation-and-pixel-level-processing/index.html#sec-digital-images-representation-and-pixel-level-processing-point-operations",
+    "title": "7  Digital images: representation and pixel-level processing",
+    "section": "7.2 Point operations",
+    "text": "7.2 Point operations\n\n7.2.1 Brightness, contrast and gain\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n7.2.2 Look-up tables, gamma and tone curves\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n7.2.3 Histogram equalisation and adaptive stretching\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n7.2.4 Thresholding as a point operation\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Digital images: representation and pixel-level processing</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/digital-images-representation-and-pixel-level-processing/index.html#sec-digital-images-representation-and-pixel-level-processing-arithmetic-and-logical-operations",
+    "href": "chapters/digital-images-representation-and-pixel-level-processing/index.html#sec-digital-images-representation-and-pixel-level-processing-arithmetic-and-logical-operations",
+    "title": "7  Digital images: representation and pixel-level processing",
+    "section": "7.3 Arithmetic and logical operations",
+    "text": "7.3 Arithmetic and logical operations\n\n7.3.1 Pixel-wise arithmetic and blending\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n7.3.2 Absolute and signed differences\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n7.3.3 Masking and region-of-interest operations\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n7.3.4 Bitwise operations on binary images\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Digital images: representation and pixel-level processing</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/digital-images-representation-and-pixel-level-processing/index.html#sec-digital-images-representation-and-pixel-level-processing-noise-models-and-denoising-choices",
+    "href": "chapters/digital-images-representation-and-pixel-level-processing/index.html#sec-digital-images-representation-and-pixel-level-processing-noise-models-and-denoising-choices",
+    "title": "7  Digital images: representation and pixel-level processing",
+    "section": "7.4 Noise models and denoising choices",
+    "text": "7.4 Noise models and denoising choices\n\n7.4.1 Gaussian, Poisson and impulse noise models\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n7.4.2 Estimating noise from image statistics\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n7.4.3 Choosing a denoiser: signal preservation vs artefact suppression\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Digital images: representation and pixel-level processing</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/neighbourhood-operations-and-image-filtering/index.html",
+    "href": "chapters/neighbourhood-operations-and-image-filtering/index.html",
+    "title": "8  Neighbourhood operations and image filtering",
+    "section": "",
+    "text": "8.1 Convolution and correlation",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Neighbourhood operations and image filtering</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/neighbourhood-operations-and-image-filtering/index.html#sec-neighbourhood-operations-and-image-filtering-convolution-and-correlation",
+    "href": "chapters/neighbourhood-operations-and-image-filtering/index.html#sec-neighbourhood-operations-and-image-filtering-convolution-and-correlation",
+    "title": "8  Neighbourhood operations and image filtering",
+    "section": "",
+    "text": "8.1.1 Discrete convolution in two dimensions\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n8.1.2 Separable and rank-one kernels\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n8.1.3 Boundary handling: zero, reflect, replicate, wrap\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n8.1.4 Computational cost and efficient implementations\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Neighbourhood operations and image filtering</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/neighbourhood-operations-and-image-filtering/index.html#sec-neighbourhood-operations-and-image-filtering-smoothing-filters",
+    "href": "chapters/neighbourhood-operations-and-image-filtering/index.html#sec-neighbourhood-operations-and-image-filtering-smoothing-filters",
+    "title": "8  Neighbourhood operations and image filtering",
+    "section": "8.2 Smoothing filters",
+    "text": "8.2 Smoothing filters\n\n8.2.1 Box (mean) filter and integral images\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n8.2.2 Gaussian filter and σ selection\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n8.2.3 Median and rank-order filters\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n8.2.4 Bilateral and edge-preserving filters\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n8.2.5 Non-local means\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Neighbourhood operations and image filtering</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/neighbourhood-operations-and-image-filtering/index.html#sec-neighbourhood-operations-and-image-filtering-derivative-and-edge-filters",
+    "href": "chapters/neighbourhood-operations-and-image-filtering/index.html#sec-neighbourhood-operations-and-image-filtering-derivative-and-edge-filters",
+    "title": "8  Neighbourhood operations and image filtering",
+    "section": "8.3 Derivative and edge filters",
+    "text": "8.3 Derivative and edge filters\n\n8.3.1 First-order operators: Sobel, Prewitt, Scharr\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n8.3.2 Second-order operators: Laplacian and Laplacian of Gaussian\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n8.3.3 Gradient magnitude and orientation\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n8.3.4 Sub-pixel edge localisation\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Neighbourhood operations and image filtering</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/neighbourhood-operations-and-image-filtering/index.html#sec-neighbourhood-operations-and-image-filtering-the-frequency-domain",
+    "href": "chapters/neighbourhood-operations-and-image-filtering/index.html#sec-neighbourhood-operations-and-image-filtering-the-frequency-domain",
+    "title": "8  Neighbourhood operations and image filtering",
+    "section": "8.4 The frequency domain",
+    "text": "8.4 The frequency domain\n\n8.4.1 The 2D discrete Fourier transform\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n8.4.2 Magnitude, phase and their perceptual roles\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n8.4.3 The convolution theorem\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n8.4.4 Low-pass, high-pass and band-pass filtering\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n8.4.5 Frequency-domain inspection of periodic structure\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n8.4.6 The sampling theorem and aliasing\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Neighbourhood operations and image filtering</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/neighbourhood-operations-and-image-filtering/index.html#sec-neighbourhood-operations-and-image-filtering-scale-space-and-image-pyramids",
+    "href": "chapters/neighbourhood-operations-and-image-filtering/index.html#sec-neighbourhood-operations-and-image-filtering-scale-space-and-image-pyramids",
+    "title": "8  Neighbourhood operations and image filtering",
+    "section": "8.5 Scale space and image pyramids",
+    "text": "8.5 Scale space and image pyramids\n\n8.5.1 Scale-space theory in outline\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n8.5.2 The Gaussian pyramid\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n8.5.3 The Laplacian pyramid\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n8.5.4 Multi-resolution processing patterns\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Neighbourhood operations and image filtering</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/neighbourhood-operations-and-image-filtering/index.html#sec-neighbourhood-operations-and-image-filtering-choosing-a-filtering-strategy",
+    "href": "chapters/neighbourhood-operations-and-image-filtering/index.html#sec-neighbourhood-operations-and-image-filtering-choosing-a-filtering-strategy",
+    "title": "8  Neighbourhood operations and image filtering",
+    "section": "8.6 Choosing a filtering strategy",
+    "text": "8.6 Choosing a filtering strategy\n\n8.6.1 Matching a filter to the noise model and the feature\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n8.6.2 Preserving edges while suppressing noise\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n8.6.3 Spatial versus frequency-domain: when each wins\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n8.6.4 Ordering operations in a preprocessing pipeline\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Neighbourhood operations and image filtering</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/segmentation-morphology-and-blob-analysis/index.html",
+    "href": "chapters/segmentation-morphology-and-blob-analysis/index.html",
+    "title": "9  Segmentation, morphology and blob analysis",
+    "section": "",
+    "text": "9.1 Thresholding methods",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Segmentation, morphology and blob analysis</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/segmentation-morphology-and-blob-analysis/index.html#sec-segmentation-morphology-and-blob-analysis-thresholding-methods",
+    "href": "chapters/segmentation-morphology-and-blob-analysis/index.html#sec-segmentation-morphology-and-blob-analysis-thresholding-methods",
+    "title": "9  Segmentation, morphology and blob analysis",
+    "section": "",
+    "text": "9.1.1 Global thresholds and manual selection\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n9.1.2 Otsu’s method\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n9.1.3 Adaptive and locally-adaptive thresholding\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n9.1.4 Multi-level and hysteresis thresholding\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Segmentation, morphology and blob analysis</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/segmentation-morphology-and-blob-analysis/index.html#sec-segmentation-morphology-and-blob-analysis-region-based-segmentation",
+    "href": "chapters/segmentation-morphology-and-blob-analysis/index.html#sec-segmentation-morphology-and-blob-analysis-region-based-segmentation",
+    "title": "9  Segmentation, morphology and blob analysis",
+    "section": "9.2 Region-based segmentation",
+    "text": "9.2 Region-based segmentation\n\n9.2.1 Region growing and merging\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n9.2.2 Watershed segmentation\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n9.2.3 Superpixels: SLIC and successors\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n9.2.4 Graph-cut segmentation\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Segmentation, morphology and blob analysis</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/segmentation-morphology-and-blob-analysis/index.html#sec-segmentation-morphology-and-blob-analysis-edge-based-segmentation",
+    "href": "chapters/segmentation-morphology-and-blob-analysis/index.html#sec-segmentation-morphology-and-blob-analysis-edge-based-segmentation",
+    "title": "9  Segmentation, morphology and blob analysis",
+    "section": "9.3 Edge-based segmentation",
+    "text": "9.3 Edge-based segmentation\n\n9.3.1 The Canny detector\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n9.3.2 Edge linking and boundary tracing\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n9.3.3 Active contours (snakes) and level sets\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Segmentation, morphology and blob analysis</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/segmentation-morphology-and-blob-analysis/index.html#sec-segmentation-morphology-and-blob-analysis-mathematical-morphology",
+    "href": "chapters/segmentation-morphology-and-blob-analysis/index.html#sec-segmentation-morphology-and-blob-analysis-mathematical-morphology",
+    "title": "9  Segmentation, morphology and blob analysis",
+    "section": "9.4 Mathematical morphology",
+    "text": "9.4 Mathematical morphology\n\n9.4.1 Structuring elements\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n9.4.2 Erosion and dilation\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n9.4.3 Opening and closing\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n9.4.4 Hit-or-miss transform and skeletonisation\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n9.4.5 Distance transforms and reconstruction\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n9.4.6 Greyscale morphology\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Segmentation, morphology and blob analysis</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/segmentation-morphology-and-blob-analysis/index.html#sec-segmentation-morphology-and-blob-analysis-connected-components-and-blob-analysis",
+    "href": "chapters/segmentation-morphology-and-blob-analysis/index.html#sec-segmentation-morphology-and-blob-analysis-connected-components-and-blob-analysis",
+    "title": "9  Segmentation, morphology and blob analysis",
+    "section": "9.5 Connected-components and blob analysis",
+    "text": "9.5 Connected-components and blob analysis\n\n9.5.1 Connectivity and labelling algorithms\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n9.5.2 Region properties: area, perimeter, centroid\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n9.5.3 Geometric moments and Hu invariants\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n9.5.4 Shape descriptors: circularity, eccentricity, compactness\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n9.5.5 Filtering blobs by property\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Segmentation, morphology and blob analysis</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/segmentation-morphology-and-blob-analysis/index.html#sec-segmentation-morphology-and-blob-analysis-choosing-a-segmentation-approach",
+    "href": "chapters/segmentation-morphology-and-blob-analysis/index.html#sec-segmentation-morphology-and-blob-analysis-choosing-a-segmentation-approach",
+    "title": "9  Segmentation, morphology and blob analysis",
+    "section": "9.6 Choosing a segmentation approach",
+    "text": "9.6 Choosing a segmentation approach\n\n9.6.1 Thresholding versus region versus edge versus learned\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n9.6.2 Reliability under illumination and contrast variation\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n9.6.3 Combining segmentation with morphological clean-up\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Segmentation, morphology and blob analysis</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/feature-detection-description-and-matching/index.html",
+    "href": "chapters/feature-detection-description-and-matching/index.html",
+    "title": "10  Feature detection, description and matching",
+    "section": "",
+    "text": "10.1 Interest-point detection",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Feature detection, description and matching</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/feature-detection-description-and-matching/index.html#sec-feature-detection-description-and-matching-interest-point-detection",
+    "href": "chapters/feature-detection-description-and-matching/index.html#sec-feature-detection-description-and-matching-interest-point-detection",
+    "title": "10  Feature detection, description and matching",
+    "section": "",
+    "text": "10.1.1 The Moravec detector and the corner concept\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n10.1.2 Harris and Shi–Tomasi corners\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n10.1.3 Scale-invariant detection: difference of Gaussians\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n10.1.4 Hessian-based detectors\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n10.1.5 FAST and AGAST corners for real-time use\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Feature detection, description and matching</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/feature-detection-description-and-matching/index.html#sec-feature-detection-description-and-matching-feature-description",
+    "href": "chapters/feature-detection-description-and-matching/index.html#sec-feature-detection-description-and-matching-feature-description",
+    "title": "10  Feature detection, description and matching",
+    "section": "10.2 Feature description",
+    "text": "10.2 Feature description\n\n10.2.1 SIFT descriptor\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n10.2.2 SURF descriptor\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n10.2.3 Binary descriptors: BRIEF, ORB, BRISK, FREAK\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n10.2.4 Learned descriptors: SuperPoint and successors\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Feature detection, description and matching</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/feature-detection-description-and-matching/index.html#sec-feature-detection-description-and-matching-feature-matching",
+    "href": "chapters/feature-detection-description-and-matching/index.html#sec-feature-detection-description-and-matching-feature-matching",
+    "title": "10  Feature detection, description and matching",
+    "section": "10.3 Feature matching",
+    "text": "10.3 Feature matching\n\n10.3.1 Distance metrics: L2, Hamming\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n10.3.2 Brute-force and FLANN matching\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n10.3.3 The Lowe ratio test and cross-check\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n10.3.4 Robust matching with RANSAC and MSAC\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Feature detection, description and matching</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/feature-detection-description-and-matching/index.html#sec-feature-detection-description-and-matching-template-and-pattern-matching",
+    "href": "chapters/feature-detection-description-and-matching/index.html#sec-feature-detection-description-and-matching-template-and-pattern-matching",
+    "title": "10  Feature detection, description and matching",
+    "section": "10.4 Template and pattern matching",
+    "text": "10.4 Template and pattern matching\n\n10.4.1 Sum of squared and absolute differences\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n10.4.2 Normalised cross-correlation\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n10.4.3 Rotation- and scale-invariant template matching\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n10.4.4 Geometric pattern matching (edge-model methods)\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Feature detection, description and matching</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/feature-detection-description-and-matching/index.html#sec-feature-detection-description-and-matching-line-circle-and-shape-detection",
+    "href": "chapters/feature-detection-description-and-matching/index.html#sec-feature-detection-description-and-matching-line-circle-and-shape-detection",
+    "title": "10  Feature detection, description and matching",
+    "section": "10.5 Line, circle and shape detection",
+    "text": "10.5 Line, circle and shape detection\n\n10.5.1 The Hough transform for lines\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n10.5.2 The Hough transform for circles\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n10.5.3 The generalised Hough transform\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n10.5.4 Direct fitting: least-squares lines, circles, ellipses\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n10.5.5 Robust fitting with RANSAC\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Feature detection, description and matching</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/feature-detection-description-and-matching/index.html#sec-feature-detection-description-and-matching-choosing-a-feature-method",
+    "href": "chapters/feature-detection-description-and-matching/index.html#sec-feature-detection-description-and-matching-choosing-a-feature-method",
+    "title": "10  Feature detection, description and matching",
+    "section": "10.6 Choosing a feature method",
+    "text": "10.6 Choosing a feature method\n\n10.6.1 Repeatability, invariance and speed trade-offs\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n10.6.2 Hand-crafted versus learned features\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n10.6.3 Matching the detector–descriptor pair to the task\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Feature detection, description and matching</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/geometric-transformations-calibration-and-registration/index.html",
+    "href": "chapters/geometric-transformations-calibration-and-registration/index.html",
+    "title": "11  Geometric transformations, calibration and registration",
+    "section": "",
+    "text": "11.1 Coordinate systems and homogeneous coordinates",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Geometric transformations, calibration and registration</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/geometric-transformations-calibration-and-registration/index.html#sec-geometric-transformations-calibration-and-registration-coordinate-systems-and-homogeneous-coordinates",
+    "href": "chapters/geometric-transformations-calibration-and-registration/index.html#sec-geometric-transformations-calibration-and-registration-coordinate-systems-and-homogeneous-coordinates",
+    "title": "11  Geometric transformations, calibration and registration",
+    "section": "",
+    "text": "11.1.1 Image, camera, world and object frames\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n11.1.2 Homogeneous representation of points and lines\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n11.1.3 Matrix representation of transformations\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Geometric transformations, calibration and registration</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/geometric-transformations-calibration-and-registration/index.html#sec-geometric-transformations-calibration-and-registration-the-two-dimensional-transformation-hierarchy",
+    "href": "chapters/geometric-transformations-calibration-and-registration/index.html#sec-geometric-transformations-calibration-and-registration-the-two-dimensional-transformation-hierarchy",
+    "title": "11  Geometric transformations, calibration and registration",
+    "section": "11.2 The 2D transformation hierarchy",
+    "text": "11.2 The 2D transformation hierarchy\n\n11.2.1 Rigid, similarity and affine transformations\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n11.2.2 Projective transformations (homographies)\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n11.2.3 Estimation from point correspondences\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n11.2.4 Robust estimation of homographies\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Geometric transformations, calibration and registration</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/geometric-transformations-calibration-and-registration/index.html#sec-geometric-transformations-calibration-and-registration-image-warping-and-interpolation",
+    "href": "chapters/geometric-transformations-calibration-and-registration/index.html#sec-geometric-transformations-calibration-and-registration-image-warping-and-interpolation",
+    "title": "11  Geometric transformations, calibration and registration",
+    "section": "11.3 Image warping and interpolation",
+    "text": "11.3 Image warping and interpolation\n\n11.3.1 Forward vs inverse mapping\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n11.3.2 Nearest-neighbour, bilinear and bicubic interpolation\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n11.3.3 Anti-aliased warping\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Geometric transformations, calibration and registration</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/geometric-transformations-calibration-and-registration/index.html#sec-geometric-transformations-calibration-and-registration-the-pinhole-camera-model",
+    "href": "chapters/geometric-transformations-calibration-and-registration/index.html#sec-geometric-transformations-calibration-and-registration-the-pinhole-camera-model",
+    "title": "11  Geometric transformations, calibration and registration",
+    "section": "11.4 The pinhole camera model",
+    "text": "11.4 The pinhole camera model\n\n11.4.1 Intrinsic parameters and the camera matrix\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n11.4.2 Extrinsic parameters\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n11.4.3 Radial and tangential distortion models\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Geometric transformations, calibration and registration</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/geometric-transformations-calibration-and-registration/index.html#sec-geometric-transformations-calibration-and-registration-camera-calibration",
+    "href": "chapters/geometric-transformations-calibration-and-registration/index.html#sec-geometric-transformations-calibration-and-registration-camera-calibration",
+    "title": "11  Geometric transformations, calibration and registration",
+    "section": "11.5 Camera calibration",
+    "text": "11.5 Camera calibration\n\n11.5.1 Zhang’s method and the planar-target approach\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n11.5.2 Calibration targets and image-acquisition strategy\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n11.5.3 Reprojection error and calibration diagnostics\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n11.5.4 Uncertainty and re-calibration policy\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n11.5.5 Hand-eye calibration for robot vision\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Geometric transformations, calibration and registration</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/geometric-transformations-calibration-and-registration/index.html#sec-geometric-transformations-calibration-and-registration-image-registration",
+    "href": "chapters/geometric-transformations-calibration-and-registration/index.html#sec-geometric-transformations-calibration-and-registration-image-registration",
+    "title": "11  Geometric transformations, calibration and registration",
+    "section": "11.6 Image registration",
+    "text": "11.6 Image registration\n\n11.6.1 Feature-based registration pipelines\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n11.6.2 Intensity-based (direct) registration\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n11.6.3 Registration for inspection: golden templates\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n11.6.4 Mosaicing and stitching\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Geometric transformations, calibration and registration</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/geometric-transformations-calibration-and-registration/index.html#sec-geometric-transformations-calibration-and-registration-image-comparison-metrics",
+    "href": "chapters/geometric-transformations-calibration-and-registration/index.html#sec-geometric-transformations-calibration-and-registration-image-comparison-metrics",
+    "title": "11  Geometric transformations, calibration and registration",
+    "section": "11.7 Image-comparison metrics",
+    "text": "11.7 Image-comparison metrics\n\n11.7.1 Absolute and squared differences; PSNR\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n11.7.2 SSIM and multi-scale SSIM\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n11.7.3 Histogram-distance metrics\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n11.7.4 Learned perceptual metrics (outline)\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Image Processing",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Geometric transformations, calibration and registration</span>"
+    ]
+  },
+  {
+    "objectID": "parts/three-dimensional-vision-and-motion.html",
+    "href": "parts/three-dimensional-vision-and-motion.html",
+    "title": "3D Vision and Motion",
+    "section": "",
+    "text": "Part status: Structural placeholder.\nThis part introduction will later summarise its scope, prerequisites and learning objectives.",
+    "crumbs": [
+      "3D Vision and Motion"
+    ]
+  },
+  {
+    "objectID": "chapters/stereo-and-three-dimensional-vision/index.html",
+    "href": "chapters/stereo-and-three-dimensional-vision/index.html",
+    "title": "12  Stereo and 3D vision",
+    "section": "",
+    "text": "12.1 Two-view geometry",
+    "crumbs": [
+      "3D Vision and Motion",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Stereo and 3D vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/stereo-and-three-dimensional-vision/index.html#sec-stereo-and-three-dimensional-vision-two-view-geometry",
+    "href": "chapters/stereo-and-three-dimensional-vision/index.html#sec-stereo-and-three-dimensional-vision-two-view-geometry",
+    "title": "12  Stereo and 3D vision",
+    "section": "",
+    "text": "12.1.1 The epipolar constraint\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n12.1.2 The essential and fundamental matrices\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n12.1.3 Estimation from correspondences\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n12.1.4 Stereo rectification\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "3D Vision and Motion",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Stereo and 3D vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/stereo-and-three-dimensional-vision/index.html#sec-stereo-and-three-dimensional-vision-stereo-matching",
+    "href": "chapters/stereo-and-three-dimensional-vision/index.html#sec-stereo-and-three-dimensional-vision-stereo-matching",
+    "title": "12  Stereo and 3D vision",
+    "section": "12.2 Stereo matching",
+    "text": "12.2 Stereo matching\n\n12.2.1 Block-matching costs: SAD, SSD, NCC, census\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n12.2.2 Aggregation and disparity selection\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n12.2.3 Semi-global matching\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n12.2.4 Learned stereo matchers (outline)\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n12.2.5 Disparity to depth and triangulation\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "3D Vision and Motion",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Stereo and 3D vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/stereo-and-three-dimensional-vision/index.html#sec-stereo-and-three-dimensional-vision-uncertainty-in-three-dimensional-measurement",
+    "href": "chapters/stereo-and-three-dimensional-vision/index.html#sec-stereo-and-three-dimensional-vision-uncertainty-in-three-dimensional-measurement",
+    "title": "12  Stereo and 3D vision",
+    "section": "12.3 Uncertainty in 3D measurement",
+    "text": "12.3 Uncertainty in 3D measurement\n\n12.3.1 Depth-error propagation from disparity\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n12.3.2 Task uncertainty versus datasheet accuracy\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n12.3.3 Uncertainty budgets for 3D measurement\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "3D Vision and Motion",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Stereo and 3D vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/stereo-and-three-dimensional-vision/index.html#sec-stereo-and-three-dimensional-vision-three-dimensional-imaging-modalities",
+    "href": "chapters/stereo-and-three-dimensional-vision/index.html#sec-stereo-and-three-dimensional-vision-three-dimensional-imaging-modalities",
+    "title": "12  Stereo and 3D vision",
+    "section": "12.4 3D imaging modalities",
+    "text": "12.4 3D imaging modalities\n\n12.4.1 Passive stereo\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n12.4.2 Structured-light triangulation and fringe projection\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n12.4.3 Time-of-flight cameras\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n12.4.4 LiDAR and long-range sensing\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n12.4.5 Photogrammetry, structure from motion and MVS\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n12.4.6 Comparison and selection guide\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "3D Vision and Motion",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Stereo and 3D vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/stereo-and-three-dimensional-vision/index.html#sec-stereo-and-three-dimensional-vision-point-clouds-and-three-dimensional-representations",
+    "href": "chapters/stereo-and-three-dimensional-vision/index.html#sec-stereo-and-three-dimensional-vision-point-clouds-and-three-dimensional-representations",
+    "title": "12  Stereo and 3D vision",
+    "section": "12.5 Point clouds and 3D representations",
+    "text": "12.5 Point clouds and 3D representations\n\n12.5.1 Point-cloud data structures and file formats\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n12.5.2 Filtering, downsampling and normal estimation\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n12.5.3 Meshing and surface reconstruction\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n12.5.4 Voxelisation and occupancy representations\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "3D Vision and Motion",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Stereo and 3D vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/stereo-and-three-dimensional-vision/index.html#sec-stereo-and-three-dimensional-vision-point-cloud-registration-and-alignment",
+    "href": "chapters/stereo-and-three-dimensional-vision/index.html#sec-stereo-and-three-dimensional-vision-point-cloud-registration-and-alignment",
+    "title": "12  Stereo and 3D vision",
+    "section": "12.6 Point-cloud registration and alignment",
+    "text": "12.6 Point-cloud registration and alignment\n\n12.6.1 Iterative closest point (ICP) and variants\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n12.6.2 Feature-based 3D registration\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n12.6.3 Global alignment strategies\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "3D Vision and Motion",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Stereo and 3D vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/stereo-and-three-dimensional-vision/index.html#sec-stereo-and-three-dimensional-vision-three-dimensional-measurement-in-practice",
+    "href": "chapters/stereo-and-three-dimensional-vision/index.html#sec-stereo-and-three-dimensional-vision-three-dimensional-measurement-in-practice",
+    "title": "12  Stereo and 3D vision",
+    "section": "12.7 3D measurement in practice",
+    "text": "12.7 3D measurement in practice\n\n12.7.1 Sensor acceptance testing with calibrated artefacts\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n12.7.2 Surface interaction: specular and translucent materials\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n12.7.3 Warm-up drift and environmental control\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "3D Vision and Motion",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Stereo and 3D vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/motion-tracking-and-event-based-vision/index.html",
+    "href": "chapters/motion-tracking-and-event-based-vision/index.html",
+    "title": "13  Motion, tracking and event-based vision",
+    "section": "",
+    "text": "13.1 Motion representation",
+    "crumbs": [
+      "3D Vision and Motion",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Motion, tracking and event-based vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/motion-tracking-and-event-based-vision/index.html#sec-motion-tracking-and-event-based-vision-motion-representation",
+    "href": "chapters/motion-tracking-and-event-based-vision/index.html#sec-motion-tracking-and-event-based-vision-motion-representation",
+    "title": "13  Motion, tracking and event-based vision",
+    "section": "",
+    "text": "13.1.1 The brightness-constancy assumption\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n13.1.2 Sparse vs dense motion fields\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "3D Vision and Motion",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Motion, tracking and event-based vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/motion-tracking-and-event-based-vision/index.html#sec-motion-tracking-and-event-based-vision-optical-flow",
+    "href": "chapters/motion-tracking-and-event-based-vision/index.html#sec-motion-tracking-and-event-based-vision-optical-flow",
+    "title": "13  Motion, tracking and event-based vision",
+    "section": "13.2 Optical flow",
+    "text": "13.2 Optical flow\n\n13.2.1 The Lucas–Kanade method\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n13.2.2 The Horn–Schunck method\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n13.2.3 Dense flow: Farnebäck and pyramidal schemes\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n13.2.4 Learned optical flow (outline)\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "3D Vision and Motion",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Motion, tracking and event-based vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/motion-tracking-and-event-based-vision/index.html#sec-motion-tracking-and-event-based-vision-background-modelling-and-change-detection",
+    "href": "chapters/motion-tracking-and-event-based-vision/index.html#sec-motion-tracking-and-event-based-vision-background-modelling-and-change-detection",
+    "title": "13  Motion, tracking and event-based vision",
+    "section": "13.3 Background modelling and change detection",
+    "text": "13.3 Background modelling and change detection\n\n13.3.1 Frame differencing\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n13.3.2 Gaussian mixture models\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n13.3.3 Robust background subtraction\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "3D Vision and Motion",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Motion, tracking and event-based vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/motion-tracking-and-event-based-vision/index.html#sec-motion-tracking-and-event-based-vision-object-tracking",
+    "href": "chapters/motion-tracking-and-event-based-vision/index.html#sec-motion-tracking-and-event-based-vision-object-tracking",
+    "title": "13  Motion, tracking and event-based vision",
+    "section": "13.4 Object tracking",
+    "text": "13.4 Object tracking\n\n13.4.1 Template and feature tracking\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n13.4.2 Mean-shift and correlation-filter trackers\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n13.4.3 Kalman filters and particle filters\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n13.4.4 Multi-object tracking and data association\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "3D Vision and Motion",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Motion, tracking and event-based vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/motion-tracking-and-event-based-vision/index.html#sec-motion-tracking-and-event-based-vision-event-based-vision",
+    "href": "chapters/motion-tracking-and-event-based-vision/index.html#sec-motion-tracking-and-event-based-vision-event-based-vision",
+    "title": "13  Motion, tracking and event-based vision",
+    "section": "13.5 Event-based vision",
+    "text": "13.5 Event-based vision\n\n13.5.1 The event-camera imaging principle\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n13.5.2 Representations: event frames, time surfaces, voxel grids\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n13.5.3 Algorithms on event streams\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n13.5.4 Industrial fit and integration considerations\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "3D Vision and Motion",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Motion, tracking and event-based vision</span>"
+    ]
+  },
+  {
+    "objectID": "parts/deep-learning.html",
+    "href": "parts/deep-learning.html",
+    "title": "Deep Learning",
+    "section": "",
+    "text": "Part status: Structural placeholder.\nThis part introduction will later summarise its scope, prerequisites and learning objectives.",
+    "crumbs": [
+      "Deep Learning"
+    ]
+  },
+  {
+    "objectID": "chapters/machine-learning-foundations-for-vision/index.html",
+    "href": "chapters/machine-learning-foundations-for-vision/index.html",
+    "title": "14  Machine learning foundations for vision",
+    "section": "",
+    "text": "14.1 The learning paradigm",
+    "crumbs": [
+      "Deep Learning",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Machine learning foundations for vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/machine-learning-foundations-for-vision/index.html#sec-machine-learning-foundations-for-vision-the-learning-paradigm",
+    "href": "chapters/machine-learning-foundations-for-vision/index.html#sec-machine-learning-foundations-for-vision-the-learning-paradigm",
+    "title": "14  Machine learning foundations for vision",
+    "section": "",
+    "text": "14.1.1 Supervised, unsupervised and self-supervised learning\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n14.1.2 Training, validation and test sets\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n14.1.3 Bias, variance and generalisation\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n14.1.4 Cross-validation and model selection\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deep Learning",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Machine learning foundations for vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/machine-learning-foundations-for-vision/index.html#sec-machine-learning-foundations-for-vision-classical-classifiers",
+    "href": "chapters/machine-learning-foundations-for-vision/index.html#sec-machine-learning-foundations-for-vision-classical-classifiers",
+    "title": "14  Machine learning foundations for vision",
+    "section": "14.2 Classical classifiers",
+    "text": "14.2 Classical classifiers\n\n14.2.1 Linear and logistic regression\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n14.2.2 K-nearest neighbours\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n14.2.3 Support vector machines and kernels\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n14.2.4 Decision trees, random forests and boosting\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n14.2.5 Bayesian classifiers\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deep Learning",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Machine learning foundations for vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/machine-learning-foundations-for-vision/index.html#sec-machine-learning-foundations-for-vision-feature-engineering-and-dimensionality-reduction",
+    "href": "chapters/machine-learning-foundations-for-vision/index.html#sec-machine-learning-foundations-for-vision-feature-engineering-and-dimensionality-reduction",
+    "title": "14  Machine learning foundations for vision",
+    "section": "14.3 Feature engineering and dimensionality reduction",
+    "text": "14.3 Feature engineering and dimensionality reduction\n\n14.3.1 Hand-crafted image features\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n14.3.2 Principal component analysis\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n14.3.3 Linear discriminant analysis\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n14.3.4 Manifold learning (outline)\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deep Learning",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Machine learning foundations for vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/machine-learning-foundations-for-vision/index.html#sec-machine-learning-foundations-for-vision-loss-functions-and-optimisation",
+    "href": "chapters/machine-learning-foundations-for-vision/index.html#sec-machine-learning-foundations-for-vision-loss-functions-and-optimisation",
+    "title": "14  Machine learning foundations for vision",
+    "section": "14.4 Loss functions and optimisation",
+    "text": "14.4 Loss functions and optimisation\n\n14.4.1 Squared, absolute and Huber loss\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n14.4.2 Cross-entropy and log-loss\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n14.4.3 Gradient descent and its variants\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n14.4.4 Regularisation: L1, L2, elastic net\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deep Learning",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Machine learning foundations for vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/machine-learning-foundations-for-vision/index.html#sec-machine-learning-foundations-for-vision-evaluation-of-classifiers",
+    "href": "chapters/machine-learning-foundations-for-vision/index.html#sec-machine-learning-foundations-for-vision-evaluation-of-classifiers",
+    "title": "14  Machine learning foundations for vision",
+    "section": "14.5 Evaluation of classifiers",
+    "text": "14.5 Evaluation of classifiers\n\n14.5.1 The confusion matrix\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n14.5.2 Accuracy, precision, recall, F-score\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n14.5.3 ROC and precision-recall curves; AUC\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n14.5.4 Class imbalance and industrial reality\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deep Learning",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Machine learning foundations for vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/machine-learning-foundations-for-vision/index.html#sec-machine-learning-foundations-for-vision-choosing-classical-versus-deep-approaches",
+    "href": "chapters/machine-learning-foundations-for-vision/index.html#sec-machine-learning-foundations-for-vision-choosing-classical-versus-deep-approaches",
+    "title": "14  Machine learning foundations for vision",
+    "section": "14.6 Choosing classical versus deep approaches",
+    "text": "14.6 Choosing classical versus deep approaches\n\n14.6.1 Data availability and labelling cost\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n14.6.2 Interpretability and validation burden\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n14.6.3 When hand-crafted features still win\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deep Learning",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Machine learning foundations for vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/neural-networks-and-deep-learning/index.html",
+    "href": "chapters/neural-networks-and-deep-learning/index.html",
+    "title": "15  Neural networks and deep learning",
+    "section": "",
+    "text": "15.1 Feed-forward networks",
+    "crumbs": [
+      "Deep Learning",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Neural networks and deep learning</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/neural-networks-and-deep-learning/index.html#sec-neural-networks-and-deep-learning-feed-forward-networks",
+    "href": "chapters/neural-networks-and-deep-learning/index.html#sec-neural-networks-and-deep-learning-feed-forward-networks",
+    "title": "15  Neural networks and deep learning",
+    "section": "",
+    "text": "15.1.1 Neurons, layers and activation functions\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n15.1.2 ReLU, sigmoid, tanh, GELU\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n15.1.3 Softmax outputs and cross-entropy\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n15.1.4 Universal approximation and the role of depth\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deep Learning",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Neural networks and deep learning</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/neural-networks-and-deep-learning/index.html#sec-neural-networks-and-deep-learning-backpropagation-and-automatic-differentiation",
+    "href": "chapters/neural-networks-and-deep-learning/index.html#sec-neural-networks-and-deep-learning-backpropagation-and-automatic-differentiation",
+    "title": "15  Neural networks and deep learning",
+    "section": "15.2 Backpropagation and automatic differentiation",
+    "text": "15.2 Backpropagation and automatic differentiation\n\n15.2.1 The chain rule on the computational graph\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n15.2.2 Forward and reverse-mode differentiation\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n15.2.3 Practical implementation in modern frameworks\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deep Learning",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Neural networks and deep learning</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/neural-networks-and-deep-learning/index.html#sec-neural-networks-and-deep-learning-optimisation-of-deep-models",
+    "href": "chapters/neural-networks-and-deep-learning/index.html#sec-neural-networks-and-deep-learning-optimisation-of-deep-models",
+    "title": "15  Neural networks and deep learning",
+    "section": "15.3 Optimisation of deep models",
+    "text": "15.3 Optimisation of deep models\n\n15.3.1 Stochastic gradient descent and mini-batching\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n15.3.2 Momentum, Nesterov and Adam\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n15.3.3 Learning-rate schedules and warm-up\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n15.3.4 Weight decay, dropout, batch and layer normalisation\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n15.3.5 Data augmentation for images\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n15.3.6 Early stopping and validation monitoring\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deep Learning",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Neural networks and deep learning</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/neural-networks-and-deep-learning/index.html#sec-neural-networks-and-deep-learning-convolutional-neural-networks",
+    "href": "chapters/neural-networks-and-deep-learning/index.html#sec-neural-networks-and-deep-learning-convolutional-neural-networks",
+    "title": "15  Neural networks and deep learning",
+    "section": "15.4 Convolutional neural networks",
+    "text": "15.4 Convolutional neural networks\n\n15.4.1 The convolutional layer and parameter sharing\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n15.4.2 Pooling, stride and receptive field\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n15.4.3 Padding conventions and output-size arithmetic\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n15.4.4 Feature hierarchies and interpretability\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deep Learning",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Neural networks and deep learning</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/neural-networks-and-deep-learning/index.html#sec-neural-networks-and-deep-learning-canonical-architectures",
+    "href": "chapters/neural-networks-and-deep-learning/index.html#sec-neural-networks-and-deep-learning-canonical-architectures",
+    "title": "15  Neural networks and deep learning",
+    "section": "15.5 Canonical architectures",
+    "text": "15.5 Canonical architectures\n\n15.5.1 LeNet-5, AlexNet, VGG\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n15.5.2 GoogLeNet / Inception\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n15.5.3 ResNet and residual connections\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n15.5.4 DenseNet, MobileNet, EfficientNet\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n15.5.5 Vision transformers and hybrid models\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deep Learning",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Neural networks and deep learning</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/neural-networks-and-deep-learning/index.html#sec-neural-networks-and-deep-learning-training-strategy-for-industrial-data",
+    "href": "chapters/neural-networks-and-deep-learning/index.html#sec-neural-networks-and-deep-learning-training-strategy-for-industrial-data",
+    "title": "15  Neural networks and deep learning",
+    "section": "15.6 Training strategy for industrial data",
+    "text": "15.6 Training strategy for industrial data\n\n15.6.1 Transfer learning and fine-tuning\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n15.6.2 Small-data regimes and few-shot learning\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n15.6.3 Class-imbalance countermeasures\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n15.6.4 Reproducibility: seeds, versioning, provenance\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deep Learning",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Neural networks and deep learning</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/deep-learning-for-classification-detection-segmentation-and-anomaly/index.html",
+    "href": "chapters/deep-learning-for-classification-detection-segmentation-and-anomaly/index.html",
+    "title": "16  Deep learning for classification, detection, segmentation and anomaly",
+    "section": "",
+    "text": "16.1 Image classification",
+    "crumbs": [
+      "Deep Learning",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Deep learning for classification, detection, segmentation and anomaly</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/deep-learning-for-classification-detection-segmentation-and-anomaly/index.html#sec-deep-learning-for-classification-detection-segmentation-and-anomaly-image-classification",
+    "href": "chapters/deep-learning-for-classification-detection-segmentation-and-anomaly/index.html#sec-deep-learning-for-classification-detection-segmentation-and-anomaly-image-classification",
+    "title": "16  Deep learning for classification, detection, segmentation and anomaly",
+    "section": "",
+    "text": "16.1.1 Whole-image classification pipelines\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n16.1.2 Multi-label classification\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n16.1.3 Fine-grained classification\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n16.1.4 Evaluation with imbalanced industrial datasets\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deep Learning",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Deep learning for classification, detection, segmentation and anomaly</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/deep-learning-for-classification-detection-segmentation-and-anomaly/index.html#sec-deep-learning-for-classification-detection-segmentation-and-anomaly-object-detection",
+    "href": "chapters/deep-learning-for-classification-detection-segmentation-and-anomaly/index.html#sec-deep-learning-for-classification-detection-segmentation-and-anomaly-object-detection",
+    "title": "16  Deep learning for classification, detection, segmentation and anomaly",
+    "section": "16.2 Object detection",
+    "text": "16.2 Object detection\n\n16.2.1 Two-stage detectors: R-CNN, Fast R-CNN, Faster R-CNN\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n16.2.2 One-stage detectors: YOLO family, SSD, RetinaNet\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n16.2.3 Anchor-free detectors: FCOS, CenterNet\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n16.2.4 Transformer-based detection: DETR\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n16.2.5 Evaluation: IoU, mAP, per-class analysis\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deep Learning",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Deep learning for classification, detection, segmentation and anomaly</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/deep-learning-for-classification-detection-segmentation-and-anomaly/index.html#sec-deep-learning-for-classification-detection-segmentation-and-anomaly-semantic-and-instance-segmentation",
+    "href": "chapters/deep-learning-for-classification-detection-segmentation-and-anomaly/index.html#sec-deep-learning-for-classification-detection-segmentation-and-anomaly-semantic-and-instance-segmentation",
+    "title": "16  Deep learning for classification, detection, segmentation and anomaly",
+    "section": "16.3 Semantic and instance segmentation",
+    "text": "16.3 Semantic and instance segmentation\n\n16.3.1 Fully convolutional networks\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n16.3.2 U-Net and encoder–decoder architectures\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n16.3.3 DeepLab and dilated convolutions\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n16.3.4 Mask R-CNN for instance segmentation\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n16.3.5 Panoptic segmentation\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deep Learning",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Deep learning for classification, detection, segmentation and anomaly</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/deep-learning-for-classification-detection-segmentation-and-anomaly/index.html#sec-deep-learning-for-classification-detection-segmentation-and-anomaly-anomaly-and-defect-detection",
+    "href": "chapters/deep-learning-for-classification-detection-segmentation-and-anomaly/index.html#sec-deep-learning-for-classification-detection-segmentation-and-anomaly-anomaly-and-defect-detection",
+    "title": "16  Deep learning for classification, detection, segmentation and anomaly",
+    "section": "16.4 Anomaly and defect detection",
+    "text": "16.4 Anomaly and defect detection\n\n16.4.1 Reconstruction-based methods: autoencoders and GANs\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n16.4.2 Embedding-based methods: PatchCore, PaDiM, SPADE\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n16.4.3 One-class classifiers and Deep SVDD\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n16.4.4 Benchmarks: MVTec AD and industrial extensions\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n16.4.5 Choosing between anomaly detection and supervised approaches\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deep Learning",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Deep learning for classification, detection, segmentation and anomaly</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/deep-learning-for-classification-detection-segmentation-and-anomaly/index.html#sec-deep-learning-for-classification-detection-segmentation-and-anomaly-related-tasks-in-industrial-vision",
+    "href": "chapters/deep-learning-for-classification-detection-segmentation-and-anomaly/index.html#sec-deep-learning-for-classification-detection-segmentation-and-anomaly-related-tasks-in-industrial-vision",
+    "title": "16  Deep learning for classification, detection, segmentation and anomaly",
+    "section": "16.5 Related tasks in industrial vision",
+    "text": "16.5 Related tasks in industrial vision\n\n16.5.1 Keypoint detection and pose estimation\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n16.5.2 Deep OCR and OCV\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n16.5.3 Depth estimation from a single image\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n16.5.4 Self-supervised representation learning\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deep Learning",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Deep learning for classification, detection, segmentation and anomaly</span>"
+    ]
+  },
+  {
+    "objectID": "parts/deployment-and-compliance.html",
+    "href": "parts/deployment-and-compliance.html",
+    "title": "Deployment and Compliance",
+    "section": "",
+    "text": "Part status: Structural placeholder.\nThis part introduction will later summarise its scope, prerequisites and learning objectives.",
+    "crumbs": [
+      "Deployment and Compliance"
+    ]
+  },
+  {
+    "objectID": "chapters/from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design/index.html",
+    "href": "chapters/from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design/index.html",
+    "title": "17  From theory to tools: selection, cross-platform mapping and inspection-flow design",
+    "section": "",
+    "text": "17.1 The industrial vision software landscape",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>From theory to tools: selection, cross-platform mapping and inspection-flow design</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design/index.html#sec-from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design-the-industrial-vision-software-landscape",
+    "href": "chapters/from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design/index.html#sec-from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design-the-industrial-vision-software-landscape",
+    "title": "17  From theory to tools: selection, cross-platform mapping and inspection-flow design",
+    "section": "",
+    "text": "17.1.1 Configurable tool sets versus code libraries\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.1.2 Open-source libraries: OpenCV, scikit-image, PyTorch/TF ecosystems\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.1.3 Commercial libraries and SDKs: Halcon, VisionPro, Sapera\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.1.4 Smart-sensor and no-code environments: Keyence, Zebra Aurora, In-Sight\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.1.5 Configuring versus programming: trade-offs and consequences\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>From theory to tools: selection, cross-platform mapping and inspection-flow design</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design/index.html#sec-from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design-cross-platform-tool-mapping",
+    "href": "chapters/from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design/index.html#sec-from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design-cross-platform-tool-mapping",
+    "title": "17  From theory to tools: selection, cross-platform mapping and inspection-flow design",
+    "section": "17.2 Cross-platform tool mapping",
+    "text": "17.2 Cross-platform tool mapping\n\n17.2.1 How to read the mapping tables: theory concept to platform tool\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.2.2 Acquisition and preprocessing across platforms\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.2.3 Edge, line and circle detection: OpenCV / VisionPro / Halcon / In-Sight / Keyence / Zebra Aurora\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.2.4 Pattern location and alignment across platforms\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.2.5 Measurement and gauging tools across platforms\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.2.6 Defect and surface-inspection tools across platforms\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.2.7 Identification: barcode, Data Matrix, OCR/OCV across platforms\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.2.8 Deep-learning tools across platforms\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.2.9 Limits of equivalence: where tools do not map cleanly\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>From theory to tools: selection, cross-platform mapping and inspection-flow design</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design/index.html#sec-from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design-selecting-and-prioritising-tools",
+    "href": "chapters/from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design/index.html#sec-from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design-selecting-and-prioritising-tools",
+    "title": "17  From theory to tools: selection, cross-platform mapping and inspection-flow design",
+    "section": "17.3 Selecting and prioritising tools",
+    "text": "17.3 Selecting and prioritising tools\n\n17.3.1 From feature and task to candidate tools\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.3.2 Prioritisation: robustness, speed, determinism, maintainability\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.3.3 Rule-based versus learned tools for a given problem\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.3.4 A tool-selection decision guide, cross-referenced to theory chapters\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>From theory to tools: selection, cross-platform mapping and inspection-flow design</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design/index.html#sec-from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design-designing-an-inspection-as-a-sequence-of-steps",
+    "href": "chapters/from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design/index.html#sec-from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design-designing-an-inspection-as-a-sequence-of-steps",
+    "title": "17  From theory to tools: selection, cross-platform mapping and inspection-flow design",
+    "section": "17.4 Designing an inspection as a sequence of steps",
+    "text": "17.4 Designing an inspection as a sequence of steps\n\n17.4.1 Decomposing an objective into ordered steps\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.4.2 The step pattern: objective, tools, region, output\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.4.3 Locate–mask–measure–decide as a canonical flow\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.4.4 Worked example: scratch inspection decomposed into steps\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>From theory to tools: selection, cross-platform mapping and inspection-flow design</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design/index.html#sec-from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design-thresholds-checks-and-pass-fail-logic",
+    "href": "chapters/from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design/index.html#sec-from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design-thresholds-checks-and-pass-fail-logic",
+    "title": "17  From theory to tools: selection, cross-platform mapping and inspection-flow design",
+    "section": "17.5 Thresholds, checks and pass/fail logic",
+    "text": "17.5 Thresholds, checks and pass/fail logic\n\n17.5.1 Per-step checks: presence, contrast, dimension, position limits\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.5.2 Setting limits and thresholds on tool outputs\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.5.3 Building the overall pass/fail decision from step results\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.5.4 Failure attribution: knowing which step failed and why\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>From theory to tools: selection, cross-platform mapping and inspection-flow design</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design/index.html#sec-from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design-exposing-kpis-and-data-driven-threshold-setting",
+    "href": "chapters/from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design/index.html#sec-from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design-exposing-kpis-and-data-driven-threshold-setting",
+    "title": "17  From theory to tools: selection, cross-platform mapping and inspection-flow design",
+    "section": "17.6 Exposing KPIs and data-driven threshold setting",
+    "text": "17.6 Exposing KPIs and data-driven threshold setting\n\n17.6.1 Choosing KPIs and measured outputs per tool and step\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.6.2 Logging tool outputs for offline analysis\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.6.3 Batch statistical analysis to set thresholds and margins\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.6.4 Separating good/bad populations and setting operating points\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.6.5 Linking threshold setting to the validation of Chapter 18\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>From theory to tools: selection, cross-platform mapping and inspection-flow design</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design/index.html#sec-from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design-software-design-practice-for-vision-applications",
+    "href": "chapters/from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design/index.html#sec-from-theory-to-tools-selection-cross-platform-mapping-and-inspection-flow-design-software-design-practice-for-vision-applications",
+    "title": "17  From theory to tools: selection, cross-platform mapping and inspection-flow design",
+    "section": "17.7 Software design practice for vision applications",
+    "text": "17.7 Software design practice for vision applications\n\n17.7.1 Modularity, reuse and configuration management\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.7.2 Robustness: handling absent, occluded and out-of-spec parts\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.7.3 Defensive checks, error states and safe defaults\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.7.4 Version control, documentation and change control of vision jobs\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n17.7.5 Performance, cycle time and resource budgeting\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>From theory to tools: selection, cross-platform mapping and inspection-flow design</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/systems-integration-and-industrial-interfacing/index.html",
+    "href": "chapters/systems-integration-and-industrial-interfacing/index.html",
+    "title": "18  Systems integration and industrial interfacing",
+    "section": "",
+    "text": "18.1 Industrial communication",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Systems integration and industrial interfacing</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/systems-integration-and-industrial-interfacing/index.html#sec-systems-integration-and-industrial-interfacing-industrial-communication",
+    "href": "chapters/systems-integration-and-industrial-interfacing/index.html#sec-systems-integration-and-industrial-interfacing-industrial-communication",
+    "title": "18  Systems integration and industrial interfacing",
+    "section": "",
+    "text": "18.1.1 EtherNet/IP and PROFINET\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n18.1.2 Modbus TCP and serial protocols\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n18.1.3 OPC-UA and information modelling\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n18.1.4 MQTT and vision-to-cloud patterns\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Systems integration and industrial interfacing</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/systems-integration-and-industrial-interfacing/index.html#sec-systems-integration-and-industrial-interfacing-integration-with-plcs",
+    "href": "chapters/systems-integration-and-industrial-interfacing/index.html#sec-systems-integration-and-industrial-interfacing-integration-with-plcs",
+    "title": "18  Systems integration and industrial interfacing",
+    "section": "18.2 Integration with PLCs",
+    "text": "18.2 Integration with PLCs\n\n18.2.1 Handshaking and trigger management\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n18.2.2 Result data structures and tags\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n18.2.3 Timing budgets and cycle time\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Systems integration and industrial interfacing</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/systems-integration-and-industrial-interfacing/index.html#sec-systems-integration-and-industrial-interfacing-integration-with-robots",
+    "href": "chapters/systems-integration-and-industrial-interfacing/index.html#sec-systems-integration-and-industrial-interfacing-integration-with-robots",
+    "title": "18  Systems integration and industrial interfacing",
+    "section": "18.3 Integration with robots",
+    "text": "18.3 Integration with robots\n\n18.3.1 Coordinate-frame transformations and hand-eye calibration\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n18.3.2 Fixed and moving cameras\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n18.3.3 Pick-and-place and vision-guided assembly\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n18.3.4 Bin picking and 3D-guided robotics\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Systems integration and industrial interfacing</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/systems-integration-and-industrial-interfacing/index.html#sec-systems-integration-and-industrial-interfacing-line-integration",
+    "href": "chapters/systems-integration-and-industrial-interfacing/index.html#sec-systems-integration-and-industrial-interfacing-line-integration",
+    "title": "18  Systems integration and industrial interfacing",
+    "section": "18.4 Line integration",
+    "text": "18.4 Line integration\n\n18.4.1 Reject mechanisms and part tracking\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n18.4.2 Statistical process-control feedback\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n18.4.3 Traceability and data-logging architecture\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n18.4.4 Human–machine interfaces for vision stations\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Systems integration and industrial interfacing</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/validation-measurement-uncertainty-and-sampling-for-inspection/index.html",
+    "href": "chapters/validation-measurement-uncertainty-and-sampling-for-inspection/index.html",
+    "title": "19  Validation, measurement uncertainty and sampling for inspection",
+    "section": "",
+    "text": "19.1 Defining acceptance",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Validation, measurement uncertainty and sampling for inspection</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/validation-measurement-uncertainty-and-sampling-for-inspection/index.html#sec-validation-measurement-uncertainty-and-sampling-for-inspection-defining-acceptance",
+    "href": "chapters/validation-measurement-uncertainty-and-sampling-for-inspection/index.html#sec-validation-measurement-uncertainty-and-sampling-for-inspection-defining-acceptance",
+    "title": "19  Validation, measurement uncertainty and sampling for inspection",
+    "section": "",
+    "text": "19.1.1 False accept and false reject rates\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n19.1.2 The confusion matrix in industrial terms\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n19.1.3 Producer and consumer risk\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n19.1.4 Setting acceptance criteria from requirements\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Validation, measurement uncertainty and sampling for inspection</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/validation-measurement-uncertainty-and-sampling-for-inspection/index.html#sec-validation-measurement-uncertainty-and-sampling-for-inspection-repeatability-and-reproducibility",
+    "href": "chapters/validation-measurement-uncertainty-and-sampling-for-inspection/index.html#sec-validation-measurement-uncertainty-and-sampling-for-inspection-repeatability-and-reproducibility",
+    "title": "19  Validation, measurement uncertainty and sampling for inspection",
+    "section": "19.2 Repeatability and reproducibility",
+    "text": "19.2 Repeatability and reproducibility\n\n19.2.1 Sources of variation in a vision measurement\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n19.2.2 Attribute Gauge R&R: method and calculation\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n19.2.3 Variable Gauge R&R by the ANOVA method\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n19.2.4 Kappa statistics and inter-rater/inter-system agreement\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n19.2.5 Interpreting %R&R, %tolerance and number of distinct categories\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Validation, measurement uncertainty and sampling for inspection</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/validation-measurement-uncertainty-and-sampling-for-inspection/index.html#sec-validation-measurement-uncertainty-and-sampling-for-inspection-confidence-tolerance-and-statistical-intervals",
+    "href": "chapters/validation-measurement-uncertainty-and-sampling-for-inspection/index.html#sec-validation-measurement-uncertainty-and-sampling-for-inspection-confidence-tolerance-and-statistical-intervals",
+    "title": "19  Validation, measurement uncertainty and sampling for inspection",
+    "section": "19.3 Confidence, tolerance and statistical intervals",
+    "text": "19.3 Confidence, tolerance and statistical intervals\n\n19.3.1 Confidence intervals for proportions and means\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n19.3.2 Tolerance intervals and coverage\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n19.3.3 Confidence–reliability statements (e.g. 95/95)\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n19.3.4 Propagation of uncertainty through a measurement chain\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Validation, measurement uncertainty and sampling for inspection</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/validation-measurement-uncertainty-and-sampling-for-inspection/index.html#sec-validation-measurement-uncertainty-and-sampling-for-inspection-sampling-plans-for-inspection-validation",
+    "href": "chapters/validation-measurement-uncertainty-and-sampling-for-inspection/index.html#sec-validation-measurement-uncertainty-and-sampling-for-inspection-sampling-plans-for-inspection-validation",
+    "title": "19  Validation, measurement uncertainty and sampling for inspection",
+    "section": "19.4 Sampling plans for inspection validation",
+    "text": "19.4 Sampling plans for inspection validation\n\n19.4.1 Attributes versus variables sampling\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n19.4.2 Binomial and hypergeometric bases for attribute plans\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n19.4.3 Operating-characteristic curves, AQL and RQL/LTPD\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n19.4.4 Zero-acceptance (c=0) plans and their use\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n19.4.5 Confidence–reliability sample-size formulae\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n19.4.6 ANSI/ASQ Z1.4, Z1.9 and ISO 2859 in practice\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Validation, measurement uncertainty and sampling for inspection</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/validation-measurement-uncertainty-and-sampling-for-inspection/index.html#sec-validation-measurement-uncertainty-and-sampling-for-inspection-measurement-system-analysis-for-vision",
+    "href": "chapters/validation-measurement-uncertainty-and-sampling-for-inspection/index.html#sec-validation-measurement-uncertainty-and-sampling-for-inspection-measurement-system-analysis-for-vision",
+    "title": "19  Validation, measurement uncertainty and sampling for inspection",
+    "section": "19.5 Measurement-system analysis for vision",
+    "text": "19.5 Measurement-system analysis for vision\n\n19.5.1 Bias, linearity and stability studies\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n19.5.2 Uncertainty budgets and traceability\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n19.5.3 Total measurement uncertainty for vision gauges\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Validation, measurement uncertainty and sampling for inspection</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/validation-measurement-uncertainty-and-sampling-for-inspection/index.html#sec-validation-measurement-uncertainty-and-sampling-for-inspection-verification-troubleshooting-and-re-validation",
+    "href": "chapters/validation-measurement-uncertainty-and-sampling-for-inspection/index.html#sec-validation-measurement-uncertainty-and-sampling-for-inspection-verification-troubleshooting-and-re-validation",
+    "title": "19  Validation, measurement uncertainty and sampling for inspection",
+    "section": "19.6 Verification, troubleshooting and re-validation",
+    "text": "19.6 Verification, troubleshooting and re-validation\n\n19.6.1 A systematic troubleshooting method\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n19.6.2 Isolating optical, lighting, sensor and software failures\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n19.6.3 Recording and root-cause analysis\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n19.6.4 Change control and re-validation triggers\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Validation, measurement uncertainty and sampling for inspection</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/deployment-monitoring-and-human-in-the-loop-for-learning-based-vision/index.html",
+    "href": "chapters/deployment-monitoring-and-human-in-the-loop-for-learning-based-vision/index.html",
+    "title": "20  Deployment, monitoring and human-in-the-loop for learning-based vision",
+    "section": "",
+    "text": "20.1 From trained model to production system",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Deployment, monitoring and human-in-the-loop for learning-based vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/deployment-monitoring-and-human-in-the-loop-for-learning-based-vision/index.html#sec-deployment-monitoring-and-human-in-the-loop-for-learning-based-vision-from-trained-model-to-production-system",
+    "href": "chapters/deployment-monitoring-and-human-in-the-loop-for-learning-based-vision/index.html#sec-deployment-monitoring-and-human-in-the-loop-for-learning-based-vision-from-trained-model-to-production-system",
+    "title": "20  Deployment, monitoring and human-in-the-loop for learning-based vision",
+    "section": "",
+    "text": "20.1.1 Model export and interchange (ONNX)\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n20.1.2 Quantisation, pruning and operator fusion\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n20.1.3 Runtime targets: CPU, GPU, edge accelerators\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n20.1.4 Revalidation of the deployed artefact\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Deployment, monitoring and human-in-the-loop for learning-based vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/deployment-monitoring-and-human-in-the-loop-for-learning-based-vision/index.html#sec-deployment-monitoring-and-human-in-the-loop-for-learning-based-vision-dataset-governance",
+    "href": "chapters/deployment-monitoring-and-human-in-the-loop-for-learning-based-vision/index.html#sec-deployment-monitoring-and-human-in-the-loop-for-learning-based-vision-dataset-governance",
+    "title": "20  Deployment, monitoring and human-in-the-loop for learning-based vision",
+    "section": "20.2 Dataset governance",
+    "text": "20.2 Dataset governance\n\n20.2.1 Collection planning against the operating envelope\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n20.2.2 Labelling protocols and inter-annotator agreement\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n20.2.3 Curation, exclusion records and provenance\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n20.2.4 Versioning and model-to-data traceability\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Deployment, monitoring and human-in-the-loop for learning-based vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/deployment-monitoring-and-human-in-the-loop-for-learning-based-vision/index.html#sec-deployment-monitoring-and-human-in-the-loop-for-learning-based-vision-post-deployment-monitoring",
+    "href": "chapters/deployment-monitoring-and-human-in-the-loop-for-learning-based-vision/index.html#sec-deployment-monitoring-and-human-in-the-loop-for-learning-based-vision-post-deployment-monitoring",
+    "title": "20  Deployment, monitoring and human-in-the-loop for learning-based vision",
+    "section": "20.3 Post-deployment monitoring",
+    "text": "20.3 Post-deployment monitoring\n\n20.3.1 Domain shift and concept drift\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n20.3.2 Statistical drift detectors\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n20.3.3 Retraining loops and change control\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Deployment, monitoring and human-in-the-loop for learning-based vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/deployment-monitoring-and-human-in-the-loop-for-learning-based-vision/index.html#sec-deployment-monitoring-and-human-in-the-loop-for-learning-based-vision-human-in-the-loop-systems",
+    "href": "chapters/deployment-monitoring-and-human-in-the-loop-for-learning-based-vision/index.html#sec-deployment-monitoring-and-human-in-the-loop-for-learning-based-vision-human-in-the-loop-systems",
+    "title": "20  Deployment, monitoring and human-in-the-loop for learning-based vision",
+    "section": "20.4 Human-in-the-loop systems",
+    "text": "20.4 Human-in-the-loop systems\n\n20.4.1 Why humans remain in critical and deep-learning loops\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n20.4.2 Review triggers: low confidence, drift, novelty, borderline cases\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n20.4.3 Interface and workflow design for human review\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n20.4.4 Human-in-the-loop as a labelling and improvement engine\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n20.4.5 Levels of autonomy and human oversight\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n20.4.6 Automation bias and the limits of human checking\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Deployment, monitoring and human-in-the-loop for learning-based vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/deployment-monitoring-and-human-in-the-loop-for-learning-based-vision/index.html#sec-deployment-monitoring-and-human-in-the-loop-for-learning-based-vision-explainability-and-interpretability",
+    "href": "chapters/deployment-monitoring-and-human-in-the-loop-for-learning-based-vision/index.html#sec-deployment-monitoring-and-human-in-the-loop-for-learning-based-vision-explainability-and-interpretability",
+    "title": "20  Deployment, monitoring and human-in-the-loop for learning-based vision",
+    "section": "20.5 Explainability and interpretability",
+    "text": "20.5 Explainability and interpretability\n\n20.5.1 Saliency and Grad-CAM\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n20.5.2 LIME and local surrogates\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n20.5.3 SHAP and Shapley attributions\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n20.5.4 Limits of post-hoc explanation\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n20.5.5 Explanation as debugging versus explanation for audit\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Deployment, monitoring and human-in-the-loop for learning-based vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/deployment-monitoring-and-human-in-the-loop-for-learning-based-vision/index.html#sec-deployment-monitoring-and-human-in-the-loop-for-learning-based-vision-bias-and-fairness-in-industrial-vision",
+    "href": "chapters/deployment-monitoring-and-human-in-the-loop-for-learning-based-vision/index.html#sec-deployment-monitoring-and-human-in-the-loop-for-learning-based-vision-bias-and-fairness-in-industrial-vision",
+    "title": "20  Deployment, monitoring and human-in-the-loop for learning-based vision",
+    "section": "20.6 Bias and fairness in industrial vision",
+    "text": "20.6 Bias and fairness in industrial vision\n\n20.6.1 Subgroups in industrial data: cavities, suppliers, shifts\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n20.6.2 Subgroup analysis and reporting\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n20.6.3 Mitigations: data, loss, imaging\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n20.6.4 Fairness when the system observes people\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Deployment, monitoring and human-in-the-loop for learning-based vision</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/process-validation-and-regulation-of-vision-inspections-in-regulated-industries/index.html",
+    "href": "chapters/process-validation-and-regulation-of-vision-inspections-in-regulated-industries/index.html",
+    "title": "21  Process validation and regulation of vision inspections in regulated industries",
+    "section": "",
+    "text": "21.1 Process validation of inspection systems",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Process validation and regulation of vision inspections in regulated industries</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/process-validation-and-regulation-of-vision-inspections-in-regulated-industries/index.html#sec-process-validation-and-regulation-of-vision-inspections-in-regulated-industries-process-validation-of-inspection-systems",
+    "href": "chapters/process-validation-and-regulation-of-vision-inspections-in-regulated-industries/index.html#sec-process-validation-and-regulation-of-vision-inspections-in-regulated-industries-process-validation-of-inspection-systems",
+    "title": "21  Process validation and regulation of vision inspections in regulated industries",
+    "section": "",
+    "text": "21.1.1 IQ, OQ and PQ for vision systems\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n21.1.2 Validating an inspection against its acceptance criteria\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n21.1.3 Linking validation to the sampling and R&R methods of Chapter 18\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n21.1.4 Software validation and computer-system validation (CSV/CSA)\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n21.1.5 Validating learning-based inspections: special considerations\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Process validation and regulation of vision inspections in regulated industries</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/process-validation-and-regulation-of-vision-inspections-in-regulated-industries/index.html#sec-process-validation-and-regulation-of-vision-inspections-in-regulated-industries-the-eu-artificial-intelligence-act",
+    "href": "chapters/process-validation-and-regulation-of-vision-inspections-in-regulated-industries/index.html#sec-process-validation-and-regulation-of-vision-inspections-in-regulated-industries-the-eu-artificial-intelligence-act",
+    "title": "21  Process validation and regulation of vision inspections in regulated industries",
+    "section": "21.2 The EU Artificial Intelligence Act",
+    "text": "21.2 The EU Artificial Intelligence Act\n\n21.2.1 Scope, definitions and territorial reach\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n21.2.2 Prohibited practices\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n21.2.3 The high-risk category and Annex III\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n21.2.4 Obligations for providers and deployers of high-risk AI\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n21.2.5 Limited- and minimal-risk tiers\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n21.2.6 Timelines, enforcement and penalties\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Process validation and regulation of vision inspections in regulated industries</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/process-validation-and-regulation-of-vision-inspections-in-regulated-industries/index.html#sec-process-validation-and-regulation-of-vision-inspections-in-regulated-industries-us-regulation-for-ai-and-inspection",
+    "href": "chapters/process-validation-and-regulation-of-vision-inspections-in-regulated-industries/index.html#sec-process-validation-and-regulation-of-vision-inspections-in-regulated-industries-us-regulation-for-ai-and-inspection",
+    "title": "21  Process validation and regulation of vision inspections in regulated industries",
+    "section": "21.3 US regulation for AI and inspection",
+    "text": "21.3 US regulation for AI and inspection\n\n21.3.1 The FDA framework for AI/ML-enabled devices\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n21.3.2 Predetermined change-control plans and the total-product-lifecycle approach\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n21.3.3 21 CFR Part 11: electronic records and signatures\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n21.3.4 NIST AI Risk Management Framework\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n21.3.5 Comparison of EU and US approaches\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Process validation and regulation of vision inspections in regulated industries</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/process-validation-and-regulation-of-vision-inspections-in-regulated-industries/index.html#sec-process-validation-and-regulation-of-vision-inspections-in-regulated-industries-medical-device-and-pharmaceutical-inspection",
+    "href": "chapters/process-validation-and-regulation-of-vision-inspections-in-regulated-industries/index.html#sec-process-validation-and-regulation-of-vision-inspections-in-regulated-industries-medical-device-and-pharmaceutical-inspection",
+    "title": "21  Process validation and regulation of vision inspections in regulated industries",
+    "section": "21.4 Medical-device and pharmaceutical inspection",
+    "text": "21.4 Medical-device and pharmaceutical inspection\n\n21.4.1 MDR and IVDR requirements relevant to vision inspection\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n21.4.2 FDA 21 CFR 820 / QSR and process validation expectations\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n21.4.3 GMP and pharma visual-inspection requirements\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n21.4.4 Validating automated visual inspection against manual inspection\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Process validation and regulation of vision inspections in regulated industries</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/process-validation-and-regulation-of-vision-inspections-in-regulated-industries/index.html#sec-process-validation-and-regulation-of-vision-inspections-in-regulated-industries-other-high-risk-and-safety-critical-sectors",
+    "href": "chapters/process-validation-and-regulation-of-vision-inspections-in-regulated-industries/index.html#sec-process-validation-and-regulation-of-vision-inspections-in-regulated-industries-other-high-risk-and-safety-critical-sectors",
+    "title": "21  Process validation and regulation of vision inspections in regulated industries",
+    "section": "21.5 Other high-risk and safety-critical sectors",
+    "text": "21.5 Other high-risk and safety-critical sectors\n\n21.5.1 Aerospace inspection and qualification expectations\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n21.5.2 Automotive quality and functional-safety context\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.\n\n\n\n\n\n21.5.3 Common threads across regulated industries\n\n\n\n\n\n\nContent status: Placeholder.\nThis subsection has not yet been drafted or technically reviewed.",
+    "crumbs": [
+      "Deployment and Compliance",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Process validation and regulation of vision inspections in regulated industries</span>"
+    ]
+  },
+  {
+    "objectID": "bibliography/references.html",
+    "href": "bibliography/references.html",
+    "title": "Bibliography",
+    "section": "",
+    "text": "Batchelor, Bruce G., ed. 2012. Machine Vision Handbook.\nSpringer. https://doi.org/10.1007/978-1-84996-169-1.\n\n\nSzeliski, Richard. 2022. Computer Vision: Algorithms and\nApplications. 2nd ed. Springer. https://doi.org/10.1007/978-3-030-34372-9.",
+    "crumbs": [
+      "Bibliography"
+    ]
+  }
+]

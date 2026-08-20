@@ -1,0 +1,110 @@
+/*-- scss:defaults --*/
+
+/* Machine Vision Academy handbook theme placeholder. */
+
+/*-- scss:rules --*/
+
+.content-status {
+  border-left: 0.25rem solid #777;
+  padding-left: 1rem;
+}
+
+/* Batch 03b: handbook navigation refinements. */
+
+/* Visually distinguish part headings from chapter links. */
+#quarto-sidebar .sidebar-item-section
+> .sidebar-item-container
+> .sidebar-item-text {
+  font-weight: 700;
+}
+
+/* Controls displayed immediately above the navigation tree. */
+.mva-sidebar-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0.25rem 0.5rem 0.75rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgba(127, 127, 127, 0.35);
+}
+
+.mva-sidebar-control {
+  border: 1px solid rgba(127, 127, 127, 0.55);
+  border-radius: 0.25rem;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: 0.78rem;
+  line-height: 1.2;
+  padding: 0.3rem 0.5rem;
+}
+
+.mva-sidebar-control:hover,
+.mva-sidebar-control:focus-visible {
+  background: rgba(127, 127, 127, 0.14);
+}
+
+.mva-sidebar-control:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Make x.y headings bold in the page TOC while leaving x.y.z
+   headings at the normal weight. */
+#TOC > ul > li > a,
+#TOC > ul > li > div > a,
+#TOC > nav > ul > li > a {
+  font-weight: 700;
+}
+
+#TOC ul ul a {
+  font-weight: 400;
+}
+
+/* Batch 05c: place the handbook icon beside the title. */
+
+#quarto-sidebar .sidebar-header {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  grid-template-rows: auto;
+  column-gap: 0.6rem;
+}
+
+#quarto-sidebar .sidebar-logo {
+  align-items: center;
+  display: flex;
+  grid-column: 1;
+  grid-row: 1;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+#quarto-sidebar .sidebar-logo img {
+  height: 32px;
+  margin: 0;
+  max-height: 32px;
+  max-width: 32px;
+  object-fit: contain;
+  width: 32px;
+}
+
+#quarto-sidebar .sidebar-title {
+  align-self: center;
+  grid-column: 2;
+  grid-row: 1;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+}
+
+#quarto-sidebar .sidebar-tools-main {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 991.98px) {
+  #quarto-sidebar .sidebar-header {
+    grid-template-columns: 38px minmax(0, 1fr);
+  }
+}

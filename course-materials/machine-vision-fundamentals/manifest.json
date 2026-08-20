@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "course": "machine-vision-fundamentals",
+  "excludedDirectories": [
+    "assessments",
+    "instructor-resources"
+  ],
+  "files": [
+    {
+      "area": "presentations",
+      "path": "presentations/Course_1_Module_1.pdf",
+      "url": "/course-materials/machine-vision-fundamentals/presentations/Course_1_Module_1.pdf",
+      "bytes": 16158,
+      "size": "15.8 KiB",
+      "sha256": "ef1ab5d3b7dd31e221a88c7e136266bfd3701390bd2340f4882ab8f81cf8532c"
+    }
+  ]
+}

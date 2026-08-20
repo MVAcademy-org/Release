@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "course": "machine-vision-ai",
+  "excludedDirectories": [
+    "assessments",
+    "instructor-resources"
+  ],
+  "files": []
+}
