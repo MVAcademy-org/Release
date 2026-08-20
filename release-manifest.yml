@@ -1,8 +1,8 @@
 schema-version: 1
 release:
-  tag: v2026.08.04
-  released_at: 2026-08-04
+  tag: v2026.08.20
+  released_at: 2026-08-20
   source_branch: main
-  summary: Split of Handbook and project details in separate yml files.
+  summary: Republishe with chapter 1 content not completed.
   notes: na.
-  editor_commit: 86958433d5ce0fd6c01844259e407cf29c9e281a
+  editor_commit: ed1ebf1a22ad0da9f623453653b7a53946414564

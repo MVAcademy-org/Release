@@ -1,5 +1,0 @@
-image_id,measurement_mm,limit_mm,result
-example-001,9.94,10.00,pass
-example-002,10.08,10.00,fail
-example-003,9.99,10.00,pass
-example-004,10.02,10.00,fail
