@@ -40,6 +40,8 @@
 .mva-status-released { background: #d9f2df; }
 .mva-status-under-development { background: #fff0c2; }
 .mva-status-not-started { background: #e5e9ed; }
+.mva-course-action { margin: .85rem 0 1.35rem; }
+.mva-course-action .btn { align-items: center; display: inline-flex; gap: .45rem; }
 .mva-contact-form { background: #f8fbfd; border: 1px solid var(--mva-border); border-radius: .65rem; max-width: 850px; padding: 2rem; }
 .mva-form-row { display: grid; gap: 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .mva-form-field { margin-bottom: 1.2rem; }

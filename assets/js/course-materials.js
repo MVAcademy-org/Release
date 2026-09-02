@@ -1,6 +1,27 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const browsers = document.querySelectorAll(".mva-course-material-browser");
 
+  const fileName = (path) => {
+    const parts = String(path || "").split("/");
+    return parts[parts.length - 1] || String(path || "");
+  };
+
+  const compareFiles = (left, right) => {
+    const leftName = fileName(left.path);
+    const rightName = fileName(right.path);
+    const byName = leftName.localeCompare(rightName, undefined, {
+      numeric: true,
+      sensitivity: "base",
+    });
+
+    if (byName !== 0) return byName;
+
+    return String(left.path || "").localeCompare(String(right.path || ""), undefined, {
+      numeric: true,
+      sensitivity: "base",
+    });
+  };
+
   for (const browser of browsers) {
     const course = browser.dataset.course;
     const manifestUrl = `/course-materials/${course}/manifest.json`;
@@ -18,6 +39,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         const area = item.area || "other-content";
         if (!grouped.has(area)) grouped.set(area, []);
         grouped.get(area).push(item);
+      }
+
+      for (const files of grouped.values()) {
+        files.sort(compareFiles);
       }
 
       for (const section of browser.querySelectorAll(".mva-material-area")) {
@@ -40,7 +65,8 @@ document.addEventListener("DOMContentLoaded", async () => {
           const item = document.createElement("li");
           const link = document.createElement("a");
           link.href = file.url;
-          link.textContent = file.path;
+          link.textContent = fileName(file.path);
+          link.title = file.path;
           link.target = "_blank";
           link.rel = "noopener";
           item.appendChild(link);

@@ -397,13 +397,6 @@ div.csl-indent {
   <li><a href="#sec-propagate-requirement-end-to-end" id="toc-sec-propagate-requirement-end-to-end" class="nav-link" data-scroll-target="#sec-propagate-requirement-end-to-end"><span class="header-section-number">2.5.3</span> How the chain interacts: propagate the requirement end to end</a></li>
   <li><a href="#sec-professional-roles-standards-certification" id="toc-sec-professional-roles-standards-certification" class="nav-link" data-scroll-target="#sec-professional-roles-standards-certification"><span class="header-section-number">2.5.4</span> Professional roles, standards and certification landscape</a></li>
   </ul></li>
-  <li><a href="#sec-vision-engineering-scope-definitions-and-history-approaching-a-vision-problem-a-design-framework" id="toc-sec-vision-engineering-scope-definitions-and-history-approaching-a-vision-problem-a-design-framework" class="nav-link" data-scroll-target="#sec-vision-engineering-scope-definitions-and-history-approaching-a-vision-problem-a-design-framework"><span class="header-section-number">2.6</span> Approaching a vision problem: a design framework</a>
-  <ul class="collapse">
-  <li><a href="#sec-vision-engineering-scope-definitions-and-history-from-inspection-requirement-to-imaging-specification" id="toc-sec-vision-engineering-scope-definitions-and-history-from-inspection-requirement-to-imaging-specification" class="nav-link" data-scroll-target="#sec-vision-engineering-scope-definitions-and-history-from-inspection-requirement-to-imaging-specification"><span class="header-section-number">2.6.1</span> From inspection requirement to imaging specification</a></li>
-  <li><a href="#sec-vision-engineering-scope-definitions-and-history-characterising-the-feature-contrast-scale-geometry-tolerance" id="toc-sec-vision-engineering-scope-definitions-and-history-characterising-the-feature-contrast-scale-geometry-tolerance" class="nav-link" data-scroll-target="#sec-vision-engineering-scope-definitions-and-history-characterising-the-feature-contrast-scale-geometry-tolerance"><span class="header-section-number">2.6.2</span> Characterising the feature: contrast, scale, geometry, tolerance</a></li>
-  <li><a href="#sec-vision-engineering-scope-definitions-and-history-detection-versus-measurement-how-the-task-drives-every-later-choice" id="toc-sec-vision-engineering-scope-definitions-and-history-detection-versus-measurement-how-the-task-drives-every-later-choice" class="nav-link" data-scroll-target="#sec-vision-engineering-scope-definitions-and-history-detection-versus-measurement-how-the-task-drives-every-later-choice"><span class="header-section-number">2.6.3</span> Detection versus measurement: how the task drives every later choice</a></li>
-  <li><a href="#sec-vision-engineering-scope-definitions-and-history-a-worked-decision-path-cross-referenced-to-later-chapters" id="toc-sec-vision-engineering-scope-definitions-and-history-a-worked-decision-path-cross-referenced-to-later-chapters" class="nav-link" data-scroll-target="#sec-vision-engineering-scope-definitions-and-history-a-worked-decision-path-cross-referenced-to-later-chapters"><span class="header-section-number">2.6.4</span> A worked decision path, cross-referenced to later chapters</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -481,8 +474,13 @@ Figure&nbsp;2.1: Machine vision as an end-to-end engineering lifecycle
 <section id="sec-four-fields-image-processing-computer-vision-machine-vision-ai" class="level3" data-number="2.1.2">
 <h3 data-number="2.1.2" class="anchored" data-anchor-id="sec-four-fields-image-processing-computer-vision-machine-vision-ai"><span class="header-section-number">2.1.2</span> The four fields: image processing, computer vision, machine vision and AI</h3>
 <p>The following definitions are deliberately operational. They identify the centre of gravity of each field rather than drawing impermeable boundaries. A single industrial application can occupy all four fields at once.</p>
+<div id="tbl-Working-meanings" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Working-meanings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.1: Working meanings and typical emphasis of image processing, computer vision, machine vision and artificial intelligence.
+</figcaption>
+<div aria-describedby="tbl-Working-meanings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
-<caption>Working meanings and typical emphasis of image processing, computer vision, machine vision and artificial intelligence.</caption>
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -518,6 +516,9 @@ Figure&nbsp;2.1: Machine vision as an end-to-end engineering lifecycle
 </tr>
 </tbody>
 </table>
+</div>
+</figure>
+</div>
 <p>These meanings are not universal. Academic computer vision may include acquisition and image processing within its own scope; image processing is a substantial discipline in signal processing; and machine vision has historically also been used for practical artificial vision more generally. Davies discusses the historical convergence of computer vision and machine vision <span class="citation" data-cites="davies2012computer"><a href="../../bibliography/references.html#ref-davies2012computer" role="doc-biblioref">[3]</a></span>. The British Machine Vision Association (BMVA) provides a visible example of the overlap: its remit explicitly includes machine vision, image processing and pattern recognition <span class="citation" data-cites="bmva_home"><a href="../../bibliography/references.html#ref-bmva_home" role="doc-biblioref">[4]</a></span>.</p>
 <p>The same caution applies to AI. ISO/IEC terminology treats artificial intelligence as a broad field and does not equate it with neural networks or deep learning <span class="citation" data-cites="isoiec22989_2022"><a href="../../bibliography/references.html#ref-isoiec22989_2022" role="doc-biblioref">[5]</a></span>. For clarity in the engineering chapters, the more useful distinction will usually be between classical or explicitly engineered vision methods and learned vision methods. Deep neural networks are a major family of learned methods, but they are not the formal boundary of AI.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -633,7 +634,7 @@ Figure&nbsp;2.4: First digital camera prototype developed by Steve Sasson at Kod
 <img src="assets/figures/LeCun-Demostration.jpg" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lecun-cnn-demonstration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.5: LeCun’s demonstration at Bell Laboratories of a character-recognition system with LeNet - 1998
+Figure&nbsp;2.5: Still from the 1989 demonstration of handwritten digit recognition using an early convolutional neural network architecture (a precursor to LeNet) at AT&amp;T Bell Laboratories. <em>Image courtesy of Lawrence D. Jackel / AT&amp;T Bell Labs (Now Nokia Bell Labs). Restored and documented by Yann LeCun</em>
 </figcaption>
 </figure>
 </div>
@@ -673,7 +674,7 @@ Figure&nbsp;2.7: Release timeline of some relevant communication standards for i
 </section>
 <section id="sec-the-product-timeline-how-the-industrial-toolbox-formed" class="level3" data-number="2.2.3">
 <h3 data-number="2.2.3" class="anchored" data-anchor-id="sec-the-product-timeline-how-the-industrial-toolbox-formed"><span class="header-section-number">2.2.3</span> The product timeline: how the industrial toolbox formed</h3>
-<p>Industrial machine vision is unusually shaped by product companies. Research establishes what is possible, but suppliers decide how that possibility reaches an engineer: as a camera, frame grabber, library, smart sensor, development environment, 3D profiler or integrated inspection platform. <a href="#tbl-industrial-machine-vision-supplier-milestones" class="quarto-xref">Table&nbsp;<span>2.1</span></a> therefore records representative milestones from companies that have had a visible influence on the industrial toolbox. It is not intended as a ranking or an exhaustive corporate history.</p>
+<p>Industrial machine vision is unusually shaped by product companies. Research establishes what is possible, but suppliers decide how that possibility reaches an engineer: as a camera, frame grabber, library, smart sensor, development environment, 3D profiler or integrated inspection platform. <a href="#tbl-industrial-machine-vision-supplier-milestones" class="quarto-xref">Table&nbsp;<span>2.2</span></a> therefore records representative milestones from companies that have had a visible influence on the industrial toolbox. It is not intended as a ranking or an exhaustive corporate history.</p>
 <div class="callout callout-style-default callout-caution callout-titled" title="The trouble with claiming a first">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -690,7 +691,7 @@ Figure&nbsp;2.7: Release timeline of some relevant communication standards for i
 <div id="tbl-industrial-machine-vision-supplier-milestones" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-industrial-machine-vision-supplier-milestones-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2.1: Representative milestones in the industrial machine-vision supplier ecosystem
+Table&nbsp;2.2: Representative milestones in the industrial machine-vision supplier ecosystem
 </figcaption>
 <div aria-describedby="tbl-industrial-machine-vision-supplier-milestones-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -1419,6 +1420,12 @@ Choose an On-Premises Vision Server when <strong>compute requirements, physical/
 <p>🟢 favourable · 🟡 neutral · 🔴 unfavorable</p>
 </div>
 </div>
+<div id="tbl-inference-architecture-selection-summary" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-inference-architecture-selection-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.3: Inference architecture selection summary. Qualitative ratings are comparative guidance rather than absolute performance guarantees.
+</figcaption>
+<div aria-describedby="tbl-inference-architecture-selection-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 25%">
@@ -1557,7 +1564,9 @@ Choose an On-Premises Vision Server when <strong>compute requirements, physical/
 </tr>
 </tbody>
 </table>
-<p><strong>Table 1.2 - Inference architecture selection summary.</strong> Qualitative ratings are comparative guidance rather than absolute performance guarantees.</p>
+</div>
+</figure>
+</div>
 <p>The table is useful for comparison, but architecture selection often becomes clearer when approached from the opposite direction: <strong>what characteristics of the application should make a particular architecture attractive?</strong></p>
 <div class="callout callout-style-default callout-tip callout-titled" title="When to consider Device Edge">
 <div class="callout-header d-flex align-content-center">
@@ -1630,9 +1639,19 @@ Choose an On-Premises Vision Server when <strong>compute requirements, physical/
 <h3 data-number="2.5.1" class="anchored" data-anchor-id="sec-the-seven-stages"><span class="header-section-number">2.5.1</span> The seven stages: presentation, illumination, optics, sensor, processing, decision and action</h3>
 <p>Machine-vision texts commonly describe a path from image acquisition through image processing to a decision, while industry guidance similarly treats lighting, optics, sensors, processing and communications as interdependent elements of a complete system <span class="citation" data-cites="beyerer2016machinevision"><a href="../../bibliography/references.html#ref-beyerer2016machinevision" role="doc-biblioref">[95]</a></span>, <span class="citation" data-cites="a3_2016_components_machine_vision_systems"><a href="../../bibliography/references.html#ref-a3_2016_components_machine_vision_systems" role="doc-biblioref">[139]</a></span>. For the purposes of this handbook, it is useful to make that chain slightly wider. The five stages that form the core imaging chain - illumination, optics, sensor, processing and decision - are bracketed by two application stages: presentation before the image is acquired, and action after the decision has been made. This gives seven stages in total. The distinction is deliberate: a technically excellent image-processing algorithm is of little value if the part is not presented in a usable way, or if the final result never produces the required machine response.</p>
 <p>The five core stages can be stated briefly because each is developed later in the handbook. Illumination controls how the relevant features appear. Optics form and scale the image on the sensor. The sensor converts the optical signal into sampled image data. Processing transforms those pixels into measurements, features, locations or learned outputs. The decision stage then interprets those outputs against the application requirement: for example pass/fail, a dimensional result, a class, a pose or a confidence value. These are the stages most often associated directly with machine vision, but they do not by themselves make a complete automated application.</p>
+<div id="fig-seven-stage-engineered-chain" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-seven-stage-engineered-chain-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="assets/figures/seven-stage-chain.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-seven-stage-engineered-chain-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.17: The vision system as a seven-stage engineered chain
+</figcaption>
+</figure>
+</div>
 <p>The first application bracket is <strong>presentation</strong>. For inspection and measurement, repeatable presentation is usually an advantage: the feature should remain within the usable field of view, focus range and lighting geometry, and acquisition should occur at a controlled point in the process. Guides, nests, rails, fixtures, controlled motion and robot poses are therefore not merely mechanical details; they directly determine how much variation the vision system must tolerate <span class="citation" data-cites="cognex_nd_vision_guided_robotics"><a href="../../bibliography/references.html#ref-cognex_nd_vision_guided_robotics" role="doc-biblioref">[140]</a></span>. Triggering and illumination synchronisation form part of the same problem. At production speed, even small timing errors translate into positional variation, which is why industrial cameras commonly provide dedicated trigger and illumination-control interfaces for deterministic acquisition <span class="citation" data-cites="ids_2026_trigger_flash_industrial_cameras"><a href="../../bibliography/references.html#ref-ids_2026_trigger_flash_industrial_cameras" role="doc-biblioref">[141]</a></span>.</p>
 <p>Presentation also determines how many views of the part must be acquired and how those views are created. If the complete inspection can be performed from one viewpoint, the decision is simple. Where features lie on different faces, at substantially different heights, or around the circumference of a component, the engineer must instead decide whether to <strong>move the part, move the camera, or use multiple cameras</strong>. This choice should be made early because it shifts complexity between the mechanical system and the vision system and can influence camera count, calibration, processing architecture and cycle time.</p>
-<p>A useful order of preference is to start with the resources already present in the machine. If a robot or positioning mechanism already handles the component, presenting several faces to a fixed camera may add relatively little hardware and can be an economical solution. Where only a small displacement is required—perhaps between two nearby inspection planes—a simple linear or pneumatic movement of either the part or camera may also be practical. As the required motion becomes larger or more complex, however, several fixed cameras often become more attractive, particularly when cycle time does not allow sequential movement and acquisition. Multiple cameras increase acquisition, calibration and software complexity, but avoid adding moving mechanisms to the inspection cycle.</p>
+<p>A useful order of preference is to start with the resources already present in the design of the equipment or station. If a robot or positioning mechanism already handles the component, presenting several faces to a fixed camera may add relatively little hardware and can be an economical solution. Where only a small displacement is required—perhaps between two nearby inspection planes—a simple linear or pneumatic movement of either the part or camera may also be practical. As the required motion becomes larger or more complex, however, several fixed cameras often become more attractive, particularly when cycle time does not allow sequential movement and acquisition. Multiple cameras increase acquisition, calibration and software complexity, but avoid adding moving mechanisms to the inspection cycle.</p>
 <p>The surrounding machine design matters just as much. Moving a part or camera introduces actuators, guarding and safety considerations; moving a camera additionally requires suitable cable routing and management. These additions may be quite reasonable inside an already guarded automated cell, but difficult to justify on an otherwise simple open station. Applications involving calibrated measurement also deserve particular care: a fixed camera provides a stable imaging geometry, whereas moving either the camera or part requires the relevant position and transformation to remain sufficiently repeatable. Robot-mounted cameras are entirely feasible, but they introduce an explicit hand–eye calibration between the camera and robot coordinate systems. Current machine-vision and robotics tools support both fixed-camera and moving-camera configurations, but their calibration becomes part of the engineered system rather than an incidental setup step.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Choosing how to obtain multiple views">
 <div class="callout-header d-flex align-content-center">
@@ -1657,31 +1676,21 @@ Choose an On-Premises Vision Server when <strong>compute requirements, physical/
 <p>Specialised optics deserve particular mention because they provide a fourth option that is easily overlooked. Opto Engineering, for example, offers <strong>360° and multi-view lenses</strong> designed to capture several surfaces of a component using one camera <span class="citation" data-cites="opto_engineering_360_view_lenses"><a href="../../bibliography/references.html#ref-opto_engineering_360_view_lenses" role="doc-biblioref">[142]</a></span>. Pericentric and catadioptric optics can image the top and lateral surfaces of suitable objects, while multi-mirror designs can place several side views within the same image. For cylindrical parts, caps, bottles, threads and similar geometries, this can remove both mechanical rotation and the need to synchronise several cameras. The trade-off is that these are specialised optical arrangements with constraints on object geometry, working distance, field of view and image utilisation, so they should be considered as another engineering option rather than a universal substitute for multiple cameras.</p>
 <p>A second principle of presentation is to <strong>remove as much variation as possible that is not inherent to the product or the inspection requirement</strong>. Uncontrolled changes in position, orientation, background, illumination, surface condition or surrounding equipment increase the range of appearances that the vision system must interpret without adding useful information. This matters for rule-based vision, but it is equally important for deep learning. A model can learn substantial variation when that variation is represented during training—and predictable changes can sometimes be reproduced through augmentation—but unexpected production conditions introduce <em>domain shift</em> and can cause significant performance degradation even in otherwise capable models. In practice, these variations are particularly troublesome because they may appear late in development, during validation or only after deployment, leading to additional data collection, retraining and revalidation. The aim is therefore not to make every image identical, but to ensure that the variation reaching the vision system is intentional, understood and representative of the conditions against which the system has been designed and validated.</p>
 <p>The second application bracket is <strong>action</strong>. A verdict that remains inside the camera or PC has not completed the automation task. The result must be delivered to the machine and associated with the correct product at the correct time: a reject mechanism may need to fire, a robot may need a coordinate, a process may need to be adjusted, an image may need to be stored for traceability, or an operator may need to be alerted. Depending on the architecture, this hand-off may use digital I/O, an industrial Ethernet protocol, a robot interface, OPC UA, a database or higher-level manufacturing software. The specific technology matters less than the engineering requirement: the result must reach the right destination, remain associated with the right product, and produce the intended response.</p>
-<p>A recurring example from practice illustrates why this wider system boundary matters. Consider an automated inspection station that identifies a defective, non-serialised product but the system is design to rely on an operator to remove it manually once the vision identifies a defect. The vision algorithm may be performing perfectly, yet the original business objective - preventing defective product from continuing through production - still depends on a fallible human action and therefore can fail as an end-to-end solution.</p>
-<p>Presentation and action reach into mechanics, robotics, controls, data systems and process engineering, so this handbook does not attempt to cover them with the same depth as illumination, optics, sensors and image processing. They are included in the chain because the vision engineer must nevertheless understand and influence them. Machine vision is rarely installed in isolation; it succeeds as part of a machine that performs and end-to-end task.</p>
-<div id="fig-seven-stage-engineered-chain" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-seven-stage-engineered-chain-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="assets/figures/seven-stage-chain.png" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-seven-stage-engineered-chain-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.17: The vision system as a seven-stage engineered chain
-</figcaption>
-</figure>
-</div>
+<p>A recurring example from practice illustrates why this wider system boundary matters. Consider an automated inspection station that identifies a defective, non-serialised product but the system is designed to rely on an operator to remove it manually once the vision identifies a defect and notifies it by mens of a visual alarm or status indicator. The vision algorithm may be performing perfectly, yet the original business objective - preventing defective product from continuing through production - still depends on a fallible human action and therefore can fail as an end-to-end solution if the operator simply gets distracted and forgets to dispose of the defective part.</p>
+<p><strong>Presentation</strong> and <strong>action</strong> reach into mechanics, robotics, controls, data systems and process engineering, so this handbook does not attempt to cover them with the same depth as illumination, optics, sensors and image processing. They are included in the chain because the vision engineer must nevertheless understand and influence them. Machine vision is rarely installed in isolation; it succeeds as part of a machine that performs and end-to-end task.</p>
 <p>The seven stages can also be used as a compact checklist when first framing an application:</p>
-<div id="tbl-seven-stage-engineered-vision-chain" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="tbl-the-seven-stages" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-seven-stage-engineered-vision-chain-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2.2: The seven stages of the engineered vision chain
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-the-seven-stages-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.4: The seven stages of the engineered vision chain
 </figcaption>
-<div aria-describedby="tbl-seven-stage-engineered-vision-chain-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div aria-describedby="tbl-the-seven-stages-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
-<col style="width: 7%">
-<col style="width: 37%">
-<col style="width: 43%">
-<col style="width: 10%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 26%">
+<col style="width: 24%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1763,7 +1772,7 @@ Table&nbsp;2.2: The seven stages of the engineered vision chain
 <li>shorten exposure and synchronise illumination if motion blur is the limitation;</li>
 <li>only then decide how much algorithmic complexity is genuinely required.</li>
 </ul>
-<p>This is not an argument against sophisticated processing. It is an argument for giving that processing the best possible signal.</p>
+<p>This is not an argument against sophisticated processing. It is an argument for giving that processing the best possible signal, so that the end-to-end solution has a beter chance to work consistently and repeatedly after deployment.</p>
 </div>
 </div>
 <div id="fig-lighting-before-software" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1772,16 +1781,16 @@ Table&nbsp;2.2: The seven stages of the engineered vision chain
 <img src="assets/figures/lighting-before-software.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lighting-before-software-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.18: The same feature under poor and well-chosen lighting
+Figure&nbsp;2.18: The same feature under poor and well-chosen lighting after applying Sobel edge detection.
 </figcaption>
 </figure>
 </div>
-<p>Deep learning makes this principle more important, not less. Learned models can tolerate forms of variation that would be awkward to model with hand-designed rules, but they remain dependent on the information and statistical consistency of their input images. Research on computer-vision robustness shows that blur, noise, illumination change and other common image corruptions can materially reduce model performance <span class="citation" data-cites="wang_et_al_2024_common_corruptions"><a href="../../bibliography/references.html#ref-wang_et_al_2024_common_corruptions" role="doc-biblioref">[144]</a></span>. Experimental work with controlled active illumination has also shown that making image appearance more consistent can reduce the amount of training data required to reach a given level of performance <span class="citation" data-cites="silwal_et_al_2021_illumination_invariant"><a href="../../bibliography/references.html#ref-silwal_et_al_2021_illumination_invariant" role="doc-biblioref">[145]</a></span>. These studies are not industrial quality-inspection recipes, but they reinforce the same engineering message: robustness in the model does not remove the value of robustness in image formation.</p>
+<p>Deep learning makes this principle more important, not less. Learned models can tolerate forms of variation that would be awkward to model with hand-designed rules, but they remain dependent on the information and statistical consistency of their input images. Research on computer-vision robustness shows that blur, noise, illumination change and other common image corruptions can materially reduce model performance <span class="citation" data-cites="wang_et_al_2024_common_corruptions"><a href="../../bibliography/references.html#ref-wang_et_al_2024_common_corruptions" role="doc-biblioref">[144]</a></span>. Experimental work with controlled active illumination has also shown that making image appearance more consistent can reduce the amount of training data required to reach a given level of performance <span class="citation" data-cites="silwal_et_al_2021_illumination_invariant"><a href="../../bibliography/references.html#ref-silwal_et_al_2021_illumination_invariant" role="doc-biblioref">[145]</a></span>. These studies are not industrial quality-inspection recipes, but they reinforce the same idea: robustness in the model does not remove the value of robustness in image formation. This should not be interpreted to mean that better and more consistent images make very small training datasets sufficient. Rather, reducing unnecessary and unpredictable variation makes dataset creation more efficient, allowing the available samples to concentrate on the product and process variation that the model genuinely needs to learn. A small dataset containing little variation can produce apparently strong training or validation results while encouraging overfitting and providing poor generalisation to conditions not adequately represented in the data. Dataset diversity, overfitting and generalisation are important topics in their own right and are examined in greater depth in later chapters.</p>
 <p>The temptation in a deep-learning project is easy to understand. As soon as images can be acquired, it is possible to start collecting data and training models. That can create two expensive traps:</p>
 <ul>
-<li><p>Poor images become a poor long-term asset. The image dataset is often the most valuable reusable output of a vision application: it can support retraining, root-cause analysis, future inspections and process studies. A well-formed image may contain useful information beyond the original inspection requirement; an image that is blurred, saturated or dominated by uncontrolled reflections has already discarded some of that opportunity.</p></li>
-<li><p>Weak image formation can be mistaken for insufficient training. In a rule-based project, a small set of images often reveals quite quickly that a feature is not visible enough. In deep learning, the team may instead respond by collecting more samples, increasing training time, trying larger models or tuning augmentation before questioning the acquisition setup. Because model performance usually changes gradually rather than failing for one obvious physical reason, the point at which the image itself is inadequate can be harder to recognise.</p></li>
-<li><p>The model may learn nuisance variation that the machine could have removed. If background, illumination, reflections or pose vary unnecessarily in the training set, a model may devote capacity to those factors instead of the feature that matters. Data augmentation and broader training data are valuable tools, but they should represent variability the deployed system genuinely needs to handle, not compensate by default for an avoidably unstable imaging station.</p></li>
+<li><p><strong>Poor images become a poor long-term asset</strong>. The image dataset can become one of the most valuable and reusable outputs of a vision application, supporting model retraining, root-cause analysis, future inspections and wider process studies. Its value is particularly high when it has been developed following sound engineering principles: the sources of variation are understood and documented, sufficient quantities of real production data have been collected, and the dataset is representative of the conditions the system will encounter in production. Building such a dataset can require considerable time and cost, which makes preserving its information content especially important. A well-formed image may also contain useful information beyond the original inspection requirement; an image that is blurred, saturated or dominated by uncontrolled reflections has already discarded some of that opportunity. Dataset design, representativeness and management are covered in greater depth later in the handbook.</p></li>
+<li><p><strong>Weak image formation can be mistaken for insufficient training</strong>. In a rule-based project, a small set of images often reveals quite quickly that a feature is not visible enough. In deep learning, the team may instead respond by collecting more samples, increasing training time, trying larger models or tuning augmentation before questioning the acquisition setup. Because model performance usually changes gradually rather than failing for one obvious physical reason, the point at which the image itself is inadequate can be harder to recognise.</p></li>
+<li><p><strong>The model may learn nuisance variation that the machine could have removed</strong>. If background, illumination, reflections or pose vary unnecessarily in the training set, a model may devote capacity to those factors instead of the feature that matters. Data augmentation and broader training data are valuable tools, but they should represent variability the deployed system genuinely needs to handle, not compensate by default for an avoidably unstable imaging station.</p></li>
 </ul>
 <div class="callout callout-style-default callout-caution callout-titled" title="Deep learning does not repeal image formation">
 <div class="callout-header d-flex align-content-center">
@@ -1800,7 +1809,21 @@ Figure&nbsp;2.18: The same feature under poor and well-chosen lighting
 </section>
 <section id="sec-propagate-requirement-end-to-end" class="level3" data-number="2.5.3">
 <h3 data-number="2.5.3" class="anchored" data-anchor-id="sec-propagate-requirement-end-to-end"><span class="header-section-number">2.5.3</span> How the chain interacts: propagate the requirement end to end</h3>
-<p>The chain is drawn from presentation to action because that is the direction in which information flows during operation. Design, however, starts from the required outcome. A vision engineer should not begin with the question “which camera should I use?” but with a measurable description of what the system must decide or measure, under what production conditions, and with what timing and confidence. From there, each stage constrains the stages around it. This systems view is consistent with the broader computer-vision engineering principle of modelling the image-formation process and testing the complete method under the conditions in which it is expected to operate <span class="citation" data-cites="szeliski2022computer_vision"><a href="../../bibliography/references.html#ref-szeliski2022computer_vision" role="doc-biblioref">[146]</a></span>.</p>
+<p>The chain is drawn from <strong>presentation</strong> to <strong>action</strong> because that is the direction in which information flows during operation. Design, however, starts from the required outcome. A vision engineer should not begin with the question “which camera should I use?” but with a measurable description of what the system must decide or measure, under what production conditions, and with what timing and confidence.</p>
+<div class="callout callout-style-default callout-caution callout-titled" title="A solution looking for a problem">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>A solution looking for a problem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>One of the easiest engineering traps is to start with a solution we want to use and then find a problem that fits it. Good engineering works in the opposite direction: understand the problem first, then let the requirements lead you to the solution.</p>
+</div>
+</div>
+<p>From there, each stage constrains the stages around it. This systems view is consistent with the broader computer-vision engineering principle of modelling the image-formation process and testing the complete method under the conditions in which it is expected to operate <span class="citation" data-cites="szeliski2022computer_vision"><a href="../../bibliography/references.html#ref-szeliski2022computer_vision" role="doc-biblioref">[146]</a></span>.</p>
 <p>Consider a simplified requirement to detect a surface defect approximately 50 micrometres across. That feature must first be represented with enough spatial information and contrast to distinguish it from normal surface variation. The required field of view and sampling then constrain sensor resolution and optical magnification. Magnification, sensor size, working distance and aperture influence lens choice and depth of field; depth-of-field requirements feed back to how tightly the part height or pose must be controlled. The material and defect geometry constrain illumination because a scratch, dent, contamination mark and colour change interact with light differently. Throughput then constrains exposure time, triggering and processing time. A requirement that initially sounds like a single number therefore becomes a coupled set of optical, mechanical, electrical and computational constraints.</p>
 <p>The same coupling appears in less obvious forms. Increasing magnification may improve spatial sampling but reduce field of view and depth of field. Shortening exposure may reduce motion blur but require more illumination or sensor sensitivity. A wider aperture may increase signal but reduce depth of field. Relaxing mechanical fixturing may simplify the machine but increase the search range and algorithmic burden. Moving processing to a shared server may increase compute capacity but add network timing and a larger failure domain. None of these choices is inherently good or bad; the engineering task is to make the trade-offs explicit and keep the whole chain inside the requirement envelope.</p>
 <p>This is why feasibility work should try to expose contradictions before hardware and software become fixed. If the required field of view and smallest feature imply an optical setup that cannot maintain focus across the actual part-height variation, the useful result of the feasibility study is not a clever algorithm - it is discovering that the requirement, presentation or imaging geometry must change. The later design framework formalises this process, but the habit starts here: trace important requirements through every stage and ask where they become difficult, sensitive or mutually incompatible.</p>
@@ -1837,19 +1860,19 @@ Figure&nbsp;2.18: The same feature under poor and well-chosen lighting
 <li><p>Data, AI or software engineer - increasingly involved where deep learning, dataset infrastructure, deployment pipelines or substantial application software form part of the solution.</p></li>
 <li><p>End user, process engineer and maintenance team - provide the production knowledge that defines real variation, failure modes, maintainability and long-term ownership.</p></li>
 </ul>
-<p>The boundaries between these roles are deliberately porous. A good vision engineer does not need to be the plant controls expert or the mechanical designer, but must understand enough of those disciplines to recognise when they constrain the image or the final action. Equally, software expertise alone is not a substitute for understanding image formation. That breadth is one reason machine vision is often learned through a mixture of formal study, vendor and association training, laboratory work and production experience.</p>
+<p>The boundaries between these roles are deliberately porous. A good vision engineer does not need to be the design team controls expert or the mechanical designer, but must understand enough of those disciplines to recognise when they constrain the image or the final action. Equally, software expertise alone is not a substitute for understanding image formation. That breadth is one reason machine vision is often learned through a mixture of formal study, vendor and association training, laboratory work and production experience. In this sense, professional accreditation is neither essential nor a substitute for practical experience. It can, however, be valuable when applying for machine-vision roles by providing evidence of a recognised level of knowledge while also demonstrating commitment to, and genuine interest in, the discipline.</p>
 <p>At the time of editing, one of the most established broad professional credentials in the machine-vision industry is the Association for Advancing Automation (A3) Certified Vision Professional (CVP) programme <span class="citation" data-cites="a3_cvp_program"><a href="../../bibliography/references.html#ref-a3_cvp_program" role="doc-biblioref">[147]</a></span>. CVP-Basic covers the foundations of machine vision through courses in fundamentals, optics, lighting, cameras and image sensors, image processing and vision-system design <span class="citation" data-cites="a3_cvp_basic_course_list"><a href="../../bibliography/references.html#ref-a3_cvp_basic_course_list" role="doc-biblioref">[148]</a></span>. CVP-Advanced extends the scope into topics including advanced optics and lighting, 3D vision, machine learning, line-scan imaging, high-speed systems, vision-guided robotics, non-visible imaging, colour, metrology, advanced image processing and system integration <span class="citation" data-cites="a3_cvp_advanced_course_list"><a href="../../bibliography/references.html#ref-a3_cvp_advanced_course_list" role="doc-biblioref">[149]</a></span>. A3 currently offers proctored Basic and Advanced examinations, and states that individual CVP certification is valid for five years <span class="citation" data-cites="a3_cvp_program"><a href="../../bibliography/references.html#ref-a3_cvp_program" role="doc-biblioref">[147]</a></span>.</p>
-<div id="tbl-machine-vision-certification-routes" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="tbl-Examples-of-current-certification" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-machine-vision-certification-routes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2.3: Examples of current machine-vision professional certification routes
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Examples-of-current-certification-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.5: Examples of current machine-vision professional certification routes.
 </figcaption>
-<div aria-describedby="tbl-machine-vision-certification-routes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div aria-describedby="tbl-Examples-of-current-certification-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
-<col style="width: 8%">
-<col style="width: 43%">
-<col style="width: 47%">
+<col style="width: 25%">
+<col style="width: 36%">
+<col style="width: 38%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1879,8 +1902,7 @@ Table&nbsp;2.3: Examples of current machine-vision professional certification ro
 </div>
 </figure>
 </div>
-<p>Professional certification should also be distinguished from company-level integration certification. A3 operates a Certified System Integrator programme intended to give end users a benchmark when selecting integration companies; the criteria include company experience and qualified technical personnel rather than certifying a single individual <span class="citation" data-cites="a3_certified_system_integrator_program"><a href="../../bibliography/references.html#ref-a3_certified_system_integrator_program" role="doc-biblioref">[150]</a></span>. This distinction is useful for practitioners: an individual credential says something about a person’s demonstrated knowledge, while an integrator credential addresses the capability and track record of an organisation.</p>
-<p>In Europe, the European Machine Vision Association (EMVA) has a different but equally important role. It develops and supports industry standards and educational resources rather than offering a direct European counterpart to the broad CVP qualification. Its EMVA 1288 programme provides User- and Expert-level certification specifically around camera and image-sensor characterisation <span class="citation" data-cites="emva_1288_certification"><a href="../../bibliography/references.html#ref-emva_1288_certification" role="doc-biblioref">[151]</a></span>. The EMVA also hosts GenICam, the generic camera-interface standard used across interfaces such as GigE Vision, USB3 Vision and CoaXPress <span class="citation" data-cites="emva_genicam"><a href="../../bibliography/references.html#ref-emva_genicam" role="doc-biblioref">[152]</a></span>. At the time of editing, the long-running EMVA 1288 characterisation standard is also being progressed towards the international ISO 24942 standard; ISO lists ISO/DIS 24942 as under development in 2026 <span class="citation" data-cites="iso_dis_24942_2026"><a href="../../bibliography/references.html#ref-iso_dis_24942_2026" role="doc-biblioref">[153]</a></span>. These details will inevitably evolve, so readers should treat the named programmes as examples of the current professional landscape rather than a permanent catalogue.</p>
+<p>In Europe, the European Machine Vision Association (EMVA) has a different but equally important role. It develops and supports industry standards and educational resources rather than offering a direct European counterpart to the broad CVP qualification. Its EMVA 1288 programme provides User- and Expert-level certification specifically around camera and image-sensor characterisation <span class="citation" data-cites="emva_1288_certification"><a href="../../bibliography/references.html#ref-emva_1288_certification" role="doc-biblioref">[150]</a></span>. The EMVA also hosts GenICam, the generic camera-interface standard used across interfaces such as GigE Vision, USB3 Vision and CoaXPress <span class="citation" data-cites="emva_genicam"><a href="../../bibliography/references.html#ref-emva_genicam" role="doc-biblioref">[151]</a></span>. At the time of editing, the long-running EMVA 1288 characterisation standard is also being progressed towards the international ISO 24942 standard; ISO lists ISO/DIS 24942 as under development in 2026 <span class="citation" data-cites="iso_dis_24942_2026"><a href="../../bibliography/references.html#ref-iso_dis_24942_2026" role="doc-biblioref">[152]</a></span>. These details will inevitably evolve, so readers should treat the named programmes as examples of the current professional landscape rather than a permanent catalogue.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Certification is a foundation, not the finish line">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1897,65 +1919,6 @@ Table&nbsp;2.3: Examples of current machine-vision professional certification ro
 </div>
 <p>There is also a broader educational challenge. Machine vision is used widely in manufacturing, yet access to structured, vendor-neutral learning remains uneven across universities, companies and regions. One of the longer-term aims of the Machine Vision Academy is therefore to make reusable educational material openly available so that individuals, educators and academic institutions can build courses around a common industrial baseline. At the time of writing this remains an ambition rather than an established accreditation route, but the direction is intentional: make the fundamentals easier to learn, then allow institutions and professional bodies to build recognised learning pathways on top of them. Current project material is intended to be released through MachineVisionAcademy.org as that programme develops.</p>
 <p>The broader message of this section is that machine vision is not a sequence of isolated component choices. It is an engineered chain, owned by people who must reason across the boundaries between image formation, computation and automation. The next section turns that principle into a more explicit method for approaching a new vision problem from the requirement onwards.</p>
-</section>
-</section>
-<section id="sec-vision-engineering-scope-definitions-and-history-approaching-a-vision-problem-a-design-framework" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="sec-vision-engineering-scope-definitions-and-history-approaching-a-vision-problem-a-design-framework"><span class="header-section-number">2.6</span> Approaching a vision problem: a design framework</h2>
-<section id="sec-vision-engineering-scope-definitions-and-history-from-inspection-requirement-to-imaging-specification" class="level3" data-number="2.6.1">
-<h3 data-number="2.6.1" class="anchored" data-anchor-id="sec-vision-engineering-scope-definitions-and-history-from-inspection-requirement-to-imaging-specification"><span class="header-section-number">2.6.1</span> From inspection requirement to imaging specification</h3>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p><strong>Content status:</strong> Placeholder.</p>
-<p>This subsection has not yet been drafted or technically reviewed.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="sec-vision-engineering-scope-definitions-and-history-characterising-the-feature-contrast-scale-geometry-tolerance" class="level3" data-number="2.6.2">
-<h3 data-number="2.6.2" class="anchored" data-anchor-id="sec-vision-engineering-scope-definitions-and-history-characterising-the-feature-contrast-scale-geometry-tolerance"><span class="header-section-number">2.6.2</span> Characterising the feature: contrast, scale, geometry, tolerance</h3>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p><strong>Content status:</strong> Placeholder.</p>
-<p>This subsection has not yet been drafted or technically reviewed.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="sec-vision-engineering-scope-definitions-and-history-detection-versus-measurement-how-the-task-drives-every-later-choice" class="level3" data-number="2.6.3">
-<h3 data-number="2.6.3" class="anchored" data-anchor-id="sec-vision-engineering-scope-definitions-and-history-detection-versus-measurement-how-the-task-drives-every-later-choice"><span class="header-section-number">2.6.3</span> Detection versus measurement: how the task drives every later choice</h3>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p><strong>Content status:</strong> Placeholder.</p>
-<p>This subsection has not yet been drafted or technically reviewed.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="sec-vision-engineering-scope-definitions-and-history-a-worked-decision-path-cross-referenced-to-later-chapters" class="level3" data-number="2.6.4">
-<h3 data-number="2.6.4" class="anchored" data-anchor-id="sec-vision-engineering-scope-definitions-and-history-a-worked-decision-path-cross-referenced-to-later-chapters"><span class="header-section-number">2.6.4</span> A worked decision path, cross-referenced to later chapters</h3>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p><strong>Content status:</strong> Placeholder.</p>
-<p>This subsection has not yet been drafted or technically reviewed.</p>
-</div>
-</div>
-</div>
 
 
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
@@ -2406,17 +2369,14 @@ Table&nbsp;2.3: Examples of current machine-vision professional certification ro
 <div id="ref-a3_cvp_advanced_course_list" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[149] </div><div class="csl-right-inline">Association for Advancing Automation (A3), <span>‘Course list for the certified vision professional (CVP) advanced program’</span>. Accessed: Aug. 19, 2026. [Online]. Available: <a href="https://www.automate.org/vision/certified-vision-professional/cvp-advanced-course-list">https://www.automate.org/vision/certified-vision-professional/cvp-advanced-course-list</a></div>
 </div>
-<div id="ref-a3_certified_system_integrator_program" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[150] </div><div class="csl-right-inline">Association for Advancing Automation (A3), <span>‘Certified system integrator program’</span>. Accessed: Aug. 19, 2026. [Online]. Available: <a href="https://www.automate.org/vision/vision-certifications/certified-system-integrator-program">https://www.automate.org/vision/vision-certifications/certified-system-integrator-program</a></div>
-</div>
 <div id="ref-emva_1288_certification" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[151] </div><div class="csl-right-inline">European Machine Vision Association (EMVA), <span>‘EMVA 1288 certification’</span>. Accessed: Aug. 19, 2026. [Online]. Available: <a href="https://www.emva.org/standards-technology/emva-1288/emva-1288-certfication-2/">https://www.emva.org/standards-technology/emva-1288/emva-1288-certfication-2/</a></div>
+<div class="csl-left-margin">[150] </div><div class="csl-right-inline">European Machine Vision Association (EMVA), <span>‘EMVA 1288 certification’</span>. Accessed: Aug. 19, 2026. [Online]. Available: <a href="https://www.emva.org/standards-technology/emva-1288/emva-1288-certfication-2/">https://www.emva.org/standards-technology/emva-1288/emva-1288-certfication-2/</a></div>
 </div>
 <div id="ref-emva_genicam" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[152] </div><div class="csl-right-inline">European Machine Vision Association (EMVA), <span>‘GenICam’</span>. Accessed: Aug. 19, 2026. [Online]. Available: <a href="https://www.emva.org/standards-technology/genicam/">https://www.emva.org/standards-technology/genicam/</a></div>
+<div class="csl-left-margin">[151] </div><div class="csl-right-inline">European Machine Vision Association (EMVA), <span>‘GenICam’</span>. Accessed: Aug. 19, 2026. [Online]. Available: <a href="https://www.emva.org/standards-technology/genicam/">https://www.emva.org/standards-technology/genicam/</a></div>
 </div>
 <div id="ref-iso_dis_24942_2026" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[153] </div><div class="csl-right-inline">International Organization for Standardization, <span>‘<span class="nocase">ISO/DIS 24942: Cameras and image sensors used for machine vision applications — Method to measure, compute and present specification parameters and characterization data</span>’</span>. 2026. Accessed: Aug. 19, 2026. [Online]. Available: <a href="https://www.iso.org/standard/88592.html">https://www.iso.org/standard/88592.html</a></div>
+<div class="csl-left-margin">[152] </div><div class="csl-right-inline">International Organization for Standardization, <span>‘<span class="nocase">ISO/DIS 24942: Cameras and image sensors used for machine vision applications — Method to measure, compute and present specification parameters and characterization data</span>’</span>. 2026. Accessed: Aug. 19, 2026. [Online]. Available: <a href="https://www.iso.org/standard/88592.html">https://www.iso.org/standard/88592.html</a></div>
 </div>
 </div>
 </section>

@@ -1,8 +1,8 @@
 schema-version: 1
 release:
-  tag: v2026.08.20
-  released_at: 2026-08-20
+  tag: v2026.09.02
+  released_at: 2026-09-02
   source_branch: main
-  summary: Republishe with chapter 1 content not completed.
+  summary: Fix pdf formatting and course page.
   notes: na.
-  editor_commit: ed1ebf1a22ad0da9f623453653b7a53946414564
+  editor_commit: 3add2747c3b8f4070a900e8e26c002037697309c
