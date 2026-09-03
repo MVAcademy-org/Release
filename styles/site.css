@@ -42,6 +42,18 @@
 .mva-status-not-started { background: #e5e9ed; }
 .mva-course-action { margin: .85rem 0 1.35rem; }
 .mva-course-action .btn { align-items: center; display: inline-flex; gap: .45rem; }
+.mva-syllabus { margin: 1rem 0 2rem; }
+.mva-syllabus-legend { display: flex; flex-wrap: wrap; gap: 1rem; margin: 0 0 .75rem; font-size: .9rem; }
+.mva-syllabus-legend > span { align-items: center; display: inline-flex; gap: .4rem; }
+.mva-syllabus-marker { border-radius: 999px; display: inline-block; height: .7rem; margin-right: .45rem; width: .7rem; }
+.mva-syllabus-marker-lecture { background: #176b96; }
+.mva-syllabus-marker-laboratory { background: #5f7f3d; }
+.mva-syllabus-table-wrap { overflow-x: auto; }
+.mva-syllabus-table { margin-bottom: 0; min-width: 760px; width: 100%; }
+.mva-syllabus-table th, .mva-syllabus-table td { vertical-align: top; }
+.mva-syllabus-lecture td { background: rgba(23, 107, 150, .055); }
+.mva-syllabus-laboratory td { background: rgba(95, 127, 61, .065); }
+.mva-syllabus-empty td { color: #566b7a; }
 .mva-contact-form { background: #f8fbfd; border: 1px solid var(--mva-border); border-radius: .65rem; max-width: 850px; padding: 2rem; }
 .mva-form-row { display: grid; gap: 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .mva-form-field { margin-bottom: 1.2rem; }

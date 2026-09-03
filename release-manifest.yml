@@ -1,8 +1,8 @@
 schema-version: 1
 release:
-  tag: v2026.09.03
+  tag: v2026.09.03-1
   released_at: 2026-09-03
   source_branch: main
-  summary: Add MVA-101-01.pptx.
+  summary: Add syllabus table
   notes: na.
-  editor_commit: 6ec1d821a2d2efdf3adf1e2f1e928aeadcd63b15
+  editor_commit: 2554d51e5b1d53c71d5dad2b2c409f329d6d6d58
