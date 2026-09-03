@@ -1,0 +1,629 @@
+\babel@toc {british}{}\relax 
+\contentsline {chapter}{\numberline {1}Machine Vision Engineering Handbook}{xvii}{chapter.1}%
+\contentsline {chapter}{Welcome}{xix}{chapter*.2}%
+\contentsline {section}{Who is this handbook for?}{xix}{chapter*.2}%
+\contentsline {section}{Revision history}{xix}{chapter*.2}%
+\contentsline {chapter}{Acknowledgements}{xxi}{chapter*.3}%
+\contentsline {chapter}{Notation}{xxiii}{chapter*.4}%
+\contentsline {part}{\numberline {I}Foundations}{xxv}{part.1}%
+\contentsline {chapter}{\numberline {2}Vision engineering: scope, definitions and history}{1}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Machine vision, computer vision and image processing}{1}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Working definitions and industrial success criteria}{1}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}The four fields: image processing, computer vision, machine vision and AI}{2}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Relations, overlaps and typical confusions}{3}{subsection.2.1.3}%
+\contentsline {section}{\numberline {2.2}Historical development: several timelines, one discipline}{4}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}The innovation timeline: when images became computable}{4}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}The industrial timeline: from bespoke lab prototypes to deployable vision}{9}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}The product timeline: how the industrial toolbox formed}{10}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}The everyday consumer timeline: when vision escaped the laboratory and factory}{18}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}What the history reveals}{20}{subsection.2.2.5}%
+\contentsline {section}{\numberline {2.3}Industrial application families}{20}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Measurement and non-contact gauging}{22}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Defect inspection}{23}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Identification of unique parts: codes, characters and traceability}{24}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}Guidance and robot vision}{25}{subsection.2.3.4}%
+\contentsline {section}{\numberline {2.4}System architectures}{26}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Device Edge Computing}{27}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Machine Edge Computing}{30}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}On-Premises Vision Server}{33}{subsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.4.4}Cloud Inference}{35}{subsection.2.4.4}%
+\contentsline {subsection}{\numberline {2.4.5}Comparison and selection criteria}{37}{subsection.2.4.5}%
+\contentsline {section}{\numberline {2.5}The vision system as an engineered chain}{40}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}The seven stages: presentation, illumination, optics, sensor, processing, decision and action}{40}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Constraint-first engineering: solve the image before the algorithm}{43}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}How the chain interacts: propagate the requirement end to end}{46}{subsection.2.5.3}%
+\contentsline {subsection}{\numberline {2.5.4}Professional roles, standards and certification landscape}{47}{subsection.2.5.4}%
+\contentsline {chapter}{\numberline {3}Light, colour and radiometry}{51}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Physical foundations of light}{51}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Electromagnetic spectrum and the visible band}{51}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Radiometric quantities: radiant flux, irradiance, radiance}{51}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Photometric quantities and the photopic response}{51}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}The inverse-square law and cosine law}{51}{subsection.3.1.4}%
+\contentsline {section}{\numberline {3.2}Interaction of light with matter}{51}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Specular and diffuse reflection; the BRDF}{51}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Transmission, refraction and Snell's law}{52}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Absorption and fluorescence}{52}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Scattering and translucency}{52}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}Implications for surface inspection}{52}{subsection.3.2.5}%
+\contentsline {section}{\numberline {3.3}Colour}{52}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Trichromacy and the human visual system}{52}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Colour matching and the CIE XYZ system}{52}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Working colour spaces: RGB, sRGB, HSV, HSL, Lab}{52}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Colour temperature and illuminants}{53}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}White balance and colour constancy}{53}{subsection.3.3.5}%
+\contentsline {section}{\numberline {3.4}Polarisation}{53}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}States of polarisation and Stokes parameters}{53}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Polarisers, retarders and the Fresnel equations}{53}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Polarisation-resolving sensors}{53}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}Industrial uses: glare suppression, stress imaging, transparent-material inspection}{53}{subsection.3.4.4}%
+\contentsline {chapter}{\numberline {4}Optics and lens systems}{55}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Geometric optics}{55}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}The pinhole model}{55}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Thin- and thick-lens models}{55}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Focal length, f-number, aperture}{55}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}Field of view and working distance}{55}{subsection.4.1.4}%
+\contentsline {subsection}{\numberline {4.1.5}Depth of field and hyperfocal distance}{55}{subsection.4.1.5}%
+\contentsline {section}{\numberline {4.2}Real lens behaviour}{56}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Spherical and chromatic aberration}{56}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Geometric distortion: radial and tangential}{56}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Vignetting and cos⁴ fall-off}{56}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Modulation transfer function and resolving power}{56}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}Diffraction limit}{56}{subsection.4.2.5}%
+\contentsline {section}{\numberline {4.3}Specialty optics}{56}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Telecentric lenses for metrology}{56}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Macro and micro imaging}{56}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Line-scan and Scheimpflug configurations}{57}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Liquid and variable-focus lenses}{57}{subsection.4.3.4}%
+\contentsline {section}{\numberline {4.4}Optical filters}{57}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Bandpass, longpass and shortpass filters}{57}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Polarising filters in imaging}{57}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Neutral density, UV cut and IR cut filters}{57}{subsection.4.4.3}%
+\contentsline {subsection}{\numberline {4.4.4}Interference filters and dichroic elements}{57}{subsection.4.4.4}%
+\contentsline {subsection}{\numberline {4.4.5}Filter placement and stacking}{57}{subsection.4.4.5}%
+\contentsline {section}{\numberline {4.5}Selecting an optical configuration}{58}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Matching focal length to sensor size, FOV and working distance}{58}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Resolution and DOF budgeting from the feature specification}{58}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}When telecentricity, filtering or specialty optics are required}{58}{subsection.4.5.3}%
+\contentsline {subsection}{\numberline {4.5.4}Mount standards and mechanical envelope: C, CS, F, M42, S-mount}{58}{subsection.4.5.4}%
+\contentsline {subsection}{\numberline {4.5.5}A lens-selection workflow, cross-referenced to Chapters 2 and 5}{58}{subsection.4.5.5}%
+\contentsline {part}{\numberline {II}Image Formation}{59}{part.2}%
+\contentsline {chapter}{\numberline {5}Illumination for vision}{63}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Illumination principles}{63}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Light and geometry as the first solution}{63}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Contrast, feature enhancement and defect visibility}{63}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}The lighting-first design method}{63}{subsection.5.1.3}%
+\contentsline {section}{\numberline {5.2}Illumination geometries}{63}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Frontal and diffuse illumination}{63}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Directional and grazing illumination}{63}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Backlighting for silhouettes and dimensioning}{64}{subsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.2.4}Coaxial (on-axis) illumination}{64}{subsection.5.2.4}%
+\contentsline {subsection}{\numberline {5.2.5}Dome and cloudy-day illumination}{64}{subsection.5.2.5}%
+\contentsline {subsection}{\numberline {5.2.6}Dark-field illumination}{64}{subsection.5.2.6}%
+\contentsline {subsection}{\numberline {5.2.7}Structured light}{64}{subsection.5.2.7}%
+\contentsline {section}{\numberline {5.3}Light sources}{64}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}LEDs: colour, drive, lifetime, thermal management}{64}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Fluorescent, halogen and xenon sources}{64}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Laser sources and safety classes}{65}{subsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.3.4}Continuous, strobed and pulsed operation}{65}{subsection.5.3.4}%
+\contentsline {section}{\numberline {5.4}Wavelength selection}{65}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Visible-band choices and colour separation}{65}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Near-infrared imaging}{65}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Ultraviolet imaging}{65}{subsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.4.4}Short-wave infrared and thermal imaging}{65}{subsection.5.4.4}%
+\contentsline {subsection}{\numberline {5.4.5}Multispectral and hyperspectral approaches}{65}{subsection.5.4.5}%
+\contentsline {section}{\numberline {5.5}Environmental integration}{66}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Ambient light rejection}{66}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Enclosures, shrouds and shielding}{66}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.5.3}Vibration, contamination and thermal drift}{66}{subsection.5.5.3}%
+\contentsline {section}{\numberline {5.6}Designing an illumination solution}{66}{section.5.6}%
+\contentsline {subsection}{\numberline {5.6.1}Characterising the feature and the surface}{66}{subsection.5.6.1}%
+\contentsline {subsection}{\numberline {5.6.2}Single-plane versus multi-plane and 3D features}{66}{subsection.5.6.2}%
+\contentsline {subsection}{\numberline {5.6.3}Edge visibility for measurement versus contrast for detection}{66}{subsection.5.6.3}%
+\contentsline {subsection}{\numberline {5.6.4}Matching geometry to task: a decision guide}{66}{subsection.5.6.4}%
+\contentsline {subsection}{\numberline {5.6.5}Combining geometry, wavelength and filtering}{67}{subsection.5.6.5}%
+\contentsline {subsection}{\numberline {5.6.6}Worked examples: from part to lighting choice}{67}{subsection.5.6.6}%
+\contentsline {chapter}{\numberline {6}Image sensors and cameras}{69}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Sensor technologies}{69}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}CCD architecture and readout}{69}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}CMOS architecture: global vs rolling shutter}{69}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.3}Line-scan and TDI sensors}{69}{subsection.6.1.3}%
+\contentsline {subsection}{\numberline {6.1.4}SPAD, event-based and neuromorphic sensors}{69}{subsection.6.1.4}%
+\contentsline {subsection}{\numberline {6.1.5}Multispectral and hyperspectral sensor architectures}{69}{subsection.6.1.5}%
+\contentsline {section}{\numberline {6.2}Sensor performance and noise}{70}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Quantum efficiency and spectral response}{70}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Read noise, shot noise, dark current, fixed-pattern noise}{70}{subsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.2.3}Dynamic range and bit depth}{70}{subsection.6.2.3}%
+\contentsline {subsection}{\numberline {6.2.4}Full-well capacity and saturation}{70}{subsection.6.2.4}%
+\contentsline {subsection}{\numberline {6.2.5}Signal-to-noise budgeting}{70}{subsection.6.2.5}%
+\contentsline {section}{\numberline {6.3}Sampling, resolution and colour acquisition}{70}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Pixel pitch, sensor size and effective resolution}{70}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Bayer patterns and demosaicing}{70}{subsection.6.3.2}%
+\contentsline {subsection}{\numberline {6.3.3}3-CCD and multi-sensor colour}{71}{subsection.6.3.3}%
+\contentsline {subsection}{\numberline {6.3.4}Monochrome versus colour trade-offs}{71}{subsection.6.3.4}%
+\contentsline {section}{\numberline {6.4}Camera interfaces and image transport}{71}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Interface selection criteria: bandwidth, cable length, CPU load, cost}{71}{subsection.6.4.1}%
+\contentsline {subsection}{\numberline {6.4.2}USB3 Vision: bandwidth, cable limits and use cases}{71}{subsection.6.4.2}%
+\contentsline {subsection}{\numberline {6.4.3}Camera Link, CoaXPress and frame-grabber-based interfaces}{71}{subsection.6.4.3}%
+\contentsline {subsection}{\numberline {6.4.4}Legacy and niche interfaces: FireWire, analogue, MIPI CSI}{71}{subsection.6.4.4}%
+\contentsline {subsection}{\numberline {6.4.5}Triggering, exposure control and time stamping}{71}{subsection.6.4.5}%
+\contentsline {section}{\numberline {6.5}GigE Vision in depth}{72}{section.6.5}%
+\contentsline {subsection}{\numberline {6.5.1}Generational bandwidth: 1, 5, 10 and 25 GbE and practical reach}{72}{subsection.6.5.1}%
+\contentsline {subsection}{\numberline {6.5.2}The GigE Vision protocol: discovery, stream and control channels}{72}{subsection.6.5.2}%
+\contentsline {subsection}{\numberline {6.5.3}Network configuration: jumbo packets, dedicated NICs, receive buffers}{72}{subsection.6.5.3}%
+\contentsline {subsection}{\numberline {6.5.4}Multi-camera topologies, switches and bandwidth budgeting}{72}{subsection.6.5.4}%
+\contentsline {subsection}{\numberline {6.5.5}Power over Ethernet and cabling}{72}{subsection.6.5.5}%
+\contentsline {subsection}{\numberline {6.5.6}GenICam and cross-vendor interoperability}{72}{subsection.6.5.6}%
+\contentsline {section}{\numberline {6.6}Selecting a camera and interface}{72}{section.6.6}%
+\contentsline {subsection}{\numberline {6.6.1}From resolution and speed requirement to sensor choice}{72}{subsection.6.6.1}%
+\contentsline {subsection}{\numberline {6.6.2}Matching interface to bandwidth, distance and architecture}{73}{subsection.6.6.2}%
+\contentsline {subsection}{\numberline {6.6.3}Area-scan versus line-scan decision}{73}{subsection.6.6.3}%
+\contentsline {subsection}{\numberline {6.6.4}A camera-and-interface selection workflow}{73}{subsection.6.6.4}%
+\contentsline {part}{\numberline {III}Image Processing}{75}{part.3}%
+\contentsline {chapter}{\numberline {7}Digital images: representation and pixel-level processing}{79}{chapter.7}%
+\contentsline {section}{\numberline {7.1}The digital image as a signal}{79}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Sampling, quantisation and the resulting data model}{79}{subsection.7.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}Coordinate systems, indexing and boundary conventions}{79}{subsection.7.1.2}%
+\contentsline {subsection}{\numberline {7.1.3}Colour, greyscale and multi-channel representations}{79}{subsection.7.1.3}%
+\contentsline {subsection}{\numberline {7.1.4}File formats and lossless vs lossy compression}{79}{subsection.7.1.4}%
+\contentsline {section}{\numberline {7.2}Point operations}{79}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Brightness, contrast and gain}{79}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Look-up tables, gamma and tone curves}{80}{subsection.7.2.2}%
+\contentsline {subsection}{\numberline {7.2.3}Histogram equalisation and adaptive stretching}{80}{subsection.7.2.3}%
+\contentsline {subsection}{\numberline {7.2.4}Thresholding as a point operation}{80}{subsection.7.2.4}%
+\contentsline {section}{\numberline {7.3}Arithmetic and logical operations}{80}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Pixel-wise arithmetic and blending}{80}{subsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.3.2}Absolute and signed differences}{80}{subsection.7.3.2}%
+\contentsline {subsection}{\numberline {7.3.3}Masking and region-of-interest operations}{80}{subsection.7.3.3}%
+\contentsline {subsection}{\numberline {7.3.4}Bitwise operations on binary images}{80}{subsection.7.3.4}%
+\contentsline {section}{\numberline {7.4}Noise models and denoising choices}{81}{section.7.4}%
+\contentsline {subsection}{\numberline {7.4.1}Gaussian, Poisson and impulse noise models}{81}{subsection.7.4.1}%
+\contentsline {subsection}{\numberline {7.4.2}Estimating noise from image statistics}{81}{subsection.7.4.2}%
+\contentsline {subsection}{\numberline {7.4.3}Choosing a denoiser: signal preservation vs artefact suppression}{81}{subsection.7.4.3}%
+\contentsline {chapter}{\numberline {8}Neighbourhood operations and image filtering}{83}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Convolution and correlation}{83}{section.8.1}%
+\contentsline {subsection}{\numberline {8.1.1}Discrete convolution in two dimensions}{83}{subsection.8.1.1}%
+\contentsline {subsection}{\numberline {8.1.2}Separable and rank-one kernels}{83}{subsection.8.1.2}%
+\contentsline {subsection}{\numberline {8.1.3}Boundary handling: zero, reflect, replicate, wrap}{83}{subsection.8.1.3}%
+\contentsline {subsection}{\numberline {8.1.4}Computational cost and efficient implementations}{83}{subsection.8.1.4}%
+\contentsline {section}{\numberline {8.2}Smoothing filters}{83}{section.8.2}%
+\contentsline {subsection}{\numberline {8.2.1}Box (mean) filter and integral images}{83}{subsection.8.2.1}%
+\contentsline {subsection}{\numberline {8.2.2}Gaussian filter and σ selection}{84}{subsection.8.2.2}%
+\contentsline {subsection}{\numberline {8.2.3}Median and rank-order filters}{84}{subsection.8.2.3}%
+\contentsline {subsection}{\numberline {8.2.4}Bilateral and edge-preserving filters}{84}{subsection.8.2.4}%
+\contentsline {subsection}{\numberline {8.2.5}Non-local means}{84}{subsection.8.2.5}%
+\contentsline {section}{\numberline {8.3}Derivative and edge filters}{84}{section.8.3}%
+\contentsline {subsection}{\numberline {8.3.1}First-order operators: Sobel, Prewitt, Scharr}{84}{subsection.8.3.1}%
+\contentsline {subsection}{\numberline {8.3.2}Second-order operators: Laplacian and Laplacian of Gaussian}{84}{subsection.8.3.2}%
+\contentsline {subsection}{\numberline {8.3.3}Gradient magnitude and orientation}{84}{subsection.8.3.3}%
+\contentsline {subsection}{\numberline {8.3.4}Sub-pixel edge localisation}{85}{subsection.8.3.4}%
+\contentsline {section}{\numberline {8.4}The frequency domain}{85}{section.8.4}%
+\contentsline {subsection}{\numberline {8.4.1}The 2D discrete Fourier transform}{85}{subsection.8.4.1}%
+\contentsline {subsection}{\numberline {8.4.2}Magnitude, phase and their perceptual roles}{85}{subsection.8.4.2}%
+\contentsline {subsection}{\numberline {8.4.3}The convolution theorem}{85}{subsection.8.4.3}%
+\contentsline {subsection}{\numberline {8.4.4}Low-pass, high-pass and band-pass filtering}{85}{subsection.8.4.4}%
+\contentsline {subsection}{\numberline {8.4.5}Frequency-domain inspection of periodic structure}{85}{subsection.8.4.5}%
+\contentsline {subsection}{\numberline {8.4.6}The sampling theorem and aliasing}{85}{subsection.8.4.6}%
+\contentsline {section}{\numberline {8.5}Scale space and image pyramids}{86}{section.8.5}%
+\contentsline {subsection}{\numberline {8.5.1}Scale-space theory in outline}{86}{subsection.8.5.1}%
+\contentsline {subsection}{\numberline {8.5.2}The Gaussian pyramid}{86}{subsection.8.5.2}%
+\contentsline {subsection}{\numberline {8.5.3}The Laplacian pyramid}{86}{subsection.8.5.3}%
+\contentsline {subsection}{\numberline {8.5.4}Multi-resolution processing patterns}{86}{subsection.8.5.4}%
+\contentsline {section}{\numberline {8.6}Choosing a filtering strategy}{86}{section.8.6}%
+\contentsline {subsection}{\numberline {8.6.1}Matching a filter to the noise model and the feature}{86}{subsection.8.6.1}%
+\contentsline {subsection}{\numberline {8.6.2}Preserving edges while suppressing noise}{86}{subsection.8.6.2}%
+\contentsline {subsection}{\numberline {8.6.3}Spatial versus frequency-domain: when each wins}{86}{subsection.8.6.3}%
+\contentsline {subsection}{\numberline {8.6.4}Ordering operations in a preprocessing pipeline}{87}{subsection.8.6.4}%
+\contentsline {chapter}{\numberline {9}Segmentation, morphology and blob analysis}{89}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Thresholding methods}{89}{section.9.1}%
+\contentsline {subsection}{\numberline {9.1.1}Global thresholds and manual selection}{89}{subsection.9.1.1}%
+\contentsline {subsection}{\numberline {9.1.2}Otsu's method}{89}{subsection.9.1.2}%
+\contentsline {subsection}{\numberline {9.1.3}Adaptive and locally-adaptive thresholding}{89}{subsection.9.1.3}%
+\contentsline {subsection}{\numberline {9.1.4}Multi-level and hysteresis thresholding}{89}{subsection.9.1.4}%
+\contentsline {section}{\numberline {9.2}Region-based segmentation}{89}{section.9.2}%
+\contentsline {subsection}{\numberline {9.2.1}Region growing and merging}{89}{subsection.9.2.1}%
+\contentsline {subsection}{\numberline {9.2.2}Watershed segmentation}{90}{subsection.9.2.2}%
+\contentsline {subsection}{\numberline {9.2.3}Superpixels: SLIC and successors}{90}{subsection.9.2.3}%
+\contentsline {subsection}{\numberline {9.2.4}Graph-cut segmentation}{90}{subsection.9.2.4}%
+\contentsline {section}{\numberline {9.3}Edge-based segmentation}{90}{section.9.3}%
+\contentsline {subsection}{\numberline {9.3.1}The Canny detector}{90}{subsection.9.3.1}%
+\contentsline {subsection}{\numberline {9.3.2}Edge linking and boundary tracing}{90}{subsection.9.3.2}%
+\contentsline {subsection}{\numberline {9.3.3}Active contours (snakes) and level sets}{90}{subsection.9.3.3}%
+\contentsline {section}{\numberline {9.4}Mathematical morphology}{90}{section.9.4}%
+\contentsline {subsection}{\numberline {9.4.1}Structuring elements}{90}{subsection.9.4.1}%
+\contentsline {subsection}{\numberline {9.4.2}Erosion and dilation}{91}{subsection.9.4.2}%
+\contentsline {subsection}{\numberline {9.4.3}Opening and closing}{91}{subsection.9.4.3}%
+\contentsline {subsection}{\numberline {9.4.4}Hit-or-miss transform and skeletonisation}{91}{subsection.9.4.4}%
+\contentsline {subsection}{\numberline {9.4.5}Distance transforms and reconstruction}{91}{subsection.9.4.5}%
+\contentsline {subsection}{\numberline {9.4.6}Greyscale morphology}{91}{subsection.9.4.6}%
+\contentsline {section}{\numberline {9.5}Connected-components and blob analysis}{91}{section.9.5}%
+\contentsline {subsection}{\numberline {9.5.1}Connectivity and labelling algorithms}{91}{subsection.9.5.1}%
+\contentsline {subsection}{\numberline {9.5.2}Region properties: area, perimeter, centroid}{91}{subsection.9.5.2}%
+\contentsline {subsection}{\numberline {9.5.3}Geometric moments and Hu invariants}{92}{subsection.9.5.3}%
+\contentsline {subsection}{\numberline {9.5.4}Shape descriptors: circularity, eccentricity, compactness}{92}{subsection.9.5.4}%
+\contentsline {subsection}{\numberline {9.5.5}Filtering blobs by property}{92}{subsection.9.5.5}%
+\contentsline {section}{\numberline {9.6}Choosing a segmentation approach}{92}{section.9.6}%
+\contentsline {subsection}{\numberline {9.6.1}Thresholding versus region versus edge versus learned}{92}{subsection.9.6.1}%
+\contentsline {subsection}{\numberline {9.6.2}Reliability under illumination and contrast variation}{92}{subsection.9.6.2}%
+\contentsline {subsection}{\numberline {9.6.3}Combining segmentation with morphological clean-up}{92}{subsection.9.6.3}%
+\contentsline {chapter}{\numberline {10}Feature detection, description and matching}{93}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Interest-point detection}{93}{section.10.1}%
+\contentsline {subsection}{\numberline {10.1.1}The Moravec detector and the corner concept}{93}{subsection.10.1.1}%
+\contentsline {subsection}{\numberline {10.1.2}Harris and Shi--Tomasi corners}{93}{subsection.10.1.2}%
+\contentsline {subsection}{\numberline {10.1.3}Scale-invariant detection: difference of Gaussians}{93}{subsection.10.1.3}%
+\contentsline {subsection}{\numberline {10.1.4}Hessian-based detectors}{93}{subsection.10.1.4}%
+\contentsline {subsection}{\numberline {10.1.5}FAST and AGAST corners for real-time use}{93}{subsection.10.1.5}%
+\contentsline {section}{\numberline {10.2}Feature description}{94}{section.10.2}%
+\contentsline {subsection}{\numberline {10.2.1}SIFT descriptor}{94}{subsection.10.2.1}%
+\contentsline {subsection}{\numberline {10.2.2}SURF descriptor}{94}{subsection.10.2.2}%
+\contentsline {subsection}{\numberline {10.2.3}Binary descriptors: BRIEF, ORB, BRISK, FREAK}{94}{subsection.10.2.3}%
+\contentsline {subsection}{\numberline {10.2.4}Learned descriptors: SuperPoint and successors}{94}{subsection.10.2.4}%
+\contentsline {section}{\numberline {10.3}Feature matching}{94}{section.10.3}%
+\contentsline {subsection}{\numberline {10.3.1}Distance metrics: L2, Hamming}{94}{subsection.10.3.1}%
+\contentsline {subsection}{\numberline {10.3.2}Brute-force and FLANN matching}{94}{subsection.10.3.2}%
+\contentsline {subsection}{\numberline {10.3.3}The Lowe ratio test and cross-check}{94}{subsection.10.3.3}%
+\contentsline {subsection}{\numberline {10.3.4}Robust matching with RANSAC and MSAC}{95}{subsection.10.3.4}%
+\contentsline {section}{\numberline {10.4}Template and pattern matching}{95}{section.10.4}%
+\contentsline {subsection}{\numberline {10.4.1}Sum of squared and absolute differences}{95}{subsection.10.4.1}%
+\contentsline {subsection}{\numberline {10.4.2}Normalised cross-correlation}{95}{subsection.10.4.2}%
+\contentsline {subsection}{\numberline {10.4.3}Rotation- and scale-invariant template matching}{95}{subsection.10.4.3}%
+\contentsline {subsection}{\numberline {10.4.4}Geometric pattern matching (edge-model methods)}{95}{subsection.10.4.4}%
+\contentsline {section}{\numberline {10.5}Line, circle and shape detection}{95}{section.10.5}%
+\contentsline {subsection}{\numberline {10.5.1}The Hough transform for lines}{95}{subsection.10.5.1}%
+\contentsline {subsection}{\numberline {10.5.2}The Hough transform for circles}{95}{subsection.10.5.2}%
+\contentsline {subsection}{\numberline {10.5.3}The generalised Hough transform}{96}{subsection.10.5.3}%
+\contentsline {subsection}{\numberline {10.5.4}Direct fitting: least-squares lines, circles, ellipses}{96}{subsection.10.5.4}%
+\contentsline {subsection}{\numberline {10.5.5}Robust fitting with RANSAC}{96}{subsection.10.5.5}%
+\contentsline {section}{\numberline {10.6}Choosing a feature method}{96}{section.10.6}%
+\contentsline {subsection}{\numberline {10.6.1}Repeatability, invariance and speed trade-offs}{96}{subsection.10.6.1}%
+\contentsline {subsection}{\numberline {10.6.2}Hand-crafted versus learned features}{96}{subsection.10.6.2}%
+\contentsline {subsection}{\numberline {10.6.3}Matching the detector--descriptor pair to the task}{96}{subsection.10.6.3}%
+\contentsline {chapter}{\numberline {11}Geometric transformations, calibration and registration}{97}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Coordinate systems and homogeneous coordinates}{97}{section.11.1}%
+\contentsline {subsection}{\numberline {11.1.1}Image, camera, world and object frames}{97}{subsection.11.1.1}%
+\contentsline {subsection}{\numberline {11.1.2}Homogeneous representation of points and lines}{97}{subsection.11.1.2}%
+\contentsline {subsection}{\numberline {11.1.3}Matrix representation of transformations}{97}{subsection.11.1.3}%
+\contentsline {section}{\numberline {11.2}The 2D transformation hierarchy}{97}{section.11.2}%
+\contentsline {subsection}{\numberline {11.2.1}Rigid, similarity and affine transformations}{97}{subsection.11.2.1}%
+\contentsline {subsection}{\numberline {11.2.2}Projective transformations (homographies)}{97}{subsection.11.2.2}%
+\contentsline {subsection}{\numberline {11.2.3}Estimation from point correspondences}{98}{subsection.11.2.3}%
+\contentsline {subsection}{\numberline {11.2.4}Robust estimation of homographies}{98}{subsection.11.2.4}%
+\contentsline {section}{\numberline {11.3}Image warping and interpolation}{98}{section.11.3}%
+\contentsline {subsection}{\numberline {11.3.1}Forward vs inverse mapping}{98}{subsection.11.3.1}%
+\contentsline {subsection}{\numberline {11.3.2}Nearest-neighbour, bilinear and bicubic interpolation}{98}{subsection.11.3.2}%
+\contentsline {subsection}{\numberline {11.3.3}Anti-aliased warping}{98}{subsection.11.3.3}%
+\contentsline {section}{\numberline {11.4}The pinhole camera model}{98}{section.11.4}%
+\contentsline {subsection}{\numberline {11.4.1}Intrinsic parameters and the camera matrix}{98}{subsection.11.4.1}%
+\contentsline {subsection}{\numberline {11.4.2}Extrinsic parameters}{98}{subsection.11.4.2}%
+\contentsline {subsection}{\numberline {11.4.3}Radial and tangential distortion models}{99}{subsection.11.4.3}%
+\contentsline {section}{\numberline {11.5}Camera calibration}{99}{section.11.5}%
+\contentsline {subsection}{\numberline {11.5.1}Zhang's method and the planar-target approach}{99}{subsection.11.5.1}%
+\contentsline {subsection}{\numberline {11.5.2}Calibration targets and image-acquisition strategy}{99}{subsection.11.5.2}%
+\contentsline {subsection}{\numberline {11.5.3}Reprojection error and calibration diagnostics}{99}{subsection.11.5.3}%
+\contentsline {subsection}{\numberline {11.5.4}Uncertainty and re-calibration policy}{99}{subsection.11.5.4}%
+\contentsline {subsection}{\numberline {11.5.5}Hand-eye calibration for robot vision}{99}{subsection.11.5.5}%
+\contentsline {section}{\numberline {11.6}Image registration}{99}{section.11.6}%
+\contentsline {subsection}{\numberline {11.6.1}Feature-based registration pipelines}{99}{subsection.11.6.1}%
+\contentsline {subsection}{\numberline {11.6.2}Intensity-based (direct) registration}{100}{subsection.11.6.2}%
+\contentsline {subsection}{\numberline {11.6.3}Registration for inspection: golden templates}{100}{subsection.11.6.3}%
+\contentsline {subsection}{\numberline {11.6.4}Mosaicing and stitching}{100}{subsection.11.6.4}%
+\contentsline {section}{\numberline {11.7}Image-comparison metrics}{100}{section.11.7}%
+\contentsline {subsection}{\numberline {11.7.1}Absolute and squared differences; PSNR}{100}{subsection.11.7.1}%
+\contentsline {subsection}{\numberline {11.7.2}SSIM and multi-scale SSIM}{100}{subsection.11.7.2}%
+\contentsline {subsection}{\numberline {11.7.3}Histogram-distance metrics}{100}{subsection.11.7.3}%
+\contentsline {subsection}{\numberline {11.7.4}Learned perceptual metrics (outline)}{100}{subsection.11.7.4}%
+\contentsline {part}{\numberline {IV}3D Vision and Motion}{101}{part.4}%
+\contentsline {chapter}{\numberline {12}Stereo and 3D vision}{105}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Two-view geometry}{105}{section.12.1}%
+\contentsline {subsection}{\numberline {12.1.1}The epipolar constraint}{105}{subsection.12.1.1}%
+\contentsline {subsection}{\numberline {12.1.2}The essential and fundamental matrices}{105}{subsection.12.1.2}%
+\contentsline {subsection}{\numberline {12.1.3}Estimation from correspondences}{105}{subsection.12.1.3}%
+\contentsline {subsection}{\numberline {12.1.4}Stereo rectification}{105}{subsection.12.1.4}%
+\contentsline {section}{\numberline {12.2}Stereo matching}{105}{section.12.2}%
+\contentsline {subsection}{\numberline {12.2.1}Block-matching costs: SAD, SSD, NCC, census}{105}{subsection.12.2.1}%
+\contentsline {subsection}{\numberline {12.2.2}Aggregation and disparity selection}{106}{subsection.12.2.2}%
+\contentsline {subsection}{\numberline {12.2.3}Semi-global matching}{106}{subsection.12.2.3}%
+\contentsline {subsection}{\numberline {12.2.4}Learned stereo matchers (outline)}{106}{subsection.12.2.4}%
+\contentsline {subsection}{\numberline {12.2.5}Disparity to depth and triangulation}{106}{subsection.12.2.5}%
+\contentsline {section}{\numberline {12.3}Uncertainty in 3D measurement}{106}{section.12.3}%
+\contentsline {subsection}{\numberline {12.3.1}Depth-error propagation from disparity}{106}{subsection.12.3.1}%
+\contentsline {subsection}{\numberline {12.3.2}Task uncertainty versus datasheet accuracy}{106}{subsection.12.3.2}%
+\contentsline {subsection}{\numberline {12.3.3}Uncertainty budgets for 3D measurement}{106}{subsection.12.3.3}%
+\contentsline {section}{\numberline {12.4}3D imaging modalities}{107}{section.12.4}%
+\contentsline {subsection}{\numberline {12.4.1}Passive stereo}{107}{subsection.12.4.1}%
+\contentsline {subsection}{\numberline {12.4.2}Structured-light triangulation and fringe projection}{107}{subsection.12.4.2}%
+\contentsline {subsection}{\numberline {12.4.3}Time-of-flight cameras}{107}{subsection.12.4.3}%
+\contentsline {subsection}{\numberline {12.4.4}LiDAR and long-range sensing}{107}{subsection.12.4.4}%
+\contentsline {subsection}{\numberline {12.4.5}Photogrammetry, structure from motion and MVS}{107}{subsection.12.4.5}%
+\contentsline {subsection}{\numberline {12.4.6}Comparison and selection guide}{107}{subsection.12.4.6}%
+\contentsline {section}{\numberline {12.5}Point clouds and 3D representations}{107}{section.12.5}%
+\contentsline {subsection}{\numberline {12.5.1}Point-cloud data structures and file formats}{107}{subsection.12.5.1}%
+\contentsline {subsection}{\numberline {12.5.2}Filtering, downsampling and normal estimation}{108}{subsection.12.5.2}%
+\contentsline {subsection}{\numberline {12.5.3}Meshing and surface reconstruction}{108}{subsection.12.5.3}%
+\contentsline {subsection}{\numberline {12.5.4}Voxelisation and occupancy representations}{108}{subsection.12.5.4}%
+\contentsline {section}{\numberline {12.6}Point-cloud registration and alignment}{108}{section.12.6}%
+\contentsline {subsection}{\numberline {12.6.1}Iterative closest point (ICP) and variants}{108}{subsection.12.6.1}%
+\contentsline {subsection}{\numberline {12.6.2}Feature-based 3D registration}{108}{subsection.12.6.2}%
+\contentsline {subsection}{\numberline {12.6.3}Global alignment strategies}{108}{subsection.12.6.3}%
+\contentsline {section}{\numberline {12.7}3D measurement in practice}{108}{section.12.7}%
+\contentsline {subsection}{\numberline {12.7.1}Sensor acceptance testing with calibrated artefacts}{108}{subsection.12.7.1}%
+\contentsline {subsection}{\numberline {12.7.2}Surface interaction: specular and translucent materials}{109}{subsection.12.7.2}%
+\contentsline {subsection}{\numberline {12.7.3}Warm-up drift and environmental control}{109}{subsection.12.7.3}%
+\contentsline {chapter}{\numberline {13}Motion, tracking and event-based vision}{111}{chapter.13}%
+\contentsline {section}{\numberline {13.1}Motion representation}{111}{section.13.1}%
+\contentsline {subsection}{\numberline {13.1.1}The brightness-constancy assumption}{111}{subsection.13.1.1}%
+\contentsline {subsection}{\numberline {13.1.2}Sparse vs dense motion fields}{111}{subsection.13.1.2}%
+\contentsline {section}{\numberline {13.2}Optical flow}{111}{section.13.2}%
+\contentsline {subsection}{\numberline {13.2.1}The Lucas--Kanade method}{111}{subsection.13.2.1}%
+\contentsline {subsection}{\numberline {13.2.2}The Horn--Schunck method}{111}{subsection.13.2.2}%
+\contentsline {subsection}{\numberline {13.2.3}Dense flow: Farnebäck and pyramidal schemes}{111}{subsection.13.2.3}%
+\contentsline {subsection}{\numberline {13.2.4}Learned optical flow (outline)}{112}{subsection.13.2.4}%
+\contentsline {section}{\numberline {13.3}Background modelling and change detection}{112}{section.13.3}%
+\contentsline {subsection}{\numberline {13.3.1}Frame differencing}{112}{subsection.13.3.1}%
+\contentsline {subsection}{\numberline {13.3.2}Gaussian mixture models}{112}{subsection.13.3.2}%
+\contentsline {subsection}{\numberline {13.3.3}Robust background subtraction}{112}{subsection.13.3.3}%
+\contentsline {section}{\numberline {13.4}Object tracking}{112}{section.13.4}%
+\contentsline {subsection}{\numberline {13.4.1}Template and feature tracking}{112}{subsection.13.4.1}%
+\contentsline {subsection}{\numberline {13.4.2}Mean-shift and correlation-filter trackers}{112}{subsection.13.4.2}%
+\contentsline {subsection}{\numberline {13.4.3}Kalman filters and particle filters}{112}{subsection.13.4.3}%
+\contentsline {subsection}{\numberline {13.4.4}Multi-object tracking and data association}{113}{subsection.13.4.4}%
+\contentsline {section}{\numberline {13.5}Event-based vision}{113}{section.13.5}%
+\contentsline {subsection}{\numberline {13.5.1}The event-camera imaging principle}{113}{subsection.13.5.1}%
+\contentsline {subsection}{\numberline {13.5.2}Representations: event frames, time surfaces, voxel grids}{113}{subsection.13.5.2}%
+\contentsline {subsection}{\numberline {13.5.3}Algorithms on event streams}{113}{subsection.13.5.3}%
+\contentsline {subsection}{\numberline {13.5.4}Industrial fit and integration considerations}{113}{subsection.13.5.4}%
+\contentsline {part}{\numberline {V}Deep Learning}{115}{part.5}%
+\contentsline {chapter}{\numberline {14}Machine learning foundations for vision}{119}{chapter.14}%
+\contentsline {section}{\numberline {14.1}The learning paradigm}{119}{section.14.1}%
+\contentsline {subsection}{\numberline {14.1.1}Supervised, unsupervised and self-supervised learning}{119}{subsection.14.1.1}%
+\contentsline {subsection}{\numberline {14.1.2}Training, validation and test sets}{119}{subsection.14.1.2}%
+\contentsline {subsection}{\numberline {14.1.3}Bias, variance and generalisation}{119}{subsection.14.1.3}%
+\contentsline {subsection}{\numberline {14.1.4}Cross-validation and model selection}{119}{subsection.14.1.4}%
+\contentsline {section}{\numberline {14.2}Classical classifiers}{119}{section.14.2}%
+\contentsline {subsection}{\numberline {14.2.1}Linear and logistic regression}{119}{subsection.14.2.1}%
+\contentsline {subsection}{\numberline {14.2.2}K-nearest neighbours}{120}{subsection.14.2.2}%
+\contentsline {subsection}{\numberline {14.2.3}Support vector machines and kernels}{120}{subsection.14.2.3}%
+\contentsline {subsection}{\numberline {14.2.4}Decision trees, random forests and boosting}{120}{subsection.14.2.4}%
+\contentsline {subsection}{\numberline {14.2.5}Bayesian classifiers}{120}{subsection.14.2.5}%
+\contentsline {section}{\numberline {14.3}Feature engineering and dimensionality reduction}{120}{section.14.3}%
+\contentsline {subsection}{\numberline {14.3.1}Hand-crafted image features}{120}{subsection.14.3.1}%
+\contentsline {subsection}{\numberline {14.3.2}Principal component analysis}{120}{subsection.14.3.2}%
+\contentsline {subsection}{\numberline {14.3.3}Linear discriminant analysis}{120}{subsection.14.3.3}%
+\contentsline {subsection}{\numberline {14.3.4}Manifold learning (outline)}{121}{subsection.14.3.4}%
+\contentsline {section}{\numberline {14.4}Loss functions and optimisation}{121}{section.14.4}%
+\contentsline {subsection}{\numberline {14.4.1}Squared, absolute and Huber loss}{121}{subsection.14.4.1}%
+\contentsline {subsection}{\numberline {14.4.2}Cross-entropy and log-loss}{121}{subsection.14.4.2}%
+\contentsline {subsection}{\numberline {14.4.3}Gradient descent and its variants}{121}{subsection.14.4.3}%
+\contentsline {subsection}{\numberline {14.4.4}Regularisation: L1, L2, elastic net}{121}{subsection.14.4.4}%
+\contentsline {section}{\numberline {14.5}Evaluation of classifiers}{121}{section.14.5}%
+\contentsline {subsection}{\numberline {14.5.1}The confusion matrix}{121}{subsection.14.5.1}%
+\contentsline {subsection}{\numberline {14.5.2}Accuracy, precision, recall, F-score}{121}{subsection.14.5.2}%
+\contentsline {subsection}{\numberline {14.5.3}ROC and precision-recall curves; AUC}{122}{subsection.14.5.3}%
+\contentsline {subsection}{\numberline {14.5.4}Class imbalance and industrial reality}{122}{subsection.14.5.4}%
+\contentsline {section}{\numberline {14.6}Choosing classical versus deep approaches}{122}{section.14.6}%
+\contentsline {subsection}{\numberline {14.6.1}Data availability and labelling cost}{122}{subsection.14.6.1}%
+\contentsline {subsection}{\numberline {14.6.2}Interpretability and validation burden}{122}{subsection.14.6.2}%
+\contentsline {subsection}{\numberline {14.6.3}When hand-crafted features still win}{122}{subsection.14.6.3}%
+\contentsline {chapter}{\numberline {15}Neural networks and deep learning}{123}{chapter.15}%
+\contentsline {section}{\numberline {15.1}Feed-forward networks}{123}{section.15.1}%
+\contentsline {subsection}{\numberline {15.1.1}Neurons, layers and activation functions}{123}{subsection.15.1.1}%
+\contentsline {subsection}{\numberline {15.1.2}ReLU, sigmoid, tanh, GELU}{123}{subsection.15.1.2}%
+\contentsline {subsection}{\numberline {15.1.3}Softmax outputs and cross-entropy}{123}{subsection.15.1.3}%
+\contentsline {subsection}{\numberline {15.1.4}Universal approximation and the role of depth}{123}{subsection.15.1.4}%
+\contentsline {section}{\numberline {15.2}Backpropagation and automatic differentiation}{123}{section.15.2}%
+\contentsline {subsection}{\numberline {15.2.1}The chain rule on the computational graph}{123}{subsection.15.2.1}%
+\contentsline {subsection}{\numberline {15.2.2}Forward and reverse-mode differentiation}{124}{subsection.15.2.2}%
+\contentsline {subsection}{\numberline {15.2.3}Practical implementation in modern frameworks}{124}{subsection.15.2.3}%
+\contentsline {section}{\numberline {15.3}Optimisation of deep models}{124}{section.15.3}%
+\contentsline {subsection}{\numberline {15.3.1}Stochastic gradient descent and mini-batching}{124}{subsection.15.3.1}%
+\contentsline {subsection}{\numberline {15.3.2}Momentum, Nesterov and Adam}{124}{subsection.15.3.2}%
+\contentsline {subsection}{\numberline {15.3.3}Learning-rate schedules and warm-up}{124}{subsection.15.3.3}%
+\contentsline {subsection}{\numberline {15.3.4}Weight decay, dropout, batch and layer normalisation}{124}{subsection.15.3.4}%
+\contentsline {subsection}{\numberline {15.3.5}Data augmentation for images}{124}{subsection.15.3.5}%
+\contentsline {subsection}{\numberline {15.3.6}Early stopping and validation monitoring}{125}{subsection.15.3.6}%
+\contentsline {section}{\numberline {15.4}Convolutional neural networks}{125}{section.15.4}%
+\contentsline {subsection}{\numberline {15.4.1}The convolutional layer and parameter sharing}{125}{subsection.15.4.1}%
+\contentsline {subsection}{\numberline {15.4.2}Pooling, stride and receptive field}{125}{subsection.15.4.2}%
+\contentsline {subsection}{\numberline {15.4.3}Padding conventions and output-size arithmetic}{125}{subsection.15.4.3}%
+\contentsline {subsection}{\numberline {15.4.4}Feature hierarchies and interpretability}{125}{subsection.15.4.4}%
+\contentsline {section}{\numberline {15.5}Canonical architectures}{125}{section.15.5}%
+\contentsline {subsection}{\numberline {15.5.1}LeNet-5, AlexNet, VGG}{125}{subsection.15.5.1}%
+\contentsline {subsection}{\numberline {15.5.2}GoogLeNet / Inception}{125}{subsection.15.5.2}%
+\contentsline {subsection}{\numberline {15.5.3}ResNet and residual connections}{126}{subsection.15.5.3}%
+\contentsline {subsection}{\numberline {15.5.4}DenseNet, MobileNet, EfficientNet}{126}{subsection.15.5.4}%
+\contentsline {subsection}{\numberline {15.5.5}Vision transformers and hybrid models}{126}{subsection.15.5.5}%
+\contentsline {section}{\numberline {15.6}Training strategy for industrial data}{126}{section.15.6}%
+\contentsline {subsection}{\numberline {15.6.1}Transfer learning and fine-tuning}{126}{subsection.15.6.1}%
+\contentsline {subsection}{\numberline {15.6.2}Small-data regimes and few-shot learning}{126}{subsection.15.6.2}%
+\contentsline {subsection}{\numberline {15.6.3}Class-imbalance countermeasures}{126}{subsection.15.6.3}%
+\contentsline {subsection}{\numberline {15.6.4}Reproducibility: seeds, versioning, provenance}{126}{subsection.15.6.4}%
+\contentsline {chapter}{\numberline {16}Deep learning for classification, detection, segmentation and anomaly}{127}{chapter.16}%
+\contentsline {section}{\numberline {16.1}Image classification}{127}{section.16.1}%
+\contentsline {subsection}{\numberline {16.1.1}Whole-image classification pipelines}{127}{subsection.16.1.1}%
+\contentsline {subsection}{\numberline {16.1.2}Multi-label classification}{127}{subsection.16.1.2}%
+\contentsline {subsection}{\numberline {16.1.3}Fine-grained classification}{127}{subsection.16.1.3}%
+\contentsline {subsection}{\numberline {16.1.4}Evaluation with imbalanced industrial datasets}{127}{subsection.16.1.4}%
+\contentsline {section}{\numberline {16.2}Object detection}{127}{section.16.2}%
+\contentsline {subsection}{\numberline {16.2.1}Two-stage detectors: R-CNN, Fast R-CNN, Faster R-CNN}{127}{subsection.16.2.1}%
+\contentsline {subsection}{\numberline {16.2.2}One-stage detectors: YOLO family, SSD, RetinaNet}{128}{subsection.16.2.2}%
+\contentsline {subsection}{\numberline {16.2.3}Anchor-free detectors: FCOS, CenterNet}{128}{subsection.16.2.3}%
+\contentsline {subsection}{\numberline {16.2.4}Transformer-based detection: DETR}{128}{subsection.16.2.4}%
+\contentsline {subsection}{\numberline {16.2.5}Evaluation: IoU, mAP, per-class analysis}{128}{subsection.16.2.5}%
+\contentsline {section}{\numberline {16.3}Semantic and instance segmentation}{128}{section.16.3}%
+\contentsline {subsection}{\numberline {16.3.1}Fully convolutional networks}{128}{subsection.16.3.1}%
+\contentsline {subsection}{\numberline {16.3.2}U-Net and encoder--decoder architectures}{128}{subsection.16.3.2}%
+\contentsline {subsection}{\numberline {16.3.3}DeepLab and dilated convolutions}{128}{subsection.16.3.3}%
+\contentsline {subsection}{\numberline {16.3.4}Mask R-CNN for instance segmentation}{129}{subsection.16.3.4}%
+\contentsline {subsection}{\numberline {16.3.5}Panoptic segmentation}{129}{subsection.16.3.5}%
+\contentsline {section}{\numberline {16.4}Anomaly and defect detection}{129}{section.16.4}%
+\contentsline {subsection}{\numberline {16.4.1}Reconstruction-based methods: autoencoders and GANs}{129}{subsection.16.4.1}%
+\contentsline {subsection}{\numberline {16.4.2}Embedding-based methods: PatchCore, PaDiM, SPADE}{129}{subsection.16.4.2}%
+\contentsline {subsection}{\numberline {16.4.3}One-class classifiers and Deep SVDD}{129}{subsection.16.4.3}%
+\contentsline {subsection}{\numberline {16.4.4}Benchmarks: MVTec AD and industrial extensions}{129}{subsection.16.4.4}%
+\contentsline {subsection}{\numberline {16.4.5}Choosing between anomaly detection and supervised approaches}{129}{subsection.16.4.5}%
+\contentsline {section}{\numberline {16.5}Related tasks in industrial vision}{130}{section.16.5}%
+\contentsline {subsection}{\numberline {16.5.1}Keypoint detection and pose estimation}{130}{subsection.16.5.1}%
+\contentsline {subsection}{\numberline {16.5.2}Deep OCR and OCV}{130}{subsection.16.5.2}%
+\contentsline {subsection}{\numberline {16.5.3}Depth estimation from a single image}{130}{subsection.16.5.3}%
+\contentsline {subsection}{\numberline {16.5.4}Self-supervised representation learning}{130}{subsection.16.5.4}%
+\contentsline {part}{\numberline {VI}Deployment and Compliance}{131}{part.6}%
+\contentsline {chapter}{\numberline {17}From theory to tools: selection, cross-platform mapping and inspection-flow design}{135}{chapter.17}%
+\contentsline {section}{\numberline {17.1}The industrial vision software landscape}{135}{section.17.1}%
+\contentsline {subsection}{\numberline {17.1.1}Configurable tool sets versus code libraries}{135}{subsection.17.1.1}%
+\contentsline {subsection}{\numberline {17.1.2}Open-source libraries: OpenCV, scikit-image, PyTorch/TF ecosystems}{135}{subsection.17.1.2}%
+\contentsline {subsection}{\numberline {17.1.3}Commercial libraries and SDKs: Halcon, VisionPro, Sapera}{135}{subsection.17.1.3}%
+\contentsline {subsection}{\numberline {17.1.4}Smart-sensor and no-code environments: Keyence, Zebra Aurora, In-Sight}{135}{subsection.17.1.4}%
+\contentsline {subsection}{\numberline {17.1.5}Configuring versus programming: trade-offs and consequences}{135}{subsection.17.1.5}%
+\contentsline {section}{\numberline {17.2}Cross-platform tool mapping}{136}{section.17.2}%
+\contentsline {subsection}{\numberline {17.2.1}How to read the mapping tables: theory concept to platform tool}{136}{subsection.17.2.1}%
+\contentsline {subsection}{\numberline {17.2.2}Acquisition and preprocessing across platforms}{136}{subsection.17.2.2}%
+\contentsline {subsection}{\numberline {17.2.3}Edge, line and circle detection: OpenCV / VisionPro / Halcon / In-Sight / Keyence / Zebra Aurora}{136}{subsection.17.2.3}%
+\contentsline {subsection}{\numberline {17.2.4}Pattern location and alignment across platforms}{136}{subsection.17.2.4}%
+\contentsline {subsection}{\numberline {17.2.5}Measurement and gauging tools across platforms}{136}{subsection.17.2.5}%
+\contentsline {subsection}{\numberline {17.2.6}Defect and surface-inspection tools across platforms}{136}{subsection.17.2.6}%
+\contentsline {subsection}{\numberline {17.2.7}Identification: barcode, Data Matrix, OCR/OCV across platforms}{136}{subsection.17.2.7}%
+\contentsline {subsection}{\numberline {17.2.8}Deep-learning tools across platforms}{137}{subsection.17.2.8}%
+\contentsline {subsection}{\numberline {17.2.9}Limits of equivalence: where tools do not map cleanly}{137}{subsection.17.2.9}%
+\contentsline {section}{\numberline {17.3}Selecting and prioritising tools}{137}{section.17.3}%
+\contentsline {subsection}{\numberline {17.3.1}From feature and task to candidate tools}{137}{subsection.17.3.1}%
+\contentsline {subsection}{\numberline {17.3.2}Prioritisation: robustness, speed, determinism, maintainability}{137}{subsection.17.3.2}%
+\contentsline {subsection}{\numberline {17.3.3}Rule-based versus learned tools for a given problem}{137}{subsection.17.3.3}%
+\contentsline {subsection}{\numberline {17.3.4}A tool-selection decision guide, cross-referenced to theory chapters}{137}{subsection.17.3.4}%
+\contentsline {section}{\numberline {17.4}Designing an inspection as a sequence of steps}{137}{section.17.4}%
+\contentsline {subsection}{\numberline {17.4.1}Decomposing an objective into ordered steps}{137}{subsection.17.4.1}%
+\contentsline {subsection}{\numberline {17.4.2}The step pattern: objective, tools, region, output}{138}{subsection.17.4.2}%
+\contentsline {subsection}{\numberline {17.4.3}Locate--mask--measure--decide as a canonical flow}{138}{subsection.17.4.3}%
+\contentsline {subsection}{\numberline {17.4.4}Worked example: scratch inspection decomposed into steps}{138}{subsection.17.4.4}%
+\contentsline {section}{\numberline {17.5}Thresholds, checks and pass/fail logic}{138}{section.17.5}%
+\contentsline {subsection}{\numberline {17.5.1}Per-step checks: presence, contrast, dimension, position limits}{138}{subsection.17.5.1}%
+\contentsline {subsection}{\numberline {17.5.2}Setting limits and thresholds on tool outputs}{138}{subsection.17.5.2}%
+\contentsline {subsection}{\numberline {17.5.3}Building the overall pass/fail decision from step results}{138}{subsection.17.5.3}%
+\contentsline {subsection}{\numberline {17.5.4}Failure attribution: knowing which step failed and why}{138}{subsection.17.5.4}%
+\contentsline {section}{\numberline {17.6}Exposing KPIs and data-driven threshold setting}{139}{section.17.6}%
+\contentsline {subsection}{\numberline {17.6.1}Choosing KPIs and measured outputs per tool and step}{139}{subsection.17.6.1}%
+\contentsline {subsection}{\numberline {17.6.2}Logging tool outputs for offline analysis}{139}{subsection.17.6.2}%
+\contentsline {subsection}{\numberline {17.6.3}Batch statistical analysis to set thresholds and margins}{139}{subsection.17.6.3}%
+\contentsline {subsection}{\numberline {17.6.4}Separating good/bad populations and setting operating points}{139}{subsection.17.6.4}%
+\contentsline {subsection}{\numberline {17.6.5}Linking threshold setting to the validation of Chapter 18}{139}{subsection.17.6.5}%
+\contentsline {section}{\numberline {17.7}Software design practice for vision applications}{139}{section.17.7}%
+\contentsline {subsection}{\numberline {17.7.1}Modularity, reuse and configuration management}{139}{subsection.17.7.1}%
+\contentsline {subsection}{\numberline {17.7.2}Robustness: handling absent, occluded and out-of-spec parts}{139}{subsection.17.7.2}%
+\contentsline {subsection}{\numberline {17.7.3}Defensive checks, error states and safe defaults}{140}{subsection.17.7.3}%
+\contentsline {subsection}{\numberline {17.7.4}Version control, documentation and change control of vision jobs}{140}{subsection.17.7.4}%
+\contentsline {subsection}{\numberline {17.7.5}Performance, cycle time and resource budgeting}{140}{subsection.17.7.5}%
+\contentsline {chapter}{\numberline {18}Systems integration and industrial interfacing}{141}{chapter.18}%
+\contentsline {section}{\numberline {18.1}Industrial communication}{141}{section.18.1}%
+\contentsline {subsection}{\numberline {18.1.1}EtherNet/IP and PROFINET}{141}{subsection.18.1.1}%
+\contentsline {subsection}{\numberline {18.1.2}Modbus TCP and serial protocols}{141}{subsection.18.1.2}%
+\contentsline {subsection}{\numberline {18.1.3}OPC-UA and information modelling}{141}{subsection.18.1.3}%
+\contentsline {subsection}{\numberline {18.1.4}MQTT and vision-to-cloud patterns}{141}{subsection.18.1.4}%
+\contentsline {section}{\numberline {18.2}Integration with PLCs}{141}{section.18.2}%
+\contentsline {subsection}{\numberline {18.2.1}Handshaking and trigger management}{141}{subsection.18.2.1}%
+\contentsline {subsection}{\numberline {18.2.2}Result data structures and tags}{142}{subsection.18.2.2}%
+\contentsline {subsection}{\numberline {18.2.3}Timing budgets and cycle time}{142}{subsection.18.2.3}%
+\contentsline {section}{\numberline {18.3}Integration with robots}{142}{section.18.3}%
+\contentsline {subsection}{\numberline {18.3.1}Coordinate-frame transformations and hand-eye calibration}{142}{subsection.18.3.1}%
+\contentsline {subsection}{\numberline {18.3.2}Fixed and moving cameras}{142}{subsection.18.3.2}%
+\contentsline {subsection}{\numberline {18.3.3}Pick-and-place and vision-guided assembly}{142}{subsection.18.3.3}%
+\contentsline {subsection}{\numberline {18.3.4}Bin picking and 3D-guided robotics}{142}{subsection.18.3.4}%
+\contentsline {section}{\numberline {18.4}Line integration}{142}{section.18.4}%
+\contentsline {subsection}{\numberline {18.4.1}Reject mechanisms and part tracking}{142}{subsection.18.4.1}%
+\contentsline {subsection}{\numberline {18.4.2}Statistical process-control feedback}{143}{subsection.18.4.2}%
+\contentsline {subsection}{\numberline {18.4.3}Traceability and data-logging architecture}{143}{subsection.18.4.3}%
+\contentsline {subsection}{\numberline {18.4.4}Human--machine interfaces for vision stations}{143}{subsection.18.4.4}%
+\contentsline {chapter}{\numberline {19}Validation, measurement uncertainty and sampling for inspection}{145}{chapter.19}%
+\contentsline {section}{\numberline {19.1}Defining acceptance}{145}{section.19.1}%
+\contentsline {subsection}{\numberline {19.1.1}False accept and false reject rates}{145}{subsection.19.1.1}%
+\contentsline {subsection}{\numberline {19.1.2}The confusion matrix in industrial terms}{145}{subsection.19.1.2}%
+\contentsline {subsection}{\numberline {19.1.3}Producer and consumer risk}{145}{subsection.19.1.3}%
+\contentsline {subsection}{\numberline {19.1.4}Setting acceptance criteria from requirements}{145}{subsection.19.1.4}%
+\contentsline {section}{\numberline {19.2}Repeatability and reproducibility}{145}{section.19.2}%
+\contentsline {subsection}{\numberline {19.2.1}Sources of variation in a vision measurement}{145}{subsection.19.2.1}%
+\contentsline {subsection}{\numberline {19.2.2}Attribute Gauge R\&R: method and calculation}{146}{subsection.19.2.2}%
+\contentsline {subsection}{\numberline {19.2.3}Variable Gauge R\&R by the ANOVA method}{146}{subsection.19.2.3}%
+\contentsline {subsection}{\numberline {19.2.4}Kappa statistics and inter-rater/inter-system agreement}{146}{subsection.19.2.4}%
+\contentsline {subsection}{\numberline {19.2.5}Interpreting \%R\&R, \%tolerance and number of distinct categories}{146}{subsection.19.2.5}%
+\contentsline {section}{\numberline {19.3}Confidence, tolerance and statistical intervals}{146}{section.19.3}%
+\contentsline {subsection}{\numberline {19.3.1}Confidence intervals for proportions and means}{146}{subsection.19.3.1}%
+\contentsline {subsection}{\numberline {19.3.2}Tolerance intervals and coverage}{146}{subsection.19.3.2}%
+\contentsline {subsection}{\numberline {19.3.3}Confidence--reliability statements (e.g.~95/95)}{146}{subsection.19.3.3}%
+\contentsline {subsection}{\numberline {19.3.4}Propagation of uncertainty through a measurement chain}{147}{subsection.19.3.4}%
+\contentsline {section}{\numberline {19.4}Sampling plans for inspection validation}{147}{section.19.4}%
+\contentsline {subsection}{\numberline {19.4.1}Attributes versus variables sampling}{147}{subsection.19.4.1}%
+\contentsline {subsection}{\numberline {19.4.2}Binomial and hypergeometric bases for attribute plans}{147}{subsection.19.4.2}%
+\contentsline {subsection}{\numberline {19.4.3}Operating-characteristic curves, AQL and RQL/LTPD}{147}{subsection.19.4.3}%
+\contentsline {subsection}{\numberline {19.4.4}Zero-acceptance (c=0) plans and their use}{147}{subsection.19.4.4}%
+\contentsline {subsection}{\numberline {19.4.5}Confidence--reliability sample-size formulae}{147}{subsection.19.4.5}%
+\contentsline {subsection}{\numberline {19.4.6}ANSI/ASQ Z1.4, Z1.9 and ISO 2859 in practice}{147}{subsection.19.4.6}%
+\contentsline {section}{\numberline {19.5}Measurement-system analysis for vision}{148}{section.19.5}%
+\contentsline {subsection}{\numberline {19.5.1}Bias, linearity and stability studies}{148}{subsection.19.5.1}%
+\contentsline {subsection}{\numberline {19.5.2}Uncertainty budgets and traceability}{148}{subsection.19.5.2}%
+\contentsline {subsection}{\numberline {19.5.3}Total measurement uncertainty for vision gauges}{148}{subsection.19.5.3}%
+\contentsline {section}{\numberline {19.6}Verification, troubleshooting and re-validation}{148}{section.19.6}%
+\contentsline {subsection}{\numberline {19.6.1}A systematic troubleshooting method}{148}{subsection.19.6.1}%
+\contentsline {subsection}{\numberline {19.6.2}Isolating optical, lighting, sensor and software failures}{148}{subsection.19.6.2}%
+\contentsline {subsection}{\numberline {19.6.3}Recording and root-cause analysis}{148}{subsection.19.6.3}%
+\contentsline {subsection}{\numberline {19.6.4}Change control and re-validation triggers}{148}{subsection.19.6.4}%
+\contentsline {chapter}{\numberline {20}Deployment, monitoring and human-in-the-loop for learning-based vision}{149}{chapter.20}%
+\contentsline {section}{\numberline {20.1}From trained model to production system}{149}{section.20.1}%
+\contentsline {subsection}{\numberline {20.1.1}Model export and interchange (ONNX)}{149}{subsection.20.1.1}%
+\contentsline {subsection}{\numberline {20.1.2}Quantisation, pruning and operator fusion}{149}{subsection.20.1.2}%
+\contentsline {subsection}{\numberline {20.1.3}Runtime targets: CPU, GPU, edge accelerators}{149}{subsection.20.1.3}%
+\contentsline {subsection}{\numberline {20.1.4}Revalidation of the deployed artefact}{149}{subsection.20.1.4}%
+\contentsline {section}{\numberline {20.2}Dataset governance}{149}{section.20.2}%
+\contentsline {subsection}{\numberline {20.2.1}Collection planning against the operating envelope}{149}{subsection.20.2.1}%
+\contentsline {subsection}{\numberline {20.2.2}Labelling protocols and inter-annotator agreement}{150}{subsection.20.2.2}%
+\contentsline {subsection}{\numberline {20.2.3}Curation, exclusion records and provenance}{150}{subsection.20.2.3}%
+\contentsline {subsection}{\numberline {20.2.4}Versioning and model-to-data traceability}{150}{subsection.20.2.4}%
+\contentsline {section}{\numberline {20.3}Post-deployment monitoring}{150}{section.20.3}%
+\contentsline {subsection}{\numberline {20.3.1}Domain shift and concept drift}{150}{subsection.20.3.1}%
+\contentsline {subsection}{\numberline {20.3.2}Statistical drift detectors}{150}{subsection.20.3.2}%
+\contentsline {subsection}{\numberline {20.3.3}Retraining loops and change control}{150}{subsection.20.3.3}%
+\contentsline {section}{\numberline {20.4}Human-in-the-loop systems}{150}{section.20.4}%
+\contentsline {subsection}{\numberline {20.4.1}Why humans remain in critical and deep-learning loops}{150}{subsection.20.4.1}%
+\contentsline {subsection}{\numberline {20.4.2}Review triggers: low confidence, drift, novelty, borderline cases}{151}{subsection.20.4.2}%
+\contentsline {subsection}{\numberline {20.4.3}Interface and workflow design for human review}{151}{subsection.20.4.3}%
+\contentsline {subsection}{\numberline {20.4.4}Human-in-the-loop as a labelling and improvement engine}{151}{subsection.20.4.4}%
+\contentsline {subsection}{\numberline {20.4.5}Levels of autonomy and human oversight}{151}{subsection.20.4.5}%
+\contentsline {subsection}{\numberline {20.4.6}Automation bias and the limits of human checking}{151}{subsection.20.4.6}%
+\contentsline {section}{\numberline {20.5}Explainability and interpretability}{151}{section.20.5}%
+\contentsline {subsection}{\numberline {20.5.1}Saliency and Grad-CAM}{151}{subsection.20.5.1}%
+\contentsline {subsection}{\numberline {20.5.2}LIME and local surrogates}{151}{subsection.20.5.2}%
+\contentsline {subsection}{\numberline {20.5.3}SHAP and Shapley attributions}{152}{subsection.20.5.3}%
+\contentsline {subsection}{\numberline {20.5.4}Limits of post-hoc explanation}{152}{subsection.20.5.4}%
+\contentsline {subsection}{\numberline {20.5.5}Explanation as debugging versus explanation for audit}{152}{subsection.20.5.5}%
+\contentsline {section}{\numberline {20.6}Bias and fairness in industrial vision}{152}{section.20.6}%
+\contentsline {subsection}{\numberline {20.6.1}Subgroups in industrial data: cavities, suppliers, shifts}{152}{subsection.20.6.1}%
+\contentsline {subsection}{\numberline {20.6.2}Subgroup analysis and reporting}{152}{subsection.20.6.2}%
+\contentsline {subsection}{\numberline {20.6.3}Mitigations: data, loss, imaging}{152}{subsection.20.6.3}%
+\contentsline {subsection}{\numberline {20.6.4}Fairness when the system observes people}{152}{subsection.20.6.4}%
+\contentsline {chapter}{\numberline {21}Process validation and regulation of vision inspections in regulated industries}{153}{chapter.21}%
+\contentsline {section}{\numberline {21.1}Process validation of inspection systems}{153}{section.21.1}%
+\contentsline {subsection}{\numberline {21.1.1}IQ, OQ and PQ for vision systems}{153}{subsection.21.1.1}%
+\contentsline {subsection}{\numberline {21.1.2}Validating an inspection against its acceptance criteria}{153}{subsection.21.1.2}%
+\contentsline {subsection}{\numberline {21.1.3}Linking validation to the sampling and R\&R methods of Chapter 18}{153}{subsection.21.1.3}%
+\contentsline {subsection}{\numberline {21.1.4}Software validation and computer-system validation (CSV/CSA)}{153}{subsection.21.1.4}%
+\contentsline {subsection}{\numberline {21.1.5}Validating learning-based inspections: special considerations}{153}{subsection.21.1.5}%
+\contentsline {section}{\numberline {21.2}The EU Artificial Intelligence Act}{154}{section.21.2}%
+\contentsline {subsection}{\numberline {21.2.1}Scope, definitions and territorial reach}{154}{subsection.21.2.1}%
+\contentsline {subsection}{\numberline {21.2.2}Prohibited practices}{154}{subsection.21.2.2}%
+\contentsline {subsection}{\numberline {21.2.3}The high-risk category and Annex III}{154}{subsection.21.2.3}%
+\contentsline {subsection}{\numberline {21.2.4}Obligations for providers and deployers of high-risk AI}{154}{subsection.21.2.4}%
+\contentsline {subsection}{\numberline {21.2.5}Limited- and minimal-risk tiers}{154}{subsection.21.2.5}%
+\contentsline {subsection}{\numberline {21.2.6}Timelines, enforcement and penalties}{154}{subsection.21.2.6}%
+\contentsline {section}{\numberline {21.3}US regulation for AI and inspection}{154}{section.21.3}%
+\contentsline {subsection}{\numberline {21.3.1}The FDA framework for AI/ML-enabled devices}{154}{subsection.21.3.1}%
+\contentsline {subsection}{\numberline {21.3.2}Predetermined change-control plans and the total-product-lifecycle approach}{155}{subsection.21.3.2}%
+\contentsline {subsection}{\numberline {21.3.3}21 CFR Part 11: electronic records and signatures}{155}{subsection.21.3.3}%
+\contentsline {subsection}{\numberline {21.3.4}NIST AI Risk Management Framework}{155}{subsection.21.3.4}%
+\contentsline {subsection}{\numberline {21.3.5}Comparison of EU and US approaches}{155}{subsection.21.3.5}%
+\contentsline {section}{\numberline {21.4}Medical-device and pharmaceutical inspection}{155}{section.21.4}%
+\contentsline {subsection}{\numberline {21.4.1}MDR and IVDR requirements relevant to vision inspection}{155}{subsection.21.4.1}%
+\contentsline {subsection}{\numberline {21.4.2}FDA 21 CFR 820 / QSR and process validation expectations}{155}{subsection.21.4.2}%
+\contentsline {subsection}{\numberline {21.4.3}GMP and pharma visual-inspection requirements}{155}{subsection.21.4.3}%
+\contentsline {subsection}{\numberline {21.4.4}Validating automated visual inspection against manual inspection}{156}{subsection.21.4.4}%
+\contentsline {section}{\numberline {21.5}Other high-risk and safety-critical sectors}{156}{section.21.5}%
+\contentsline {subsection}{\numberline {21.5.1}Aerospace inspection and qualification expectations}{156}{subsection.21.5.1}%
+\contentsline {subsection}{\numberline {21.5.2}Automotive quality and functional-safety context}{156}{subsection.21.5.2}%
+\contentsline {subsection}{\numberline {21.5.3}Common threads across regulated industries}{156}{subsection.21.5.3}%
+\contentsline {chapter}{Bibliography}{157}{chapter*.23}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

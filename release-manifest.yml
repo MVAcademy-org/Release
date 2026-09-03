@@ -1,8 +1,8 @@
 schema-version: 1
 release:
-  tag: v2026.09.02
-  released_at: 2026-09-02
+  tag: v2026.09.03
+  released_at: 2026-09-03
   source_branch: main
-  summary: Fix pdf formatting and course page.
+  summary: Add MVA-101-01.pptx.
   notes: na.
-  editor_commit: 3add2747c3b8f4070a900e8e26c002037697309c
+  editor_commit: 6ec1d821a2d2efdf3adf1e2f1e928aeadcd63b15
