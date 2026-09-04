@@ -1,8 +1,8 @@
 schema-version: 1
 release:
-  tag: v2026.09.03-1
-  released_at: 2026-09-03
+  tag: v2026.09.04
+  released_at: 2026-09-04
   source_branch: main
-  summary: Add syllabus table
+  summary: Test cash with Cloudflare
   notes: na.
-  editor_commit: 2554d51e5b1d53c71d5dad2b2c409f329d6d6d58
+  editor_commit: 713f1a394a85a840a10f5725f489713f86999f21

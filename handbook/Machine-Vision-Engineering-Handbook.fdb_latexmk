@@ -1,7 +1,7 @@
 # Fdb version 4
-["lualatex"] 1788453037.23413 "Machine-Vision-Engineering-Handbook.tex" "D:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/Machine-Vision-Engineering-Handbook.pdf" "Machine-Vision-Engineering-Handbook" 1788453057.78389 0
-  "D:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/Machine-Vision-Engineering-Handbook.aux" 1788453057 586891 a1b619ba47c4c58703f4454b5d2c9fff "lualatex"
-  "Machine-Vision-Engineering-Handbook.tex" 1788452995 544669 fd8753a53bf515fc2b744c683d6b9870 ""
+["lualatex"] 1788506457.23407 "Machine-Vision-Engineering-Handbook.tex" "D:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/Machine-Vision-Engineering-Handbook.pdf" "Machine-Vision-Engineering-Handbook" 1788506478.48232 0
+  "D:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/Machine-Vision-Engineering-Handbook.aux" 1788506477 586891 a1b619ba47c4c58703f4454b5d2c9fff "lualatex"
+  "Machine-Vision-Engineering-Handbook.tex" 1788506414 544669 fd8753a53bf515fc2b744c683d6b9870 ""
   "assets/branding/Logo.png" 1787225701 44293 3be26f9e134f4e004554c6867d3767ce ""
   "c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/fontawesome5/FontAwesome5Free-Solid-900.otf" 1788233503 303808 70a8db554e533dec02a44c3d28fd3c40 ""
   "c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf" 1788233338 111240 1d60e9def74b1102bb4defa7cb772ee3 ""
@@ -286,8 +286,8 @@
   "c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz" 1788302509 79658 cf56cd9dbb4f37d27ca16f0efd8d33c3 ""
   "c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-var/tex/generic/config/language.dat" 1788233549 3131 e13dc82b7dd697874da4254be5a130b5 ""
   "c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-var/web2c/luahbtex/lualatex.fmt" 1788233555 6755973 a349806eaa4f2fc7eda326ea1976e70a ""
-  "d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/Machine-Vision-Engineering-Handbook.aux" 1788453057 586891 a1b619ba47c4c58703f4454b5d2c9fff ""
-  "d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/Machine-Vision-Engineering-Handbook.toc" 1788453057 67632 ee5d0619953d6bded08b8497179efdb0 ""
+  "d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/Machine-Vision-Engineering-Handbook.aux" 1788506477 586891 a1b619ba47c4c58703f4454b5d2c9fff ""
+  "d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/Machine-Vision-Engineering-Handbook.toc" 1788506478 67632 ee5d0619953d6bded08b8497179efdb0 ""
   "d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/chapters/vision-engineering-scope-definitions-and-history/assets/figures/LeCun-Demostration.jpg" 1786295902 45608 ab4e348ee9bd9f4a824b133a58299d2f ""
   "d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/chapters/vision-engineering-scope-definitions-and-history/assets/figures/applications-families.png" 1787225913 12775221 a405c5ee3bbb09bd939af0ba29e0657c ""
   "d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/chapters/vision-engineering-scope-definitions-and-history/assets/figures/architecture-spectrum.png" 1787225979 6196441 4639ce2dfddb954b03af18044b1e0981 ""

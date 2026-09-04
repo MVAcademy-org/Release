@@ -102,7 +102,7 @@
     "href": "courses.html",
     "title": "Courses",
     "section": "",
-    "text": "Machine Vision Fundamentals\n       Under development\n\n       Go to course\n      Who is this course for?\n      Engineers, technicians, students and automation professionals who need a structured introduction to industrial machine vision.\n      Pre-requisites\n      Basic algebra and geometryGeneral familiarity with industrial automationNo previous machine-vision programming experience required\n      Learning objective summary\n      Establish the optical, imaging, processing and integration foundations needed to specify and implement reliable vision systems.\n      Estimated time to complete: 21 hours\n    \n  \n\n\n\n  \n    \n      \n        \n      \n    \n    \n      Machine Vision Advanced\n       Not started\n\n\n      Who is this course for?\n      Practitioners who already build conventional vision systems and need deeper capability in calibration, 3D vision and validation.\n      Pre-requisites\n      Machine Vision Fundamentals or equivalent experienceComfort with coordinate systems and basic statisticsSome programming or configurable vision-tool experience, including Python.\n      Learning objective summary\n      Develop robust calibrated, multi-camera and 3D systems while managing uncertainty, integration risk and production variation.\n      Estimated time to complete: 21 hours\n    \n  \n\n\n\n  \n    \n      \n        \n      \n    \n    \n      Machine Vision AI\n       Not started\n\n\n      Who is this course for?\n      Expert Machine Vision engineers looking at expand their skills to the development of end-to-end image processing pipelines with open-source deep learning tools.\n      Pre-requisites\n      Machine Vision Advanced or equivalent knowledgeMedium Python and numerical-computing experienceIntroductory probability and statistics\n      Learning objective summary\n      End-to-end image processing pipelines for deep learning.\n      Estimated time to complete: ---"
+    "text": "Machine Vision Fundamentals\n       Under development\n\n       Go to course\n      Who is this course for?\n      Engineers, technicians, students and automation professionals who need a structured introduction to industrial machine vision.\n      Pre-requisites\n      Basic algebra and geometryGeneral familiarity with industrial automationNo previous machine-vision programming experience required\n      Learning objective summary\n      Establish the optical, imaging, processing and integration foundations needed to specify and implement reliable vision systems.\n      Estimated time to complete: 21 hours\n    \n  \n\n\n\n  \n    \n      \n        \n      \n    \n    \n      Machine Vision Advanced\n       Not started\n\n\n      Who is this course for?\n      Practitioners who already build conventional vision systems and need deeper capability in calibration, 3D vision and validation.\n      Pre-requisites\n      Machine Vision Fundamentals or equivalent experienceComfort with coordinate systems and basic statisticsSome programming or configurable vision-tool experience, including Python.\n      Learning objective summary\n      Develop robust calibrated, multi-camera and 3D systems while managing uncertainty, integration risk and production variation.\n      Estimated time to complete: --\n    \n  \n\n\n\n  \n    \n      \n        \n      \n    \n    \n      Machine Vision AI\n       Not started\n\n\n      Who is this course for?\n      Expert Machine Vision engineers looking at expand their skills to the development of end-to-end image processing pipelines with open-source deep learning tools.\n      Pre-requisites\n      Machine Vision Advanced or equivalent knowledgeMedium Python and numerical-computing experienceIntroductory probability and statistics\n      Learning objective summary\n      End-to-end image processing pipelines for deep learning.\n      Estimated time to complete: --"
   },
   {
     "objectID": "courses/machine-vision-ai.html",
@@ -123,7 +123,7 @@
     "href": "courses/machine-vision-ai.html#pre-requisites",
     "title": "Machine Vision AI",
     "section": "Pre-requisites",
-    "text": "Pre-requisites\n\nMachine Vision Advanced or equivalent knowledge\nMedium Python and numerical-computing experience\nIntroductory probability and statistics\n\nEstimated time to complete: —"
+    "text": "Pre-requisites\n\nMachine Vision Advanced or equivalent knowledge\nMedium Python and numerical-computing experience\nIntroductory probability and statistics\n\nEstimated time to complete: –"
   },
   {
     "objectID": "courses/machine-vision-ai.html#learning-outcomes",
@@ -137,7 +137,7 @@
     "href": "courses/machine-vision-ai.html#syllabus",
     "title": "Machine Vision AI",
     "section": "Syllabus",
-    "text": "Syllabus\n\n\n  \n    Lecture\n    Laboratory\n  \n  \n  \n\n\n\nModule ID\nTitle\nDescription\nEstimated Duration\n\n\n\n\n--\n--\n--\n0 hour"
+    "text": "Syllabus\n\n\n  \n    Lecture\n    Laboratory\n  \n  \n  \n\n\n\nModule ID\nTitle\nDescription\nEstimated Duration\n\n\n\n\n--\n--\n--\n--"
   },
   {
     "objectID": "courses/machine-vision-ai.html#published-course-materials",
@@ -214,7 +214,7 @@
     "href": "courses/machine-vision-advanced.html#pre-requisites",
     "title": "Machine Vision Advanced",
     "section": "Pre-requisites",
-    "text": "Pre-requisites\n\nMachine Vision Fundamentals or equivalent experience\nComfort with coordinate systems and basic statistics\nSome programming or configurable vision-tool experience, including Python.\n\nEstimated time to complete: 21 hours"
+    "text": "Pre-requisites\n\nMachine Vision Fundamentals or equivalent experience\nComfort with coordinate systems and basic statistics\nSome programming or configurable vision-tool experience, including Python.\n\nEstimated time to complete: –"
   },
   {
     "objectID": "courses/machine-vision-advanced.html#learning-outcomes",
@@ -228,7 +228,7 @@
     "href": "courses/machine-vision-advanced.html#syllabus",
     "title": "Machine Vision Advanced",
     "section": "Syllabus",
-    "text": "Syllabus\n\n\n  \n    Lecture\n    Laboratory\n  \n  \n  \n\n\n\nModule ID\nTitle\nDescription\nEstimated Duration\n\n\n\n\n--\n--\n--\n0 hour"
+    "text": "Syllabus\n\n\n  \n    Lecture\n    Laboratory\n  \n  \n  \n\n\n\nModule ID\nTitle\nDescription\nEstimated Duration\n\n\n\n\n--\n--\n--\n--"
   },
   {
     "objectID": "courses/machine-vision-advanced.html#published-course-materials",
