@@ -26,7 +26,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -76,6 +96,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles/handbook.scss">
 </head>
@@ -343,8 +392,8 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#sec-light-colour-and-radiometry-physical-foundations-of-light" id="toc-sec-light-colour-and-radiometry-physical-foundations-of-light" class="nav-link active" data-scroll-target="#sec-light-colour-and-radiometry-physical-foundations-of-light"><span class="header-section-number">3.1</span> Physical foundations of light</a>
   <ul class="collapse">
-  <li><a href="#sec-light-colour-and-radiometry-electromagnetic-spectrum-and-the-visible-band" id="toc-sec-light-colour-and-radiometry-electromagnetic-spectrum-and-the-visible-band" class="nav-link" data-scroll-target="#sec-light-colour-and-radiometry-electromagnetic-spectrum-and-the-visible-band"><span class="header-section-number">3.1.1</span> Electromagnetic spectrum and the visible band</a></li>
-  <li><a href="#sec-light-colour-and-radiometry-radiometric-quantities-radiant-flux-irradiance-radiance" id="toc-sec-light-colour-and-radiometry-radiometric-quantities-radiant-flux-irradiance-radiance" class="nav-link" data-scroll-target="#sec-light-colour-and-radiometry-radiometric-quantities-radiant-flux-irradiance-radiance"><span class="header-section-number">3.1.2</span> Radiometric quantities: radiant flux, irradiance, radiance</a></li>
+  <li><a href="#sec-Electromagnetic-radiation-photons-and-the-optical-spectrum" id="toc-sec-Electromagnetic-radiation-photons-and-the-optical-spectrum" class="nav-link" data-scroll-target="#sec-Electromagnetic-radiation-photons-and-the-optical-spectrum"><span class="header-section-number">3.1.1</span> Electromagnetic radiation, photons and the optical spectrum</a></li>
+  <li><a href="#sec-light-colour-and-radiometry-radiometric-quantities-radiant-flux-irradiance-radiance" id="toc-sec-light-colour-and-radiometry-radiometric-quantities-radiant-flux-irradiance-radiance" class="nav-link" data-scroll-target="#sec-light-colour-and-radiometry-radiometric-quantities-radiant-flux-irradiance-radiance"><span class="header-section-number">3.1.2</span> Radiometric quantities: radiant flux, irradiance and radiance</a></li>
   <li><a href="#sec-light-colour-and-radiometry-photometric-quantities-and-the-photopic-response" id="toc-sec-light-colour-and-radiometry-photometric-quantities-and-the-photopic-response" class="nav-link" data-scroll-target="#sec-light-colour-and-radiometry-photometric-quantities-and-the-photopic-response"><span class="header-section-number">3.1.3</span> Photometric quantities and the photopic response</a></li>
   <li><a href="#sec-light-colour-and-radiometry-the-inverse-square-law-and-cosine-law" id="toc-sec-light-colour-and-radiometry-the-inverse-square-law-and-cosine-law" class="nav-link" data-scroll-target="#sec-light-colour-and-radiometry-the-inverse-square-law-and-cosine-law"><span class="header-section-number">3.1.4</span> The inverse-square law and cosine law</a></li>
   </ul></li>
@@ -396,73 +445,592 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
+<p>Everything a vision system knows about the physical world reaches the sensor through light. A camera does not observe an object directly; it records optical radiation that has been emitted, reflected, transmitted, scattered or otherwise modified by the scene and then admitted by the optical system. The appearance of a scratch, edge, printed mark, transparent layer or coloured component is therefore governed first by the physics of light and matter, and only later by image processing.</p>
+<p>Describing that light is less straightforward than it may initially appear. Depending on the problem, physics represents light using rays, electromagnetic waves or photons, while modern quantum optics provides a deeper description from which some of these behaviours emerge. These models are complementary rather than competing: each exposes different aspects of the same physical phenomenon and becomes useful for different engineering questions. This chapter introduces them at the level required for machine vision, while deliberately avoiding theoretical depth that does not contribute to understanding or designing an imaging system.</p>
+<p>The previous chapter argued for constraint-first engineering: improve the image in the physical world before asking software to compensate for a weak one. This chapter develops the physical language behind that principle. It is deliberately more theoretical because practical decisions about illumination geometry and wavelength, optical filtering, exposure, colour, polarisation and sensor selection ultimately depend on the behaviour of light introduced here.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="From light physics to machine-vision contrast">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
-<p><strong>Chapter status:</strong> Structural placeholder.</p>
-<p>This chapter currently contains the approved heading structure but no reviewed technical content.</p>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>From light physics to machine-vision contrast
 </div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The theory in this chapter becomes useful when it helps us manipulate the difference between a feature and its background. Most practical illumination problems can be approached through a small set of physical levers:</p>
+<ul>
+<li><strong>geometry and angular structure</strong> — decide which reflected or transmitted rays can enter the lens;</li>
+<li><strong>wavelength and spectrum</strong> — exploit differences in reflectance, transmission, absorption or fluorescence;</li>
+<li><strong>filtering and polarisation</strong> — reject unwanted wavelengths, ambient light or specular components;</li>
+<li><strong>optical exposure</strong> — deliver enough useful photons, uniformly and repeatably, within the available motion and cycle-time constraints.</li>
+</ul>
+<p>This chapter explains the physics behind these levers; the later optics and illumination chapters turn them into lens, filter and lighting choices.</p>
+<p>For readers who want a parallel treatment that keeps the complete automated-inspection system in view, Beyerer, Puente León and Frese develop light, image formation and radiometry directly in the context of machine vision rather than as isolated optical theory <span class="citation" data-cites="beyerer2016machinevision"><a href="../../bibliography/references.html#ref-beyerer2016machinevision" role="doc-biblioref">[1]</a></span>.</p>
 </div>
 </div>
 <section id="sec-light-colour-and-radiometry-physical-foundations-of-light" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="sec-light-colour-and-radiometry-physical-foundations-of-light"><span class="header-section-number">3.1</span> Physical foundations of light</h2>
-<section id="sec-light-colour-and-radiometry-electromagnetic-spectrum-and-the-visible-band" class="level3" data-number="3.1.1">
-<h3 data-number="3.1.1" class="anchored" data-anchor-id="sec-light-colour-and-radiometry-electromagnetic-spectrum-and-the-visible-band"><span class="header-section-number">3.1.1</span> Electromagnetic spectrum and the visible band</h3>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
+<p>Before quantifying light, we first need to decide how to describe it. No single model is equally convenient for every problem, and machine vision routinely moves between several.</p>
+<p>The simplest is the <strong>ray model</strong>, which represents light as travelling along idealised paths. It deliberately ignores wave effects such as phase and diffraction, but is remarkably powerful when the dimensions of the imaging system are much larger than the wavelength of light. Ray geometry allows us to reason about illumination direction, reflection, refraction and image formation without describing the underlying electromagnetic field. Perhaps its simplest demonstration is the <strong>pinhole camera</strong>: straight-line geometry alone can explain how points in a three-dimensional scene form an inverted two-dimensional image. The pinhole model is developed in the optics chapter, where it becomes the starting point for perspective, magnification, field of view and lens-based image formation.</p>
+<p>The <strong>electromagnetic-wave model</strong> provides the classical physical description needed when wavelength, phase or polarisation matters. It explains phenomena such as interference and diffraction that cannot be represented adequately using rays alone. At the generation and detection ends of the imaging chain, the <strong>photon description</strong> becomes particularly useful because optical energy is exchanged with matter in discrete quantities. This ultimately underpins LED and laser emission, semiconductor photodetection, quantum efficiency and photon shot noise. Modern quantum optics goes deeper still by describing the electromagnetic field itself as quantised, although this level of theory is rarely required for conventional machine-vision engineering.</p>
+<p>The useful principle is therefore not to search for one model to use everywhere, but to choose the simplest description that captures the phenomenon being considered. The models used throughout the handbook can be summarised as follows:</p>
+<table class="caption-top table">
+<caption>Useful descriptions of light in machine vision.</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Description</th>
+<th>What it represents</th>
+<th>Machine-vision questions it answers</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Geometrical/ray optics</strong></td>
+<td>Light represented by idealised propagation paths; phase is ignored.</td>
+<td>Where does illumination travel? Which reflected rays enter the lens? What field of view and image geometry result?</td>
+</tr>
+<tr class="even">
+<td><strong>Classical electromagnetic waves</strong></td>
+<td>Continuous electric and magnetic fields governed by Maxwell’s equations.</td>
+<td>How do wavelength, phase, interference, diffraction, refraction and polarisation affect the image?</td>
+</tr>
+<tr class="odd">
+<td><strong>Photon / quantum description</strong></td>
+<td>Optical energy exchanged in discrete quanta with energy <span class="math inline">\(E=h\nu\)</span>.</td>
+<td>How much energy does each photon carry? How does a semiconductor detect light? What sets quantum-efficiency and shot-noise limits?</td>
+</tr>
+<tr class="even">
+<td><strong>Quantised electromagnetic field</strong></td>
+<td>Modern quantum-optical description in which field modes are quantised and photons are excitations of those modes.</td>
+<td>Foundations of quantum optics, single-photon statistics and non-classical states; rarely required for conventional machine-vision design.</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled" title="Reference: wave-particle duality without the historical shortcut">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
-<p><strong>Content status:</strong> Placeholder.</p>
-<p>This subsection has not yet been drafted or technically reviewed.</p>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Reference: wave-particle duality without the historical shortcut
 </div>
 </div>
+<div class="callout-body-container callout-body">
+<p>The familiar statement that light is “both a wave and a particle” is useful shorthand, but it can suggest that light literally switches between two classical forms. Modern quantum optics instead treats the electromagnetic field as quantised; photon language describes discrete excitations and energy exchange, while wave-like interference and propagation emerge from the field description. Classical Maxwell theory remains an excellent macroscopic limit for most ordinary imaging conditions.</p>
+<p>For readers who want the formal transition from the classical electromagnetic field to quantum optics, Loudon’s <em>The Quantum Theory of Light</em> develops field quantisation, photon states and quantum-optical phenomena in substantially greater depth <span class="citation" data-cites="loudon2000quantumtheory"><a href="../../bibliography/references.html#ref-loudon2000quantumtheory" role="doc-biblioref">[2]</a></span>.</p>
 </div>
+</div>
+<section id="sec-Electromagnetic-radiation-photons-and-the-optical-spectrum" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="sec-Electromagnetic-radiation-photons-and-the-optical-spectrum"><span class="header-section-number">3.1.1</span> Electromagnetic radiation, photons and the optical spectrum</h3>
+<p>For most of the propagation problems in this handbook, the classical electromagnetic-wave description is the natural starting point. In a homogeneous medium, light can be represented as coupled electric and magnetic fields propagating through space. A monochromatic plane wave has a sinusoidal field variation characterised by amplitude, wavelength, frequency, phase and polarisation. The electric and magnetic fields are transverse to the direction of propagation, and their orientation is the basis of the polarisation concepts developed later in this chapter.</p>
+<p>In vacuum, wavelength and frequency are linked by the speed of light:</p>
+<p><span class="math display">\[c=\lambda\nu,
+\qquad
+c=2.99792458\times10^8\ \mathrm{m\,s^{-1}}.\]</span></p>
+<p>where <span class="math inline">\(\lambda\)</span> is the vacuum wavelength and <span class="math inline">\(\nu\)</span> is frequency. In a medium with refractive index <span class="math inline">\(n\)</span>, the phase velocity becomes</p>
+<p><span class="math display">\[v=\frac{c}{n}.\]</span></p>
+<p>The frequency is fixed by the source and remains continuous across an interface, so the wavelength in the medium becomes</p>
+<p><span class="math display">\[\lambda=\frac{\lambda_0}{n}.\]</span></p>
+<p>This distinction becomes important when refraction, interference, optical thickness or wavelength-dependent material properties are considered.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Reference: the electromagnetic wave behind the ray">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Reference: the electromagnetic wave behind the ray
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In a homogeneous, source-free, non-dispersive region, Maxwell’s equations lead to wave equations of the form</p>
+<p><span class="math display">\[\nabla^2\mathbf{E}
+-\frac{1}{v^2}\frac{\partial^2\mathbf{E}}{\partial t^2}
+=0,
+\qquad
+\nabla^2\mathbf{B}
+-\frac{1}{v^2}\frac{\partial^2\mathbf{B}}{\partial t^2}
+=0.\]</span></p>
+<p>A monochromatic plane-wave solution can be written as</p>
+<p><span class="math display">\[\mathbf{E}(\mathbf{r},t)
+=
+\mathbf{E}_0
+\cos\left(\mathbf{k}\cdot\mathbf{r}-\omega t+\phi\right),\]</span></p>
+<p>with</p>
+<p><span class="math display">\[|\mathbf{k}|=\frac{2\pi}{\lambda},
+\qquad
+\omega=2\pi\nu.\]</span></p>
+<p>You rarely solve Maxwell’s equations directly when selecting a machine-vision light, but the quantities they introduce reappear everywhere: wavelength controls spectral response and diffraction; phase enables interference; field orientation produces polarisation; and electromagnetic boundary conditions lead to reflection and refraction. Geometrical rays are recovered as a useful approximation when wavelength is small compared with the relevant optical dimensions and phase effects can be neglected. Hecht provides a fuller classical treatment of these topics <span class="citation" data-cites="hecht2017optics"><a href="../../bibliography/references.html#ref-hecht2017optics" role="doc-biblioref">[3]</a></span>.</p>
+</div>
+</div>
+<div id="fig-electromagnetic-wave" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-electromagnetic-wave-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<iframe src="assets/animations/Electromagnetic-wave.html" width="100%" height="760" style="border: 0;" loading="lazy" title="Interactive electromagnetic-wave representation">
+</iframe>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-electromagnetic-wave-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.1: Electromagnetic-wave representation. The online edition provides an interactive version; static formats show the corresponding print illustration.
+</figcaption>
+</figure>
+</div>
+<p>The photon description becomes useful when optical energy is generated or absorbed. A photon associated with frequency <span class="math inline">\(\nu\)</span> carries energy</p>
+<p><span class="math display">\[E_{\gamma}=h\nu=\frac{hc}{\lambda},\]</span></p>
+<p>with Planck constant</p>
+<p><span class="math display">\[h=6.62607015\times10^{-34}\ \mathrm{J\,s}.\]</span></p>
+<p>A convenient engineering approximation is</p>
+<p><span class="math display">\[E_\gamma[\mathrm{eV}]
+\approx
+\frac{1240}{\lambda[\mathrm{nm}]}.\]</span></p>
+<p>Shorter-wavelength photons therefore carry more energy individually. In semiconductor detectors, absorbed photons can create electron-hole pairs when the photon energy is compatible with the material’s electronic structure; this helps determine the usable spectral range of the detector. At ordinary illumination levels it is usually convenient to treat optical power continuously in radiometric units, but the sensor signal ultimately arises from a finite number of detected photons, which is why photon statistics reappear later as shot noise.</p>
+<p>The same quantum viewpoint applies at the source. LEDs emit through electron-hole recombination, while lasers rely on stimulated emission. The machine-vision engineer normally does not need to model these processes from first principles; source spectra, radiometric output, stability and modulation behaviour are the useful engineering interfaces. The quantum description explains why those interfaces have the form they do, while classical wave and ray descriptions remain the efficient tools for designing how the emitted radiation reaches the part and camera.</p>
+<p>For a deeper classical treatment of electromagnetic waves, interference, diffraction, polarisation and geometrical optics, Hecht is a useful companion text <span class="citation" data-cites="hecht2017optics"><a href="../../bibliography/references.html#ref-hecht2017optics" role="doc-biblioref">[3]</a></span>. Readers who want to go beyond the engineering photon model into formal quantum optics can continue with Loudon <span class="citation" data-cites="loudon2000quantumtheory"><a href="../../bibliography/references.html#ref-loudon2000quantumtheory" role="doc-biblioref">[2]</a></span>.</p>
+<div id="fig-photon-energy" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-photon-energy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<iframe src="assets/animations/Photon-energy.html" width="100%" height="760" style="border: 0;" loading="lazy" title="Interactive photon-energy and semiconductor-detection representation">
+</iframe>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-photon-energy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.2: Photon energy and semiconductor detection. The online edition provides an interactive version in which wavelength and detector material can be varied; static formats show the equivalent print illustration.
+</figcaption>
+</figure>
+</div>
+<p>The electromagnetic spectrum extends far beyond human vision. A particularly memorable demonstration came from William Herschel in 1800. While measuring heating across the colours produced by a prism, he also measured beyond the visible red end of the spectrum and found a stronger heating effect where no light was visible to the eye, providing early experimental evidence of what is now called infrared radiation <span class="citation" data-cites="herschel1800invisible"><a href="../../bibliography/references.html#ref-herschel1800invisible" role="doc-biblioref">[4]</a></span>.</p>
+<p>The boundaries between named spectral bands are conventions rather than physical discontinuities. Machine vision commonly uses ultraviolet (UV), visible (VIS), near infrared (NIR) and short-wave infrared (SWIR), with longer-wave infrared used for thermal imaging. Silicon sensors cover much of the visible spectrum and extend into the NIR; InGaAs detectors are widely used beyond the silicon cut-off in the SWIR. Exact useful ranges depend on sensor construction, optics, coatings, filters and the required signal-to-noise ratio rather than on the band name alone.</p>
+<p>For machine vision, the useful spectrum is defined by the <strong>complete imaging chain</strong>. A light source may emit strongly at a wavelength that the object absorbs, the lens or protective window blocks, or the sensor detects poorly. Conversely, radiation invisible to the operator can produce a strong camera response. Wavelength should therefore be treated as a selectable engineering variable, not merely as the colour of a lamp.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Machine vision does not see the same spectrum that you do">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Machine vision does not see the same spectrum that you do
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A visual check by eye is useful during setup, but it is not a measurement of what the camera receives. Always consider the source spectrum, object response, optical/filter transmission and sensor spectral sensitivity together.</p>
+<ul>
+<li>A bright-looking lamp can provide little signal in the wavelength band that matters.</li>
+<li>A near-infrared source can appear dark to a person while strongly exposing a silicon camera.</li>
+<li>Changing the camera, lens, protective window or filter can change contrast even when the light and part are unchanged.</li>
+</ul>
+</div>
+</div>
+<table class="caption-top table">
+<caption>Wavelength bands commonly encountered in industrial machine vision. Boundaries are approximate and application-dependent.</caption>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Band</th>
+<th>Approximate wavelength range</th>
+<th>Typical machine-vision role</th>
+<th>Common detector families</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>UV</td>
+<td>~200–400 nm</td>
+<td>Fluorescence excitation; coatings; surface and print contrast</td>
+<td>UV-enhanced silicon; specialised UV detectors</td>
+</tr>
+<tr class="even">
+<td>Visible</td>
+<td>~400–700 nm</td>
+<td>General monochrome and colour imaging</td>
+<td>Silicon CCD/CMOS</td>
+</tr>
+<tr class="odd">
+<td>NIR</td>
+<td>~700–1100 nm</td>
+<td>Contrast through some inks and coatings; material contrast outside normal human vision</td>
+<td>Silicon CCD/CMOS</td>
+</tr>
+<tr class="even">
+<td>SWIR</td>
+<td>~1000–1700 nm (common InGaAs range)</td>
+<td>Moisture, fill level, semiconductor/solar inspection and material discrimination</td>
+<td>InGaAs</td>
+</tr>
+</tbody>
+</table>
+<div id="fig-electromagnetic-spectrum-machine-vision" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-electromagnetic-spectrum-machine-vision-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="assets/figures/electromagnetic-spectrum-machine-vision.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-electromagnetic-spectrum-machine-vision-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.3: Electromagnetic spectrum with machine-vision bands and representative detector materials.
+</figcaption>
+</figure>
+</div>
+<p>Real sources are rarely described adequately by one wavelength. Their output is distributed across wavelength, and the shape of this <strong>spectral power distribution</strong> can matter as much as total optical power. Thermal emitters provide an important example: Planck’s law describes their spectral radiance and Wien’s displacement law gives the wavelength of peak spectral radiance,</p>
+<p><span class="math display">\[\lambda_{\max}T=b,
+\qquad
+b\approx2.898\times10^{-3}\ \mathrm{m\,K}.\]</span></p>
+<p>These relations become useful later when colour temperature, broadband sources and thermal imaging are considered.</p>
+<p>For camera-oriented examples of how geometry, wavelength and filtering affect machine-vision contrast, the Advanced Illumination practical guide and the CCS <em>Theory of Light and Color</em> series provide useful supplementary reading <span class="citation" data-cites="advancedillumination_machinevisionlighting ccs_theory_light_color"><a href="../../bibliography/references.html#ref-advancedillumination_machinevisionlighting" role="doc-biblioref">[5]</a>, <a href="../../bibliography/references.html#ref-ccs_theory_light_color" role="doc-biblioref">[6]</a></span>. They are practical complements to the more formal optical treatment in Hecht <span class="citation" data-cites="hecht2017optics"><a href="../../bibliography/references.html#ref-hecht2017optics" role="doc-biblioref">[3]</a></span>.</p>
 </section>
 <section id="sec-light-colour-and-radiometry-radiometric-quantities-radiant-flux-irradiance-radiance" class="level3" data-number="3.1.2">
-<h3 data-number="3.1.2" class="anchored" data-anchor-id="sec-light-colour-and-radiometry-radiometric-quantities-radiant-flux-irradiance-radiance"><span class="header-section-number">3.1.2</span> Radiometric quantities: radiant flux, irradiance, radiance</h3>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="sec-light-colour-and-radiometry-radiometric-quantities-radiant-flux-irradiance-radiance"><span class="header-section-number">3.1.2</span> Radiometric quantities: radiant flux, irradiance and radiance</h3>
+<p>The previous subsection described optical energy at the level of individual photons. A photon of wavelength <span class="math inline">\(\lambda\)</span> carries energy <span class="math inline">\(E_\gamma=hc/\lambda\)</span>, and a camera signal ultimately results from a finite number of those photons being absorbed by the sensor. In most machine-vision applications, however, an enormous number of photons are emitted, reflected and detected during every exposure. Following each photon individually would be neither practical nor useful. Instead, we describe their <strong>collective transport of energy</strong> using <strong>radiometry</strong>.</p>
+<p>The two descriptions are directly connected. If <span class="math inline">\(N\)</span> is the <strong>number of photons</strong>, and the radiation is monochromatic so that every photon carries the same energy <span class="math inline">\(E_\gamma\)</span>, their total radiant energy is</p>
+<p><span class="math display">\[Q_e = N E_\gamma .\]</span></p>
+<p>If those photons arrive over time, their <strong>photon rate</strong> is</p>
+<p><span class="math display">\[\dot N=\frac{dN}{dt}
+\qquad [\mathrm{photons\,s^{-1}}].\]</span></p>
+<p>The dot above <span class="math inline">\(N\)</span> is important: <span class="math inline">\(N\)</span> represents a number of photons, whereas <span class="math inline">\(\dot N\)</span> represents how many photons arrive per second. The corresponding radiant power, or <strong>radiant flux</strong>, is</p>
+<p><span class="math display">\[\Phi_e
+=
+\dot N E_\gamma
+=
+\dot N\frac{hc}{\lambda}.\]</span></p>
+<p>The units make the relationship particularly clear:</p>
+<p><span class="math display">\[\underbrace{\mathrm{photons\,s^{-1}}}_{\dot N}
+\times
+\underbrace{\mathrm{J\,photon^{-1}}}_{E_\gamma}
+=
+\underbrace{\mathrm{J\,s^{-1}}}_{\Phi_e}
+=
+\mathrm{W}.\]</span></p>
+<p>Equivalently,</p>
+<p><span class="math display">\[\dot N
+=
+\frac{\Phi_e}{E_\gamma}
+=
+\frac{\Phi_e\lambda}{hc}
+\qquad [\mathrm{photons\,s^{-1}}].\]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled" title="From photons to watts">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
-<p><strong>Content status:</strong> Placeholder.</p>
-<p>This subsection has not yet been drafted or technically reviewed.</p>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>From photons to watts
 </div>
 </div>
+<div class="callout-body-container callout-body">
+<p><strong>Photon energy tells us how much energy each photon carries; radiometry tells us how much optical energy is being transported collectively.</strong></p>
+<p>Two monochromatic sources can therefore deliver the same radiant power while producing different numbers of photons per second. Longer-wavelength photons carry less energy individually, so more of them are required to transport the same optical power. This does not necessarily mean a larger camera signal: the sensor must also absorb those photons efficiently, and its quantum efficiency depends on wavelength.</p>
 </div>
+</div>
+<p>Radiometry provides the practical language for following this optical energy through a machine-vision system. The terminology can initially appear excessive, but the quantities are easier to understand when treated as answers to different questions: <strong>how much optical power is there, where is it travelling, over what area is it distributed, and how much energy eventually accumulates at the sensor?</strong></p>
+<p>The starting quantity is <strong>radiant energy</strong>, <span class="math inline">\(Q_e\)</span>, measured in joules. <strong>Radiant flux</strong>, <span class="math inline">\(\Phi_e\)</span>, often called <strong>radiant power</strong>, describes how quickly that energy is transferred:</p>
+<p><span class="math display">\[Q_e \quad [\mathrm{J}],
+\qquad
+\Phi_e=\frac{dQ_e}{dt}
+\quad [\mathrm{W}].\]</span></p>
+<p>A radiant flux of 1 W therefore represents the transfer of one joule of optical energy per second. This is an <strong>optical watt</strong>, not the electrical power consumed by the illumination source. An LED consuming 10 W electrically, for example, will emit only part of that input power as optical radiation.</p>
+<p>Power alone does not tell us where the radiation is going. Direction is described using <strong>solid angle</strong>, the three-dimensional equivalent of an ordinary angle. For a small area <span class="math inline">\(dA\)</span> viewed from distance <span class="math inline">\(r\)</span>, where its normal forms an angle <span class="math inline">\(\theta\)</span> with the viewing direction,</p>
+<p><span class="math display">\[d\Omega
+=
+\frac{dA\cos\theta}{r^2}
+\qquad [\mathrm{sr}].\]</span></p>
+<p>A complete sphere contains <span class="math inline">\(4\pi\)</span> steradians. <strong>Radiant intensity</strong>, <span class="math inline">\(I_e\)</span>, describes how radiant flux is distributed with direction:</p>
+<p><span class="math display">\[I_e
+=
+\frac{d\Phi_e}{d\Omega}
+\qquad [\mathrm{W\,sr^{-1}}].\]</span></p>
+<p>Once radiation reaches a surface, <strong>irradiance</strong>, <span class="math inline">\(E_e\)</span>, describes the radiant power arriving per unit area:</p>
+<p><span class="math display">\[E_e
+=
+\frac{d\Phi_e}{dA}
+\qquad [\mathrm{W\,m^{-2}}].\]</span></p>
+<p>Irradiance is particularly useful in machine vision because it can describe how strongly an illuminator exposes a workpiece or how much optical power per unit area reaches the image sensor. The corresponding quantity for radiation <strong>leaving</strong> a surface is <strong>radiant exitance</strong>, <span class="math inline">\(M_e\)</span>:</p>
+<p><span class="math display">\[M_e
+=
+\frac{d\Phi_e}{dA}
+\qquad [\mathrm{W\,m^{-2}}].\]</span></p>
+<p>The two therefore have the same units but describe opposite directions relative to the surface: <strong>irradiance arrives; exitance leaves</strong>.</p>
+<p>A camera, however, does not collect all the radiation leaving a surface. It collects only the portion travelling within the directions accepted by its lens. For imaging, we therefore need a quantity that describes both <strong>where the radiation leaves the surface and in which direction it travels</strong>. This is <strong>radiance</strong>, <span class="math inline">\(L_e\)</span>:</p>
+<p><span class="math display">\[L_e
+=
+\frac{d^2\Phi_e}
+{dA\cos\theta\,d\Omega}
+\qquad
+[\mathrm{W\,m^{-2}\,sr^{-1}}].\]</span></p>
+<p>Radiance provides the natural connection between a scene patch and the optical system viewing it. An ideal passive optical system cannot arbitrarily increase radiance; more precisely, <span class="math inline">\(L_e/n^2\)</span> is conserved through lossless geometrical propagation when refractive-index changes are included. A lens can collect a larger portion of the available radiation and redistribute it onto the sensor, but it cannot create optical brightness from nothing.</p>
+<p>Finally, the sensor accumulates optical energy throughout its exposure rather than responding to irradiance at only one instant. <strong>Radiant exposure</strong>, <span class="math inline">\(H_e\)</span>, describes this accumulated energy per unit area:</p>
+<p><span class="math display">\[H_e
+=
+\int_0^{t_{\mathrm{exp}}}
+E_e(t)\,dt
+\qquad
+[\mathrm{J\,m^{-2}}].\]</span></p>
+<p>For constant irradiance,</p>
+<p><span class="math display">\[H_e=E_e\,t_{\mathrm{exp}}.\]</span></p>
+<p>This closes the loop back to the photon description. At a fixed wavelength, greater irradiance means more photons arriving per unit area and unit time, while a longer exposure allows that photon flow to continue for longer. Provided the sensor remains within its linear operating range, either increases the number of photo-generated charge carriers and therefore the recorded signal. The sensor chapter develops this relationship further through quantum efficiency, shot noise, full-well capacity, gain and saturation.</p>
+<div id="fig-radiometric-quantities" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-radiometric-quantities-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<iframe src="assets/animations/Radiometric-quantities.html" width="100%" height="760" style="border: 0;" loading="lazy" title="Interactive radiometric-quantities representation">
+</iframe>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-radiometric-quantities-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.4: Radiometric quantities through a machine-vision imaging chain. The online edition provides an interactive version in which each quantity can be selected and highlighted; static formats show the equivalent print illustration.
+</figcaption>
+</figure>
+</div>
+<p>The quantities introduced above are summarised in <span class="quarto-unresolved-ref">?tbl-radiometric-quantities</span>. The important distinction is not simply their units, but <strong>what information has been added to the description of the optical energy</strong>: total power, direction, area, direction and area together, or accumulation over time.</p>
+<table class="caption-top table">
+<caption>Core radiometric quantities and their practical interpretation.</caption>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Quantity</th>
+<th>Symbol</th>
+<th>SI unit</th>
+<th>Practical interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Radiant energy</td>
+<td><span class="math inline">\(Q_e\)</span></td>
+<td>J</td>
+<td>Total optical energy</td>
+</tr>
+<tr class="even">
+<td>Radiant flux</td>
+<td><span class="math inline">\(\Phi_e\)</span></td>
+<td>W</td>
+<td>Optical power</td>
+</tr>
+<tr class="odd">
+<td>Radiant intensity</td>
+<td><span class="math inline">\(I_e\)</span></td>
+<td>W sr<span class="math inline">\(^{-1}\)</span></td>
+<td>Source power per direction</td>
+</tr>
+<tr class="even">
+<td>Irradiance</td>
+<td><span class="math inline">\(E_e\)</span></td>
+<td>W m<span class="math inline">\(^{-2}\)</span></td>
+<td>Power arriving per unit area</td>
+</tr>
+<tr class="odd">
+<td>Radiant exitance</td>
+<td><span class="math inline">\(M_e\)</span></td>
+<td>W m<span class="math inline">\(^{-2}\)</span></td>
+<td>Power leaving per unit area</td>
+</tr>
+<tr class="even">
+<td>Radiance</td>
+<td><span class="math inline">\(L_e\)</span></td>
+<td>W m<span class="math inline">\(^{-2}\)</span> sr<span class="math inline">\(^{-1}\)</span></td>
+<td>Power per projected area and direction</td>
+</tr>
+<tr class="odd">
+<td>Radiant exposure</td>
+<td><span class="math inline">\(H_e\)</span></td>
+<td>J m<span class="math inline">\(^{-2}\)</span></td>
+<td>Energy accumulated per unit area during exposure</td>
+</tr>
+</tbody>
+</table>
+<p>For broadband radiation, these quantities can also be expressed <strong>spectrally</strong>. For example, spectral irradiance <span class="math inline">\(E_{e,\lambda}(\lambda)\)</span> describes how irradiance is distributed with wavelength, and the total irradiance is recovered by integrating over the relevant spectral range:</p>
+<p><span class="math display">\[E_e
+=
+\int E_{e,\lambda}(\lambda)\,d\lambda .\]</span></p>
+<p>This spectral form becomes particularly important in machine vision because the source spectrum, material response, optical transmission and sensor quantum efficiency can all vary strongly with wavelength. At the sensor, the expected number of collected photoelectrons can be estimated from</p>
+<p><span class="math display">\[N_e
+\approx
+A_p t_{\mathrm{exp}}
+\int
+\frac{
+E_{e,\lambda}(\lambda)
+QE(\lambda)
+\lambda
+}{
+hc
+}
+\,d\lambda ,\]</span></p>
+<p>where <span class="math inline">\(A_p\)</span> is the pixel area and <span class="math inline">\(QE(\lambda)\)</span> is the wavelength-dependent quantum efficiency. The factor <span class="math inline">\(\lambda/(hc)\)</span> converts radiant energy into photon number, reconnecting the radiometric description with the photon model introduced in <span class="quarto-unresolved-ref">?sec-light-colour-and-radiometry-electromagnetic-radiation-photons-optical-spectrum</span>. This relationship will be developed further when image sensors are considered.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Reference: radiance, etendue and the limits of passive optics">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Reference: radiance, etendue and the limits of passive optics
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The statement that a passive optical system cannot arbitrarily increase radiance has a deeper geometrical interpretation. The <strong>etendue</strong> of an optical bundle describes the combination of area and angular extent occupied by the rays and, in simplified form, can be written as</p>
+<p><span class="math display">\[G=n^2A\Omega .\]</span></p>
+<p>In lossless passive optics, etendue cannot decrease. Conservation of etendue and conservation of radiance are closely related results and explain why an optical system cannot simultaneously make an extended source smaller in area, narrower in angular spread and brighter than permitted by the input bundle.</p>
+<p>This result becomes useful later when considering lens aperture, numerical aperture, illumination coupling and optical throughput. For a compact review of radiometry and photometry for vision optics, see Ohno <span class="citation" data-cites="ohno2000radiometryphotometry"><a href="../../bibliography/references.html#ref-ohno2000radiometryphotometry" role="doc-biblioref">[7]</a></span>.</p>
+</div>
+</div>
+<p>For formal definitions of radiometric and photometric quantities, CIE 018 provides the internationally established framework <span class="citation" data-cites="cie018_2019"><a href="../../bibliography/references.html#ref-cie018_2019" role="doc-biblioref">[8]</a></span>. The next subsection introduces <strong>photometry</strong>, which uses closely related quantities but deliberately weights optical radiation according to the spectral sensitivity of human vision.</p>
 </section>
 <section id="sec-light-colour-and-radiometry-photometric-quantities-and-the-photopic-response" class="level3" data-number="3.1.3">
 <h3 data-number="3.1.3" class="anchored" data-anchor-id="sec-light-colour-and-radiometry-photometric-quantities-and-the-photopic-response"><span class="header-section-number">3.1.3</span> Photometric quantities and the photopic response</h3>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p>Radiometry gave us an objective description of optical energy and power. Human vision does not respond to that energy equally at every wavelength, so quantities intended to describe <strong>perceived visual brightness</strong> require a different scale. This is the role of <strong>photometry</strong>.</p>
+<p>Photometry uses the same underlying radiation as radiometry, but weights its spectral content using standardised luminous-efficiency functions representing human visual sensitivity. For photopic, light-adapted vision, the familiar function <span class="math inline">\(V(\lambda)\)</span> reaches its maximum near the green-yellow region of the visible spectrum. In the modern SI, the link between photometric and radiometric quantities is defined through a luminous efficacy of 683 lm/W for monochromatic radiation at a frequency of 540 THz, close to 555 nm <span class="citation" data-cites="cie018_2019"><a href="../../bibliography/references.html#ref-cie018_2019" role="doc-biblioref">[8]</a></span>.</p>
+<p>For a spectral radiometric quantity <span class="math inline">\(X_{e,\lambda}(\lambda)\)</span>, its corresponding photometric quantity can be represented generically as</p>
+<p><span class="math display">\[X_v
+=
+K_m
+\int
+X_{e,\lambda}(\lambda)
+V(\lambda)
+\,d\lambda ,\]</span></p>
+<p>where <span class="math inline">\(K_m\)</span> is the maximum photopic luminous efficacy. The important point is the weighting: <strong>the same radiometric power produces a different photometric value depending on its wavelength distribution</strong>.</p>
+<p>This produces the familiar human-vision quantities: luminous flux in lumens, luminous intensity in candelas, illuminance in lux and luminance in cd m<span class="math inline">\(^{-2}\)</span>. Their relationship to the radiometric quantities introduced in the previous subsection is summarised below.</p>
+<table class="caption-top table">
+<caption>Radiometric quantities and their human-vision-weighted photometric counterparts.</caption>
+<colgroup>
+<col style="width: 30%">
+<col style="width: 35%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Radiometric quantity</th>
+<th>Photometric counterpart</th>
+<th>Photometric unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Radiant flux</td>
+<td>Luminous flux</td>
+<td>lumen (lm)</td>
+</tr>
+<tr class="even">
+<td>Radiant intensity</td>
+<td>Luminous intensity</td>
+<td>candela (cd)</td>
+</tr>
+<tr class="odd">
+<td>Irradiance</td>
+<td>Illuminance</td>
+<td>lux (lx = lm m<span class="math inline">\(^{-2}\)</span>)</td>
+</tr>
+<tr class="even">
+<td>Radiance</td>
+<td>Luminance</td>
+<td>cd m<span class="math inline">\(^{-2}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Radiant exposure</td>
+<td>Luminous exposure</td>
+<td>lx s</td>
+</tr>
+</tbody>
+</table>
+<p>The distinction matters directly in machine vision because a <strong>lux meter and a camera do not generally measure the same thing</strong>. An 850 nm NIR source can provide strong signal to a silicon camera while contributing essentially no photopic luminous output. Conversely, two nominally similar white lights can produce similar lux values but different camera responses if their spectral distributions differ.</p>
+<div id="fig-photometric-response" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-photometric-response-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="assets/figures/Photometric-response.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
-<div class="callout-body-container">
-<p><strong>Content status:</strong> Placeholder.</p>
-<p>This subsection has not yet been drafted or technically reviewed.</p>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-photometric-response-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.5: Photopic response of the human eye. The CIE photopic sensitivity function <span class="math inline">\(V(\lambda)\)</span> represents the relative spectral sensitivity of human vision under well-lit conditions. For the same radiant power, wavelengths near 555 nm produce the greatest perceived brightness, while sensitivity decreases towards the blue/violet and red ends of the visible spectrum. The coloured wavelength scale provides an approximate correspondence between wavelength and perceived colour.
+</figcaption>
+</figure>
 </div>
-</div>
-</div>
+<p>Photopic spectral sensitivity of the human eye. The response is normalised to its maximum near 555 nm and illustrates why photometric quantities weight optical radiation differently according to wavelength.</p>
+<p>This also explains why electrical watts, radiometric watts and photometric units should not be used interchangeably. Electrical power describes what the illuminator consumes; radiant power describes the optical energy it emits per second; lumens and lux describe that radiation after weighting for human visual sensitivity. The relationship between them depends on source efficiency and spectral distribution. A source can therefore be optically useful to a camera while appearing dim—or completely invisible—to a person.</p>
+<p>For formal definitions of photopic, scotopic and other standard luminous-efficiency functions, see CIE 018 <span class="citation" data-cites="cie018_2019"><a href="../../bibliography/references.html#ref-cie018_2019" role="doc-biblioref">[8]</a></span>. The CCS <em>Theory of Light and Color</em> series provides an accessible machine-vision-oriented comparison of human spectral sensitivity and camera spectral response <span class="citation" data-cites="ccs_theory_light_color"><a href="../../bibliography/references.html#ref-ccs_theory_light_color" role="doc-biblioref">[6]</a></span>.</p>
 </section>
 <section id="sec-light-colour-and-radiometry-the-inverse-square-law-and-cosine-law" class="level3" data-number="3.1.4">
 <h3 data-number="3.1.4" class="anchored" data-anchor-id="sec-light-colour-and-radiometry-the-inverse-square-law-and-cosine-law"><span class="header-section-number">3.1.4</span> The inverse-square law and cosine law</h3>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p>The radiometry subsection introduced <strong>irradiance</strong>, <span class="math inline">\(E_e\)</span>, as radiant power arriving per unit area. For machine vision, knowing the total power of an illuminator is therefore not enough: the irradiance reaching a part also depends on <strong>where the light is positioned and at what angle the surface receives it</strong>. Two simple geometric relationships—the inverse-square law and the cosine law—provide useful first-order models of these effects.</p>
+<p>Consider first an ideal <strong>point source</strong> emitting with radiant intensity <span class="math inline">\(I_e\)</span> in the direction of the workpiece. As the distance from the source increases, the same emitted power is distributed over an increasingly large area. Because the area subtended by a fixed solid angle grows in proportion to <span class="math inline">\(r^2\)</span>, irradiance on a surface perpendicular to the illumination direction decreases as</p>
+<p><span class="math display">\[E_e=\frac{I_e}{r^2}.\]</span></p>
+<p>The relationship is inverse-square rather than simply inverse with distance. If all other conditions remain unchanged, doubling the source-to-surface distance gives</p>
+<p><span class="math display">\[E_e(2r)
+=
+\frac{I_e}{(2r)^2}
+=
+\frac{1}{4}E_e(r).\]</span></p>
+<p>Tripling the distance reduces the irradiance to one ninth. This provides useful engineering intuition: <strong>small changes in working distance can produce much larger changes in illumination than the distance change alone might suggest</strong>.</p>
+<p>Distance is only part of the geometry. If the receiving surface is tilted by an incidence angle <span class="math inline">\(\theta\)</span> relative to the incoming radiation, the same optical power is distributed over a larger effective surface area. The resulting irradiance becomes</p>
+<p><span class="math display">\[E_e
+=
+\frac{I_e\cos\theta}{r^2}.\]</span></p>
+<p>At normal incidence, <span class="math inline">\(\theta=0^\circ\)</span> and <span class="math inline">\(\cos\theta=1\)</span>, so the irradiance is maximum. As the surface tilts away from the illumination direction, the projected area decreases and so does the irradiance:</p>
+<p><span class="math display">\[\begin{aligned}
+\theta &amp;= 0^\circ  &amp;&amp;\Rightarrow&amp; \cos\theta &amp;= 1.00,\\
+\theta &amp;= 30^\circ &amp;&amp;\Rightarrow&amp; \cos\theta &amp;\approx 0.87,\\
+\theta &amp;= 60^\circ &amp;&amp;\Rightarrow&amp; \cos\theta &amp;= 0.50.
+\end{aligned}\]</span></p>
+<p>This is directly relevant to machine vision. A light illuminating a three-dimensional component does not necessarily expose every surface equally, even when the material is identical. Features farther from the source receive less irradiance, while surfaces tilted relative to the illumination receive less again. Changes in part height, orientation or presentation can therefore become changes in image intensity before material reflectance or camera processing are considered.</p>
+<p>The distance and incidence effects can be combined into the useful first-order relation</p>
+<p><span class="math display">\[\boxed{
+E_e(r,\theta)
+=
+\frac{I_e\cos\theta}{r^2}
+}\]</span></p>
+<p>for a point source illuminating a planar receiving surface.</p>
+<p>This equation is valuable for developing intuition, but its assumptions matter. Most machine-vision illuminators are <strong>not point sources</strong>. Ring lights, bar lights, area lights, backlights and domes have significant physical dimensions, and machine-vision applications frequently operate close enough that different parts of the source subtend substantially different angles and distances at the workpiece. In this <strong>near-field</strong> condition, irradiance does not necessarily follow a simple <span class="math inline">\(1/r^2\)</span> relationship. Collimated illuminators are different again because they are deliberately designed to restrict angular spread.</p>
+<p>The inverse-square law should therefore be treated as a <strong>first-order engineering model</strong>, not as a universal rule for positioning industrial illumination. It is particularly useful for understanding trends and for sources that are small relative to their working distance. For close extended-source arrangements, irradiance and uniformity are better determined from manufacturer data, measurement or an appropriate optical model.</p>
+<p>A second cosine relationship appears when considering the radiation <strong>leaving</strong> a diffuse surface. An ideal <strong>Lambertian surface</strong> has constant radiance with viewing direction, but its radiant intensity varies with angle according to</p>
+<p><span class="math display">\[I_e(\theta)
+=
+I_e(0)\cos\theta.\]</span></p>
+<p>Although the mathematics looks similar, this describes a different physical situation. The <strong>incidence cosine law</strong> describes how much radiation a tilted surface <strong>receives</strong>; Lambert’s cosine law describes how an ideal diffuse surface distributes radiation <strong>leaving</strong> it.</p>
+<table class="caption-top table">
+<caption>Three geometric relationships that can appear similar mathematically but describe different effects.</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Relationship</th>
+<th>What changes?</th>
+<th>Physical interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(E_e \propto 1/r^2\)</span></td>
+<td>Source-to-surface distance</td>
+<td>Optical power spreads over increasing area</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(E_e \propto \cos\theta\)</span></td>
+<td>Incidence angle</td>
+<td>Incoming power is distributed over a larger receiving area</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(I_e(\theta)\propto\cos\theta\)</span></td>
+<td>Observation/emission angle from a Lambertian surface</td>
+<td>Emitted or reflected intensity decreases with angle while radiance remains constant</td>
+</tr>
+</tbody>
+</table>
+<p>These relationships provide the theoretical basis for several practical illumination effects developed later in the handbook. They help explain why changing working distance affects illumination uniformity, why curved or tilted surfaces develop intensity gradients, and why the position and angular extent of a light can matter as much as its nominal optical power.</p>
+<div id="fig-inverse-square-cosine" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="H">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-inverse-square-cosine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<iframe src="assets/animations/Inverse-square-cosine.html" width="100%" height="760" style="border: 0;" loading="lazy" title="Interactive inverse-square and cosine-law representation">
+</iframe>
 </div>
-<div class="callout-body-container">
-<p><strong>Content status:</strong> Placeholder.</p>
-<p>This subsection has not yet been drafted or technically reviewed.</p>
-</div>
-</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-inverse-square-cosine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.6: Effect of distance and incidence angle on irradiance. The online edition provides an interactive version in which source-to-surface distance and incidence angle can be varied; static formats show the equivalent print illustration, together with the Lambertian and extended-source qualifications.
+</figcaption>
+</figure>
 </div>
 </section>
 </section>
@@ -671,6 +1239,32 @@ ul.task-list li input[type="checkbox"] {
 </div>
 
 
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-beyerer2016machinevision" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">J. Beyerer, F. Puente León, and C. Frese, <em>Machine vision: Automated visual inspection: Theory, practice and applications</em>. Berlin, Heidelberg: Springer, 2016. doi: <a href="https://doi.org/10.1007/978-3-662-47794-6">10.1007/978-3-662-47794-6</a>.</div>
+</div>
+<div id="ref-loudon2000quantumtheory" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">R. Loudon, <em>The quantum theory of light</em>, 3rd edn. Oxford, U.K.: Oxford University Press, 2000. doi: <a href="https://doi.org/10.1093/oso/9780198501770.001.0001">10.1093/oso/9780198501770.001.0001</a>.</div>
+</div>
+<div id="ref-hecht2017optics" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">E. Hecht, <em>Optics</em>, 5th edn. Pearson, 2017.</div>
+</div>
+<div id="ref-herschel1800invisible" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">W. Herschel, <span>‘Experiments on the refrangibility of the invisible rays of the sun’</span>, <em>Philosophical Transactions of the Royal Society of London</em>, vol. 90, pp. 284–292, 1800, doi: <a href="https://doi.org/10.1098/rstl.1800.0015">10.1098/rstl.1800.0015</a>.</div>
+</div>
+<div id="ref-advancedillumination_machinevisionlighting" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">Advanced Illumination, <span>‘A practical guide to machine vision lighting’</span>. Advanced Illumination. Accessed: Sep. 06, 2026. [Online]. Available: <a href="https://advancedillumination.com/a-practical-guide-to-machine-vision-lighting/">https://advancedillumination.com/a-practical-guide-to-machine-vision-lighting/</a></div>
+</div>
+<div id="ref-ccs_theory_light_color" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">CCS Inc., <span>‘Theory of light and color’</span>. CCS Inc. Accessed: Sep. 06, 2026. [Online]. Available: <a href="https://www.ccs-grp.com/guide/theory-light-color/">https://www.ccs-grp.com/guide/theory-light-color/</a></div>
+</div>
+<div id="ref-ohno2000radiometryphotometry" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">Y. Ohno, <span>‘Radiometry and photometry: Review for vision optics’</span>. National Institute of Standards; Technology, 2000. Accessed: Sep. 06, 2026. [Online]. Available: <a href="https://www.nist.gov/publications/radiometry-and-photometry-review-vision-optics">https://www.nist.gov/publications/radiometry-and-photometry-review-vision-optics</a></div>
+</div>
+<div id="ref-cie018_2019" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">Commission Internationale de l’Eclairage, <span>‘<span>CIE 018:2019</span>: The basis of physical photometry, 3rd edition’</span>, CIE, Vienna, Austria, Technical Report CIE 018:2019, 2019. doi: <a href="https://doi.org/10.25039/TR.018.2019">10.25039/TR.018.2019</a>.</div>
+</div>
+</div>
 </section>
 </section>
 

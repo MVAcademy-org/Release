@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Photon Energy Explorer</title>
+<style>
+:root{
+  --fg:#10203f; --muted:#66758c; --line:#dbe3ef; --panel:#f8fbff;
+  --gold:#d69e2e; --green:#2f855a; --red:#c53030; --blue:#2166f3;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#fff;color:var(--fg)}
+.wrap{max-width:1100px;margin:auto;padding:24px}
+h1{margin:0 0 6px;font-size:30px}
+.sub{color:var(--muted);line-height:1.45;margin-bottom:20px}
+.layout{display:grid;grid-template-columns:300px 1fr;gap:18px}
+.card{border:1px solid var(--line);border-radius:14px;background:#fff}
+.controls{padding:18px}
+.group{padding:14px 0;border-top:1px solid #edf1f6}
+.group:first-of-type{border-top:0;padding-top:0}
+.labelrow{display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin-bottom:8px}
+label{font-weight:700}.value{font-weight:700;color:#153e90}
+input[type=range]{width:100%}
+select{width:100%;padding:9px;border:1px solid #cfd8e6;border-radius:8px;background:#fff}
+.band{margin-top:10px;padding:9px;border-radius:8px;text-align:center;font-weight:700}
+.metric{background:var(--panel);border-radius:9px;padding:10px;margin-top:8px}
+.metric .k{font-size:11px;text-transform:uppercase;color:var(--muted)}
+.metric .v{font-weight:700;margin-top:4px}
+.viz{padding:16px}
+.eq{background:#f3f8ff;border:1px solid #d9e8ff;padding:9px 12px;border-radius:9px;font-family:Georgia,serif;font-size:18px;display:inline-block}
+canvas{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:12px;background:linear-gradient(#fff,#fbfdff);margin-top:12px}
+.note{margin-top:12px;background:#fffaf0;border-left:4px solid var(--gold);padding:10px 12px;line-height:1.45;color:#38485f}
+@media(max-width:800px){.layout{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Photon Energy Explorer</h1>
+<div class="sub">
+Move the wavelength slider to change the energy carried by a single photon. The central diagram compares that energy with the selected semiconductor band gap.
+</div>
+
+<div class="layout">
+<div class="card controls">
+
+  <div class="group">
+    <div class="labelrow">
+      <label for="wl">Wavelength λ</label>
+      <span class="value"><span id="wlOut">600</span> nm</span>
+    </div>
+    <input id="wl" type="range" min="200" max="2500" value="600" step="1">
+    <div id="band" class="band">Visible</div>
+  </div>
+
+  <div class="group">
+    <label for="material">Detector material</label>
+    <select id="material">
+      <option value="1.12" data-name="Silicon">Silicon — Eg ≈ 1.12 eV</option>
+      <option value="0.73" data-name="InGaAs">InGaAs — Eg ≈ 0.73 eV</option>
+      <option value="2.26" data-name="GaP">GaP — Eg ≈ 2.26 eV</option>
+    </select>
+  </div>
+
+  <div class="group">
+    <div class="metric"><div class="k">Photon energy</div><div class="v"><span id="evOut">2.07</span> eV</div></div>
+    <div class="metric"><div class="k">Frequency</div><div class="v"><span id="freqOut">499.7</span> THz</div></div>
+    <div class="metric"><div class="k">Band gap</div><div class="v"><span id="gapOut">1.12</span> eV</div></div>
+    <div class="metric"><div class="k">Detection condition</div><div class="v" id="statusOut">Energetically allowed</div></div>
+  </div>
+
+</div>
+
+<div class="card viz">
+  <div class="eq">Eγ = hν = hc/λ ≈ 1240/λ[nm] eV</div>
+  <canvas id="cv" width="760" height="540"></canvas>
+  <div class="note">
+    <b>Key idea:</b> wavelength changes the energy of each photon. Intensity mainly changes how many photons arrive, not the energy carried by each individual photon.
+  </div>
+</div>
+</div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  const h = 6.62607015e-34;
+  const c = 299792458;
+  const q = 1.602176634e-19;
+
+  const wl = document.getElementById("wl");
+  const material = document.getElementById("material");
+  const wlOut = document.getElementById("wlOut");
+  const bandEl = document.getElementById("band");
+  const evOut = document.getElementById("evOut");
+  const freqOut = document.getElementById("freqOut");
+  const gapOut = document.getElementById("gapOut");
+  const statusOut = document.getElementById("statusOut");
+
+  const canvas = document.getElementById("cv");
+  const ctx = canvas.getContext("2d");
+
+  function spectralBand(nm){
+    if(nm < 400) return {name:"Ultraviolet (UV)", bg:"#eee6ff", photon:"#7c3aed"};
+    if(nm <= 700) return {name:"Visible", bg:"#e7f5ff", photon:"#2563eb"};
+    if(nm <= 1100) return {name:"Near Infrared (NIR)", bg:"#fff0e5", photon:"#d97706"};
+    return {name:"Short-Wave Infrared (SWIR)", bg:"#f3e8e8", photon:"#9f1239"};
+  }
+
+  function txt(s,x,y,size=16,colour="#10203f",weight="normal"){
+    ctx.fillStyle=colour;
+    ctx.font=weight+" "+size+"px Arial";
+    ctx.fillText(s,x,y);
+  }
+
+  function line(x1,y1,x2,y2,colour="#111",width=2){
+    ctx.strokeStyle=colour; ctx.lineWidth=width;
+    ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke();
+  }
+
+  function arrowUp(x,yBottom,yTop,colour){
+    line(x,yBottom,x,yTop,colour,5);
+    ctx.fillStyle=colour;
+    ctx.beginPath();
+    ctx.moveTo(x,yTop);
+    ctx.lineTo(x-11,yTop+18);
+    ctx.lineTo(x+11,yTop+18);
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  function update(){
+    const nm = Number(wl.value);
+    const lambda = nm * 1e-9;
+    const freqHz = c/lambda;
+    const freqTHz = freqHz/1e12;
+    const energyJ = h*freqHz;
+    const energyEV = energyJ/q;
+    const Eg = Number(material.value);
+    const materialName = material.options[material.selectedIndex].dataset.name;
+    const allowed = energyEV >= Eg;
+    const band = spectralBand(nm);
+
+    wlOut.textContent = nm.toFixed(0);
+    evOut.textContent = energyEV.toFixed(2);
+    freqOut.textContent = freqTHz.toFixed(1);
+    gapOut.textContent = Eg.toFixed(2);
+    statusOut.textContent = allowed ? "Energetically allowed" : "Below band-gap threshold";
+    statusOut.style.color = allowed ? "#2f855a" : "#c53030";
+    bandEl.textContent = band.name;
+    bandEl.style.background = band.bg;
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    txt("Photon energy and semiconductor detection",32,38,20,"#10203f","bold");
+    txt(materialName+" detector",32,66,15,"#66758c");
+
+    // Energy scale: 0 to 6.5 eV
+    const xAxis=100, yBottom=440, yTop=95;
+    const maxEV=6.5;
+    line(xAxis,yBottom,xAxis,yTop,"#94a3b8",2);
+    for(let e=0;e<=6;e++){
+      const y=yBottom-(e/maxEV)*(yBottom-yTop);
+      line(xAxis-6,y,xAxis+6,y,"#94a3b8",1);
+      txt(e+" eV",48,y+5,12,"#64748b");
+    }
+
+    // Valence and conduction bands positioned using selected Eg.
+    const valenceY=yBottom;
+    const conductionY=yBottom-(Eg/maxEV)*(yBottom-yTop);
+
+    ctx.fillStyle="#eef2f7";
+    ctx.fillRect(155,conductionY-18,500,36);
+    ctx.fillRect(155,valenceY-18,500,36);
+    line(155,conductionY,655,conductionY,"#1f2937",4);
+    line(155,valenceY,655,valenceY,"#1f2937",4);
+    txt("Conduction band",170,conductionY-28,15,"#1f2937","bold");
+    txt("Valence band",170,valenceY+38,15,"#1f2937","bold");
+
+    // Band-gap bracket.
+    line(610,conductionY,610,valenceY,"#64748b",2);
+    line(602,conductionY,618,conductionY,"#64748b",2);
+    line(602,valenceY,618,valenceY,"#64748b",2);
+    txt("Eg = "+Eg.toFixed(2)+" eV",500,(conductionY+valenceY)/2,15,"#475569","bold");
+
+    // Photon arrow starts from valence band and height directly represents E_gamma on common scale.
+    const photonTop = Math.max(yTop, yBottom-(energyEV/maxEV)*(yBottom-yTop));
+    arrowUp(335,valenceY-4,photonTop,band.photon);
+    txt("photon",300,photonTop-14,14,band.photon,"bold");
+    txt(energyEV.toFixed(2)+" eV",292,photonTop+38,14,band.photon,"bold");
+
+    // Dashed threshold guide from conduction band.
+    ctx.setLineDash([6,5]);
+    line(250,conductionY,420,conductionY,"#94a3b8",1.5);
+    ctx.setLineDash([]);
+
+    if(allowed){
+      // Electron promoted to conduction band; hole left in valence band.
+      ctx.fillStyle="#2166f3";
+      ctx.beginPath(); ctx.arc(470,conductionY-8,10,0,Math.PI*2); ctx.fill();
+      txt("electron",488,conductionY-3,14,"#2166f3","bold");
+
+      ctx.strokeStyle="#e3342f"; ctx.lineWidth=3;
+      ctx.beginPath(); ctx.arc(470,valenceY+8,10,0,Math.PI*2); ctx.stroke();
+      txt("hole",488,valenceY+13,14,"#e3342f","bold");
+
+      txt("Photon energy exceeds the band gap",170,505,17,"#2f855a","bold");
+      txt("Photo-generated charge is energetically possible.",170,528,14,"#475569");
+    } else {
+      ctx.strokeStyle="#c53030"; ctx.lineWidth=4;
+      ctx.beginPath();
+      ctx.moveTo(450,conductionY-18); ctx.lineTo(490,conductionY+18);
+      ctx.moveTo(490,conductionY-18); ctx.lineTo(450,conductionY+18);
+      ctx.stroke();
+
+      txt("Photon energy is below the band gap",170,505,17,"#c53030","bold");
+      txt("This photon cannot drive the illustrated band-to-band transition.",170,528,14,"#475569");
+    }
+
+    txt("λ = "+nm.toFixed(0)+" nm   •   "+band.name,455,70,14,band.photon,"bold");
+  }
+
+  wl.addEventListener("input",update);
+  material.addEventListener("change",update);
+  update();
+})();
+</script>
+</body>
+</html>

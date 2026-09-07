@@ -13,6 +13,14 @@
       "bytes": 30930479,
       "size": "29.5 MiB",
       "sha256": "9ae5cd0d8c239c304ac43cfd23f35585009d0f0c56aab2de497495af2e573ac3"
+    },
+    {
+      "area": "presentations",
+      "path": "presentations/MVA-101-C02.pptx",
+      "url": "/course-materials/machine-vision-fundamentals/presentations/MVA-101-C02.pptx",
+      "bytes": 19263322,
+      "size": "18.4 MiB",
+      "sha256": "00d501dd3ad5ec62ef8f39bb7ff807f4871748533f0ad9c46657e6792ca41a59"
     }
   ]
 }

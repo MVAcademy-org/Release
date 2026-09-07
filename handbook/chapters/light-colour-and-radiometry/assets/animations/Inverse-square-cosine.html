@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Inverse-Square and Cosine Law Explorer</title>
+<style>
+:root{
+  --fg:#10203f; --muted:#66758c; --line:#dbe3ef; --panel:#f8fbff;
+  --orange:#e07a28; --blue:#2166f3; --green:#2f855a; --gold:#d69e2e;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#fff;color:var(--fg)}
+.wrap{max-width:1120px;margin:auto;padding:24px}
+h1{margin:0 0 6px;font-size:30px}
+.sub{color:var(--muted);line-height:1.45;margin-bottom:18px}
+.layout{display:grid;grid-template-columns:300px 1fr;gap:18px}
+.card{border:1px solid var(--line);border-radius:14px;background:#fff}
+.controls{padding:18px}
+.group{padding:14px 0;border-top:1px solid #edf1f6}
+.group:first-of-type{border-top:0;padding-top:0}
+.labelrow{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:8px}
+label{font-weight:700}.value{font-weight:700;color:#153e90}
+input[type=range]{width:100%}
+.metric{background:var(--panel);border-radius:9px;padding:10px;margin-top:8px}
+.metric .k{font-size:11px;color:var(--muted);text-transform:uppercase}
+.metric .v{font-weight:700;margin-top:4px}
+.viz{padding:16px}
+.eq{background:#f3f8ff;border:1px solid #d9e8ff;padding:9px 12px;border-radius:9px;font-family:Georgia,serif;font-size:18px;display:inline-block}
+canvas{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:12px;background:linear-gradient(#fff,#fbfdff);margin-top:12px}
+.note{margin-top:12px;background:#fffaf0;border-left:4px solid var(--gold);padding:10px 12px;line-height:1.45;color:#38485f}
+.bar{height:24px;background:#eef2f7;border:1px solid #cbd5e1;border-radius:6px;overflow:hidden;margin-top:6px}
+.fill{height:100%;background:#2f855a;width:100%}
+@media(max-width:800px){.layout{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Inverse-Square and Cosine Law Explorer</h1>
+<div class="sub">
+For an ideal point source, irradiance falls with the square of distance and with the cosine of the incidence angle.
+The incoming direction stays fixed; only the receiving surface rotates.
+</div>
+
+<div class="layout">
+<div class="card controls">
+  <div class="group">
+    <div class="labelrow">
+      <label for="distance">Distance r</label>
+      <span class="value"><span id="distanceOut">1.00</span> m</span>
+    </div>
+    <input id="distance" type="range" min="0.5" max="2.0" value="1.0" step="0.05">
+  </div>
+
+  <div class="group">
+    <div class="labelrow">
+      <label for="angle">Incidence angle θ</label>
+      <span class="value"><span id="angleOut">0</span>°</span>
+    </div>
+    <input id="angle" type="range" min="0" max="80" value="0" step="1">
+  </div>
+
+  <div class="group">
+    <div class="metric">
+      <div class="k">Relative irradiance</div>
+      <div class="v" id="irradianceOut">100%</div>
+      <div class="bar"><div id="irradianceBar" class="fill"></div></div>
+    </div>
+    <div class="metric"><div class="k">Distance factor</div><div class="v" id="distanceFactorOut">1/r² = 1.000</div></div>
+    <div class="metric"><div class="k">Angle factor</div><div class="v" id="angleFactorOut">cosθ = 1.000</div></div>
+  </div>
+</div>
+
+<div class="card viz">
+  <div class="eq">Eₑ(r,θ) ∝ cosθ / r²</div>
+  <canvas id="cv" width="800" height="500"></canvas>
+  <div class="note">
+    <b>Interpretation:</b> distance spreads the same source power over a larger area; tilting the receiving surface reduces its projected area relative to the incoming direction. At 60°, the cosine term alone reduces irradiance to 50%.
+  </div>
+</div>
+</div>
+</div>
+
+<script>
+(function(){
+"use strict";
+const distance=document.getElementById("distance");
+const angle=document.getElementById("angle");
+const distanceOut=document.getElementById("distanceOut");
+const angleOut=document.getElementById("angleOut");
+const irradianceOut=document.getElementById("irradianceOut");
+const irradianceBar=document.getElementById("irradianceBar");
+const distanceFactorOut=document.getElementById("distanceFactorOut");
+const angleFactorOut=document.getElementById("angleFactorOut");
+const cv=document.getElementById("cv");
+const ctx=cv.getContext("2d");
+
+function txt(s,x,y,size=14,color="#10203f",weight="normal"){
+  ctx.fillStyle=color;ctx.font=weight+" "+size+"px Arial";ctx.fillText(s,x,y);
+}
+function line(x1,y1,x2,y2,color="#334155",w=2){
+  ctx.strokeStyle=color;ctx.lineWidth=w;ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();
+}
+function arrow(x1,y1,x2,y2,color,w=2){
+  line(x1,y1,x2,y2,color,w);
+  const a=Math.atan2(y2-y1,x2-x1),s=8;
+  ctx.fillStyle=color;ctx.beginPath();ctx.moveTo(x2,y2);
+  ctx.lineTo(x2-s*Math.cos(a-.5),y2-s*Math.sin(a-.5));
+  ctx.lineTo(x2-s*Math.cos(a+.5),y2-s*Math.sin(a+.5));
+  ctx.closePath();ctx.fill();
+}
+
+function draw(){
+  const r=Number(distance.value);
+  const thDeg=Number(angle.value);
+  const th=thDeg*Math.PI/180;
+
+  const distFactor=1/(r*r);
+  const angFactor=Math.cos(th);
+  const rel=distFactor*angFactor;
+
+  distanceOut.textContent=r.toFixed(2);
+  angleOut.textContent=thDeg.toFixed(0);
+  distanceFactorOut.textContent="1/r² = "+distFactor.toFixed(3);
+  angleFactorOut.textContent="cosθ = "+angFactor.toFixed(3);
+  irradianceOut.textContent=(rel*100).toFixed(1)+"%";
+  irradianceBar.style.width=Math.min(100,rel*100)+"%";
+
+  ctx.clearRect(0,0,cv.width,cv.height);
+
+  // source
+  const sx=90,sy=245;
+  ctx.fillStyle="#f5b942";
+  ctx.beginPath();ctx.arc(sx,sy,28,0,Math.PI*2);ctx.fill();
+  ctx.strokeStyle="#a66b00";ctx.lineWidth=2;ctx.stroke();
+  txt("point source",45,300,13,"#475569","bold");
+
+  // surface centre moves only with distance
+  const minR=.5,maxR=2.0;
+  const cx=350+(r-minR)/(maxR-minR)*250;
+  const cy=245;
+
+  // incoming direction fixed horizontally
+  arrow(sx+28,sy,cx-15,cy,"#e07a28",4);
+  txt("incoming direction",180,220,13,"#e07a28","bold");
+
+  // surface rotates about centre. theta is angle between normal and incoming ray.
+  const normalAngle=Math.PI + th; // normal points roughly back toward source when theta=0
+  const nx=Math.cos(normalAngle), ny=Math.sin(normalAngle);
+
+  // surface tangent perpendicular to normal
+  const tx=-ny, ty=nx;
+  const halfLen=95;
+  const x1=cx-halfLen*tx, y1=cy-halfLen*ty;
+  const x2=cx+halfLen*tx, y2=cy+halfLen*ty;
+
+  // projected-area cue: projection of physical length onto direction perpendicular to incoming beam
+  // visualised as vertical bracket with length proportional to cos(theta)
+  const projHalf=halfLen*Math.max(0,Math.cos(th));
+  ctx.fillStyle="rgba(33,102,243,.13)";
+  ctx.fillRect(cx+30,cy-projHalf,18,2*projHalf);
+  line(cx+39,cy-projHalf,cx+39,cy+projHalf,"#2166f3",2);
+  txt("projected area",cx+58,cy-5,12,"#2166f3");
+  txt("∝ cosθ",cx+58,cy+13,12,"#2166f3","bold");
+
+  // actual surface
+  line(x1,y1,x2,y2,"#334155",8);
+
+  // normal
+  arrow(cx,cy,cx+85*nx,cy+85*ny,"#64748b",2);
+  txt("normal",cx+92*nx-12,cy+92*ny,12,"#64748b");
+
+  // reference line back to source direction from centre
+  line(cx,cy,cx-75,cy,"#94a3b8",1.4);
+
+  // angle arc between incoming-facing normal direction (-x) and actual normal
+  ctx.strokeStyle="#64748b";ctx.lineWidth=1.5;
+  ctx.beginPath();
+  ctx.arc(cx,cy,42,Math.PI,Math.PI+th);
+  ctx.stroke();
+  txt("θ",cx-55,cy-10-22*Math.sin(th/2),16,"#64748b","bold");
+
+  // distance dimension
+  const yDim=410;
+  line(sx,yDim,cx,yDim,"#334155",1.4);
+  line(sx,yDim-7,sx,yDim+7,"#334155",1.4);
+  line(cx,yDim-7,cx,yDim+7,"#334155",1.4);
+  txt("r = "+r.toFixed(2)+" m",(sx+cx)/2-30,yDim+26,14,"#334155","bold");
+
+  // simple result summary
+  txt("Relative irradiance",565,420,13,"#475569","bold");
+  ctx.fillStyle="#eef2f7";ctx.fillRect(565,437,165,22);
+  ctx.fillStyle="#2f855a";ctx.fillRect(565,437,165*Math.min(1,rel),22);
+  ctx.strokeStyle="#94a3b8";ctx.strokeRect(565,437,165,22);
+  txt((rel*100).toFixed(1)+"%",735,454,13,"#2f855a","bold");
+}
+
+distance.addEventListener("input",draw);
+angle.addEventListener("input",draw);
+draw();
+})();
+</script>
+</body>
+</html>

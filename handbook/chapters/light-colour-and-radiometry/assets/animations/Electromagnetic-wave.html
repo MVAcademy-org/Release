@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Electromagnetic Wave Explorer</title>
+<style>
+:root{
+  --fg:#10203f; --muted:#66758c; --line:#dbe3ef; --panel:#f8fbff;
+  --red:#e3342f; --blue:#2166f3; --gold:#d69e2e;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#fff;color:var(--fg)}
+.wrap{max-width:1200px;margin:auto;padding:24px}
+h1{margin:0 0 6px;font-size:30px}
+.sub{color:var(--muted);line-height:1.45;margin-bottom:20px}
+.layout{display:grid;grid-template-columns:310px 1fr;gap:18px}
+.card{border:1px solid var(--line);border-radius:14px;background:#fff}
+.controls{padding:18px}
+.controls h3{margin:0 0 14px}
+.group{padding:14px 0;border-top:1px solid #edf1f6}
+.group:first-of-type{border-top:0;padding-top:0}
+.labelrow{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:8px}
+label{font-weight:700}
+.value{font-weight:700;color:#153e90}
+input[type=range]{width:100%}
+select{width:100%;padding:9px;border:1px solid #cfd8e6;border-radius:8px;background:#fff;font-size:14px}
+.band{margin-top:10px;padding:10px;border-radius:8px;text-align:center;font-weight:700}
+.locked{opacity:.45}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.metric{background:var(--panel);padding:10px;border-radius:9px}
+.metric .k{font-size:11px;color:var(--muted);text-transform:uppercase}
+.metric .v{font-weight:700;margin-top:4px}
+.viz{padding:16px}
+.viztop{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:8px}
+.eq{background:#f3f8ff;border:1px solid #d9e8ff;padding:9px 12px;border-radius:9px;font-family:Georgia,serif;font-size:18px}
+canvas{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:12px;background:linear-gradient(#fff,#fbfdff)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px;font-size:14px;color:#38485f}
+.sw{display:inline-block;width:28px;height:3px;vertical-align:middle;margin-right:6px}
+.note{margin-top:12px;background:#fffaf0;border-left:4px solid var(--gold);padding:10px 12px;line-height:1.45;color:#38485f}
+.footer{margin-top:16px;color:var(--muted);font-size:13px;line-height:1.45}
+@media(max-width:820px){.layout{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Electromagnetic Wave Explorer</h1>
+  <div class="sub">
+    Start with unpolarised light to see the electric-field direction fluctuate with time. Select a defined
+    polarisation state to explore how wavelength, phase and polarisation shape a monochromatic plane wave in vacuum.
+  </div>
+
+  <div class="layout">
+    <div class="card controls">
+      <h3>Controls</h3>
+
+      <div class="group">
+        <label for="polarisation">Polarisation</label>
+        <select id="polarisation">
+          <option value="unpolarised" selected>Unpolarised</option>
+          <option value="linear-x">Linear — E along x</option>
+          <option value="linear-y">Linear — E along y</option>
+          <option value="circular-r">Circular — right-handed</option>
+          <option value="circular-l">Circular — left-handed</option>
+          <option value="elliptical">Elliptical</option>
+        </select>
+      </div>
+
+      <div class="group" id="wavelengthGroup">
+        <div class="labelrow">
+          <label for="wavelength">Wavelength λ</label>
+          <span class="value"><span id="wavelengthOut">599.6</span> nm</span>
+        </div>
+        <input id="wavelength" type="range" min="200" max="2500" value="599.6" step="1">
+        <div id="bandIndicator" class="band">Visible</div>
+      </div>
+
+      <div class="group" id="phaseGroup">
+        <div class="labelrow">
+          <label for="phase">Phase φ</label>
+          <span class="value"><span id="phaseOut">0</span>°</span>
+        </div>
+        <input id="phase" type="range" min="0" max="360" value="0" step="1">
+      </div>
+
+      <div class="group">
+        <div class="metrics">
+          <div class="metric">
+            <div class="k">Frequency</div>
+            <div class="v"><span id="frequencyOut">500.0</span> THz</div>
+          </div>
+          <div class="metric">
+            <div class="k">Speed c</div>
+            <div class="v">299,792,458 m/s 🔒</div>
+          </div>
+          <div class="metric">
+            <div class="k">Angular frequency</div>
+            <div class="v"><span id="omegaOut">3.142</span> ×10¹⁵ rad/s</div>
+          </div>
+          <div class="metric">
+            <div class="k">Wave number |k|</div>
+            <div class="v"><span id="kOut">1.048</span> ×10⁷ m⁻¹</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card viz">
+      <div class="viztop">
+        <div>
+          <h3 style="margin:0 0 4px">Electromagnetic wave</h3>
+          <div style="color:#66758c;font-size:14px">
+            The magnetic field follows the electric field perpendicularly; both remain transverse to propagation.
+          </div>
+        </div>
+        <div class="eq">c = λν</div>
+      </div>
+
+      <canvas id="waveCanvas" width="900" height="520"></canvas>
+
+      <div class="legend">
+        <span><span class="sw" style="background:#e3342f"></span>Electric field E</span>
+        <span><span class="sw" style="background:#2166f3"></span>Magnetic field B</span>
+        <span>Propagation → z</span>
+      </div>
+
+      <div class="note" id="noteBox">
+        <b>Unpolarised light:</b> most ordinary sources, such as LEDs and sunlight, have no stable preferred
+        electric-field orientation. The animation represents this by allowing the field direction to fluctuate over time.
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Educational visualisation: amplitudes are normalised and the relative E/B drawing scale is not physical.
+  </div>
+</div>
+
+<script>
+(function(){
+  const C = 299792458;
+  const DEFAULT_FREQ_THz = 500;
+  const DEFAULT_LAMBDA_NM = (C/(DEFAULT_FREQ_THz*1e12))*1e9;
+
+  const wavelength = document.getElementById('wavelength');
+  const phase = document.getElementById('phase');
+  const polarisation = document.getElementById('polarisation');
+  const wavelengthGroup = document.getElementById('wavelengthGroup');
+  const phaseGroup = document.getElementById('phaseGroup');
+  const noteBox = document.getElementById('noteBox');
+
+  const wavelengthOut = document.getElementById('wavelengthOut');
+  const frequencyOut = document.getElementById('frequencyOut');
+  const phaseOut = document.getElementById('phaseOut');
+  const omegaOut = document.getElementById('omegaOut');
+  const kOut = document.getElementById('kOut');
+  const bandIndicator = document.getElementById('bandIndicator');
+
+  const canvas = document.getElementById('waveCanvas');
+  const ctx = canvas.getContext('2d');
+
+  let t0 = performance.now();
+
+  function project(z, x, y){
+    const ox = 110, oy = 340;
+    return {X: ox + z*1.18 + y*0.42, Y: oy - x*0.92 - y*0.22};
+  }
+
+  function line(a,b,color,width=1){
+    ctx.strokeStyle=color; ctx.lineWidth=width;
+    ctx.beginPath(); ctx.moveTo(a.X,a.Y); ctx.lineTo(b.X,b.Y); ctx.stroke();
+  }
+
+  function label(text,x,y,size=14,color="#334"){
+    ctx.fillStyle=color; ctx.font=size+"px Arial"; ctx.fillText(text,x,y);
+  }
+
+  function arrow(a,b,color,width=2){
+    line(a,b,color,width);
+    const ang=Math.atan2(b.Y-a.Y,b.X-a.X), s=8;
+    ctx.fillStyle=color; ctx.beginPath();
+    ctx.moveTo(b.X,b.Y);
+    ctx.lineTo(b.X-s*Math.cos(ang-.5),b.Y-s*Math.sin(ang-.5));
+    ctx.lineTo(b.X-s*Math.cos(ang+.5),b.Y-s*Math.sin(ang+.5));
+    ctx.closePath(); ctx.fill();
+  }
+
+  function drawAxes(){
+    const o=project(0,0,0);
+    arrow(o,project(520,0,0),"#111",2);
+    arrow(o,project(0,90,0),"#e3342f",2);
+    arrow(o,project(0,0,90),"#2166f3",2);
+    label("z",project(540,0,0).X,project(540,0,0).Y+4,15,"#111");
+    label("x",project(0,105,0).X-4,project(0,105,0).Y,15,"#e3342f");
+    label("y",project(0,0,105).X,project(0,0,105).Y,15,"#2166f3");
+  }
+
+  function bandFor(lambdaNm){
+    if(lambdaNm < 400) return ["Ultraviolet (UV)","#eee6ff"];
+    if(lambdaNm <= 700) return ["Visible","#e7f5ff"];
+    if(lambdaNm <= 1100) return ["Near Infrared (NIR)","#fff0e5"];
+    return ["Short-Wave Infrared (SWIR)","#f3e8e8"];
+  }
+
+  function fields(theta,mode,time,z){
+    let ex=0,ey=0;
+    if(mode==="linear-x"){ex=Math.sin(theta);}
+    else if(mode==="linear-y"){ey=Math.sin(theta);}
+    else if(mode==="circular-r"){ex=Math.sin(theta);ey=Math.cos(theta);}
+    else if(mode==="circular-l"){ex=Math.sin(theta);ey=-Math.cos(theta);}
+    else if(mode==="elliptical"){ex=Math.sin(theta);ey=.55*Math.cos(theta);}
+    else{
+      // Smooth, continuously changing pseudo-random orientation for unpolarised light.
+      const a = 1.7*Math.sin(time*1.9 + z*.021) + 1.1*Math.sin(time*3.1 + z*.037);
+      const amp = 0.72 + 0.22*Math.sin(time*2.3 + z*.015);
+      ex = amp*Math.sin(theta)*Math.cos(a);
+      ey = amp*Math.sin(theta)*Math.sin(a);
+    }
+    return {ex,ey,bx:-ey,by:ex};
+  }
+
+  function setControlState(){
+    const unpol = polarisation.value==="unpolarised";
+    wavelength.disabled = unpol;
+    phase.disabled = unpol;
+    wavelengthGroup.classList.toggle("locked",unpol);
+    phaseGroup.classList.toggle("locked",unpol);
+
+    if(unpol){
+      wavelength.value = DEFAULT_LAMBDA_NM.toFixed(0);
+      phase.value = 0;
+      noteBox.innerHTML = "<b>Unpolarised light:</b> most ordinary sources, such as LEDs and sunlight, have no stable preferred electric-field orientation. The animation represents this by allowing the field direction to fluctuate over time.";
+    }else{
+      noteBox.innerHTML = "<b>Defined polarisation:</b> use wavelength and phase controls to explore the wave. Shorter wavelengths correspond to higher frequencies, while the selected polarisation determines the trajectory of the electric-field vector.";
+    }
+  }
+
+  function draw(now){
+    const mode = polarisation.value;
+    const unpol = mode==="unpolarised";
+
+    const lambdaNm = unpol ? DEFAULT_LAMBDA_NM : Number(wavelength.value);
+    const lambdaM = lambdaNm*1e-9;
+    const fHz = C/lambdaM;
+    const fTHz = fHz/1e12;
+    const phi = unpol ? 0 : Number(phase.value)*Math.PI/180;
+    const omega = 2*Math.PI*fHz;
+    const k = 2*Math.PI/lambdaM;
+    const time = (now-t0)/1000;
+
+    wavelengthOut.textContent=lambdaNm.toFixed(1);
+    frequencyOut.textContent=fTHz.toFixed(1);
+    phaseOut.textContent=(unpol?0:Number(phase.value)).toFixed(0);
+    omegaOut.textContent=(omega/1e15).toFixed(3);
+    kOut.textContent=(k/1e7).toFixed(3);
+
+    const band=bandFor(lambdaNm);
+    bandIndicator.textContent=band[0];
+    bandIndicator.style.background=band[1];
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    ctx.strokeStyle="#e7ecf3"; ctx.lineWidth=1;
+    for(let z=90;z<=500;z+=100){
+      const a=project(z,-80,-80),b=project(z,80,-80),c1=project(z,80,80),d=project(z,-80,80);
+      ctx.beginPath();ctx.moveTo(a.X,a.Y);ctx.lineTo(b.X,b.Y);ctx.lineTo(c1.X,c1.Y);ctx.lineTo(d.X,d.Y);ctx.closePath();ctx.stroke();
+    }
+    drawAxes();
+
+    const zMax=500, amp=72;
+    const cycles = unpol ? 3.2 : 1.15+(2500-lambdaNm)/(2500-200)*5.2;
+
+    let prevE=null, prevB=null;
+    for(let i=0;i<=260;i++){
+      const z=zMax*i/260;
+      const theta=2*Math.PI*cycles*(z/zMax)+phi+(unpol?time*3.6:0);
+      const F=fields(theta,mode,time,z);
+      const e=project(z,amp*F.ex,amp*F.ey);
+      const b=project(z,amp*F.bx,amp*F.by);
+      if(prevE)line(prevE,e,"#e3342f",3);
+      if(prevB)line(prevB,b,"#2166f3",3);
+      prevE=e;prevB=b;
+    }
+
+    for(let i=1;i<=9;i++){
+      const z=i*50;
+      const theta=2*Math.PI*cycles*(z/zMax)+phi+(unpol?time*3.6:0);
+      const F=fields(theta,mode,time,z);
+      const base=project(z,0,0);
+      arrow(base,project(z,amp*F.ex,amp*F.ey),"rgba(227,52,47,.55)",1.4);
+      arrow(base,project(z,amp*F.bx,amp*F.by),"rgba(33,102,243,.55)",1.4);
+    }
+
+    const periodZ=zMax/cycles,z1=150,z2=Math.min(500,z1+periodZ);
+    const p1=project(z1,-105,0),p2=project(z2,-105,0);
+    line(p1,p2,"#111",1.5);
+    line({X:p1.X,Y:p1.Y-7},{X:p1.X,Y:p1.Y+7},"#111",1.5);
+    line({X:p2.X,Y:p2.Y-7},{X:p2.X,Y:p2.Y+7},"#111",1.5);
+    label("λ = "+lambdaNm.toFixed(0)+" nm",(p1.X+p2.X)/2-32,(p1.Y+p2.Y)/2-10,14,"#111");
+
+    // Transverse E-field trace
+    const cx=735,cy=130,r=48;
+    ctx.strokeStyle="#cfd8e6";ctx.lineWidth=1;
+    ctx.beginPath();ctx.arc(cx,cy,r,0,2*Math.PI);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(cx-r-10,cy);ctx.lineTo(cx+r+10,cy);ctx.moveTo(cx,cy-r-10);ctx.lineTo(cx,cy+r+10);ctx.stroke();
+    label("E-field trace",cx-40,cy-r-20,13,"#334");
+
+    if(unpol){
+      // Draw current vector plus fading history.
+      for(let j=18;j>=0;j--){
+        const tt=time-j*0.055;
+        const a=1.7*Math.sin(tt*1.9)+1.1*Math.sin(tt*3.1);
+        const rr=r*.78;
+        const x=cx+rr*Math.sin(a), y=cy-rr*Math.cos(a);
+        ctx.fillStyle="rgba(227,52,47,"+(0.06+0.035*(18-j))+")";
+        ctx.beginPath();ctx.arc(x,y,2.5,0,2*Math.PI);ctx.fill();
+      }
+      const a=1.7*Math.sin(time*1.9)+1.1*Math.sin(time*3.1);
+      const end={X:cx+r*.78*Math.sin(a),Y:cy-r*.78*Math.cos(a)};
+      arrow({X:cx,Y:cy},end,"#e3342f",2.6);
+    }else{
+      ctx.strokeStyle="#e3342f";ctx.lineWidth=3;ctx.beginPath();
+      for(let i=0;i<=180;i++){
+        const th=2*Math.PI*i/180+phi;
+        const F=fields(th,mode,time,0);
+        const x=cx+r*.82*F.ey,y=cy-r*.82*F.ex;
+        if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+    }
+
+    label("E",160,118,18,"#e3342f");
+    label("B",145,405,18,"#2166f3");
+    label("direction of propagation",690,392,13,"#111");
+
+    requestAnimationFrame(draw);
+  }
+
+  polarisation.addEventListener('change',setControlState);
+  setControlState();
+  requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>
