@@ -1,7 +1,7 @@
 # Fdb version 4
-["lualatex"] 1788789450.1692 "Machine-Vision-Engineering-Handbook.tex" "D:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/Machine-Vision-Engineering-Handbook.pdf" "Machine-Vision-Engineering-Handbook" 1788789482.68266 0
-  "D:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/Machine-Vision-Engineering-Handbook.aux" 1788789482 593341 d10436d5e92ad0de41cee930137cd5d2 "lualatex"
-  "Machine-Vision-Engineering-Handbook.tex" 1788789384 587181 66567d8833d9d5fc64a3c928258619cf ""
+["lualatex"] 1790026616.64529 "Machine-Vision-Engineering-Handbook.tex" "D:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/Machine-Vision-Engineering-Handbook.pdf" "Machine-Vision-Engineering-Handbook" 1790026650.30799 0
+  "D:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/Machine-Vision-Engineering-Handbook.aux" 1790026649 598154 647b2a9ac9feac4b43cc75a01e68835e "lualatex"
+  "Machine-Vision-Engineering-Handbook.tex" 1790026547 640273 e33565cc479984bc4bc40d6c9f69cfef ""
   "assets/branding/Logo.png" 1787225701 44293 3be26f9e134f4e004554c6867d3767ce ""
   "c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/fontawesome5/FontAwesome5Free-Solid-900.otf" 1788233503 303808 70a8db554e533dec02a44c3d28fd3c40 ""
   "c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf" 1788233339 733736 20d3eb5d31e6373942bca10f39f669ce ""
@@ -297,10 +297,15 @@
   "chapters/light-colour-and-radiometry/assets/figures/Photon-energy.png" 1788788355 3847676 14d91fe016cc0d915a3db220c63ad191 ""
   "chapters/light-colour-and-radiometry/assets/figures/Radiometric-quantities.png" 1788782979 7258148 ae77af795eee1be78106a88ba784270a ""
   "chapters/light-colour-and-radiometry/assets/figures/inverse-square-cosine.png" 1788783355 5260771 cd1263dc395f39c5184b84b9f6e6e4fe ""
-  "d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/Machine-Vision-Engineering-Handbook.aux" 1788789482 593341 d10436d5e92ad0de41cee930137cd5d2 ""
-  "d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/Machine-Vision-Engineering-Handbook.toc" 1788789482 67739 081d95015f938479a7556b75a5e45a78 ""
+  "d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/Machine-Vision-Engineering-Handbook.aux" 1790026649 598154 647b2a9ac9feac4b43cc75a01e68835e ""
+  "d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/Machine-Vision-Engineering-Handbook.toc" 1790026649 68084 e665f4b41e3cfb53b70ba0bf832d27a9 ""
   "d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/chapters/light-colour-and-radiometry/assets/figures/Photometric-response.png" 1788784776 4755383 72c11ca68154c2b025feee7c751cf206 ""
+  "d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/chapters/light-colour-and-radiometry/assets/figures/bright-dark-diffuse-brdf.png" 1790022998 1646508 bb46e627aab56e5e93c951528cf03f9f ""
+  "d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/chapters/light-colour-and-radiometry/assets/figures/directional-lighting-photometric-stereo-structured-light.png" 1790024397 1471039 1c05c0e00cfcdfcf5212d24d63ced2a2 ""
   "d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/chapters/light-colour-and-radiometry/assets/figures/electromagnetic-spectrum-machine-vision.png" 1788784665 5938764 a670465b9eb94310784ef5bc9e8a2468 ""
+  "d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/chapters/light-colour-and-radiometry/assets/figures/fluorescence-machine-vision.png" 1790023673 1384473 692b632a8c07f3e4417e43348b005526 ""
+  "d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/chapters/light-colour-and-radiometry/assets/figures/hyperspectral-data-cube-material-signatures.png" 1788292775 1711063 83d33f83ee1a9cff0450eaaf3d1d8e5a ""
+  "d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/chapters/light-colour-and-radiometry/assets/figures/wavelength-selection-contrast.png" 1790020406 1374914 59726df065f08ceca8b167fdfe8e01cf ""
   "d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/chapters/vision-engineering-scope-definitions-and-history/assets/figures/LeCun-Demostration.jpg" 1786295902 45608 ab4e348ee9bd9f4a824b133a58299d2f ""
   "d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/chapters/vision-engineering-scope-definitions-and-history/assets/figures/applications-families.png" 1787225913 12775221 a405c5ee3bbb09bd939af0ba29e0657c ""
   "d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/chapters/vision-engineering-scope-definitions-and-history/assets/figures/architecture-spectrum.png" 1787225979 6196441 4639ce2dfddb954b03af18044b1e0981 ""

@@ -1,8 +1,8 @@
 schema-version: 1
 release:
-  tag: v2026.09.07-1
-  released_at: 2026-09-07
+  tag: v2026.09.21
+  released_at: 2026.09.21
   source_branch: main
   summary: Draft section 3.1. Needs review
   notes: na.
-  editor_commit: 5e717d539eb92174c6e8cb51302e7e6d64d4ed6f
+  editor_commit: 24f30035686af5513451ca5c621e29b64b9d0a42
