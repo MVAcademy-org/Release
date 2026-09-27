@@ -1,10 +1,10 @@
-This is LuaHBTeX, Version 1.24.0 (TeX Live 2026)  (format=lualatex 2026.9.1)  21 SEP 2026 22:36
+This is LuaHBTeX, Version 1.24.0 (TeX Live 2026)  (format=lualatex 2026.9.27)  27 SEP 2026 22:42
  restricted system commands enabled.
  file:line:error style messages enabled.
 **Machine-Vision-Engineering-Handbook.tex
 (./Machine-Vision-Engineering-Handbook.tex
 LaTeX2e <2026-06-01>
-L3 programming layer <2026-08-10>
+L3 programming layer <2026-09-09>
 Lua module: luaotfload 2024-12-03 v3.29 Lua based OpenType font support
 Lua module: lualibs 2023-07-13 v2.76 ConTeXt Lua standard libraries.
 Lua module: lualibs-extended 2023-07-13 v2.76 ConTeXt Lua libraries -- extended collection.
@@ -275,9 +275,9 @@ LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )) (c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math.sty (c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2026-08-10 L3 programming layer (loader) 
+Package: expl3 2026-09-09 L3 programming layer (loader) 
  (c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3kernel/l3backend-luatex.def
-File: l3backend-luatex.def 2026-08-10 L3 backend support: PDF output (LuaTeX)
+File: l3backend-luatex.def 2026-09-09 L3 backend support: PDF output (LuaTeX)
 \l__color_backend_stack_int=\count299
 Inserting `l3color' in `luaotfload.parse_color'.))
 Package: unicode-math 2023/08/13 v0.8r Unicode maths in XeLaTeX and LuaLaTeX
@@ -599,7 +599,7 @@ Package graphics Info: Driver file: luatex.def on input line 106.
 \cslhangindent=\skip79
 \csllabelwidth=\skip80
  (c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2026/08/21 v26.11 The multilingual framework for LuaLaTeX, pdfLaTeX and XeLaTeX
+Package: babel 2026/09/09 v26.12 The multilingual framework for LuaLaTeX, pdfLaTeX and XeLaTeX
  (c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel/luababel.def
 \bbl@readstream=\read2
 \l@dumylang=\language2
@@ -612,13 +612,13 @@ Package babel Info: Non-standard hyphenation setup on input line 118.
 \bbl@pattcodes=\catcodetable16
 )
 \babel@savecnt=\count330
-LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input line 2105.
-LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input line 2107.
-LaTeX Encoding Info:    Redeclaring text command \ij (encoding T1) on input line 2109.
-LaTeX Encoding Info:    Redeclaring text command \IJ (encoding T1) on input line 2110.
-LaTeX Encoding Info:    Ignoring declaration for text command \ij (encoding ?) on input line 2111.
-LaTeX Encoding Info:    Ignoring declaration for text command \IJ (encoding ?) on input line 2113.
-LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?) on input line 2138.
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input line 2095.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input line 2097.
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding T1) on input line 2099.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding T1) on input line 2100.
+LaTeX Encoding Info:    Ignoring declaration for text command \ij (encoding ?) on input line 2101.
+LaTeX Encoding Info:    Ignoring declaration for text command \IJ (encoding ?) on input line 2103.
+LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?) on input line 2128.
 \U@D=\dimen192
 \l@unhyphenated=\language7
  (c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel/luababel.def
@@ -643,7 +643,7 @@ Inserting `luaotfload.harf.finalize_hlist' in `hpack_filter'.
 \bbl@attr@dir=\attribute5
 ) (c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel/locale/en/babel-british.tex)
 Package babel Info: Importing font and identification data for 'british'
-(babel)             from babel-en-GB.ini. Reported on input line 4460.
+(babel)             from babel-en-GB.ini. Reported on input line 4459.
  (c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel-english/british.ldf
 Language: british 2017/06/06 v3.3r English support from the babel system
  (c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel-english/english.ldf
@@ -1370,23 +1370,33 @@ Overfull \hbox (1.02748pt too wide) detected at line 8
 Missing character: There is no ⁴ (U+2074) in font [lmroman10-regular]:+tlig;!
 Missing character: There is no ⁴ (U+2074) in font [lmroman10-regular]:+tlig;!
 
+Overfull \hbox (1.09496pt too wide) detected at line 92
+ []\TU/lmss/bx/n/10.95 101
+ []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [4
 Missing character: There is no ⁴ (U+2074) in font [lmroman10-regular]:+tlig;!
-] [5]
+]
+Overfull \hbox (1.09496pt too wide) detected at line 127
+ []\TU/lmss/bx/n/10.95 107
+ []
+
+[5]
 Overfull \hbox (2.8275pt too wide) detected at line 163
- []\TU/lmss/bx/n/12 103
+ []\TU/lmss/bx/n/12 113
  []
 
 
 Overfull \hbox (1.09496pt too wide) detected at line 164
- []\TU/lmss/bx/n/10.95 107
+ []\TU/lmss/bx/n/10.95 117
  []
 
 
 Overfull \hbox (1.09496pt too wide) detected at line 184
- []\TU/lmss/bx/n/10.95 111
+ []\TU/lmss/bx/n/10.95 121
  []
 
 Missing character: There is no σ (U+03C3) in font [lmroman10-regular]:+tlig;!
@@ -1395,87 +1405,87 @@ Missing character: There is no σ (U+03C3) in font [lmroman10-regular]:+tlig;!
 Missing character: There is no σ (U+03C3) in font [lmroman10-regular]:+tlig;!
 ]
 Overfull \hbox (1.09496pt too wide) detected at line 218
- []\TU/lmss/bx/n/10.95 117
+ []\TU/lmss/bx/n/10.95 127
  []
 
 [7]
 Overfull \hbox (1.09496pt too wide) detected at line 250
- []\TU/lmss/bx/n/10.95 121
+ []\TU/lmss/bx/n/10.95 131
  []
 
 
 Overfull \hbox (1.09496pt too wide) detected at line 282
- []\TU/lmss/bx/n/10.95 125
+ []\TU/lmss/bx/n/10.95 135
  []
 
 [8]
 Overfull \hbox (2.8275pt too wide) detected at line 316
- []\TU/lmss/bx/n/12 129
+ []\TU/lmss/bx/n/12 139
  []
 
 
 Overfull \hbox (1.09496pt too wide) detected at line 317
- []\TU/lmss/bx/n/10.95 133
+ []\TU/lmss/bx/n/10.95 143
  []
 
 [9]
 Overfull \hbox (1.09496pt too wide) detected at line 353
- []\TU/lmss/bx/n/10.95 139
+ []\TU/lmss/bx/n/10.95 149
  []
 
 
 Overfull \hbox (2.8275pt too wide) detected at line 376
- []\TU/lmss/bx/n/12 143
+ []\TU/lmss/bx/n/12 153
  []
 
 
 Overfull \hbox (1.09496pt too wide) detected at line 377
- []\TU/lmss/bx/n/10.95 147
+ []\TU/lmss/bx/n/10.95 157
  []
 
 [10]
 Overfull \hbox (1.09496pt too wide) detected at line 408
- []\TU/lmss/bx/n/10.95 151
+ []\TU/lmss/bx/n/10.95 161
  []
 
 
 Overfull \hbox (1.09496pt too wide) detected at line 441
- []\TU/lmss/bx/n/10.95 155
+ []\TU/lmss/bx/n/10.95 165
  []
 
 [11]
 Overfull \hbox (2.8275pt too wide) detected at line 470
- []\TU/lmss/bx/n/12 159
+ []\TU/lmss/bx/n/12 169
  []
 
 
 Overfull \hbox (1.09496pt too wide) detected at line 471
- []\TU/lmss/bx/n/10.95 163
+ []\TU/lmss/bx/n/10.95 173
  []
 
 [12]
 Overfull \hbox (1.09496pt too wide) detected at line 515
- []\TU/lmss/bx/n/10.95 169
+ []\TU/lmss/bx/n/10.95 179
  []
 
 
 Overfull \hbox (1.09496pt too wide) detected at line 535
- []\TU/lmss/bx/n/10.95 173
+ []\TU/lmss/bx/n/10.95 183
  []
 
 [13]
 Overfull \hbox (1.09496pt too wide) detected at line 568
- []\TU/lmss/bx/n/10.95 177
+ []\TU/lmss/bx/n/10.95 187
  []
 
 
 Overfull \hbox (1.09496pt too wide) detected at line 601
- []\TU/lmss/bx/n/10.95 181
+ []\TU/lmss/bx/n/10.95 191
  []
 
 [14]
 Overfull \hbox (1.09496pt too wide) detected at line 630
- []\TU/lmss/bx/n/10.95 185
+ []\TU/lmss/bx/n/10.95 195
  []
 
 )
@@ -1885,165 +1895,169 @@ File: chapters/light-colour-and-radiometry/assets/figures/Inverse-square-cosine.
 Package luatex.def Info: chapters/light-colour-and-radiometry/assets/figures/Inverse-square-cosine.png  used on input line 4687.
 (luatex.def)             Requested size: 483.69354pt x 209.74203pt.
  [67] [68<./chapters/light-colour-and-radiometry/assets/figures/inverse-square-cosine.png>] [69]
-<chapters/light-colour-and-radiometry/assets/figures/bright-dark-diffuse-brdf.png, id=1798, 1678.27pt x 944.52875pt>
-File: chapters/light-colour-and-radiometry/assets/figures/bright-dark-diffuse-brdf.png Graphic file (type png)
-<use chapters/light-colour-and-radiometry/assets/figures/bright-dark-diffuse-brdf.png>
-Package luatex.def Info: chapters/light-colour-and-radiometry/assets/figures/bright-dark-diffuse-brdf.png  used on input line 4844.
-(luatex.def)             Requested size: 1678.26591pt x 944.52644pt.
- [70<d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/chapters/light-colour-and-radiometry/assets/figures/bright-dark-diffuse-brdf.png>] [71]
-<chapters/light-colour-and-radiometry/assets/figures/wavelength-selection-contrast.png, id=1808, 1453.43pt x 1090.0725pt>
+<chapters/light-colour-and-radiometry/assets/figures/Surface-roughness-reflection.png, id=1798, 1780.6525pt x 890.32625pt>
+File: chapters/light-colour-and-radiometry/assets/figures/Surface-roughness-reflection.png Graphic file (type png)
+<use chapters/light-colour-and-radiometry/assets/figures/Surface-roughness-reflection.png>
+Package luatex.def Info: chapters/light-colour-and-radiometry/assets/figures/Surface-roughness-reflection.png  used on input line 4885.
+(luatex.def)             Requested size: 483.68985pt x 241.84492pt.
+ [70] [71<./chapters/light-colour-and-radiometry/assets/figures/Surface-roughness-reflection.png>]
+<chapters/light-colour-and-radiometry/assets/figures/bright-dark-field-reflective-part.png, id=1810, 812.928pt x 542.025pt>
+File: chapters/light-colour-and-radiometry/assets/figures/bright-dark-field-reflective-part.png Graphic file (type png)
+<use chapters/light-colour-and-radiometry/assets/figures/bright-dark-field-reflective-part.png>
+Package luatex.def Info: chapters/light-colour-and-radiometry/assets/figures/bright-dark-field-reflective-part.png  used on input line 4964.
+(luatex.def)             Requested size: 483.70436pt x 322.513pt.
+ [72<./chapters/light-colour-and-radiometry/assets/figures/bright-dark-field-reflective-part.png>]
+<chapters/light-colour-and-radiometry/assets/figures/diffuse-illumination-glossy-package.png, id=1819, 812.928pt x 475.011pt>
+File: chapters/light-colour-and-radiometry/assets/figures/diffuse-illumination-glossy-package.png Graphic file (type png)
+<use chapters/light-colour-and-radiometry/assets/figures/diffuse-illumination-glossy-package.png>
+Package luatex.def Info: chapters/light-colour-and-radiometry/assets/figures/diffuse-illumination-glossy-package.png  used on input line 5027.
+(luatex.def)             Requested size: 483.70436pt x 282.63867pt.
+ [73<d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/chapters/light-colour-and-radiometry/assets/figures/diffuse-illumination-glossy-package.png>] [74] [75]
+<chapters/light-colour-and-radiometry/assets/figures/Refraction-person-with-glasses.png, id=1843, 545.748pt x 231.483pt>
+File: chapters/light-colour-and-radiometry/assets/figures/Refraction-person-with-glasses.png Graphic file (type png)
+<use chapters/light-colour-and-radiometry/assets/figures/Refraction-person-with-glasses.png>
+Package luatex.def Info: chapters/light-colour-and-radiometry/assets/figures/Refraction-person-with-glasses.png  used on input line 5257.
+(luatex.def)             Requested size: 483.7156pt x 205.1715pt.
+<chapters/light-colour-and-radiometry/assets/figures/Refraction-transparent-slab.png, id=1845, 963.3591pt x 744.1401pt>
+File: chapters/light-colour-and-radiometry/assets/figures/Refraction-transparent-slab.png Graphic file (type png)
+<use chapters/light-colour-and-radiometry/assets/figures/Refraction-transparent-slab.png>
+Package luatex.def Info: chapters/light-colour-and-radiometry/assets/figures/Refraction-transparent-slab.png  used on input line 5290.
+(luatex.def)             Requested size: 483.69223pt x 373.62473pt.
+ [76<d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/chapters/light-colour-and-radiometry/assets/figures/Refraction-person-with-glasses.png>] [77<./chapters/light-colour-and-radiometry/assets/figures/Refraction-transparent-slab.png>] [78] [79] [80] [81]
+<chapters/light-colour-and-radiometry/assets/figures/wavelength-selection-contrast.png, id=1885, 707.589pt x 433.62pt>
 File: chapters/light-colour-and-radiometry/assets/figures/wavelength-selection-contrast.png Graphic file (type png)
 <use chapters/light-colour-and-radiometry/assets/figures/wavelength-selection-contrast.png>
-Package luatex.def Info: chapters/light-colour-and-radiometry/assets/figures/wavelength-selection-contrast.png  used on input line 4973.
-(luatex.def)             Requested size: 1453.42645pt x 1090.06984pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [72<d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/chapters/light-colour-and-radiometry/assets/figures/wavelength-selection-contrast.png>] [73]
-<chapters/light-colour-and-radiometry/assets/figures/hyperspectral-data-cube-material-signatures.png, id=1820, 502.2765pt x 376.7676pt>
+Package luatex.def Info: chapters/light-colour-and-radiometry/assets/figures/wavelength-selection-contrast.png  used on input line 5764.
+(luatex.def)             Requested size: 707.58727pt x 433.61894pt.
+ [82] [83<d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/chapters/light-colour-and-radiometry/assets/figures/wavelength-selection-contrast.png>]
+<chapters/light-colour-and-radiometry/assets/figures/hyperspectral-data-cube-material-signatures.png, id=1901, 502.2765pt x 376.7676pt>
 File: chapters/light-colour-and-radiometry/assets/figures/hyperspectral-data-cube-material-signatures.png Graphic file (type png)
 <use chapters/light-colour-and-radiometry/assets/figures/hyperspectral-data-cube-material-signatures.png>
-Package luatex.def Info: chapters/light-colour-and-radiometry/assets/figures/hyperspectral-data-cube-material-signatures.png  used on input line 5087.
+Package luatex.def Info: chapters/light-colour-and-radiometry/assets/figures/hyperspectral-data-cube-material-signatures.png  used on input line 5877.
 (luatex.def)             Requested size: 502.27528pt x 376.76666pt.
- [74] [75<d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/chapters/light-colour-and-radiometry/assets/figures/hyperspectral-data-cube-material-signatures.png>]
-<chapters/light-colour-and-radiometry/assets/figures/fluorescence-machine-vision.png, id=1830, 1678.27pt x 944.52875pt>
+ [84] [85<d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/chapters/light-colour-and-radiometry/assets/figures/hyperspectral-data-cube-material-signatures.png>]
+<chapters/light-colour-and-radiometry/assets/figures/fluorescence-machine-vision.png, id=1912, 1678.27pt x 944.52875pt>
 File: chapters/light-colour-and-radiometry/assets/figures/fluorescence-machine-vision.png Graphic file (type png)
 <use chapters/light-colour-and-radiometry/assets/figures/fluorescence-machine-vision.png>
-Package luatex.def Info: chapters/light-colour-and-radiometry/assets/figures/fluorescence-machine-vision.png  used on input line 5152.
+Package luatex.def Info: chapters/light-colour-and-radiometry/assets/figures/fluorescence-machine-vision.png  used on input line 5943.
 (luatex.def)             Requested size: 1678.26591pt x 944.52644pt.
- [76<d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/chapters/light-colour-and-radiometry/assets/figures/fluorescence-machine-vision.png>] [77]
-Underfull \vbox (badness 1389) has occurred while \output is active []
-
- [78] [79]
-<chapters/light-colour-and-radiometry/assets/figures/directional-lighting-photometric-stereo-structured-light.png, id=1851, 1678.27pt x 944.52875pt>
+ [86<d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/chapters/light-colour-and-radiometry/assets/figures/fluorescence-machine-vision.png>] [87] [88]
+<chapters/light-colour-and-radiometry/assets/figures/directional-lighting-photometric-stereo-structured-light.png, id=1936, 1678.27pt x 944.52875pt>
 File: chapters/light-colour-and-radiometry/assets/figures/directional-lighting-photometric-stereo-structured-light.png Graphic file (type png)
 <use chapters/light-colour-and-radiometry/assets/figures/directional-lighting-photometric-stereo-structured-light.png>
-Package luatex.def Info: chapters/light-colour-and-radiometry/assets/figures/directional-lighting-photometric-stereo-structured-light.png  used on input line 5473.
+Package luatex.def Info: chapters/light-colour-and-radiometry/assets/figures/directional-lighting-photometric-stereo-structured-light.png  used on input line 6199.
 (luatex.def)             Requested size: 1678.26591pt x 944.52644pt.
-
-Underfull \vbox (badness 2213) has occurred while \output is active []
-
- [80<d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/chapters/light-colour-and-radiometry/assets/figures/directional-lighting-photometric-stereo-structured-light.png>] [81] [82]
-chapter 4.
-[83
+ [89] [90<d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/chapters/light-colour-and-radiometry/assets/figures/directional-lighting-photometric-stereo-structured-light.png>] [91] [92
 
 
 ]
+chapter 4.
+[93]
 Missing character: There is no ⁴ (U+2074) in font [lmsans10-bold]:+tlig;!
 Missing character: There is no ⁴ (U+2074) in font [lmsans10-bold]:+tlig;!
-[84
+[94
 Missing character: There is no ⁴ (U+2074) in font [lmsans10-bold]:+tlig;!
-] [85] [86]
+] [95] [96]
 part II.
 Package scrkbase Info: You've told me to use the font selection of the element
 (scrkbase)             `partprefix' that is an alias of element `partnumber'
-(scrkbase)              on input line 6053.
-[87
+(scrkbase)              on input line 6779.
+[97
 
 
-] [88] [89] [90
+] [98] [99] [100
 
 
 ]
 chapter 5.
-[91] [92] [93] [94] [95] [96
+[101] [102] [103] [104] [105] [106
 
 
 ]
 chapter 6.
-[97] [98] [99] [100] [101] [102
+[107] [108] [109] [110] [111] [112
 
 
 ]
 part III.
 Package scrkbase Info: You've told me to use the font selection of the element
 (scrkbase)             `partprefix' that is an alias of element `partnumber'
-(scrkbase)              on input line 7050.
-[103] [104] [105] [106
+(scrkbase)              on input line 7776.
+[113] [114] [115] [116
 
 
 ]
 chapter 7.
-[107] [108] [109] [110
+[117] [118] [119] [120
 
 
 ]
 chapter 8.
 Missing character: There is no σ (U+03C3) in font [lmsans10-bold]:+tlig;!
 Missing character: There is no σ (U+03C3) in font [lmsans10-bold]:+tlig;!
-[111] [112
+[121] [122
 Missing character: There is no σ (U+03C3) in font [lmsans10-bold]:+tlig;!
-] [113] [114] [115] [116
+] [123] [124] [125] [126
 
 
 ]
 chapter 9.
-[117] [118] [119] [120]
+[127] [128] [129] [130]
 chapter 10.
-[121
+[131
 
 
-] [122] [123] [124]
+] [132] [133] [134]
 chapter 11.
-[125
+[135
 
 
-] [126] [127] [128]
+] [136] [137] [138]
 part IV.
 Package scrkbase Info: You've told me to use the font selection of the element
 (scrkbase)             `partprefix' that is an alias of element `partnumber'
-(scrkbase)              on input line 9126.
-[129
+(scrkbase)              on input line 9852.
+[139
 
 
-] [130] [131] [132
+] [140] [141] [142
 
 
 ]
 chapter 12.
-[133] [134] [135] [136] [137] [138
+[143] [144] [145] [146] [147] [148
 
 
 ]
 chapter 13.
-[139] [140] [141] [142
+[149] [150] [151] [152
 
 
 ]
 part V.
 Package scrkbase Info: You've told me to use the font selection of the element
 (scrkbase)             `partprefix' that is an alias of element `partnumber'
-(scrkbase)              on input line 9932.
-[143] [144] [145] [146
+(scrkbase)              on input line 10658.
+[153] [154] [155] [156
 
 
 ]
 chapter 14.
-[147] [148] [149] [150]
+[157] [158] [159] [160]
 chapter 15.
-[151
+[161
 
 
-] [152] [153] [154]
+] [162] [163] [164]
 chapter 16.
-[155
+[165
 
 
-] [156] [157] [158]
+] [166] [167] [168]
 part VI.
 Package scrkbase Info: You've told me to use the font selection of the element
 (scrkbase)             `partprefix' that is an alias of element `partnumber'
-(scrkbase)              on input line 11218.
-[159
-
-
-] [160] [161] [162
-
-
-]
-chapter 17.
-[163] [164] [165] [166] [167] [168]
-chapter 18.
+(scrkbase)              on input line 11944.
 [169
 
 
@@ -2051,105 +2065,115 @@ chapter 18.
 
 
 ]
+chapter 17.
+[173] [174] [175] [176] [177] [178]
+chapter 18.
+[179
+
+
+] [180] [181] [182
+
+
+]
 chapter 19.
-[173] [174] [175] [176]
+[183] [184] [185] [186]
 chapter 20.
-[177
+[187
 
 
-] [178] [179] [180]
+] [188] [189] [190]
 chapter 21.
-[181
+[191
 
 
-] [182] [183] [184] [185
+] [192] [193] [194] [195
 
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [186]
-Underfull \hbox (badness 4144) in paragraph at lines 13817--13817
+ [196]
+Underfull \hbox (badness 4144) in paragraph at lines 14543--14543
 \TU/lmr/m/n/10.95 by deep learn-ing,’. 2026. Ac-cessed: Aug. 09, 2026. [On-line]. Avail-
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [187]
+ [197]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [188]
-Underfull \hbox (badness 2529) in paragraph at lines 13988--13988
+ [198]
+Underfull \hbox (badness 2529) in paragraph at lines 14714--14714
 []|\TU/lmr/m/n/10.95 Cognex Cor-por-a-tion, ‘Cognex ac-quires maker of deep learn-ing soft-ware for in-dus-
  []
 
 
-Underfull \hbox (badness 2809) in paragraph at lines 13988--13988
+Underfull \hbox (badness 2809) in paragraph at lines 14714--14714
 \TU/lmr/m/n/10.95 trial ma-chine vis-ion,’. 2026. Ac-cessed: Aug. 09, 2026. [On-line]. Avail-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14002--14002
+Underfull \hbox (badness 10000) in paragraph at lines 14728--14728
 \TU/lmr/m/n/10.95 and-events/news/news-details/2022/Zebra-Technologies-Completes-Acquisition-of-Matrox-
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [189]
-Underfull \hbox (badness 10000) in paragraph at lines 14100--14100
+ [199]
+Underfull \hbox (badness 10000) in paragraph at lines 14826--14826
 []|\TU/lmr/m/n/10.95 In-ter-na-tional Or-gan-iz-a-tion for Stand-ard-iz-a-tion, \TU/lmr/m/it/10.95 Geo-met-rical product spe-cific-a-tions
  []
 
 
-Underfull \hbox (badness 6876) in paragraph at lines 14173--14173
+Underfull \hbox (badness 6876) in paragraph at lines 14899--14899
 []|\TU/lmr/m/n/10.95 Cognex Corp., ‘Cognex launches highest per-form-ance em-bed-ded AI vis-ion sys-
  []
 
 
-Underfull \hbox (badness 3942) in paragraph at lines 14173--14173
+Underfull \hbox (badness 3942) in paragraph at lines 14899--14899
 \TU/lmr/m/n/10.95 tem powered by qual-comm’. 2026. Ac-cessed: Aug. 18, 2026. [On-line].
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [190]
+ [200]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [191]
-Underfull \hbox (badness 10000) in paragraph at lines 14346--14346
+ [201]
+Underfull \hbox (badness 10000) in paragraph at lines 15072--15072
 \TU/lmr/m/n/10.95 details/2026/Cognex-OneVision-Adoption-Ramps-as-Manufacturers-Scale-AI-Vision-
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [192] [193] [194
+ [202] [203] [204
 
 
 ] (d:/09_GIT_PROJECTS/MVAcademy-org/Editor/_build/staging/handbook/Machine-Vision-Engineering-Handbook.aux)
  ***********
 LaTeX2e <2026-06-01>
-L3 programming layer <2026-08-10>
+L3 programming layer <2026-09-09>
  ***********
 )
 
 Here is how much of LuaTeX's memory you used:
- 47009 strings out of 475635
- 381547,2373549 words of node,token memory allocated
- 38014 words of node memory still in use:
-   8 hlist, 2 vlist, 2 rule, 1 local_par, 7 glue, 4 kern, 1 penalty, 3 glyph, 13826 attribute, 73 glue_spec, 4611 attribute_list, 2 write, 1 user_defined, 82 pdf_action nodes
-   avail lists: 1:10,2:44948,3:1810,4:456,5:1027,6:201,7:23942,8:188,9:2663,10:30,11:1742,12:1
- 67891 multiletter control sequences out of 65536+600000
- 57 fonts using 13274255 bytes
- 109i,9n,114p,11256b,1122s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 47064 strings out of 475604
+ 381524,2373549 words of node,token memory allocated
+ 38524 words of node memory still in use:
+   8 hlist, 2 vlist, 2 rule, 1 local_par, 7 glue, 4 kern, 1 penalty, 3 glyph, 14015 attribute, 73 glue_spec, 4674 attribute_list, 2 write, 1 user_defined, 83 pdf_action nodes
+   avail lists: 1:11,2:44696,3:1810,4:456,5:1037,6:200,7:23942,8:188,9:2663,10:30,11:1742,12:1
+ 67951 multiletter control sequences out of 65536+600000
+ 57 fonts using 13274335 bytes
+ 109i,11n,114p,11256b,1122s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman5-regular.otf><c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf><c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.otf><c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf><c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf><c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf><c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-bolditalic.otf><c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-italic.otf><c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/fontawesome5/FontAwesome5Free-Solid-900.otf><c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmromanslant10-regular.otf><c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf><c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmsans10-bold.otf><c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman9-regular.otf><c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf><c:/Users/Zanon/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf>
-Output written on Machine-Vision-Engineering-Handbook.pdf (222 pages, 118721116 bytes).
+Output written on Machine-Vision-Engineering-Handbook.pdf (232 pages, 139224843 bytes).
 
-PDF statistics: 4796 PDF objects out of 5155 (max. 8388607)
- 4431 compressed objects within 45 object streams
- 1065 named destinations out of 1200 (max. 1048576)
+PDF statistics: 4889 PDF objects out of 5155 (max. 8388607)
+ 4504 compressed objects within 46 object streams
+ 1079 named destinations out of 1200 (max. 1048576)
  5032 words of extra memory for PDF output out of 10000 (max. 100000000)
 

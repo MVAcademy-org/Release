@@ -1182,7 +1182,6 @@ Figure&nbsp;3.6: Effect of distance and incidence angle on irradiance. The onlin
 </figure>
 </div>
 <hr>
-<p>editor: markdown: wrap: 72 —</p>
 </section>
 </section>
 <section id="sec-light-colour-and-radiometry-interaction-of-light-with-matter" class="level2" data-number="3.2">
@@ -1208,91 +1207,348 @@ Figure&nbsp;3.6: Effect of distance and incidence angle on irradiance. The onlin
 </div>
 <section id="sec-light-colour-and-radiometry-specular-and-diffuse-reflection-the-brdf" class="level3" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="sec-light-colour-and-radiometry-specular-and-diffuse-reflection-the-brdf"><span class="header-section-number">3.2.1</span> Specular and diffuse reflection; the BRDF</h3>
-<p>Specular reflection preserves a strong geometric relationship between incidence and reflection: for an ideal smooth interface, the reflection angle equals the incidence angle. Diffuse reflection redistributes energy over a broader range of directions because of surface microstructure, subsurface scattering or both. Real industrial surfaces commonly contain both components. A painted panel that appears matte can still exhibit a specular highlight; a polished metal can produce measurable diffuse scatter from roughness, scratches or contamination.</p>
+<p>When light reflects from a surface, it can be useful to think of the reflected radiation as containing two broad components: <strong>specular reflection</strong>, in which light remains strongly concentrated around a particular direction, and <strong>diffuse reflection</strong>, in which the reflected energy is distributed over a much wider range of directions. The balance between them depends on properties such as surface roughness, microstructure, material composition and wavelength. Real industrial surfaces normally contain some combination of both: a painted panel that appears matte can still produce a specular highlight, while a polished metal surface can scatter measurable light because of scratches, contamination or microscopic roughness.</p>
+<p>The direction of the specular component follows a simple geometrical rule. At the point where light reaches the surface, an imaginary line perpendicular to the surface is called the surface normal. The angle between the incoming ray and this normal is the angle of incidence, <span class="math inline">\(\theta_i\)</span>, while the angle between the normal and the specularly reflected ray is the angle of reflection, <span class="math inline">\(\theta_r\)</span>. The law of reflection states that these angles are equal:</p>
 <p><span class="math display">\[\theta_r=\theta_i.\]</span></p>
-<p>The most general commonly used description of opaque-surface reflection is the bidirectional reflectance distribution function (BRDF). It relates the differential reflected radiance in direction <span class="math inline">\((\theta_r,\phi_r)\)</span> to incident irradiance from direction <span class="math inline">\((\theta_i,\phi_i)\)</span>:</p>
-<p><span class="math display">\[f_r(\theta_i,\phi_i;\theta_r,\phi_r)=\frac{dL_r(\theta_r,\phi_r)}{dE_i(\theta_i,\phi_i)}\quad[\mathrm{sr^{-1}}]\]</span></p>
-<p>The BRDF is therefore not simply “how reflective” a surface is; it describes where reflected radiance goes. A Lambertian surface has the simple constant BRDF <span class="math inline">\(f_r=\rho/\pi\)</span>, where <span class="math inline">\(\rho\)</span> is diffuse reflectance. A mirror-like surface concentrates its BRDF close to the specular direction. Surface inspection frequently succeeds by deliberately choosing illumination and viewing angles that move normal surfaces and defects into different parts of this directional response.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Machine-vision shortcut: control the reflection, not just the brightness">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Machine-vision shortcut: control the reflection, not just the brightness
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If a shiny surface is difficult, asking for “more light” is often the wrong question. Ask where the normal surface sends the light and where the defect sends it. Bright-field imaging places the camera where the nominal surface reflection is strong; dark-field imaging places it where the nominal surface is dark but scratches, edges or particles scatter light into the lens. The illumination chapter turns this BRDF idea into practical lighting geometries.</p>
-</div>
-</div>
-<p>Surface roughness provides an intuitive transition between specular and diffuse behaviour. When height variation is small relative to wavelength and slopes are smooth, reflection remains concentrated; as roughness and slope variation grow, reflected energy spreads. The exact relationship depends on the statistics of the surface and cannot be reduced to one roughness number. NIST optical-scattering work explicitly exploits these distributions to infer microroughness, particles, residues and subsurface defects.</p>
-<p>This directional view of reflection gives a direct physical interpretation of bright-field and dark-field machine vision. The camera lens accepts only a finite cone of outgoing directions. In bright-field geometry, the dominant reflection from the nominal surface is deliberately directed into that acceptance cone, so a smooth region appears bright while scratches, edges or local slope changes may redirect light away and appear dark. In dark-field geometry, the nominal specular reflection is deliberately sent away from the lens; a scratch, edge, particle or rough patch becomes visible when it scatters or redirects some of the illumination back into the camera. The same workpiece can therefore show almost inverted contrast when only the illumination angle is changed.</p>
-<p>Diffuse illumination can be understood in the same framework. Instead of illuminating from one narrow angular direction, a dome or other large diffuser presents a broad range of incident angles to the surface. This reduces sensitivity to small changes in surface slope and is why diffuse lighting is commonly used to suppress local hot spots on curved or glossy parts. The price is that directional defects can lose contrast when the angular information that revealed them is averaged away. The illumination chapter develops the corresponding hardware; here the important point is that bright field, dark field and diffuse lighting are different ways of sampling the surface BRDF.</p>
-<p>For the formal definition and nomenclature of directional reflectance and BRDF quantities, see the NBS/NIST monograph by Nicodemus et al. <span class="citation" data-cites="nicodemus1977reflectance"><a href="../../bibliography/references.html#ref-nicodemus1977reflectance" role="doc-biblioref">[10]</a></span>. Advanced Illumination <span class="citation" data-cites="advancedillumination_machinevisionlighting"><a href="../../bibliography/references.html#ref-advancedillumination_machinevisionlighting" role="doc-biblioref">[5]</a></span> and CCS <span class="citation" data-cites="ccs_theory_light_color"><a href="../../bibliography/references.html#ref-ccs_theory_light_color" role="doc-biblioref">[6]</a></span> provide practical visual examples of the same angular behaviour in machine-vision lighting. The NI practical guide also shows paired inspection images in which changing from directional bright-field to diffuse or dark-field illumination materially changes feature contrast <span class="citation" data-cites="ni2024_practical_machine_vision_lighting"><a href="../../bibliography/references.html#ref-ni2024_practical_machine_vision_lighting" role="doc-biblioref">[9]</a></span>.</p>
-<div id="fig-bright-dark-diffuse-brdf" class="quarto-float quarto-figure quarto-figure-center anchored">
+<p>This law does not imply that a real surface reflects all of its energy along one perfectly defined ray. Rather, it identifies the direction around which the specular component is centred. A very smooth surface can concentrate much of its reflected energy close to this direction. As roughness and local slope variation increase, the reflected energy tends to spread over a broader range of directions. In some materials, light can also enter the surface and undergo subsurface scattering before emerging again, contributing further to the diffuse component.</p>
+<p>This distinction is immediately relevant to machine vision. A camera does not receive all the light reflected by an object; its lens collects only a limited range of outgoing directions. A smooth surface can therefore appear very bright when its specular reflection is directed towards the camera and almost black when the same reflection is directed elsewhere. A scratch or defect can reverse that behaviour by changing the local surface angle or scattering light into directions that differ from those of the nominal surface.</p>
+<p>The law of reflection tells us where the ideal specular direction lies, but it does not describe how much reflected energy travels in that direction or how the remaining energy is distributed. A more general description is provided by the <strong>bidirectional reflectance distribution function (BRDF)</strong>. The term <em>bidirectional</em> reflects the fact that surface appearance depends on two directions: where the illumination comes from and where the surface is observed.</p>
+<p>A single angle is not enough to describe the direction of a ray in three-dimensional space. Imagine a light positioned above a flat workpiece. First, we need to know how far the light is tilted away from the surface normal; this is described by <span class="math inline">\(\theta\)</span>. But many different positions can have the same tilt: the light could be to the left, right, front or back of the part while remaining at the same angle from the normal. We therefore need a second angle, <span class="math inline">\(\phi\)</span>, called the azimuth angle, which describes the direction around the surface.</p>
+<p>The incident illumination direction is therefore represented by <span class="math inline">\((\theta_i,\phi_i)\)</span>, while the direction in which the reflected light is observed is represented by <span class="math inline">\((\theta_r,\phi_r)\)</span>. Together, these four angles allow the BRDF to describe how much light arriving from one particular direction is reflected towards another particular direction, measured in inverse steradians, where the steradian (sr) is the SI unit of solid angle—the three-dimensional counterpart of the radian:</p>
+<p><span class="math display">\[f_r(\theta_i,\phi_i;\theta_r,\phi_r)
+=
+\frac{dL_r(\theta_r,\phi_r)}
+{dE_i(\theta_i,\phi_i)}
+\quad[\mathrm{sr^{-1}}].\]</span></p>
+<p>The BRDF should therefore not be interpreted simply as <em>how reflective</em> a material is. It describes where the reflected light goes for a particular combination of illumination and observation directions.</p>
+<p>It is useful to consider two idealised extremes to understand what the BRDF represents. At one extreme is a perfectly <strong>diffuse, or Lambertian, surface</strong>. It redistributes reflected light broadly rather than concentrating it in one particular viewing direction. Its BRDF is constant:</p>
+<p><span class="math display">\[f_r=\frac{\rho}{\pi},\]</span></p>
+<p>where <span class="math inline">\(\rho\)</span> is the diffuse reflectance. A constant BRDF means that, for a given illumination condition, the surface radiance is independent of observation direction. This does not mean that equal optical power is emitted into every direction: the projected-area cosine term still governs the power distributed over the hemisphere.</p>
+<p>At the opposite extreme is an ideal <strong>mirror-like, or specular, surface</strong>. Instead of distributing reflected light broadly, it concentrates the reflection into the specific direction predicted by the law of reflection, <span class="math inline">\(\theta_r=\theta_i\)</span>, with the corresponding azimuthal geometry. Its BRDF is therefore not constant: it is effectively concentrated into a very narrow peak around the specular direction. A perfectly ideal mirror requires a more specialised mathematical description, which is not necessary for the machine-vision treatment here.</p>
+<p>Real industrial surfaces normally lie somewhere between these extremes. Their BRDF may contain a concentrated <strong>specular component</strong> together with a broader <strong>diffuse component</strong>, and defects such as scratches, roughness or contamination can change either component. This change in directional reflection is precisely what many machine-vision illumination techniques exploit to create contrast between features of interest and backgrounds.</p>
+<p>Surface roughness provides an intuitive transition between strongly specular and more broadly distributed reflection. When a surface is very smooth relative to the wavelength of the illumination and its local slopes vary little, much of the reflected energy remains concentrated close to the specular direction. As microscopic height and slope variations increase, different parts of the surface redirect light in slightly different directions and the reflected energy becomes distributed over a wider angular range.</p>
+<p>This relationship should be treated as a physical principle rather than as a simple conversion from one roughness number to one reflection pattern. The angular distribution also depends on the spatial statistics and structure of the surface, the wavelength, material properties and illumination geometry. Nevertheless, the central machine-vision idea is straightforward: changes in surface microgeometry change where the reflected light goes.</p>
+<div id="fig-surface-roughness-reflection" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-bright-dark-diffuse-brdf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="assets/figures/bright-dark-diffuse-brdf.png" class="img-fluid figure-img">
+<div aria-describedby="fig-surface-roughness-reflection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<iframe src="assets/animations/Surface-roughness-NIST-scatter.html" width="100%" height="820" style="border: 0;" loading="lazy" title="Interactive illustration of surface roughness and angle-resolved optical scattering">
+</iframe>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bright-dark-diffuse-brdf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.7: Bright-field, dark-field and diffuse illumination as BRDF sampling
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-surface-roughness-reflection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.7: Surface roughness and directional reflection. The online edition provides an interactive illustration of how increasing RMS roughness redistributes optical energy from the narrow specular component into angle-resolved scatter. Static formats compare an ideal mirror, an illustrative optically rougher surface and an ideal Lambertian diffuse surface. The comparison is conceptual; increasing surface roughness does not by itself imply that a real surface becomes Lambertian.
 </figcaption>
 </figure>
 </div>
+<div class="callout callout-style-default callout-note callout-titled" title="From machine vision to surface metrology">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>From machine vision to surface metrology
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The same principle can be used quantitatively. The <strong>National Institute of Standards and Technology (NIST)</strong> studies angle-resolved and polarised optical scattering to characterise surfaces and distinguish scattering associated with microroughness, particles, residues and subsurface defects <span class="citation" data-cites="nist_optical_scattering_surfaces"><a href="../../bibliography/references.html#ref-nist_optical_scattering_surfaces" role="doc-biblioref">[10]</a></span>.</p>
+<p>This provides a useful perspective for machine vision: scattered light is not necessarily unwanted noise. Its angular and polarisation characteristics can themselves contain information about the condition of a surface.</p>
+</div>
+</div>
+<p>The reflection model developed above can now be connected to some familiar machine-vision images. The purpose here is not to select an illumination technique—that is developed in <a href="../illumination-for-vision/index.html" class="quarto-xref"><span>Chapter 5</span></a>—but to understand why changing illumination geometry can change the appearance of the same physical feature so dramatically.</p>
+<p>Consider a relatively smooth, reflective metal surface containing an engraved mark, a scratch or another local change in surface geometry. To build intuition, we can approximate the nominal surface as strongly specular and the feature as a region that redirects or scatters light over a broader range of directions. This is deliberately simplified—a real scratch or engraving is not necessarily Lambertian—but it makes the consequence of directional reflection easy to see.</p>
+<p>Assume that the camera views the surface approximately along its normal. If illumination arrives from a direction close to the camera axis, and therefore at a relatively small angle to the surface normal, the law of reflection places much of the strong return from the smooth background close to the camera direction. Because the lens accepts a finite cone of outgoing directions rather than a single ray, a substantial part of this reflection can enter the camera and the nominal surface appears bright.</p>
+<p>An engraved line, scratch, tapered hole or other local change in surface slope behaves differently. Its local surface normals and microstructure redirect part of the illumination away from the direction followed by the nominal surface. Against a bright specular background, the feature can therefore produce a weaker signal and appear darker. This type of image geometry is commonly described as <strong>bright field</strong>.</p>
+<p>Now keep the camera and part fixed but move the illumination towards a more oblique angle. The law of reflection moves the strong specular return from the smooth nominal surface correspondingly farther away from the camera. Once most of that return falls outside the angular range accepted by the lens, the background becomes dark. The engraved or damaged region still redirects light over additional directions, some of which can reach the camera. The same physical feature can consequently become bright against a dark background. This is the physical basis of <strong>dark field</strong>.</p>
+<p>The important point at this stage is not which arrangement should be selected. It is that <strong>the object has not changed</strong>: the large change in image contrast results from changing which part of the surface’s directional reflection reaches the camera.</p>
+<div id="fig-bright-dark-field-reflective-part" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bright-dark-field-reflective-part-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<iframe src="assets/animations/Bright-dark-field-illumination.html" width="100%" height="820" style="border: 0;" loading="lazy" title="Interactive illustration of the transition from bright-field to dark-field illumination">
+</iframe>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bright-dark-field-reflective-part-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.8: Bright-field and dark-field illumination applied to the same reflective component. The online edition allows the illumination angle to be varied while keeping the camera and part fixed, showing how directional reflection alone can reverse feature contrast. Static formats show representative bright-field and dark-field configurations side by side. The transition is conceptual rather than a fixed angular threshold; the actual response depends on the surface BRDF, illumination geometry, source angular extent and camera acceptance angle.
+</figcaption>
+</figure>
+</div>
+<p><a href="#fig-bright-dark-field-reflective-part" class="quarto-xref">Figure&nbsp;<span>3.8</span></a> provides a practical interpretation of the BRDF developed above. A scratch, engraving, edge or local slope change modifies the directional distribution of reflected light. Depending on illumination and observation geometry, that modification can either remove light from the camera or redirect light into it. This is why apparently small changes in lighting position can produce large changes in the image of a reflective component.</p>
+<p>The same theory also explains a different machine-vision problem. Sometimes directional surface behaviour is not the feature of interest at all. Consider printed information on a glossy, wrinkled foil package. Every fold and wrinkle introduces a different local surface normal. Under illumination arriving from a narrow range of directions, some regions satisfy the specular condition and produce strong highlights, while neighbouring regions direct their reflection away from the camera and become dark. The resulting brightness variation can be larger than the contrast of the print that the inspection is intended to observe.</p>
+<p>This introduces an important distinction between <strong>diffuse reflection</strong> and <strong>diffuse illumination</strong>. Diffuse reflection, introduced earlier, describes what a surface does to incident light: surface structure or subsurface interactions distribute reflected radiation over a broad range of outgoing directions. Diffuse illumination instead describes the angular distribution of the <em>incoming</em> light. Rather than illuminating the part from one narrow direction, a diffuse source presents it with light arriving from many directions.</p>
+<p>A dome provides a useful conceptual example. Placing a glossy object inside diffuse illumination does not make its surface Lambertian; locally, the surface can remain strongly specular. Instead, the broad range of incident directions means that different local surface normals can each receive illumination from a direction capable of reflecting towards the camera. Orientation-dependent bright and dark regions are therefore reduced and the appearance of a curved, wrinkled or glossy surface becomes more uniform.</p>
+<p>The underlying print or material contrast has not been created by this process. In the packaging example, differences between ink and foil still originate from properties such as reflectance and absorption. Diffuse illumination has primarily reduced the image variation caused by geometry, allowing those other differences to become easier to observe.</p>
+<div id="fig-diffuse-illumination-glossy-package" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-diffuse-illumination-glossy-package-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="assets/figures/diffuse-illumination-glossy-package.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-diffuse-illumination-glossy-package-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.9: Directional and diffuse illumination applied to printed information on a glossy wrinkled package. Directional illumination produces strong orientation-dependent highlights and dark regions that can obscure the print. Broad diffuse illumination reduces this geometrical variation, producing a more uniform background from which the printed feature can be distinguished.
+</figcaption>
+</figure>
+</div>
+<p><a href="#fig-diffuse-illumination-glossy-package" class="quarto-xref">Figure&nbsp;<span>3.9</span></a> therefore illustrates a different consequence of the same reflection theory. In <a href="#fig-bright-dark-field-reflective-part" class="quarto-xref">Figure&nbsp;<span>3.8</span></a>, directional reflection is responsible for the useful contrast. In <a href="#fig-diffuse-illumination-glossy-package" class="quarto-xref">Figure&nbsp;<span>3.9</span></a>, sensitivity to local reflection geometry produces unwanted image variation and broad angular illumination reduces its influence.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="The theoretical connection">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>The theoretical connection
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>From the viewpoint of the BRDF, these examples differ mainly in how the surface is illuminated and which outgoing directions are observed:</p>
+<ul>
+<li><strong>bright-field and dark-field examples</strong> show how particular incident and observation directions can make directional surface differences highly visible;</li>
+<li><strong>diffuse illumination</strong> shows what happens when the surface is exposed to a broad range of incident directions, reducing dependence on any single illumination direction.</li>
+</ul>
+<p>These principles explain the images; the practical selection, design and validation of illumination techniques are developed in <a href="../illumination-for-vision/index.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
+</div>
+</div>
+<p>The practical lesson from this subsection is therefore deliberately limited. Surface appearance is not determined by reflectance alone: <strong>illumination direction, observation direction and the directional scattering properties of the surface jointly determine the optical signal that reaches the camera</strong>. Bright-field, dark-field and diffuse images are useful demonstrations of that principle, but they are not yet a lighting-selection framework.</p>
+<p>For the formal definition and nomenclature of directional reflectance and BRDF quantities, see the NBS/NIST monograph by Nicodemus et al. <span class="citation" data-cites="nicodemus1977reflectance"><a href="../../bibliography/references.html#ref-nicodemus1977reflectance" role="doc-biblioref">[11]</a></span>. Advanced Illumination <span class="citation" data-cites="advancedillumination_machinevisionlighting"><a href="../../bibliography/references.html#ref-advancedillumination_machinevisionlighting" role="doc-biblioref">[5]</a></span>, CCS <span class="citation" data-cites="ccs_theory_light_color"><a href="../../bibliography/references.html#ref-ccs_theory_light_color" role="doc-biblioref">[6]</a></span> and the NI practical guide <span class="citation" data-cites="ni2024_practical_machine_vision_lighting"><a href="../../bibliography/references.html#ref-ni2024_practical_machine_vision_lighting" role="doc-biblioref">[9]</a></span> provide application-oriented examples showing how these physical effects appear in real machine-vision images. Systematic illumination selection and hardware implementation are deferred to <a href="../illumination-for-vision/index.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
 </section>
 <section id="sec-light-colour-and-radiometry-transmission-refraction-and-snells-law" class="level3" data-number="3.2.2">
 <h3 data-number="3.2.2" class="anchored" data-anchor-id="sec-light-colour-and-radiometry-transmission-refraction-and-snells-law"><span class="header-section-number">3.2.2</span> Transmission, refraction and Snell’s law</h3>
-<p>When light crosses the boundary between two transparent media, part is reflected and part is transmitted. The transmitted wave generally changes direction because its phase velocity changes with refractive index. Snell’s law relates incidence and refraction angles:</p>
-<p><span class="math display">\[n_1\sin\theta_1=n_2\sin\theta_2\]</span></p>
-<p>The refractive index can depend on wavelength, <span class="math inline">\(n=n(\lambda)\)</span>, producing dispersion. This is the physical origin of chromatic refraction and contributes to chromatic aberration in lenses, which the optics chapter treats as an imaging-system effect.</p>
-<p>At normal incidence between non-absorbing media, the Fresnel power reflectance is</p>
-<p><span class="math display">\[R=\left(\frac{n_1-n_2}{n_1+n_2}\right)^2\]</span></p>
-<p>Thus even a clear, uncoated glass surface reflects some light at each interface. At oblique incidence, the Fresnel equations separate s- and p-polarised components and the reflectance becomes strongly angle-dependent.</p>
-<p>A useful machine-vision estimate follows immediately. For air to ordinary glass with n approximately 1.5 at normal incidence, <span class="math inline">\(R\approx((1-1.5)/(1+1.5))^2\approx0.04\)</span>: roughly 4% of the incident power is reflected at a single uncoated interface. A transparent window, bottle wall or protective cover therefore produces visible reflections even before contamination, curvature and multiple surfaces are considered. At oblique angles the reflected fraction can be much larger and becomes polarisation-dependent. This is why transparent-part inspection frequently becomes an exercise in controlling reflections as much as in “seeing through” the material.</p>
-<p>If light travels from a higher-index to a lower-index medium, Snell’s law predicts a critical angle beyond which no propagating transmitted ray exists:</p>
-<p><span class="math display">\[\theta_c=\arcsin\!\left(\frac{n_2}{n_1}\right),\qquad n_1&gt;n_2\]</span></p>
-<p>This is total internal reflection. It is exploited in optical fibres and can also matter when imaging through transparent walls, curved containers or prisms.</p>
-<div class="callout callout-style-default callout-warning callout-titled" title="Practical consequence: transparent does not mean optically simple">
+<p>So far, reflection has been treated mainly as light returning from a surface. Many machine-vision applications, however, involve components through which at least some of the illumination passes. Glass vials, transparent polymer packaging, protective windows, lenses and thin medical components such as catheter balloons are common examples. In these cases, the image depends not only on what is reflected at the first surface, but also on what happens to the light that enters the material, travels through it and eventually emerges again.</p>
+<p>For the phenomena considered in this subsection, the most useful description is primarily the <strong>ray model of light</strong> introduced earlier. We will follow individual rays as they encounter material boundaries and ask how their direction changes. The underlying electromagnetic-wave description remains important: refractive index describes a change in wave propagation through the material, and it is ultimately this change that produces refraction. For most machine-vision geometry, however, representing that behaviour as a change in ray direction provides the clearest engineering picture.</p>
+<p>When light reaches the boundary between two transparent materials, some of the incident optical power can be reflected while the remainder enters the second medium. If the second medium has a different refractive index, the transmitted light can also change direction. This change of direction is called <strong>refraction</strong>.</p>
+<p>The refractive index, <span class="math inline">\(n\)</span>, describes how light propagates through a material relative to vacuum. For a transparent medium,</p>
+<p><span class="math display">\[n=\frac{c}{v},\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(n\)</span> is the refractive index of the material and is dimensionless;</li>
+<li><span class="math inline">\(c\)</span> is the speed of light in vacuum, approximately <span class="math inline">\(2.998\times10^8\ \mathrm{m\,s^{-1}}\)</span>;</li>
+<li><span class="math inline">\(v\)</span> is the phase velocity of light in the material, measured in <span class="math inline">\(\mathrm{m\,s^{-1}}\)</span>.</li>
+</ul>
+<p>A larger refractive index therefore corresponds to a lower phase velocity in the material. Air has a refractive index close to 1 under ordinary conditions, while common glasses and transparent polymers typically have larger values.</p>
+<p>When light crosses an interface at an angle, the change in propagation speed results in a change in direction. The relationship is described by <strong>Snell’s law</strong>:</p>
+<p><span class="math display">\[n_1\sin\theta_1=n_2\sin\theta_2,\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(n_1\)</span> is the refractive index of the medium containing the incident light;</li>
+<li><span class="math inline">\(n_2\)</span> is the refractive index of the medium into which the light is transmitted;</li>
+<li><span class="math inline">\(\theta_1\)</span> is the <strong>angle of incidence</strong>, measured between the incident ray and the surface normal;</li>
+<li><span class="math inline">\(\theta_2\)</span> is the <strong>angle of refraction</strong>, measured between the transmitted ray and the surface normal.</li>
+</ul>
+<p>As with the law of reflection, both angles in Snell’s law are measured from the <strong>surface normal</strong>, not from the surface itself. This makes the direction of refraction easier to interpret.</p>
+<p>When light passes from a lower refractive index to a higher one, such as from air into glass, the transmitted ray bends <strong>towards the normal</strong>. When it passes in the opposite direction, from a higher refractive index to a lower one, such as from glass back into air, the transmitted ray bends <strong>away from the normal</strong>.</p>
+<p>There is one simple limiting case worth making explicit. If the incoming ray travels exactly along the surface normal, it strikes the interface <strong>perpendicularly</strong>. Its incidence angle is then</p>
+<p><span class="math display">\[\theta_1=0^\circ.\]</span></p>
+<p>Snell’s law gives</p>
+<p><span class="math display">\[n_1\sin(0^\circ)
+=
+n_2\sin\theta_2.\]</span></p>
+<p>Because <span class="math inline">\(\sin(0^\circ)=0\)</span>, the refracted angle must also be</p>
+<p><span class="math display">\[\theta_2=0^\circ.\]</span></p>
+<p>The ray therefore continues straight through the interface without changing direction. Refraction still occurs in the sense that the propagation speed and wavelength change inside the new material, but there is <strong>no angular bending</strong>. This is why a flat protective window viewed close to perpendicular to its surface can have relatively little geometrical effect even though its refractive index is substantially different from that of air.</p>
+<p>For an oblique ray, the bending becomes visible. Consider light travelling from air, with <span class="math inline">\(n_1\approx1.00\)</span>, into glass with <span class="math inline">\(n_2\approx1.50\)</span> at an incidence angle of <span class="math inline">\(30^\circ\)</span>. Snell’s law gives</p>
+<p><span class="math display">\[1.00\sin(30^\circ)
+=
+1.50\sin\theta_2,\]</span></p>
+<p>and therefore</p>
+<p><span class="math display">\[\theta_2
+=
+\arcsin\left(
+\frac{1.00}{1.50}\sin30^\circ
+\right)
+\approx19.5^\circ.\]</span></p>
+<p>The ray has therefore bent towards the normal: its direction changes from <span class="math inline">\(30^\circ\)</span> from the normal in air to approximately <span class="math inline">\(19.5^\circ\)</span> inside the glass.</p>
+<p>Now consider what happens when the ray later leaves the glass and returns to air through a second surface that is <strong>parallel to the first</strong>. The refractive-index change is reversed: the ray now travels from <span class="math inline">\(n\approx1.50\)</span> back to <span class="math inline">\(n\approx1.00\)</span>, so it bends <strong>away from the normal</strong>. Applying Snell’s law at the second interface restores the original external angle. In this example, the ray emerges back into air at <span class="math inline">\(30^\circ\)</span>.</p>
+<p>For a parallel-sided transparent plate surrounded by air, the complete sequence is therefore</p>
+<p><span class="math display">\[30^\circ
+\quad\xrightarrow{\text{air → glass}}\quad
+19.5^\circ
+\quad\xrightarrow{\text{glass → air}}\quad
+30^\circ.\]</span></p>
+<p>The two interfaces restore the original propagation angle, but they do not make the ray return to its original <em>path</em>. While travelling through the glass, the ray follows a different direction from the one it would have followed in air. When it emerges, it is therefore <strong>parallel to the original ray but laterally displaced</strong>.</p>
+<p>A familiar example of this effect can be seen when looking through spectacles. Near the edge of a lens, features of the face can appear shifted relative to the same features viewed directly beside the lens. The effect is particularly easy to notice where the outline of the face appears discontinuous at the lens boundary, as illustrated in <a href="#fig-refraction-person-with-glasses" class="quarto-xref">Figure&nbsp;<span>3.10</span></a>. A spectacle lens is not a simple parallel-sided plate—its curved surfaces are deliberately designed to refract light and correct vision—but the visible displacement provides an intuitive example of how a transparent optical element can change the apparent position of what lies behind it.</p>
+<div id="fig-refraction-person-with-glasses" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-refraction-person-with-glasses-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="assets/figures/Refraction-person-with-glasses.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-refraction-person-with-glasses-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.10: A familiar visual consequence of refraction. Near the edge of the spectacle lens, the apparent position of the face is displaced relative to the portion viewed directly outside the lens. The enlarged region highlights the discontinuity at the lens boundary.
+</figcaption>
+</figure>
+</div>
+<p>The spectacle example contains curved optical surfaces and is therefore more complicated than the simple geometry described by Snell’s law above. To isolate the basic effect, <a href="#fig-refraction-transparent-slab" class="quarto-xref">Figure&nbsp;<span>3.11</span></a> considers instead a flat, parallel-sided transparent slab. This removes lens curvature and allows refractive index and material thickness to be varied independently.</p>
+<p>The figure makes two effects easier to separate. Changing refractive index changes the angle followed by the ray inside the material: a higher refractive index bends the ray farther towards the normal. Changing slab thickness does not change that refraction angle; it changes how far the ray travels at that angle before reaching the second interface and therefore changes the resulting lateral displacement. In every case, because the entrance and exit surfaces are parallel and the surrounding medium is the same on both sides, the emerging ray returns to the original external angle and remains parallel to the incident ray.</p>
+<div id="fig-refraction-transparent-slab" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-refraction-transparent-slab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<iframe src="assets/animations/Refraction-transparent-slab.html" width="100%" height="760" style="border: 0;" loading="lazy" title="Interactive illustration of refraction through a transparent parallel-sided material">
+</iframe>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-refraction-transparent-slab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.11: Refraction through a parallel-sided transparent material. The online edition allows refractive index and material thickness to be varied independently. Increasing refractive index changes the angle of the ray inside the material; increasing thickness increases the lateral displacement of the emerging ray without changing that angle. Static formats compare representative combinations of refractive index and thickness.
+</figcaption>
+</figure>
+</div>
+<p>This result follows directly from applying Snell’s law at the two interfaces,</p>
+<p><span class="math display">\[n_1\sin\theta_1
+=
+n_2\sin\theta_2\]</span></p>
+<p>at the entrance and</p>
+<p><span class="math display">\[n_2\sin\theta_2
+=
+n_1\sin\theta_3\]</span></p>
+<p>at the exit. Combining these relations gives</p>
+<p><span class="math display">\[\theta_3=\theta_1,\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(\theta_1\)</span> is the original incidence angle in air;</li>
+<li><span class="math inline">\(\theta_2\)</span> is the refracted angle while the ray travels inside the transparent material;</li>
+<li><span class="math inline">\(\theta_3\)</span> is the angle of the ray after it has emerged back into air;</li>
+<li><span class="math inline">\(n_1\)</span> is the refractive index of the surrounding medium;</li>
+<li><span class="math inline">\(n_2\)</span> is the refractive index of the transparent slab.</li>
+</ul>
+<p>For flat, parallel interfaces surrounded by the same medium, the important result is that the emerging ray returns to the <strong>same propagation angle</strong> that it had before entering the slab. It is therefore parallel to the original ray, but it does not generally follow the same path: it has been <strong>laterally displaced</strong>. A larger refractive index produces stronger bending inside the material, while a thicker slab gives that altered direction a greater distance over which to accumulate displacement.</p>
+<p>This distinction matters in machine vision because <strong>lateral displacement is not the same as image distortion</strong>. A thin, flat and uniform protective window can shift oblique rays slightly while allowing them to emerge in their original direction. Close to normal incidence, even that displacement becomes small. A transparent layer in front of the camera therefore does not automatically produce the obvious geometrical warping associated with looking through a curved bottle or a glass of water.</p>
+<p>The situation becomes more interesting when the interfaces are not parallel. Curvature, wrinkles, wedges and local thickness variations change the surface normal encountered by different rays. The second refraction then no longer simply restores the original direction. A glass vial has curved inner and outer walls; a catheter balloon has thin but strongly curved polymer surfaces; transparent packaging can contain folds, stretched regions and locally non-parallel layers. Different parts of the image can consequently experience different ray directions and displacements, making features appear shifted, magnified, blurred or geometrically distorted.</p>
+<p>The useful distinction is therefore:</p>
+<ul>
+<li><strong>parallel, uniform interfaces</strong> primarily produce predictable refraction and lateral displacement;</li>
+<li><strong>curved, tilted, wedged or spatially varying interfaces</strong> can produce spatially varying refraction and therefore apparent geometrical distortion.</li>
+</ul>
+<p>Refractive index determines how strongly an interface bends a ray, but the effect observed by the camera also depends on material thickness, incidence angle and interface geometry.</p>
+<p>There is another consequence that is particularly important for machine vision: the camera does not necessarily observe only light travelling directly through the transparent material. In a front-lit inspection, illumination can pass through the transparent layer, interact with a surface or material behind it, and then travel back through the transparent layer before reaching the camera. The transparent component is therefore part of both the <strong>forward optical path</strong> and the <strong>return optical path</strong>.</p>
+<p>Consider a nominally clear polymer film in front of a reflective or diffusely reflecting backing. Light can refract as it enters the polymer, propagate through it, interact with the backing, and then cross the polymer interfaces again on its return towards the camera. A local defect can disturb this path in several ways. A fold changes local thickness and surface orientation; a bubble introduces additional interfaces; a burn or contamination can change absorption or scattering; and a pinhole removes part of the polymer optical path altogether. The feature can therefore create image contrast even when the transparent material itself has very little visible colour.</p>
+<p>The same principle extends to curved transparent components. In a catheter balloon or transparent tube, local changes introduced during forming can alter wall thickness, curvature or surface orientation. Rays passing through these regions follow different paths from those passing through the nominal material. What the camera observes can consequently contain information about geometry and material uniformity encoded as changes in transmitted, refracted, reflected or scattered light.</p>
+<p>A useful quantity for describing propagation through transparent material is the <strong>optical path length</strong>. For a uniform material and a geometrical path of length <span class="math inline">\(d\)</span>,</p>
+<p><span class="math display">\[\mathrm{OPL}=n\,d,\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(\mathrm{OPL}\)</span> is the optical path length;</li>
+<li><span class="math inline">\(n\)</span> is the refractive index of the material;</li>
+<li><span class="math inline">\(d\)</span> is the physical distance travelled through that material.</li>
+</ul>
+<p>The optical path length expresses the equivalent distance that light would travel in vacuum while accumulating the same phase delay. Two neighbouring rays can therefore experience different optical paths because the material thickness differs, because the refractive index differs, or because their geometrical trajectories through the material differ. For ordinary intensity imaging this phase difference may not be measured directly, but the same physical variations often accompany <strong>changes in</strong> <strong>refraction, focus, scattering or polarisation</strong> that can become visible to a machine-vision camera. More specialised optical techniques can deliberately convert optical-path differences into measurable intensity contrast.</p>
+<p>Refractive index itself can also depend on wavelength. More generally,</p>
+<p><span class="math display">\[n=n(\lambda),\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(n\)</span> is the refractive index of the material;</li>
+<li><span class="math inline">\(\lambda\)</span> is the wavelength of the optical radiation.</li>
+</ul>
+<p>This wavelength dependence is called <strong>dispersion</strong>. Different wavelengths can therefore follow slightly different refracted paths through the same interface. The familiar separation of white light by a prism is a visible example: each wavelength experiences a slightly different refractive index and therefore a different refraction angle. In imaging optics, the same physics contributes to <strong>chromatic aberration</strong>, developed further in <a href="../optics-and-lens-systems/index.html" class="quarto-xref"><span>Chapter 4</span></a>.</p>
+<p>So far we have followed the part of the incident light that enters the transparent material. That is still not the complete interaction. At every interface, some optical power can also be <strong>reflected</strong> rather than transmitted. Even a perfectly clear material can therefore generate a visible reflected signal.</p>
+<p>For light arriving perpendicular to an interface between two non-absorbing materials, the fraction of incident optical power reflected is given by the normal-incidence Fresnel relation:</p>
+<p><span class="math display">\[R=
+\left(
+\frac{n_1-n_2}
+{n_1+n_2}
+\right)^2,\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(R\)</span> is the <strong>power reflectance</strong>, the fraction of incident optical power reflected by the interface;</li>
+<li><span class="math inline">\(n_1\)</span> is the refractive index of the medium from which the light arrives;</li>
+<li><span class="math inline">\(n_2\)</span> is the refractive index of the material on the other side of the interface.</li>
+</ul>
+<p>Because <span class="math inline">\(R\)</span> represents a fraction of optical power, it is dimensionless. For example, <span class="math inline">\(R=0.04\)</span> means that approximately 4% of the incident optical power is reflected at that interface.</p>
+<p>For an air-to-glass boundary with <span class="math inline">\(n_1\approx1.00\)</span> and <span class="math inline">\(n_2\approx1.50\)</span>,</p>
+<p><span class="math display">\[R
+=
+\left(
+\frac{1.00-1.50}
+{1.00+1.50}
+\right)^2
+=
+0.04.\]</span></p>
+<p>Approximately <strong>4% of the incident optical power is therefore reflected at a single uncoated air–glass interface at normal incidence</strong>. Assuming negligible absorption, most of the remaining power is transmitted into the glass.</p>
+<p>A transparent wall normally contains more than one interface. A simple glass plate has an air-to-glass boundary followed by a glass-to-air boundary; a vial introduces inner and outer curved walls; multilayer polymer packaging can contain several interfaces. Each boundary can divide the optical power again into reflected and transmitted components.</p>
+<p>The camera can therefore receive several optical paths simultaneously. Some light may return from the first surface, some may travel through the transparent material and interact with whatever lies behind it, and some may undergo further reflections between interfaces before eventually reaching the lens. Depending on geometry, these paths can produce useful feature contrast or unwanted effects such as glare, secondary edges and faint displaced images.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="A transparent part is an optical system">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Practical consequence: transparent does not mean optically simple
+<span class="screen-reader-only">Note</span>A transparent part is an optical system
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A transparent cover can add multiple reflected images, refraction, magnification change, polarisation effects and angle-dependent transmission. If a production part is inspected through a window or package, include that material in feasibility testing and calibration rather than treating it as invisible.</p>
+<p>For machine vision, it is useful to stop thinking of a transparent component as something that is simply <em>not opaque</em>. It is an optical element containing interfaces and propagation paths.</p>
+<p>A feature can become visible because it changes <strong>surface orientation, thickness, refractive index, transmission, absorption or scattering</strong>, or because it adds or removes an interface. The camera records the combined result of whichever of those optical paths reach its lens.</p>
 </div>
 </div>
-<p>For a fuller derivation of Snell’s law, Fresnel coefficients, dispersion and total internal reflection, see Hecht <span class="citation" data-cites="hecht2017optics"><a href="../../bibliography/references.html#ref-hecht2017optics" role="doc-biblioref">[3]</a></span>. Edmund Optics <span class="citation" data-cites="edmund_fluorescence_filters"><a href="../../bibliography/references.html#ref-edmund_fluorescence_filters" role="doc-biblioref">[11]</a></span> provides application notes that connect these interface effects to filters, windows, anti-reflection coatings and imaging components.</p>
+<p>This perspective connects several apparently different inspection problems. A pinhole, fold or damaged seal region in transparent packaging can disturb the path through the film and the return from material behind it. A forming defect in a transparent catheter balloon can alter local curvature or wall thickness and therefore the paths followed by transmitted and returned rays. A scratch, coating defect or contamination on flat glass can change the balance between surface reflection, transmission and scattering. Glass inspection systems consequently make use of both reflected and transmitted optical information depending on which physical interaction contains the defect information.</p>
+<p>The simple Fresnel equation above applies at <strong>normal incidence</strong>. At oblique incidence, reflectance changes with angle and also depends on the polarisation of the incident light. The Fresnel equations then treat the two orthogonal polarisation components separately. Transparent materials can also alter polarisation when internal stress or optical anisotropy is present; stressed glass, for example, can become birefringent and reveal otherwise difficult-to-observe internal stress patterns under polarised illumination. :contentReference<span data-index="2">oaicite:2</span> These effects provide the theoretical connection to <a href="#sec-light-colour-and-radiometry-polarisation" class="quarto-xref"><span>Section 3.4</span></a>.</p>
+<p>The important conclusion is that <strong>transparent does not mean optically absent</strong>. A transparent component can change the position and direction of rays, divide optical power between reflected and transmitted paths, introduce optical-path differences and create additional interfaces from which light can return. Defects can become visible precisely because they perturb one or more of these behaviours.</p>
+<p>The purpose here is to establish those physical mechanisms rather than prescribe an inspection arrangement. How illumination direction, background, transmission or reflection geometry, polarisation and filtering are combined to turn these effects into robust production contrast is developed later in <a href="../illumination-for-vision/index.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
+<p>For a fuller treatment of refraction, Fresnel coefficients and dispersion, see Hecht <span class="citation" data-cites="hecht2017optics"><a href="../../bibliography/references.html#ref-hecht2017optics" role="doc-biblioref">[3]</a></span>. The consequences of refraction for lenses and geometrical image formation are developed in <a href="../optics-and-lens-systems/index.html" class="quarto-xref"><span>Chapter 4</span></a>, while polarisation effects are developed in <a href="#sec-light-colour-and-radiometry-polarisation" class="quarto-xref"><span>Section 3.4</span></a>.</p>
 </section>
 <section id="sec-light-colour-and-radiometry-absorption-and-fluorescence" class="level3" data-number="3.2.3">
 <h3 data-number="3.2.3" class="anchored" data-anchor-id="sec-light-colour-and-radiometry-absorption-and-fluorescence"><span class="header-section-number">3.2.3</span> Absorption and fluorescence</h3>
-<p>Absorption converts optical energy into other forms, commonly internal excitation and ultimately heat. Spectral absorption is strongly material-dependent, which makes wavelength selection one of the most effective ways to create contrast. A material that looks similar to another in the visible may absorb very differently in the NIR, SWIR or UV.</p>
-<p>For reflective monochrome imaging, a useful first-order signal model is</p>
-<p><span class="math display">\[G \approx
-k\,t_{\mathrm{exp}}\int
-S(\lambda)\rho(\lambda)\tau(\lambda)q(\lambda)\,d\lambda\]</span></p>
-<p>where <span class="math inline">\(G\)</span> is a linearised pixel signal, <span class="math inline">\(S(\lambda)\)</span> is illumination spectral power distribution at the object, <span class="math inline">\(\rho(\lambda)\)</span> is feature reflectance, <span class="math inline">\(\tau(\lambda)\)</span> represents the wavelength-dependent transmission of the optical path and filters, <span class="math inline">\(q(\lambda)\)</span> is sensor spectral sensitivity, and <span class="math inline">\(k\)</span> collects geometric and electronic scale factors. For transmitted-light imaging, <span class="math inline">\(\rho(\lambda)\)</span> is replaced by the appropriate spectral transmittance. The corresponding difference between a feature and its background is driven by the spectral difference <span class="math inline">\(\rho_{\mathrm{feature}}(\lambda)-\rho_{\mathrm{background}}(\lambda)\)</span>, weighted by everything else in the chain.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Wavelength selection in one equation">
+<p>The previous subsections were concerned mainly with <strong>where light goes</strong>. Reflection, refraction and transmission could therefore be understood efficiently using rays and, where necessary, the underlying wave description. Absorption requires us to ask a different question: <strong>what happens when the material takes energy from the incident radiation instead of simply redirecting or transmitting it?</strong></p>
+<p>For this discussion it is useful to return to the photon description introduced in <a href="#sec-light-colour-and-radiometry-radiometric-quantities-radiant-flux-irradiance-radiance" class="quarto-xref"><span>Section 3.1.2</span></a>. A photon carries an amount of energy determined by its frequency, or equivalently its wavelength,</p>
+<p><span class="math display">\[
+E_\gamma=h\nu=\frac{hc}{\lambda},
+\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(E_\gamma\)</span> is the energy carried by one photon, measured in joules (J);</li>
+<li><span class="math inline">\(h\)</span> is Planck’s constant;</li>
+<li><span class="math inline">\(\nu\)</span> is the optical frequency, measured in hertz (Hz);</li>
+<li><span class="math inline">\(c\)</span> is the speed of light in vacuum;</li>
+<li><span class="math inline">\(\lambda\)</span> is the vacuum wavelength.</li>
+</ul>
+<p>When a photon is absorbed, its energy is transferred to the material rather than continuing along the original optical path. Depending on the material and photon energy, this can produce electronic or molecular excitation, with much of the absorbed energy eventually appearing as heat. In some materials, part of the absorbed energy can instead be released again as light; this is the basis of <strong>fluorescence</strong>, developed below.</p>
+<p>Crucially for machine vision, absorption is normally <strong>wavelength-dependent</strong>. A material can absorb one part of the spectrum strongly while reflecting or transmitting another. Two materials that appear similar under visible illumination can therefore behave very differently in the ultraviolet (UV), near infrared (NIR) or short-wave infrared (SWIR). The camera can exploit this difference even when there is little useful contrast to the human eye.</p>
+<p>This connects absorption to the signal ultimately recorded by the camera. Consider first a monochrome camera observing reflected light. The recorded grey level does not depend on the material alone: it depends on the complete spectral chain from the illumination, through the object and optics, to the sensor. A useful first-order model is</p>
+<p><span class="math display">\[
+G
+\approx
+k\,t_{\mathrm{exp}}
+\int
+S(\lambda)\,
+\rho(\lambda)\,
+\tau(\lambda)\,
+q(\lambda)
+\,d\lambda,
+\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(G\)</span> is the resulting linearised pixel signal or grey level;</li>
+<li><span class="math inline">\(k\)</span> groups together factors that are not being described spectrally, such as illumination and imaging geometry and electronic scaling;</li>
+<li><span class="math inline">\(t_{\mathrm{exp}}\)</span> is the camera exposure time;</li>
+<li><span class="math inline">\(S(\lambda)\)</span> is the spectral distribution of the illumination reaching the object;</li>
+<li><span class="math inline">\(\rho(\lambda)\)</span> is the spectral reflectance of the observed material or feature;</li>
+<li><span class="math inline">\(\tau(\lambda)\)</span> is the wavelength-dependent transmission of the optical path, including the lens, windows and any filters;</li>
+<li><span class="math inline">\(q(\lambda)\)</span> is the wavelength-dependent sensitivity of the image sensor;</li>
+<li><span class="math inline">\(\lambda\)</span> is wavelength;</li>
+<li>the integral adds the contributions from all wavelengths reaching the sensor.</li>
+</ul>
+<p>The equation is less complicated than it first appears. At each wavelength, the illumination provides some optical energy, the material determines how much of it is reflected, the optical system determines how much reaches the sensor, and the sensor determines how efficiently that radiation contributes to the measured signal. The camera then accumulates those contributions across the spectral range to which the complete imaging chain responds.</p>
+<p>For <strong>transmitted-light imaging</strong>, the same reasoning applies, but the material’s spectral transmittance replaces its reflectance. In either case, image contrast appears when the feature and its background interact differently with the spectrum. For reflective imaging, for example, the relevant material difference is</p>
+<p><span class="math display">\[
+\Delta\rho(\lambda)
+=
+\rho_{\mathrm{feature}}(\lambda)
+-
+\rho_{\mathrm{background}}(\lambda).
+\]</span></p>
+<p>Here, <span class="math inline">\(\rho_{\mathrm{feature}}(\lambda)\)</span> and <span class="math inline">\(\rho_{\mathrm{background}}(\lambda)\)</span> describe how strongly the feature and its surrounding background reflect each wavelength. If their values are nearly equal over the wavelengths measured by the camera, little contrast is produced. If they differ strongly within part of the spectrum, that spectral region has the potential to produce much greater image separation.</p>
+<p>This provides the machine-vision connection to absorption. A dark region in an image does not necessarily indicate a physically dark material; it may indicate that, at the wavelengths being measured, more of the incident optical energy has been <strong>absorbed rather than returned towards the camera</strong>. Conversely, a material that absorbs little at those wavelengths may produce a stronger reflected or transmitted signal. The resulting greyscale contrast is therefore a property of the complete interaction between source, material, optics and sensor rather than of the object’s visible colour alone.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Why wavelength can change a monochrome image">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Wavelength selection in one equation
+<span class="screen-reader-only">Note</span>Why wavelength can change a monochrome image
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Choose a wavelength where the feature and background respond differently, but where the source, optics and sensor still provide adequate signal. This turns “try a red light” into a defensible engineering principle.</p>
+<p>A monochrome camera does not remove the spectral behaviour of light; it removes the explicit separation into colour channels. Its grey level can still change substantially with wavelength.</p>
+<p>A change in wavelength can alter:</p>
 <ul>
-<li><p>A narrow-band source can make two colours that look similar in white light separate strongly in a monochrome image.</p></li>
-<li><p>A band-pass filter can reinforce that separation and reject ambient wavelengths.</p></li>
-<li><p>The familiar rule that an object tends to look brighter under a similar colour and darker under a complementary colour is only a heuristic; the real criterion is the measured spectral response of the materials.</p></li>
-<li><p>A monochrome camera is not “colour blind” in the physical sense - its grey level remains wavelength-dependent through <span class="math inline">\(q(\lambda)\)</span>.</p></li>
+<li>how much radiation the feature absorbs, reflects or transmits;</li>
+<li>how much of that radiation passes through the optics and filters;</li>
+<li>how efficiently the sensor detects it.</li>
 </ul>
+<p>Two regions that produce almost the same grey level under one spectral band can therefore produce very different grey levels under another, even though neither the camera position nor the object geometry has changed.</p>
+<p>The practical selection of illumination wavelength, source and filtering is developed later in <a href="../illumination-for-vision/index.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
 </div>
 </div>
 <div id="fig-wavelength-selection-contrast" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1301,11 +1557,11 @@ S(\lambda)\rho(\lambda)\tau(\lambda)q(\lambda)\,d\lambda\]</span></p>
 <img src="assets/figures/wavelength-selection-contrast.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wavelength-selection-contrast-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.8: Creating greyscale contrast by wavelength selection
+Figure&nbsp;3.12: Creating greyscale contrast by wavelength selection
 </figcaption>
 </figure>
 </div>
-<p>The same spectral reasoning applies to unwanted light. The camera records task illumination together with ambient radiation from factory lighting, sunlight and neighbouring stations. Where possible, the most robust approach is to control the environment physically; spectral filtering can then reject wavelengths that are not part of the intended measurement, particularly when a narrow-band source is used. Short, intense strobed exposures can further reduce the relative contribution of steady ambient light. The important point is that <strong>ambient light is part of the optical signal unless the design deliberately excludes or rejects it</strong> <span class="citation" data-cites="ni2024_practical_machine_vision_lighting"><a href="../../bibliography/references.html#ref-ni2024_practical_machine_vision_lighting" role="doc-biblioref">[9]</a></span>.</p>
+<p>The same spectral reasoning applies to unwanted light. The camera records task illumination together with ambient radiation from factory lighting, sunlight and neighbouring stations. Enclosures, spectral filtering and short strobed exposures can all change the relative contribution of that unwanted radiation, but the theoretical point here is simpler: <strong>ambient light is part of the optical signal unless the imaging system excludes or rejects it</strong> <span class="citation" data-cites="ni2024_practical_machine_vision_lighting"><a href="../../bibliography/references.html#ref-ni2024_practical_machine_vision_lighting" role="doc-biblioref">[9]</a></span>. The practical design of that rejection is developed in <a href="../illumination-for-vision/index.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
 <section id="from-wavelength-selection-to-multispectral-and-hyperspectral-imaging" class="level4">
 <h4 class="anchored" data-anchor-id="from-wavelength-selection-to-multispectral-and-hyperspectral-imaging">From wavelength selection to multispectral and hyperspectral imaging</h4>
 <p>A conventional monochrome inspection often chooses one wavelength because one band provides the required contrast. Multispectral and hyperspectral imaging generalise that idea by retaining several or many spectral measurements at each image location. The result is not simply an RGB image with more colours: it is an <strong>imaging spectroscopy</strong> problem in which spatial position and wavelength are both measured variables.</p>
@@ -1343,7 +1599,7 @@ Figure&nbsp;3.8: Creating greyscale contrast by wavelength selection
 <img src="assets/figures/hyperspectral-data-cube-material-signatures.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hyperspectral-data-cube-material-signatures-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.9: Hyperspectral image cube and material spectral signatures
+Figure&nbsp;3.13: Hyperspectral image cube and material spectral signatures
 </figcaption>
 </figure>
 </div>
@@ -1357,18 +1613,18 @@ Figure&nbsp;3.9: Hyperspectral image cube and material spectral signatures
 <p>For the formal definition and limitations of the Beer-Lambert law, see the IUPAC Gold Book entry <span class="citation" data-cites="iupac_beer_lambert"><a href="../../bibliography/references.html#ref-iupac_beer_lambert" role="doc-biblioref">[14]</a></span>.</p>
 <p>Fluorescence is different from ordinary reflection. A material absorbs photons, enters an excited state and subsequently emits photons, usually at longer wavelengths than the excitation. Because excitation and emission can be spectrally separated, fluorescence can produce exceptional contrast against a dark background. In machine vision this is useful for detecting optical brighteners, adhesives, coatings, inks, contamination and some biological materials.</p>
 <p>A typical fluorescence imaging arrangement therefore uses an excitation source, an excitation filter, optical separation such as a dichroic element where needed, and an emission filter that strongly suppresses the excitation wavelength while passing the weaker fluorescence signal. The emitted signal can be orders of magnitude weaker than the excitation, so spectral blocking and stray-light control are often more important than raw source brightness.</p>
-<p>In a machine-vision layout the essential design objective is spectral separation: excite strongly where the material absorbs, then detect in an emission band where the excitation source and ambient light can be rejected. The wavelength difference between excitation and emission is commonly called the Stokes shift. A narrow emission filter can therefore create a very high feature-to-background ratio even when the fluorescence itself is weak.</p>
+<p>For machine vision, the important physical consequence is <strong>spectral separation</strong>: excitation occurs in one wavelength region and useful emission is detected in another. The wavelength difference between excitation and emission is commonly called the Stokes shift. This separation explains why an emission filter can strongly reject excitation light while transmitting a comparatively weak fluorescent signal. The practical choice of excitation source, filters and optical layout is developed in <a href="../illumination-for-vision/index.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
 <div id="fig-fluorescence-machine-vision" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-fluorescence-machine-vision-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="assets/figures/fluorescence-machine-vision.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fluorescence-machine-vision-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.10: Fluorescence as wavelength-shifted contrast
+Figure&nbsp;3.14: Fluorescence as wavelength-shifted contrast
 </figcaption>
 </figure>
 </div>
-<p>For additional practical examples of excitation/emission filtering and fluorescence imaging hardware, see Edmund Optics <span class="citation" data-cites="edmund_fluorescence_filters"><a href="../../bibliography/references.html#ref-edmund_fluorescence_filters" role="doc-biblioref">[11]</a></span>.</p>
+<p>For additional practical examples of excitation/emission filtering and fluorescence imaging hardware, see Edmund Optics <span class="citation" data-cites="edmund_fluorescence_filters"><a href="../../bibliography/references.html#ref-edmund_fluorescence_filters" role="doc-biblioref">[15]</a></span>.</p>
 </section>
 </section>
 <section id="sec-light-colour-and-radiometry-scattering-and-translucency" class="level3" data-number="3.2.4">
@@ -1395,15 +1651,10 @@ Figure&nbsp;3.10: Fluorescence as wavelength-shifted contrast
 </section>
 <section id="sec-light-colour-and-radiometry-implications-for-surface-inspection" class="level3" data-number="3.2.5">
 <h3 data-number="3.2.5" class="anchored" data-anchor-id="sec-light-colour-and-radiometry-implications-for-surface-inspection"><span class="header-section-number">3.2.5</span> Implications for surface inspection</h3>
-<p>The practical value of the preceding physics is that a defect becomes visible only when it changes the radiation reaching the camera. The defect may alter geometry, roughness, refractive index, absorption, fluorescence, scattering or polarisation. Illumination design converts that physical difference into stable image contrast.</p>
-<p>A useful practical framework is to separate the available controls into four broad levers. This mirrors the application-oriented approach used in the NI lighting guide while keeping the underlying physical mechanism explicit <span class="citation" data-cites="ni2024_practical_machine_vision_lighting"><a href="../../bibliography/references.html#ref-ni2024_practical_machine_vision_lighting" role="doc-biblioref">[9]</a></span>.</p>
-<div id="tbl-four-practical-illumination-levels" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-four-practical-illumination-levels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3.6: Four practical illumination levers and the physical mechanisms behind them
-</figcaption>
-<div aria-describedby="tbl-four-practical-illumination-levels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p>The practical value of the preceding physics is that a physical feature becomes visible only when it changes the radiation reaching the camera. A defect may alter geometry, roughness, refractive index, absorption, fluorescence, scattering or polarisation. The role of this chapter is to establish those mechanisms; <a href="../illumination-for-vision/index.html" class="quarto-xref"><span>Chapter 5</span></a> later develops how illumination hardware and acquisition geometry are selected to exploit them reliably.</p>
+<p>The mechanisms can be summarised without turning them into a lighting-selection recipe:</p>
 <table class="caption-top table">
+<caption>Physical light–matter interactions and their possible consequences in a machine-vision image.</caption>
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -1411,120 +1662,45 @@ Table&nbsp;3.6: Four practical illumination levers and the physical mechanisms b
 </colgroup>
 <thead>
 <tr class="header">
-<th>Engineering lever</th>
-<th>Physical mechanism being controlled</th>
-<th>Typical machine-vision purpose</th>
+<th>Physical difference in the part</th>
+<th>Effect on light</th>
+<th>Possible image consequence</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Geometry</td>
-<td>Direction of reflection, scattering and transmission</td>
-<td>Separate nominal surfaces from scratches, edges, texture or gloss changes</td>
+<td>Surface slope, roughness or local geometry</td>
+<td>Changes the directional distribution of reflection or scattering</td>
+<td>A feature may become brighter or darker as illumination/viewing direction changes</td>
 </tr>
 <tr class="even">
-<td>Structure or pattern</td>
-<td>Spatial distribution of illumination</td>
-<td>Control where light reaches the part or deliberately encode geometric information</td>
+<td>Refractive index, thickness or interface geometry</td>
+<td>Changes refraction, Fresnel reflection and optical path</td>
+<td>Edges, transparent walls or internal boundaries can shift, distort or produce secondary reflections</td>
 </tr>
 <tr class="odd">
-<td>Wavelength</td>
-<td>Spectral reflection, absorption, transmission or fluorescence</td>
-<td>Separate materials or features that respond differently across the spectrum</td>
+<td>Spectral reflectance or absorption</td>
+<td>Changes the fraction of radiation returned or transmitted as a function of wavelength</td>
+<td>Materials or markings with similar visible appearance can separate strongly in another spectral band</td>
 </tr>
 <tr class="even">
-<td>Filtering</td>
-<td>Spectral or polarisation selection</td>
-<td>Reject ambient or unwanted radiation while retaining the useful signal</td>
+<td>Fluorescent response</td>
+<td>Absorbs in one band and re-emits in another</td>
+<td>A weakly visible material can generate wavelength-shifted emission against a low background</td>
+</tr>
+<tr class="odd">
+<td>Particles, fibres, pores or internal structure</td>
+<td>Redistributes radiation through scattering</td>
+<td>Haze, translucency, contamination or texture can alter local contrast and spatial spread</td>
+</tr>
+<tr class="even">
+<td>Polarisation-dependent interaction</td>
+<td>Changes field orientation or phase</td>
+<td>Stress, glare or material anisotropy can alter the signal observed through polarisation analysis</td>
 </tr>
 </tbody>
 </table>
-</div>
-</figure>
-</div>
-<p>These levers are not independent. A wavelength that provides excellent material separation may still fail if the surface geometry sends the useful reflection away from the camera; a good dark-field geometry may become unstable if uncontrolled ambient light enters the lens. The aim is therefore to find a combination that produces sufficient contrast <strong>and preserves it across expected changes in part position, orientation, finish and environment</strong>.</p>
-<p>A useful way to carry this into development is to identify the physical difference before choosing the light. The table below is deliberately a first-pass guide rather than a recipe; the illumination chapter expands each route into specific illumination geometries and products.</p>
-<div id="tbl-surface-behaviours" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-surface-behaviours-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3.7: From physical difference and surface behaviour to a first illumination strategy. The entries are starting points, not substitutes for empirical feasibility testing
-</figcaption>
-<div aria-describedby="tbl-surface-behaviours-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Feature difference</th>
-<th>Typical surface or presentation</th>
-<th>Dominant physical mechanism</th>
-<th>First contrast lever to investigate</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Outline, hole, gap or external dimension</td>
-<td>Opaque part against a clear background</td>
-<td>Transmission / occlusion changes strongly at the boundary</td>
-<td>Backlight or collimated backlight; optimise edge contrast</td>
-</tr>
-<tr class="even">
-<td>Scratch, engraving, dent or local slope change</td>
-<td>Smooth or polished surface</td>
-<td>Direction of specular reflection / scattering changes</td>
-<td>Bright field or dark field chosen so the normal surface and defect occupy different angular responses</td>
-</tr>
-<tr class="odd">
-<td>Gloss variation or curved reflective surface</td>
-<td>Curved, specular or mixed-reflectivity surface</td>
-<td>BRDF / surface roughness changes</td>
-<td>Diffuse illumination, directional comparison, polarisation or multi-angle acquisition</td>
-</tr>
-<tr class="even">
-<td>Ink, coating, material or colour difference</td>
-<td>Flat or moderately textured surface</td>
-<td>Spectral reflectance / absorption differs</td>
-<td>Narrow-band wavelength selection plus matching filter; colour or multispectral imaging if needed</td>
-</tr>
-<tr class="odd">
-<td>Thickness, fill level or concentration in a transmitting material</td>
-<td>Transparent or translucent material</td>
-<td>Spectral transmission / absorption changes</td>
-<td>Transmitted illumination; select wavelength from absorption/transmission behaviour</td>
-</tr>
-<tr class="even">
-<td>Fluorescent adhesive, coating or contaminant</td>
-<td>Material with useful fluorescence response</td>
-<td>Absorption followed by wavelength-shifted emission</td>
-<td>UV/visible excitation plus emission filtering and ambient-light rejection</td>
-</tr>
-<tr class="odd">
-<td>Transparent interface or curved container</td>
-<td>Transparent part with one or more interfaces</td>
-<td>Refraction plus Fresnel reflection</td>
-<td>Backlight, controlled angle, diffuse illumination and/or polarisation</td>
-</tr>
-<tr class="even">
-<td>Residual stress or birefringent transparent polymer</td>
-<td>Transparent polymer</td>
-<td>Polarisation phase delay changes</td>
-<td>Crossed polarisers / photoelastic imaging</td>
-</tr>
-<tr class="odd">
-<td>Particles, fibres, haze or translucent structure</td>
-<td>Scattering or turbid material</td>
-<td>Scattering distribution changes</td>
-<td>Dark field, transmission, longer wavelengths or polarisation depending on mechanism</td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
+<p>The table is intentionally descriptive rather than prescriptive. The same physical feature can involve several mechanisms simultaneously, and the observed image also depends on source spectrum, geometry, optics and sensor response. The later illumination chapter turns these mechanisms into practical source, geometry, filtering and validation choices.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="A physical feature must become an optical feature">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1535,7 +1711,7 @@ Table&nbsp;3.7: From physical difference and surface behaviour to a first illumi
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Before choosing an algorithm, identify what physical property differs between acceptable and defective product. Then ask which illumination wavelength, direction, polarisation and observation geometry converts that difference into the largest repeatable change in the image. This is the physical version of the constraint-first principle introduced in the previous chapter.</p>
+<p>Before an algorithm can detect a feature, some physical difference in the part must first become a measurable difference in the radiation reaching the sensor. The mechanisms in this chapter explain <strong>where that optical difference can come from</strong>; <a href="../illumination-for-vision/index.html" class="quarto-xref"><span>Chapter 5</span></a> explains how an engineered illumination system can make it useful and repeatable.</p>
 </div>
 </div>
 <section id="illumination-direction-as-an-information-channel" class="level4">
@@ -1550,10 +1726,10 @@ Table&nbsp;3.7: From physical difference and surface behaviour to a first illumi
 <p><span class="math display">\[\hat{\mathbf{g}}=\mathbf{S}^{+}\mathbf{i}, \qquad
 \hat{\rho}=\|\hat{\mathbf{g}}\|, \qquad
 \hat{\mathbf{n}}=\frac{\hat{\mathbf{g}}}{\|\hat{\mathbf{g}}\|}.\]</span></p>
-<p>Industrial systems often use four or more directions so shadows, saturation and imperfect reflectance can be handled more robustly. Even without reconstructing a metric surface, opposite-direction image pairs can be combined to form slope-sensitive or gradient-like images. A useful qualitative normalised directional contrast is</p>
+<p>Using more than the minimum number of illumination directions provides additional measurements that can reduce sensitivity to shadows, saturation and imperfect reflectance. Even without reconstructing a metric surface, opposite-direction image pairs can be combined to form slope-sensitive or gradient-like images. A useful qualitative normalised directional contrast is</p>
 <p><span class="math display">\[D_x=\frac{I_R-I_L}{I_R+I_L+\varepsilon}, \qquad
 D_y=\frac{I_T-I_B}{I_T+I_B+\varepsilon},\]</span></p>
-<p>where the normalisation reduces sensitivity to common albedo and overall brightness. This is why shallow embossing, dents, scratches or raised characters that are almost invisible under diffuse frontal lighting can become obvious when illuminated sequentially from different sides. The technique relocates complexity from mechanical 3D sensing into controlled illumination and image combination.</p>
+<p>where the normalisation reduces sensitivity to common albedo and overall brightness. This explains why shallow embossing, dents, scratches or raised characters can change appearance strongly as illumination direction changes. The practical implementation of multi-light inspection is treated in <a href="../illumination-for-vision/index.html" class="quarto-xref"><span>Chapter 5</span></a>; here the important point is that illumination direction can carry information about local surface orientation.</p>
 <div class="callout callout-style-default callout-warning callout-titled" title="Shape from shading is powerful because it uses assumptions - and fragile for the same reason">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1564,10 +1740,10 @@ D_y=\frac{I_T-I_B}{I_T+I_B+\varepsilon},\]</span></p>
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The simple equations assume known illumination, approximately Lambertian reflectance, no cast shadows, no saturation and a fixed relationship between images. Real polished, translucent or highly textured production parts violate these assumptions. Multi-light methods remain extremely useful, but feasibility testing must include the actual surface finishes and production variation rather than only an ideal reference part.</p>
+<p>The simple equations assume known illumination, approximately Lambertian reflectance, no cast shadows, no saturation and a fixed relationship between images. Real polished, translucent or highly textured production parts violate these assumptions. The equations should therefore be interpreted as an ideal image-formation model. Practical multi-light implementation and validation are treated in <a href="../illumination-for-vision/index.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
 </div>
 </div>
-<p>Structured light is related but conceptually different. Instead of changing only the <strong>direction</strong> of otherwise uniform illumination, a structured-light system projects a known <strong>spatial pattern</strong> - a line, grid, dot field, Gray code or sinusoidal fringe pattern - onto the object. Surface geometry deforms the observed pattern. Once camera and projector geometry are calibrated and a projected feature is matched to its image observation, depth follows from triangulation. The projector therefore behaves like an active second viewpoint whose correspondences are deliberately encoded by light. The illumination chapter discusses implementation, while the 3D-vision chapter develops calibration and reconstruction in detail.</p>
+<p>Structured light is related but conceptually different. Instead of changing only the <strong>direction</strong> of otherwise uniform illumination, a structured-light system projects a known <strong>spatial pattern</strong> - a line, grid, dot field, Gray code or sinusoidal fringe pattern - onto the object. Surface geometry deforms the observed pattern. Once camera and projector geometry are calibrated and a projected feature is matched to its image observation, depth follows from triangulation. The projector therefore behaves like an active second viewpoint whose correspondences are deliberately encoded by light. Implementation choices are deferred to <a href="../illumination-for-vision/index.html" class="quarto-xref"><span>Chapter 5</span></a>, while later 3D-vision material develops calibration and reconstruction in detail.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Do not confuse multi-angle lighting with structured light">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1591,11 +1767,11 @@ D_y=\frac{I_T-I_B}{I_T+I_B+\varepsilon},\]</span></p>
 <img src="assets/figures/directional-lighting-photometric-stereo-structured-light.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-directional-lighting-photometric-stereo-structured-light-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.11: Directional illumination, photometric stereo and structured light
+Figure&nbsp;3.15: Directional illumination, photometric stereo and structured light
 </figcaption>
 </figure>
 </div>
-<p>For deeper study, Woodham’s original photometric-stereo paper <span class="citation" data-cites="woodham1980photometric"><a href="../../bibliography/references.html#ref-woodham1980photometric" role="doc-biblioref">[15]</a></span> develops the multiple-illumination surface-normal principle; Euresys <span class="citation" data-cites="euresys2024photometric"><a href="../../bibliography/references.html#ref-euresys2024photometric" role="doc-biblioref">[16]</a></span> provides a concise industrial surface-inspection interpretation; and Salvi, Pagès and Batlle <span class="citation" data-cites="salvi2004structured"><a href="../../bibliography/references.html#ref-salvi2004structured" role="doc-biblioref">[17]</a></span> review coded structured-light patterns and the correspondence/triangulation problem.</p>
+<p>For deeper study, Woodham’s original photometric-stereo paper <span class="citation" data-cites="woodham1980photometric"><a href="../../bibliography/references.html#ref-woodham1980photometric" role="doc-biblioref">[16]</a></span> develops the multiple-illumination surface-normal principle; Euresys <span class="citation" data-cites="euresys2024photometric"><a href="../../bibliography/references.html#ref-euresys2024photometric" role="doc-biblioref">[17]</a></span> provides a concise industrial surface-inspection interpretation; and Salvi, Pagès and Batlle <span class="citation" data-cites="salvi2004structured"><a href="../../bibliography/references.html#ref-salvi2004structured" role="doc-biblioref">[18]</a></span> review coded structured-light patterns and the correspondence/triangulation problem.</p>
 </section>
 </section>
 </section>
@@ -1759,11 +1935,11 @@ Figure&nbsp;3.11: Directional illumination, photometric stereo and structured li
 <div id="ref-ni2024_practical_machine_vision_lighting" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[9] </div><div class="csl-right-inline">National Instruments, <span>‘A practical guide to machine vision lighting’</span>. National Instruments, 2024. Accessed: Sep. 21, 2026. [Online]. Available: <a href="https://www.ni.com/en/shop/choosing-the-right-hardware-for-your-vision-applications/a-practical-guide-to-machine-vision-lighting.html">https://www.ni.com/en/shop/choosing-the-right-hardware-for-your-vision-applications/a-practical-guide-to-machine-vision-lighting.html</a></div>
 </div>
-<div id="ref-nicodemus1977reflectance" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[10] </div><div class="csl-right-inline">F. E. Nicodemus, J. C. Richmond, J. J. Hsia, I. W. Ginsberg, and T. Limperis, <span>‘Geometrical considerations and nomenclature for reflectance’</span>, National Bureau of Standards, Washington, DC, USA, NBS Monograph 160, 1977. doi: <a href="https://doi.org/10.6028/NBS.MONO.160">10.6028/NBS.MONO.160</a>.</div>
+<div id="ref-nist_optical_scattering_surfaces" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">National Institute of Standards and Technology, <span>‘Optical scattering from surfaces’</span>. National Institute of Standards; Technology. Accessed: Sep. 26, 2026. [Online]. Available: <a href="https://www.nist.gov/programs-projects/optical-scattering-surfaces">https://www.nist.gov/programs-projects/optical-scattering-surfaces</a></div>
 </div>
-<div id="ref-edmund_fluorescence_filters" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[11] </div><div class="csl-right-inline">Edmund Optics, <span>‘Introduction to fluorescence filters: Principles, selection, and applications’</span>. Edmund Optics. Accessed: Sep. 20, 2026. [Online]. Available: <a href="https://www.edmundoptics.com/knowledge-center/application-notes/optics/intro-to-fluorescence-filters/">https://www.edmundoptics.com/knowledge-center/application-notes/optics/intro-to-fluorescence-filters/</a></div>
+<div id="ref-nicodemus1977reflectance" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">F. E. Nicodemus, J. C. Richmond, J. J. Hsia, I. W. Ginsberg, and T. Limperis, <span>‘Geometrical considerations and nomenclature for reflectance’</span>, National Bureau of Standards, Washington, DC, USA, NBS Monograph 160, 1977. doi: <a href="https://doi.org/10.6028/NBS.MONO.160">10.6028/NBS.MONO.160</a>.</div>
 </div>
 <div id="ref-imec_hyperspectral" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[12] </div><div class="csl-right-inline"><span class="nocase">imec</span>, <span>‘Hyperspectral imaging’</span>. imec. Accessed: Sep. 20, 2026. [Online]. Available: <a href="https://www.imec-int.com/en/hyperspectral-imaging">https://www.imec-int.com/en/hyperspectral-imaging</a></div>
@@ -1774,14 +1950,17 @@ Figure&nbsp;3.11: Directional illumination, photometric stereo and structured li
 <div id="ref-iupac_beer_lambert" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[14] </div><div class="csl-right-inline">International Union of Pure and Applied Chemistry, <span>‘Beer–lambert law (or beer–lambert–bouguer law)’</span>. IUPAC Compendium of Chemical Terminology (Gold Book). doi: <a href="https://doi.org/10.1351/goldbook.B00626">10.1351/goldbook.B00626</a>.</div>
 </div>
+<div id="ref-edmund_fluorescence_filters" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">Edmund Optics, <span>‘Introduction to fluorescence filters: Principles, selection, and applications’</span>. Edmund Optics. Accessed: Sep. 20, 2026. [Online]. Available: <a href="https://www.edmundoptics.com/knowledge-center/application-notes/optics/intro-to-fluorescence-filters/">https://www.edmundoptics.com/knowledge-center/application-notes/optics/intro-to-fluorescence-filters/</a></div>
+</div>
 <div id="ref-woodham1980photometric" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[15] </div><div class="csl-right-inline">R. J. Woodham, <span>‘Photometric method for determining surface orientation from multiple images’</span>, <em>Optical Engineering</em>, vol. 19, no. 1, pp. 139–144, 1980, doi: <a href="https://doi.org/10.1117/12.7972479">10.1117/12.7972479</a>.</div>
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">R. J. Woodham, <span>‘Photometric method for determining surface orientation from multiple images’</span>, <em>Optical Engineering</em>, vol. 19, no. 1, pp. 139–144, 1980, doi: <a href="https://doi.org/10.1117/12.7972479">10.1117/12.7972479</a>.</div>
 </div>
 <div id="ref-euresys2024photometric" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[16] </div><div class="csl-right-inline">Euresys, <span>‘Photometric stereo for 3D surface inspection’</span>. Association for Advancing Automation, May 2024. Accessed: Sep. 20, 2026. [Online]. Available: <a href="https://www.automate.org/vision/tech-papers/photometric-stereo-for-3d-surface-inspection">https://www.automate.org/vision/tech-papers/photometric-stereo-for-3d-surface-inspection</a></div>
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">Euresys, <span>‘Photometric stereo for 3D surface inspection’</span>. Association for Advancing Automation, May 2024. Accessed: Sep. 20, 2026. [Online]. Available: <a href="https://www.automate.org/vision/tech-papers/photometric-stereo-for-3d-surface-inspection">https://www.automate.org/vision/tech-papers/photometric-stereo-for-3d-surface-inspection</a></div>
 </div>
 <div id="ref-salvi2004structured" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[17] </div><div class="csl-right-inline">J. Salvi, J. Pagès, and J. Batlle, <span>‘Pattern codification strategies in structured light systems’</span>, <em>Pattern Recognition</em>, vol. 37, no. 4, pp. 827–849, 2004, doi: <a href="https://doi.org/10.1016/j.patcog.2003.10.002">10.1016/j.patcog.2003.10.002</a>.</div>
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">J. Salvi, J. Pagès, and J. Batlle, <span>‘Pattern codification strategies in structured light systems’</span>, <em>Pattern Recognition</em>, vol. 37, no. 4, pp. 827–849, 2004, doi: <a href="https://doi.org/10.1016/j.patcog.2003.10.002">10.1016/j.patcog.2003.10.002</a>.</div>
 </div>
 </div>
 </section>

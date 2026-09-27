@@ -1,8 +1,8 @@
 schema-version: 1
 release:
-  tag: v2026.09.21
-  released_at: 2026.09.21
+  tag: v2026.09.27
+  released_at: 2026.09.27
   source_branch: main
-  summary: Draft section 3.1. Needs review
+  summary: Continue section two ... half of Absorption and fluorescence
   notes: na.
-  editor_commit: 24f30035686af5513451ca5c621e29b64b9d0a42
+  editor_commit: ad4647247e811be3aef2cfa6f9d74cb435d6feaf

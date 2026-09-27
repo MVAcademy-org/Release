@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Surface Roughness and Angle-Resolved Optical Scatter</title>
+<style>
+:root{--fg:#10203f;--muted:#66758c;--line:#dbe3ef;--panel:#f8fbff;--blue:#2166f3;--orange:#e07a28;--green:#2f855a;--gold:#d69e2e}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--fg);background:#fff}
+.wrap{max-width:1200px;margin:auto;padding:22px}h1{margin:0 0 6px;font-size:29px}.sub{color:var(--muted);line-height:1.45;margin-bottom:16px}
+.layout{display:grid;grid-template-columns:350px 1fr;gap:18px}.card{border:1px solid var(--line);border-radius:14px;background:#fff}.controls{padding:17px}.viz{padding:14px}
+.group{padding:13px 0;border-top:1px solid #edf1f6}.group:first-child{border-top:0;padding-top:0}.labelrow{display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin-bottom:8px}
+label{font-weight:700}.value{font-weight:700;color:#153e90}input[type=range]{width:100%}.metric{background:var(--panel);padding:10px;border-radius:9px;margin-top:9px}
+.k{font-size:11px;color:var(--muted);text-transform:uppercase}.v{font-weight:700;margin-top:4px;line-height:1.35}.explain{font-size:12px;color:var(--muted);line-height:1.35;margin-top:5px}
+.badge{display:inline-block;padding:3px 7px;border-radius:10px;font-size:10px;font-weight:bold;margin-left:5px;vertical-align:1px}.model{background:#fff0df;color:#8a4b08}.measure{background:#e3f5e9;color:#21643a}
+.refbox{font-size:12px;line-height:1.42;background:#f7f9fc;border:1px solid #e2e8f0;border-radius:8px;padding:10px;margin-top:9px}
+.context{font-size:12px;line-height:1.42;background:#f9fafb;border-left:3px solid #94a3b8;padding:9px 10px;margin-top:10px;color:#475569}
+canvas{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:11px;background:linear-gradient(#fff,#fbfdff)}
+.note{margin-top:11px;padding:10px 12px;background:#fffaf0;border-left:4px solid var(--gold);line-height:1.43;color:#38485f}
+@media(max-width:870px){.layout{grid-template-columns:1fr}}
+</style></head>
+<body><div class="wrap">
+<h1>Surface Roughness and Angle-Resolved Optical Scatter</h1>
+<div class="sub">The model covers optically smooth surfaces. Incident optical power is fixed; increasing RMS roughness transfers energy from the narrow specular component into scattered directions, while a movable detector represents an angle-resolved measurement.</div>
+<div class="layout">
+<div class="card controls">
+ <div class="group">
+  <div class="labelrow"><label for="rough">RMS roughness σ</label><span class="value"><span id="sigmaOut">1.0</span> nm</span></div>
+  <input id="rough" type="range" min="0" max="35" value="1" step="0.1">
+  <div style="display:flex;justify-content:space-between;font-size:12px;color:#66758c"><span>Ideal smooth limit</span><span>35 nm</span></div>
+  <div class="refbox"><div style="font-size:10px;text-transform:uppercase;color:#66758c;font-weight:bold;margin-bottom:4px">Surface-scale context</div><div id="surfaceRef"></div></div>
+  <div class="context"><b>Broader manufacturing context:</b> commercial bright/mirror metal finishes can extend into tens or hundreds of nanometres, while rolled, machined, extruded and fibrous surfaces commonly contain micrometre-scale texture. Those surfaces are outside this simplified optical-scatter model.</div>
+ </div>
+
+ <div class="group">
+  <div class="labelrow"><label for="det">Detector angle</label><span class="value"><span id="detOut">45</span>°</span></div>
+  <input id="det" type="range" min="5" max="85" value="45" step="1">
+  <div class="explain">Moving this control represents an <b>experimental angular measurement</b>: the detector samples one outgoing direction at a time.</div>
+ </div>
+
+ <div class="group">
+  <div class="metric"><div class="k">Integrated scattered fraction <span class="badge model">MODEL</span></div><div class="v" id="tisOut"></div><div class="explain">Estimated fraction of reflected optical power redistributed out of the narrow specular beam and integrated across scattering directions.</div></div>
+  <div class="metric"><div class="k">Remaining narrow-specular fraction <span class="badge model">MODEL</span></div><div class="v" id="specOut"></div><div class="explain">Simplified complementary fraction for this lossless illustration. Real materials may also absorb or transmit light.</div></div>
+  <div class="metric"><div class="k">Detector reading <span class="badge measure">MEASUREMENT</span></div><div class="v" id="measOut"></div><div class="explain">Signal at the selected detector angle, referenced to the same fixed incident illumination.</div></div>
+ </div>
+</div>
+
+<div class="card viz"><canvas id="cv" width="860" height="690"></canvas>
+<div class="note"><b>Scale perspective:</b> surfaces can look perfectly smooth to the eye and still be optically rough. Visible wavelengths are only hundreds of nanometres, so nanometre-scale surface variations can measurably redistribute light long before roughness becomes obvious visually or by touch.</div>
+</div></div></div>
+
+<script>
+(function(){
+const rough=document.getElementById('rough'),det=document.getElementById('det'),cv=document.getElementById('cv'),c=cv.getContext('2d');
+const lambda=632.8,specAngle=45;
+function txt(s,x,y,z=14,col='#10203f',w='normal'){c.fillStyle=col;c.font=w+' '+z+'px Arial';c.fillText(s,x,y)}
+function line(x1,y1,x2,y2,col='#334155',w=2){c.strokeStyle=col;c.lineWidth=w;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke()}
+function arrow(x1,y1,x2,y2,col,w=2){line(x1,y1,x2,y2,col,w);let a=Math.atan2(y2-y1,x2-x1),s=8;c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-s*Math.cos(a-.5),y2-s*Math.sin(a-.5));c.lineTo(x2-s*Math.cos(a+.5),y2-s*Math.sin(a+.5));c.closePath();c.fill()}
+function sy(x,A){return 285+A*(.55*Math.sin(x*.058)+.28*Math.sin(x*.137+1.1)+.17*Math.sin(x*.247+.3))}
+function model(sig){let tis=Math.pow(4*Math.PI*sig/lambda,2);tis=Math.min(.70,tis);return{tis,spec:1-tis}}
+function shape(th,sig){let width=4.5+sig*.45,z=(th-specAngle)/width;return Math.exp(-.5*z*z)}
+function reference(sig){
+ if(sig===0)return "<b>Ideal smooth limit:</b> 0 nm is a mathematical reference; no real manufactured mirror is perfectly smooth.";
+ if(sig<0.5)return "<b>Example scale:</b> super-polished optics and polished silicon wafers can reach sub-nanometre RMS roughness.";
+ if(sig<2)return "<b>Example scale:</b> specialised ultra-polished aluminium mirrors and other high-quality optical mirror finishes can lie in the sub-nanometre to few-nanometre RMS range.";
+ if(sig<6)return "<b>Example scale:</b> very smooth precision optical finishes occupy this scale. Some exceptionally smooth oriented polypropylene films report a few nanometres Ra, although Ra and RMS are not interchangeable.";
+ if(sig<15)return "<b>Example scale:</b> still extremely smooth by everyday standards. Around 13 nm, humans have distinguished specially patterned surface features of this amplitude — this is not equivalent to 13 nm RMS roughness.";
+ if(sig<30)return "<b>Example scale:</b> approaching the range of very highly polished decorative metal finishes. Published mirror stainless values are commonly specified using Ra rather than RMS.";
+ return "<b>Example scale:</b> tens of nanometres remain optically small but can produce substantial scatter. Ordinary rolled, machined, extruded and fibrous surfaces such as Tyvek can contain much larger-scale texture and are outside this simple model.";
+}
+function update(){
+ let sig=+rough.value,da=+det.value,p=model(sig);
+ document.getElementById('sigmaOut').textContent=sig.toFixed(1);
+ document.getElementById('detOut').textContent=da;
+ document.getElementById('surfaceRef').innerHTML=reference(sig);
+ document.getElementById('tisOut').textContent=(100*p.tis).toFixed(2)+'%';
+ document.getElementById('specOut').textContent=(100*p.spec).toFixed(2)+'%';
+ let specWidth=1.7,specSignal=p.spec*Math.exp(-.5*Math.pow((da-specAngle)/specWidth,2)),scatterSignal=p.tis*shape(da,sig),total=specSignal+scatterSignal;
+ document.getElementById('measOut').textContent=total.toFixed(3)+' relative';
+
+ c.clearRect(0,0,860,735);
+ txt('1  Surface finish and controlled illumination',35,38,17,'#10203f','bold');
+ const px=390,py=290,A=1.5+sig*.48;
+ c.strokeStyle='#334155';c.lineWidth=4;c.beginPath();
+ for(let x=70;x<=720;x+=2){let y=sy(x,A);x===70?c.moveTo(x,y):c.lineTo(x,y)}c.stroke();
+ line(px,py,px,88,'#94a3b8',1.4);txt('mean surface normal',400,103,12,'#64748b');
+ arrow(190,90,px-4,py-4,'#2166f3',4);txt('fixed incident beam',88,76,13,'#2166f3','bold');
+ line(px,py,565,110,'#94a3b8',1.3);txt('ideal specular direction',550,97,12,'#64748b');
+
+ let rad=(90-da)*Math.PI/180,rr=215,dx=px+rr*Math.cos(rad),dy=py-rr*Math.sin(rad);
+ c.strokeStyle='#94a3b8';c.lineWidth=1;c.setLineDash([5,5]);c.beginPath();c.arc(px,py,rr,-85*Math.PI/180,-5*Math.PI/180);c.stroke();c.setLineDash([]);
+ arrow(px+10*Math.cos(rad),py-10*Math.sin(rad),dx-19*Math.cos(rad),dy+19*Math.sin(rad),'#2f855a',2.4);
+ c.fillStyle='#dff3e7';c.strokeStyle='#2f855a';c.lineWidth=2;c.beginPath();c.arc(dx,dy,18,0,Math.PI*2);c.fill();c.stroke();txt('movable detector',dx-38,dy-28,12,'#2f855a','bold');
+
+ c.globalAlpha=.25+.7*p.spec;arrow(px,py,px+175*Math.cos(Math.PI/4),py-175*Math.sin(Math.PI/4),'#2166f3',2+3*p.spec);c.globalAlpha=1;
+ for(let th=8;th<=82;th+=4){let sh=shape(th,sig),a=(90-th)*Math.PI/180,L=60+105*sh*(.2+2*p.tis);c.globalAlpha=.08+.62*sh*Math.min(1,.2+3*p.tis);arrow(px,py,px+L*Math.cos(a),py-L*Math.sin(a),'#e07a28',1+1.2*sh)}c.globalAlpha=1;
+ txt('blue: narrow specular component',70,325,11,'#2166f3','bold');txt('orange: redistributed scatter',70,342,11,'#e07a28','bold');
+
+ txt('2  Angle-resolved detector measurement',35,390,17,'#10203f','bold');
+ txt('The detector is swept through angle; each position contributes one measured point.',35,412,12,'#66758c');
+ let x0=75,y0=625,W=700,H=175;
+ line(x0,y0,x0+W,y0,'#64748b',1.3);line(x0,y0,x0,y0-H,'#64748b',1.3);
+ txt('signal relative to fixed incident illumination',75,440,12,'#64748b');txt('detector / scattering angle',330,665,12,'#64748b');
+ for(let th=5;th<=85;th+=20){let xx=x0+W*(th-5)/80;txt(th+'°',xx-8,y0+20,11,'#64748b')}
+ function totalAt(th){return p.spec*Math.exp(-.5*Math.pow((th-specAngle)/1.7,2))+p.tis*shape(th,sig)}
+ c.strokeStyle='#e07a28';c.lineWidth=2.5;c.beginPath();
+ for(let th=5;th<=85;th+=.5){let xx=x0+W*(th-5)/80,yy=y0-H*(p.tis*shape(th,sig));th===5?c.moveTo(xx,yy):c.lineTo(xx,yy)}c.stroke();
+ c.strokeStyle='#10203f';c.lineWidth=3;c.beginPath();
+ for(let th=5;th<=85;th+=.25){let xx=x0+W*(th-5)/80,yy=y0-H*Math.min(1,totalAt(th));th===5?c.moveTo(xx,yy):c.lineTo(xx,yy)}c.stroke();
+ let mx=x0+W*(da-5)/80,my=y0-H*Math.min(1,totalAt(da));line(mx,y0,mx,my,'#2f855a',1.4);c.fillStyle='#2f855a';c.beginPath();c.arc(mx,my,6,0,Math.PI*2);c.fill();
+ txt('measured point',Math.min(mx+9,680),Math.max(my-9,458),12,'#2f855a','bold');
+ let sx=x0+W*(specAngle-5)/80;line(sx,y0,sx,y0-H,'#94a3b8',1);txt('specular angle',sx-36,447,11,'#64748b');
+
+
+}
+rough.oninput=update;det.oninput=update;update();
+})();
+</script></body></html>
